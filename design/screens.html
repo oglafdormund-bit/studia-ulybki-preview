@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Экраны «Студия улыбки»</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #dcd7cf; color: #23261f; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .top { max-width: 1760px; margin: 0 auto; padding: 24px 20px 8px; }
+  .top h1 { margin: 0 0 6px; font-size: 24px; }
+  .top p { margin: 0 0 4px; color: #57574f; max-width: 900px; }
+  .tabs { display: flex; gap: 8px; margin: 14px 0 0; flex-wrap: wrap; }
+  .tabs button { font: 600 14px system-ui, sans-serif; padding: 9px 16px; border-radius: 999px; border: 1px solid #b9b0a2; background: #f6f3ee; cursor: pointer; }
+  .tabs button[aria-pressed="true"] { background: #2f5d43; border-color: #2f5d43; color: #fff; }
+  .stage { max-width: 1760px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: 1fr 400px; gap: 28px; align-items: start; }
+  .lbl { font-size: 13px; font-weight: 600; color: #57574f; margin-bottom: 8px; }
+  .browser { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.18); }
+  .bar { height: 38px; background: #efece7; display: flex; align-items: center; gap: 7px; padding: 0 14px; }
+  .bar i { width: 11px; height: 11px; border-radius: 50%; background: #d6d0c6; }
+  .bar span { margin-left: 12px; background: #fff; border-radius: 8px; padding: 3px 12px; font-size: 12px; color: #77756d; flex: 1; max-width: 420px; }
+  .vp { position: relative; overflow: hidden; }
+  .vp iframe { border: 0; position: absolute; top: 0; left: 0; transform-origin: 0 0; background: #fbf9f6; }
+  .phone { width: 400px; background: #1d1f1c; border-radius: 52px; padding: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+  .phone .vp { width: 376px; height: 780px; border-radius: 40px; }
+  .phone iframe { width: 376px; height: 780px; position: static; }
+  @media (max-width: 1100px) { .stage { grid-template-columns: 1fr; justify-items: center; } .stage > div { width: 100%; } .phone-col { width: auto !important; } }
+  @media (max-width: 440px) { .phone { width: 100%; border-radius: 36px; padding: 8px; } .phone .vp, .phone iframe { width: 100%; } }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>Как это выглядит: Г2, «зелёный + дуб»</h1>
+  <p>Живые страницы по прототипу, с реальными фото, врачами и прейскурантом (146 позиций, коды уже латиницей). Внутри окон можно прокручивать и нажимать: на «Ценах» работают поиск и фильтр.</p>
+  <p>Цвет теперь работает по-другому: карточки одинаковые белые, зелёный — только кнопки, ссылки и иконки, дуб — подписи над заголовками, графики врачей и мелкие акценты.</p>
+  <div class="tabs" role="group" aria-label="Страница">
+    <button type="button" data-src="home.html" aria-pressed="true">Главная</button>
+    <button type="button" data-src="ceny.html">Цены</button>
+  </div>
+</div>
+<div class="stage">
+  <div>
+    <div class="lbl">Компьютер · 1440 px</div>
+    <div class="browser"><div class="bar"><i></i><i></i><i></i><span id="url">студия-улыбки24.рф</span></div>
+      <div class="vp" id="dvp"><iframe id="desk" title="Компьютер" src="home.html"></iframe></div></div>
+  </div>
+  <div class="phone-col" style="width:400px">
+    <div class="lbl">Телефон · 376 px</div>
+    <div class="phone"><div class="vp"><iframe id="mob" title="Телефон" src="home.html"></iframe></div></div>
+  </div>
+</div>
+<script>
+  const W = 1440, H = 940;
+  const desk = document.getElementById('desk'), dvp = document.getElementById('dvp');
+  const fit = () => {
+    const k = dvp.clientWidth / W;
+    desk.style.width = W + 'px'; desk.style.height = H + 'px';
+    desk.style.transform = `scale(${k})`;
+    dvp.style.height = H * k + 'px';
+  };
+  addEventListener('resize', fit); fit();
+  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    desk.src = b.dataset.src; document.getElementById('mob').src = b.dataset.src;
+    document.getElementById('url').textContent = 'студия-улыбки24.рф' + (b.dataset.src === 'ceny.html' ? '/ceny' : '');
+  }));
+</script>
+</body>
+</html>
