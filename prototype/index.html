@@ -28,7 +28,9 @@
   .frame-wrap { overflow-x: auto; padding-bottom: 6px; }
   .frame { margin: 0 auto; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
   body[data-view="phone"] .frame { width: 375px; }
-  body[data-view="desk"] .frame { width: 1200px; }
+  body[data-view="desk"] .frame { width: 100%; min-width: 1024px; }
+  body[data-view="desk"] .wrap { max-width: none; }
+  body[data-view="desk"] .screen > h2, body[data-view="desk"] .why, body[data-view="desk"] .map { max-width: 1280px; margin-left: auto; margin-right: auto; }
 
   /* Карта сайта */
   .map { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
@@ -50,7 +52,8 @@
   .wf h3 { font-size: 15px; margin: 0 0 6px; }
   .wf p { margin: 0 0 8px; }
   .sec { padding: 24px 16px; border-top: 1px solid var(--fill); }
-  .in { max-width: 1080px; margin: 0 auto; }
+  .band { background: #f1f1ef; }
+  .in { max-width: 1280px; margin: 0 auto; }
   .ph { background: linear-gradient(to top right, transparent calc(50% - .5px), var(--fill2) 50%, transparent calc(50% + .5px)), linear-gradient(to top left, transparent calc(50% - .5px), var(--fill2) 50%, transparent calc(50% + .5px)), var(--fill); border-radius: 10px; display: grid; place-items: center; color: var(--mute); font-size: 12px; text-align: center; padding: 6px; min-height: 80px; }
   .bar { height: 9px; background: var(--fill); border-radius: 5px; margin: 6px 0; }
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 16px; border-radius: 10px; border: 2px solid var(--dark); background: var(--dark); color: #fff; font-weight: 600; font-size: 14px; }
@@ -207,7 +210,7 @@
 
 <section class="screen" id="s-home">
   <h2>1. Главная</h2>
-  <p class="why">За первые секунды пациент должен понять, что это стоматология в Ачинске, где она находится, когда работает и как записаться. Дальше идут направления с ценами «от», врачи, шаги записи и контакты.</p>
+  <p class="why">За первые секунды пациент должен понять, что это стоматология в Ачинске, где она находится, когда работает и как записаться. Дальше идут направления с ценами «от», врачи, шаги записи и контакты. На широком мониторе фоны секций и шапка тянутся на всю ширину, а текст и карточки остаются в колонке до 1280px: строки длиннее тяжело читать.</p>
   <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="home"></div></div></div>
 </section>
 
@@ -299,7 +302,7 @@ const doctor = (name, role, sched) => `
 
 const screens = {
 home: () => `${hdr()}
-  <div class="sec" style="border:0"><div class="in g2 hero">
+  <div class="sec band" style="border:0"><div class="in g2 hero">
     <div><h1>Стоматология «Студия улыбки» в Ачинске</h1>
       <p class="muted">Лечение, удаление и протезирование зубов. Работаем с 2012 года.</p>
       <div class="row" style="margin:14px 0"><span class="btn">☎ Позвонить</span><span class="btn o">Перезвоните мне</span></div>
@@ -313,7 +316,7 @@ home: () => `${hdr()}
   <div class="sec"><div class="in"><h2>Почему к нам</h2><div class="g4">
     ${['С 2012 года в Ачинске','Лечение под микроскопом','Врачи с действующей аккредитацией','Цены на сайте — те же, что в клинике'].map(t=>`<div><div class="ph" style="width:44px;min-height:44px;margin-bottom:8px">ик</div><h3>${t}</h3><div class="bar"></div></div>`).join('')}
   </div><p class="note">Набор фактов подтвердить у клиники.</p></div></div>
-  <div class="sec"><div class="in"><div class="row" style="justify-content:space-between"><h2>Врачи</h2><span class="d-only">Все врачи →</span></div><div class="g3">
+  <div class="sec band"><div class="in"><div class="row" style="justify-content:space-between"><h2>Врачи</h2><span class="d-only">Все врачи →</span></div><div class="g3">
     ${doctor('Иливанова Юлия Юрьевна','Врач-стоматолог общей практики, директор','Пн, ср, пт 9–15 · вт, чт 15–21')}
     ${doctor('Козлова Наталья Андреевна','Врач-стоматолог общей практики','Пн, ср, пт 15–21 · вт, чт 9–15')}
     ${doctor('Саблин Кирилл Андреевич','Врач-стоматолог-хирург, стоматолог-ортопед','Пн, ср, пт 12–20 · вт, чт 15–21')}
@@ -501,14 +504,7 @@ const setView = v => {
   document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === v));
 };
 document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
-// компьютерную схему 1200px ужимаем под окно, чтобы видеть экран целиком
-const fit = () => document.querySelectorAll('.frame').forEach(f => {
-  f.style.zoom = document.body.dataset.view === 'desk' ? Math.min(1, f.parentElement.clientWidth / 1200) : 1;
-});
-addEventListener('resize', fit);
-document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', fit));
 setView(innerWidth < 700 ? 'phone' : 'desk');
-fit();
 </script>
 </body>
 </html>
