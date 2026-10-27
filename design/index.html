@@ -89,13 +89,35 @@
        --r-lg: 24px; --r-md: 18px; --r-btn: 999px; --r-av: 50%; }
   #g1 { --head: "Lora", Georgia, serif; --head-w: 600; }
   #g2 { --head: "Geologica", system-ui, sans-serif; --head-w: 600; --h-ls: -.02em; }
-  #g1 .card:nth-child(1), #g2 .card:nth-child(1) { background: #e3ebdd; }
-  #g1 .card:nth-child(2), #g2 .card:nth-child(2) { background: #ece3ef; }
-  #g1 .card:nth-child(3), #g2 .card:nth-child(3) { background: #f1e5d6; }
-  #g1 .card:nth-child(4), #g2 .card:nth-child(4) { background: #f2eacf; }
+  #g1 .card:nth-child(1) { background: #e3ebdd; }
+  #g1 .card:nth-child(2) { background: #ece3ef; }
+  #g1 .card:nth-child(3) { background: #f1e5d6; }
+  #g1 .card:nth-child(4) { background: #f2eacf; }
   .photo .badge { position: absolute; left: 16px; bottom: 16px; background: var(--paper); border-radius: 999px; padding: 10px 16px 10px 10px; display: flex; gap: 10px; align-items: center; font-size: 14px; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
   .dots { display: flex; gap: 6px; margin-bottom: 18px; }
   .dots i { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* ===== Г2: палитры ===== */
+  .pal { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .pal button { font: 500 14px system-ui, sans-serif; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); cursor: pointer; }
+  .pal button[aria-pressed="true"] { background: var(--btn); color: var(--btn-ink); border-color: var(--btn); }
+  .pal-note { margin-top: 8px !important; color: var(--ink) !important; }
+  #g2 .card:nth-child(1) { background: var(--c1); } #g2 .card:nth-child(2) { background: var(--c2); }
+  #g2 .card:nth-child(3) { background: var(--c3); } #g2 .card:nth-child(4) { background: var(--c4); }
+  #g2[data-p="green"]  { --bg:#eef0eb; --paper:#fbfbf8; --soft:#f0f2ec; --ink:#1f2620; --mute:#626a63; --line:#e1e5de; --line-strong:#c3cbc2;
+     --accent:#2f5d43; --btn:#2f5d43; --logo:#2f5d43; --t1:#fbfbf8; --t2:#cfe0cf; --t3:#9fc2a4; --t4:#e6efe4;
+     --c1:#e6eee3; --c2:#e6eee3; --c3:#e6eee3; --c4:#e6eee3; --i1:#2f5d43; --i2:#2f5d43; --i3:#2f5d43; --i4:#2f5d43; }
+  #g2[data-p="oak"]    { --bg:#efeae3; --paper:#fbf9f6; --soft:#f1ece5; --ink:#23261f; --mute:#6b6a62; --line:#e4ded5; --line-strong:#c9c1b4;
+     --accent:#2f5d43; --btn:#2f5d43; --logo:#2f5d43; --t1:#fbf9f6; --t2:#d9b48a; --t3:#fbf9f6; --t4:#d9b48a;
+     --c1:#e5ebe1; --c2:#f1e6d8; --c3:#e5ebe1; --c4:#f1e6d8; --i1:#2f5d43; --i2:#a8723f; --i3:#2f5d43; --i4:#a8723f; }
+  #g2[data-p="teal"]   { --bg:#f2f3f2; --paper:#ffffff; --soft:#f3f5f4; --ink:#1d2224; --mute:#646b6d; --line:#e4e8e7; --line-strong:#c6cdcc;
+     --accent:#1e7a6d; --btn:#1e7a6d; --logo:#263033; --t1:#ffffff; --t2:#7fc4b8; --t3:#ffffff; --t4:#7fc4b8;
+     --c1:#eaf3f1; --c2:#eaf3f1; --c3:#eaf3f1; --c4:#eaf3f1; --i1:#1e7a6d; --i2:#1e7a6d; --i3:#1e7a6d; --i4:#1e7a6d; }
+  #g2[data-p="navy"]   { --bg:#f1eee8; --paper:#fdfcf9; --soft:#f3f0ea; --ink:#18223a; --mute:#5e6577; --line:#e6e1d8; --line-strong:#c9c2b5;
+     --accent:#22365e; --btn:#22365e; --logo:#22365e; --t1:#fdfcf9; --t2:#e2c89b; --t3:#fdfcf9; --t4:#e2c89b;
+     --c1:#e8ebf2; --c2:#f3ecdf; --c3:#e8ebf2; --c4:#f3ecdf; --i1:#22365e; --i2:#9b7638; --i3:#22365e; --i4:#9b7638; }
+  #g2[data-p="pastel"] { --logo:#2f5d43; --t1:#a9c79a; --t2:#cdb3d4; --t3:#d9ad7f; --t4:#e8d39a;
+     --c1:#e3ebdd; --c2:#ece3ef; --c3:#f1e5d6; --c4:#f2eacf; --i1:#5f8a52; --i2:#9a74a6; --i3:#b07a45; --i4:#b39a3e; }
 
   @media (max-width: 900px) {
     .hdr nav { display: none; }
@@ -118,10 +140,10 @@
 
 <div class="intro">
   <h1>Направления стиля</h1>
-  <p><b>Новое:</b> Г1 и Г2 — середина между А и В. Ниже для сравнения остались исходные А, Б, В.</p>
+  <p><b>Новое:</b> у Г2 появился переключатель — пять вариантов цвета. Г1 и Г2 — середина между А и В. Ниже для сравнения остались исходные А, Б, В.</p>
   <p>На всех трёх один и тот же кусок главной: шапка, первый экран, направления, врач, цены, предупреждение. Логотипы — эскизы идеи, чистовой вектор делаем после выбора. Можно смешивать: например, цвета из А и шрифты из Б.</p>
   <p>Фото — ресепшен клиники. Его цвета (дуб, тёплые серые стены, зелёная скамья, сиреневые цветы) легли в основу направлений А и В.</p>
-  <nav class="toc"><a href="#g1"><b>Г1. Тёплая студия · с засечками</b></a><a href="#g2"><b>Г2. Тёплая студия · без засечек</b></a><a href="#a">А. Как в клинике</a><a href="#b">Б. Светлая и спокойная</a><a href="#c">В. Студия</a></nav>
+  <nav class="toc"><a href="#g1"><b>Г1. Тёплая студия · с засечками</b></a><a href="#g2"><b>Г2 + варианты цвета</b></a><a href="#a">А. Как в клинике</a><a href="#b">Б. Светлая и спокойная</a><a href="#c">В. Студия</a></nav>
 </div>
 
 <!-- символы для логотипов -->
@@ -172,26 +194,34 @@
 <!-- ===== Г2. Тёплая студия · без засечек ===== -->
 <section class="dir" id="g2">
   <div class="label"><h2>Г2. Тёплая студия · без засечек</h2>
-    <p>То же, что Г1, но заголовки мягким современным гротеском Geologica. Чуть моложе и дружелюбнее, при этом без резкости Unbounded.</p></div>
+    <p>Заголовки — Geologica. Ниже переключатель цвета: форма та же, меняются только краски. Попробуй все и смотри не на «нравится», а на то, что будет выглядеть спокойно и через год.</p>
+    <div class="pal" role="group" aria-label="Цвета">
+      <button type="button" data-p="green">1. Один зелёный</button>
+      <button type="button" data-p="oak">2. Зелёный + дуб</button>
+      <button type="button" data-p="teal">3. Графит + морская волна</button>
+      <button type="button" data-p="navy">4. Тёмно-синий + песок</button>
+      <button type="button" data-p="pastel">5. Четыре пастели (было)</button>
+    </div>
+    <p class="pal-note" id="palnote"></p></div>
   <div class="in"><div class="site">
     <header class="hdr">
-      <a class="logo"><svg width="42" height="42" viewBox="0 0 100 100"><use href="#palette" fill="#2f5d43"/><circle cx="74" cy="40" r="7" fill="#fbf9f6"/><use href="#tooth" fill="#a9c79a" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#cdb3d4" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#d9ad7f" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#e8d39a" transform="translate(42 60) scale(.9)"/></svg>
+      <a class="logo"><svg width="42" height="42" viewBox="0 0 100 100"><use href="#palette" style="fill:var(--logo)"/><circle cx="74" cy="40" r="7" fill="#fbf9f6"/><use href="#tooth" style="fill:var(--t1)" transform="translate(20 20) scale(1.05)"/><use href="#tooth" style="fill:var(--t2)" transform="translate(46 14) scale(.95)"/><use href="#tooth" style="fill:var(--t3)" transform="translate(16 50) scale(1.05)"/><use href="#tooth" style="fill:var(--t4)" transform="translate(42 60) scale(.9)"/></svg>
         <span class="word" style="font-size:21px">Студия улыбки<small>стоматология · Ачинск</small></span></a>
       <nav><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Пациентам</span><span>О клинике</span><span>Контакты</span></nav>
       <span class="tel">+7 (923) 313-05-33</span><span class="btn sm">Перезвоните мне</span>
     </header>
     <div class="hero">
-      <div><div class="dots"><i style="background:#a9c79a"></i><i style="background:#cdb3d4"></i><i style="background:#d9ad7f"></i><i style="background:#e8d39a"></i></div><h3>Стоматология «Студия улыбки» в Ачинске</h3>
+      <div><div class="dots"><i style="background:var(--t1)"></i><i style="background:var(--t2)"></i><i style="background:var(--t3)"></i><i style="background:var(--t4)"></i></div><h3>Стоматология «Студия улыбки» в Ачинске</h3>
         <p>Лечение, удаление и протезирование зубов. Работаем с 2012 года.</p>
         <div class="row"><span class="btn">Позвонить</span><span class="btn o">Перезвоните мне</span></div>
         <div class="meta">мкр. 5, д. 33, пом. 72 · пн–пт 9–21, сб 9–15</div></div>
-      <div class="photo"><img src="reception.jpg" alt="Ресепшен клиники"><div class="badge"><svg width="32" height="32" viewBox="0 0 100 100"><use href="#palette" fill="#2f5d43"/><circle cx="74" cy="40" r="7" fill="#fbf9f6"/><use href="#tooth" fill="#a9c79a" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#cdb3d4" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#d9ad7f" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#e8d39a" transform="translate(42 60) scale(.9)"/></svg><span><b>С 2012 года</b><br>в Ачинске</span></div></div>
+      <div class="photo"><img src="reception.jpg" alt="Ресепшен клиники"><div class="badge"><svg width="32" height="32" viewBox="0 0 100 100"><use href="#palette" style="fill:var(--logo)"/><circle cx="74" cy="40" r="7" fill="#fbf9f6"/><use href="#tooth" style="fill:var(--t1)" transform="translate(20 20) scale(1.05)"/><use href="#tooth" style="fill:var(--t2)" transform="translate(46 14) scale(.95)"/><use href="#tooth" style="fill:var(--t3)" transform="translate(16 50) scale(1.05)"/><use href="#tooth" style="fill:var(--t4)" transform="translate(42 60) scale(.9)"/></svg><span><b>С 2012 года</b><br>в Ачинске</span></div></div>
     </div>
     <div class="cards">
-      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#5f8a52"/></svg></div><h4>Лечение зубов</h4><span>от ___ ₽</span></div>
-      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#9a74a6"/></svg></div><h4>Гигиена и отбеливание</h4><span>от ___ ₽</span></div>
-      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#b07a45"/></svg></div><h4>Удаление зубов</h4><span>от ___ ₽</span></div>
-      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#b39a3e"/></svg></div><h4>Протезирование</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" style="fill:var(--i1)"/></svg></div><h4>Лечение зубов</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" style="fill:var(--i2)"/></svg></div><h4>Гигиена и отбеливание</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" style="fill:var(--i3)"/></svg></div><h4>Удаление зубов</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" style="fill:var(--i4)"/></svg></div><h4>Протезирование</h4><span>от ___ ₽</span></div>
     </div>
     <div class="bottom">
       <div class="doc"><div class="av"></div><div><b>Иливанова Юлия Юрьевна</b><span>Врач-стоматолог общей практики</span></div></div>
@@ -200,7 +230,7 @@
     <div class="warn">Имеются противопоказания. Необходима консультация специалиста.</div>
   </div>
   <div class="spec">
-    <div><h5>Цвета</h5><div class="sw"><i style="background:#efeae3">#efeae3</i><i class="dk" style="background:#2f5d43">#2f5d43</i><i style="background:#a9c79a">#a9c79a</i><i style="background:#cdb3d4">#cdb3d4</i><i style="background:#d9ad7f">#d9ad7f</i><i style="background:#e8d39a">#e8d39a</i></div></div>
+    <div><h5>Цвета</h5><div class="sw" id="g2sw"></div></div>
     <div class="fonts"><h5>Шрифты</h5><p style="font:600 22px Geologica,sans-serif">Geologica — заголовки</p><p style="font:500 16px Manrope,sans-serif">Manrope — текст</p></div>
     <div><h5>Плюсы и минусы</h5><ul class="pc"><li>+ современно и мягко, хорошо читается на телефоне</li><li>+ нравится широкой аудитории</li><li>− чуть меньше «характера», чем у засечек</li></ul></div>
   </div></div>
@@ -317,5 +347,24 @@
   </div></div>
 </section>
 
+<script>
+const notes = {
+  green: 'Один цвет — зелёный из интерьера, всё остальное нейтральное. Меньше всего вкусовщины, проще всего вывеска и печать. Зубы в логотипе — оттенки зелёного и белый.',
+  oak: 'Два цвета, оба из интерьера: глубокий зелёный и тёплый дуб. Карточки чередуются. Чуть теплее и живее, чем один зелёный.',
+  teal: 'Нейтральный графит и один акцент — спокойная морская волна. Ощущение чистоты и медицины, но без холодного «больничного» голубого.',
+  navy: 'Тёмно-синий и тёплый песок. Самое «солидное» и доверительное сочетание, читается как надёжность. Дальше всего от интерьера.',
+  pastel: 'Прежний вариант: четыре приглушённые краски, по одной на направление.'
+};
+const sw = { green:['#eef0eb','#2f5d43','#9fc2a4','#e6eee3'], oak:['#efeae3','#2f5d43','#d9b48a','#f1e6d8'], teal:['#f2f3f2','#263033','#1e7a6d','#7fc4b8'], navy:['#f1eee8','#22365e','#e2c89b','#f3ecdf'], pastel:['#efeae3','#2f5d43','#a9c79a','#cdb3d4','#d9ad7f','#e8d39a'] };
+const g2 = document.getElementById('g2');
+const setP = k => {
+  g2.dataset.p = k;
+  g2.querySelectorAll('.pal button').forEach(b => b.setAttribute('aria-pressed', b.dataset.p === k));
+  document.getElementById('palnote').textContent = notes[k];
+  document.getElementById('g2sw').innerHTML = sw[k].map(h => `<i style="background:${h}" class="${['#2f5d43','#263033','#1e7a6d','#22365e'].includes(h)?'dk':''}">${h}</i>`).join('');
+};
+g2.querySelectorAll('.pal button').forEach(b => b.addEventListener('click', () => setP(b.dataset.p)));
+setP('green');
+</script>
 </body>
 </html>
