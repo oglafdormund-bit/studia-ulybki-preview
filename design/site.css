@@ -68,13 +68,13 @@ p { margin: 0; }
 
 
 /* Первый экран — правила, а не подгонка под один монитор:
-   1. Высота = окно (не меньше 640) + 44px, которые потом закрывает наезжающий лист.
-   2. Содержимое — по центру свободной зоны: от низа шапки (~80px) до верха листа,
+   1. Высота = окно (не меньше 640). Лист поднят на 36px и сразу выглядывает снизу.
+   2. Содержимое — по центру свободной зоны: от низа шапки (~80px) до выглянувшего листа,
       с небольшим сдвигом вниз. Ни к верху, ни к низу экрана не прилипает.
    3. Заголовок масштабируется и по ширине, и по высоте окна.
    4. Кадр подбирается под форму окна, сверху — затемнение под шапку,
       слева — плотное под текст, чтобы экран держался и на среднем фото. */
-.hero { position: sticky; top: var(--stick, 0px); z-index: 0; display: flex; align-items: center; min-height: calc(max(640px, 100svh) + 44px); color: #fff; overflow: hidden; }
+.hero { position: sticky; top: var(--stick, 0px); z-index: 0; display: flex; align-items: center; min-height: max(640px, 100svh); color: #fff; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background: #1a2333; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 65% 22%; }
 @media (min-aspect-ratio: 16 / 9) { .hero-bg img { object-position: 70% 26%; } }
@@ -83,7 +83,7 @@ p { margin: 0; }
   linear-gradient(180deg, rgba(14,20,30,.5) 0%, rgba(14,20,30,0) 22%),
   linear-gradient(90deg, rgba(14,20,30,.9) 0%, rgba(14,20,30,.72) 40%, rgba(14,20,30,.2) 72%, rgba(14,20,30,.06) 100%),
   linear-gradient(0deg, rgba(14,20,30,.45) 0%, rgba(14,20,30,0) 35%); }
-.hero .wrap { position: relative; width: 100%; display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: end; padding-top: 140px; padding-bottom: 92px; }
+.hero .wrap { position: relative; width: 100%; display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: end; padding-top: 140px; padding-bottom: 84px; }
 .hero .kicker { color: rgba(255,255,255,.75); }
 .hero .kicker::before { background: #fff; }
 .hero h1 { font-size: clamp(40px, min(5.4vw, 8.4vh), 88px); letter-spacing: -.045em; line-height: .98; margin: clamp(14px, 2vh, 20px) 0 clamp(16px, 2.6vh, 24px); color: #fff; }
@@ -111,7 +111,7 @@ p { margin: 0; }
 .chief b { color: #fff; font: 600 16px var(--head); }
 
 /* первый блок после экрана заезжает на фото со скруглением сверху */
-.page { position: relative; z-index: 1; margin-top: -44px; background: var(--paper); border-radius: 36px 36px 0 0; box-shadow: 0 -24px 48px -24px rgba(14,20,30,.45); padding-bottom: 1px; }
+.page { position: relative; z-index: 1; margin-top: -36px; background: var(--paper); border-radius: 36px 36px 0 0; box-shadow: 0 -24px 48px -24px rgba(14,20,30,.45); padding-bottom: 1px; }
 .hero .wrap { padding-bottom: 108px; }
 
 /* секции */
@@ -121,21 +121,21 @@ p { margin: 0; }
 .link { font-weight: 600; display: inline-flex; gap: 10px; align-items: center; border-bottom: 1.5px solid var(--sky); padding-bottom: 2px; }
 .link:hover { border-color: var(--blue); }
 
-/* направления — карточки с фото */
-.dcards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.dcard { display: flex; flex-direction: column; background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--line); transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
-.dcard:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -20px rgba(15,26,46,.25); }
-.dph { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--paper-2); }
-.dph img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
-.dcard:hover .dph img { transform: scale(1.05); }
-.dbody { display: flex; flex-direction: column; flex: 1; padding: 22px 22px 20px; }
-.dbody h3 { font-size: 22px; margin-bottom: 8px; }
-.dbody p { color: var(--mute); font-size: 15px; }
-.dfoot { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 20px; }
-.dfoot b { font-weight: 700; }
-.dfoot small { color: var(--mute); font-size: 13px; }
-.dfoot i { margin-left: auto; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1.5px var(--line); transition: background .3s, color .3s; }
-.dcard:hover .dfoot i { background: var(--blue); color: #fff; box-shadow: none; }
+/* направления — сетка 2×2 из фото-карточек, правая колонка смещена вниз */
+.dgrid { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.dcard { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; min-height: 360px; padding: 36px; border-radius: 28px; color: #fff; background: #1a2333; box-shadow: 0 18px 40px -22px rgba(15,26,46,.45); transition: translate .5s var(--ease), box-shadow .5s var(--ease); }
+.dcard.off { margin-top: 96px; }
+.dph { position: absolute; inset: 0; z-index: -1; }
+.dph img { width: 100%; height: 100%; object-fit: cover; transition: scale 1s var(--ease); }
+.dph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,20,30,.9) 0%, rgba(14,20,30,.72) 42%, rgba(14,20,30,.25) 100%); }
+.dcard:hover { translate: 0 -4px; box-shadow: 0 30px 60px -24px rgba(15,26,46,.55); }
+.dcard:hover .dph img { scale: 1.06; }
+.dnum::before { content: var(--n); }
+.dnum { display: block; font: 700 40px/1 var(--head); letter-spacing: -.04em; opacity: .5; margin-bottom: 14px; }
+.dcard h3 { font-size: clamp(24px, 2.2vw, 32px); margin-bottom: 10px; }
+.dcard h3 a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+.dcard p { color: rgba(255,255,255,.78); max-width: 44ch; margin-bottom: 18px; }
+.dmeta { font-size: 14px; font-weight: 600; color: rgba(255,255,255,.85); }
 /* панель «Первый визит» — светло-серая плоскость */
 .panel-dark { background: var(--paper-2); color: var(--ink); border-radius: 32px; margin: 0 24px; padding: 110px 0; position: relative; overflow: hidden; }
 .visit { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: start; }
@@ -247,12 +247,12 @@ footer .req { padding-top: 18px; border-top: 1px solid #24314a; font-size: 13px;
 }
 
 @media (max-width: 1180px) {
-  .dcards { grid-template-columns: 1fr 1fr; }
   .nav, .hdr .eye { display: none; }
 }
 @media (max-width: 860px) {
-  .dcards { grid-template-columns: 1fr; gap: 14px; }
-  .dph { aspect-ratio: 16 / 9; }
+  .dgrid { grid-template-columns: 1fr; gap: 14px; }
+  .dcard { min-height: 300px; padding: 26px; border-radius: 22px; }
+  .dcard.off { margin-top: 0; }
   .hero { min-height: 0; display: block; position: relative; top: 0; }
   .hero-bg { position: relative; height: 340px; }
   .hero-bg img { object-position: 62% 30%; }
@@ -289,6 +289,7 @@ footer .req { padding-top: 18px; border-top: 1px solid #24314a; font-size: 13px;
   footer { padding: 56px 0 24px; border-radius: 28px 28px 0 0; margin-top: 70px; }
   .warn-line { margin-top: 36px; font-size: 13px; }
   .page { margin-top: -28px; border-radius: 26px 26px 0 0; }
+  .hero .wrap { opacity: 1 !important; }
   footer .cols { grid-template-columns: 1fr 1fr; gap: 28px; }
   footer .cols > :first-child { grid-column: 1 / -1; }
   .page-head { padding: 120px 0 40px; }
