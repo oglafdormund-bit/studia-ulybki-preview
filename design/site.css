@@ -1,17 +1,17 @@
 /* «Студия улыбки»: синяя палитра, Onest + Manrope.
    Эскиз для согласования, не финальный CSS. */
 :root {
-  --paper: #f5f7fb;
-  --paper-2: #e8eef7;
+  --paper: #f4f5f7;
+  --paper-2: #e7eaef;
   --card: #ffffff;
   --ink: #0f1a2e;
   --mute: #5b6577;
   --line: #dbe2ec;
-  --blue: #2457c5;
-  --blue-2: #1d49a8;
+  --blue: #33568f;
+  --blue-2: #284676;
   --blue-ink: #e9f0fc;
-  --accent: #2457c5;
-  --sky: #9cc3ff;
+  --accent: #33568f;
+  --sky: #b7c9e6;
   --head: "Onest", system-ui, sans-serif;
   --body: "Manrope", system-ui, sans-serif;
   --ease: cubic-bezier(.2, .7, .3, 1);
@@ -55,7 +55,7 @@ p { margin: 0; }
 .logo small { display: block; margin-top: 4px; font: 600 10px var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
 .nav { display: flex; gap: 6px; margin-right: auto; font: 500 15px var(--body); }
 .nav a { padding: 8px 12px; border-radius: 999px; transition: background .2s; }
-.nav a:hover, .nav a.on { background: rgba(36,87,197,.08); }
+.nav a:hover, .nav a.on { background: rgba(51,86,143,.08); }
 .hdr .tel { font-weight: 700; white-space: nowrap; }
 .hdr .eye { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1px var(--line); }
 .hdr .btn { min-height: 46px; padding: 0 20px; font-size: 15px; }
@@ -88,7 +88,7 @@ p { margin: 0; }
 .today { background: var(--blue); color: var(--blue-ink); border-radius: 28px; padding: 36px; }
 .today .now { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(233,240,252,.8); }
 .today .now i { width: 9px; height: 9px; border-radius: 50%; background: #8fd19e; box-shadow: 0 0 0 4px rgba(143,209,158,.18); }
-.today .now i.off { background: var(--sky); box-shadow: 0 0 0 4px rgba(156,195,255,.18); }
+.today .now i.off { background: var(--sky); box-shadow: 0 0 0 4px rgba(183,201,230,.18); }
 .big-tel { display: block; margin: 22px 0 6px; font: 600 clamp(26px, 2.4vw, 34px)/1.1 var(--head); letter-spacing: -.02em; color: #fff; }
 .addr2 { color: rgba(233,240,252,.75); }
 .hours { list-style: none; margin: 26px 0; padding: 0; border-top: 1px solid rgba(233,240,252,.16); }
@@ -223,7 +223,7 @@ footer .req { padding-top: 24px; border-top: 1px solid #24314a; font-size: 13px;
 .ptable td { padding: 18px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
 .ptable .code { width: 160px; color: var(--mute); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 21px; }
 .ptable .num { width: 130px; text-align: right; font: 600 18px var(--head); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.ptable tr:hover td { background: linear-gradient(90deg, transparent, rgba(156,195,255,.12), transparent); }
+.ptable tr:hover td { background: linear-gradient(90deg, transparent, rgba(183,201,230,.12), transparent); }
 .empty { margin-top: 40px; color: var(--mute); }
 .side-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 70px; }
 

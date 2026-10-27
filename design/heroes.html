@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=1793140730">
+<link rel="stylesheet" href="site.css?v=1793140970">
 <style>
   /* общая обвязка страницы с вариантами */
   .lbl { background: var(--ink); color: #e9e6df; font: 600 13px var(--body); letter-spacing: .04em; padding: 12px 24px; display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
@@ -29,10 +29,10 @@
   /* 1. Полноэкранное фото */
   .v1 { min-height: min(100vh, 920px); display: flex; align-items: flex-end; color: #fff; }
   .v1 .bg { position: absolute; inset: 0; }
-  .v1 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,24,52,.8) 0%, rgba(11,24,52,.45) 45%, rgba(11,24,52,0) 75%), linear-gradient(0deg, rgba(11,24,52,.5), transparent 45%); }
+  .v1 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,26,44,.8) 0%, rgba(16,26,44,.45) 45%, rgba(16,26,44,0) 75%), linear-gradient(0deg, rgba(16,26,44,.5), transparent 45%); }
   .v1 .wrap { position: relative; width: 100%; padding-bottom: 64px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
-  .v1 .kicker { color: #cfe0ff; }
-  .v1 h1 em { color: #9cc3ff; }
+  .v1 .kicker { color: #d3deef; }
+  .v1 h1 em { color: #b7c9e6; }
   .v1 .lead { color: rgba(255,255,255,.82); }
   .v1 .btn.ghost { color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5); }
   .glass { background: rgba(251,248,243,.14); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.22); border-radius: 22px; padding: 22px 26px; min-width: 300px; }
@@ -48,15 +48,15 @@
   .v2 .ph .tag b { display: block; font: 600 18px var(--head); }
 
   /* 3. Тёмный кинематографичный */
-  .v3 { background: #0f2350; color: #e9f0fc; min-height: min(100vh, 900px); display: flex; align-items: center; }
+  .v3 { background: #1b2c4a; color: #e9f0fc; min-height: min(100vh, 900px); display: flex; align-items: center; }
   .v3 .bg { position: absolute; top: 0; right: 0; bottom: 0; width: 64%; }
-  .v3 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0f2350 0%, rgba(15,35,80,.65) 30%, rgba(15,35,80,0) 62%); }
+  .v3 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #1b2c4a 0%, rgba(27,44,74,.65) 30%, rgba(27,44,74,0) 62%); }
   .v3 .wrap { position: relative; width: 100%; padding-top: 110px; }
-  .v3 .kicker { color: #9cc3ff; }
+  .v3 .kicker { color: #b7c9e6; }
   .v3 h1 { color: #fff; max-width: 680px; }
-  .v3 h1 em { color: #9cc3ff; }
+  .v3 h1 em { color: #b7c9e6; }
   .v3 .lead { color: rgba(233,240,252,.75); }
-  .v3 .btn { background: #fff; color: #0f2350; }
+  .v3 .btn { background: #fff; color: #1b2c4a; }
   .v3 .btn .ar { background: var(--blue); color: #fff; }
   .v3 .btn.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(233,240,252,.35); }
   .v3 .chipline { color: rgba(233,240,252,.6); }
@@ -89,14 +89,14 @@
     .v .hdr .nav, .v .hdr .tel, .v .hdr .eye, .v .hdr .btn { display: none; }
     .v1 { min-height: 760px; }
     .v1 .wrap { grid-template-columns: 1fr; padding-bottom: 28px; }
-    .v1 .bg::after { background: linear-gradient(0deg, rgba(11,24,52,.9) 0%, rgba(11,24,52,.55) 50%, rgba(11,24,52,.1) 100%); }
+    .v1 .bg::after { background: linear-gradient(0deg, rgba(16,26,44,.9) 0%, rgba(16,26,44,.55) 50%, rgba(16,26,44,.1) 100%); }
     .glass { min-width: 0; }
     .v2 { grid-template-columns: 1fr; }
     .v2 .txt { padding: 110px 18px 36px; }
     .v2 .ph { height: 380px; }
     .v3 { min-height: 0; display: block; }
     .v3 .bg { position: relative; width: 100%; height: 340px; }
-    .v3 .bg::after { background: linear-gradient(0deg, #0f2350 0%, rgba(15,35,80,0) 55%); }
+    .v3 .bg::after { background: linear-gradient(0deg, #1b2c4a 0%, rgba(27,44,74,0) 55%); }
     .v3 .wrap { padding: 0 18px 56px; margin-top: -60px; }
     .v4 { padding: 110px 0 40px; }
     .v4 .pano { aspect-ratio: 4 / 3.6; margin-top: 36px; border-radius: 22px; }
@@ -115,7 +115,7 @@
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <path id="tooth" d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/>
-  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#2457c5"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#9cc3ff" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#9cc3ff" transform="translate(42 60) scale(.9)"/></symbol>
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#33568f"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(42 60) scale(.9)"/></symbol>
   <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </defs></svg>
 
@@ -130,7 +130,7 @@
 
 <div class="lbl"><b>1. Полноэкранное фото</b><span>Фото на весь экран, текст на затемнении слева, график в «стеклянной» карточке. Самый эффектный, но держится только на очень хорошем фото.</span></div>
 <section class="v v1" data-h>
-  <div class="bg"><img src="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?w=2000&q=80&auto=format&fit=crop" alt="" style="object-position:70% 40%"></div>
+  <div class="bg"><img src="ph/v1.jpg" alt="" style="object-position:70% 40%"></div>
   <div class="wrap">
     <div>
       <span class="kicker">Стоматология в Ачинске · с 2012 года</span>
@@ -151,12 +151,12 @@
     <div class="row"><a class="btn">Записаться на осмотр <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a><a class="btn ghost">Цены</a></div>
     <div class="chipline"><div><b>мкр. 5, д. 33</b>помещение 72</div><div><b>9:00 — 21:00</b>пн–пт, сб до 15:00</div><div><b>от 350 ₽</b>первичный приём</div></div>
   </div>
-  <div class="ph"><img src="https://images.unsplash.com/photo-1631051103633-24959376b92d?w=1400&q=80&auto=format&fit=crop" alt=""><div class="tag"><b>+7 (923) 313-05-33</b>перезвоним и запишем</div></div>
+  <div class="ph"><img src="ph/v2.jpg" alt=""><div class="tag"><b>+7 (923) 313-05-33</b>перезвоним и запишем</div></div>
 </section>
 
 <div class="lbl"><b>3. Глубокий синий</b><span>Тёмно-синий фон, фото растворяется в нём справа. Солидно и запоминается, но тёмный первый экран — смелое решение для клиники.</span></div>
 <section class="v v3" data-h>
-  <div class="bg"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=2000&q=80&auto=format&fit=crop" alt=""></div>
+  <div class="bg"><img src="ph/v3.jpg" alt=""></div>
   <div class="wrap">
     <span class="kicker">Стоматология в Ачинске · с 2012 года</span>
     <h1>Студия, где делают <em>улыбки</em></h1>
@@ -173,7 +173,7 @@
     <h1>Студия, где делают <em>улыбки</em></h1>
     <p class="lead">Лечим, удаляем и протезируем зубы. План лечения и стоимость — до начала работ.</p>
     <div class="row"><a class="btn">Записаться на осмотр <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a><a class="btn ghost">+7 (923) 313-05-33</a></div>
-    <div class="pano"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=2000&q=80&auto=format&fit=crop" alt="">
+    <div class="pano"><img src="ph/v4.jpg" alt="">
       <div class="strip"><div><b>мкр. 5, д. 33</b>помещение 72</div><div><b>9:00 — 21:00</b>пн–пт, сб до 15:00</div><div><b>от 350 ₽</b>первичный приём</div></div></div>
   </div>
 </section>
@@ -188,9 +188,9 @@
       <div class="row"><a class="btn">Записаться на осмотр <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a><a class="btn ghost">Цены</a></div>
     </div>
     <div class="bento">
-      <div class="big"><img src="https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?w=1400&q=80&auto=format&fit=crop" alt=""></div>
+      <div class="big"><img src="ph/v5.jpg" alt=""></div>
       <div class="info"><span class="k">Сейчас открыто · до 21:00</span><div><b>+7 (923) 313-05-33</b><small>мкр. 5, д. 33, пом. 72</small></div></div>
-      <div class="small"><div><img src="https://images.unsplash.com/photo-1698749778813-ad5f2814e50f?w=700&q=80&auto=format&fit=crop" alt=""></div><div><img src="https://images.unsplash.com/photo-1606811856475-5e6fcdc6e509?w=700&q=80&auto=format&fit=crop" alt=""></div></div>
+      <div class="small"><div><img src="ph/v5a.jpg" alt=""></div><div><img src="ph/v5b.jpg" alt=""></div></div>
     </div>
   </div>
 </section>
