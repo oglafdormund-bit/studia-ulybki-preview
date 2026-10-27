@@ -51,7 +51,7 @@
   .wf p { margin: 0 0 8px; }
   .sec { padding: 24px 16px; border-top: 1px solid var(--fill); }
   .in { max-width: 1080px; margin: 0 auto; }
-  .ph { background: var(--fill) linear-gradient(to top right, transparent calc(50% - .5px), var(--fill2) 50%, transparent calc(50% + .5px)), linear-gradient(to top left, transparent calc(50% - .5px), var(--fill2) 50%, transparent calc(50% + .5px)); border-radius: 10px; display: grid; place-items: center; color: var(--mute); font-size: 12px; text-align: center; padding: 6px; min-height: 80px; }
+  .ph { background: linear-gradient(to top right, transparent calc(50% - .5px), var(--fill2) 50%, transparent calc(50% + .5px)), linear-gradient(to top left, transparent calc(50% - .5px), var(--fill2) 50%, transparent calc(50% + .5px)), var(--fill); border-radius: 10px; display: grid; place-items: center; color: var(--mute); font-size: 12px; text-align: center; padding: 6px; min-height: 80px; }
   .bar { height: 9px; background: var(--fill); border-radius: 5px; margin: 6px 0; }
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 16px; border-radius: 10px; border: 2px solid var(--dark); background: var(--dark); color: #fff; font-weight: 600; font-size: 14px; }
   .btn.o { background: #fff; color: var(--dark); }
@@ -76,7 +76,7 @@
   .kv dd { margin: 0; }
   .crumbs { font-size: 12px; color: var(--mute); margin-bottom: 8px; }
   .g2, .g3, .g4 { display: grid; gap: 12px; grid-template-columns: 1fr; }
-  .d-only { display: none !important; }
+  @container wf (max-width: 759px) { .d-only { display: none !important; } }
   .warn { border: 2px solid var(--dark); border-radius: 10px; padding: 10px 14px; font-weight: 700; font-size: 16px; text-align: center; }
 
   /* шапка */
@@ -114,7 +114,6 @@
     .g2 { grid-template-columns: 1fr 1fr; }
     .g3 { grid-template-columns: repeat(3, 1fr); }
     .g4 { grid-template-columns: repeat(4, 1fr); }
-    .d-only { display: revert !important; }
     .m-only { display: none !important; }
     .hero { grid-template-columns: 1.15fr 1fr !important; align-items: center; }
     dl.kv { grid-template-columns: 260px 1fr; }
@@ -502,7 +501,14 @@ const setView = v => {
   document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === v));
 };
 document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
-setView(innerWidth < 900 ? 'phone' : 'desk');
+// компьютерную схему 1200px ужимаем под окно, чтобы видеть экран целиком
+const fit = () => document.querySelectorAll('.frame').forEach(f => {
+  f.style.zoom = document.body.dataset.view === 'desk' ? Math.min(1, f.parentElement.clientWidth / 1200) : 1;
+});
+addEventListener('resize', fit);
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', fit));
+setView(innerWidth < 700 ? 'phone' : 'desk');
+fit();
 </script>
 </body>
 </html>
