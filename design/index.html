@@ -7,7 +7,7 @@
 <title>Стиль «Студия улыбки»</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Manrope:wght@400;500;700&family=Onest:wght@400;500;700&family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Manrope:wght@400;500;700&family=Onest:wght@400;500;700&family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;700&family=Geologica:wght@500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; background: #fafafa; color: #222; font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
@@ -83,6 +83,20 @@
   #c .card:nth-child(3) { background: #f6dccf; } #c .card:nth-child(4) { background: #f4e7c2; }
   #c .hero h3 { font-size: clamp(30px, 3.6vw, 50px); }
 
+  /* ===== Г. Тёплая студия: цвета интерьера (А) + палитра-логотип и цвета направлений (В) ===== */
+  #g1, #g2 { --bg: #efeae3; --paper: #fbf9f6; --soft: #f1ece5; --ink: #23261f; --mute: #6b6a62; --line: #e4ded5; --line-strong: #c9c1b4;
+       --accent: #2f5d43; --btn: #2f5d43; --btn-ink: #fff; --body: "Manrope", system-ui, sans-serif;
+       --r-lg: 24px; --r-md: 18px; --r-btn: 999px; --r-av: 50%; }
+  #g1 { --head: "Lora", Georgia, serif; --head-w: 600; }
+  #g2 { --head: "Geologica", system-ui, sans-serif; --head-w: 600; --h-ls: -.02em; }
+  #g1 .card:nth-child(1), #g2 .card:nth-child(1) { background: #e3ebdd; }
+  #g1 .card:nth-child(2), #g2 .card:nth-child(2) { background: #ece3ef; }
+  #g1 .card:nth-child(3), #g2 .card:nth-child(3) { background: #f1e5d6; }
+  #g1 .card:nth-child(4), #g2 .card:nth-child(4) { background: #f2eacf; }
+  .photo .badge { position: absolute; left: 16px; bottom: 16px; background: var(--paper); border-radius: 999px; padding: 10px 16px 10px 10px; display: flex; gap: 10px; align-items: center; font-size: 14px; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+  .dots { display: flex; gap: 6px; margin-bottom: 18px; }
+  .dots i { width: 10px; height: 10px; border-radius: 50%; }
+
   @media (max-width: 900px) {
     .hdr nav { display: none; }
     .hdr .tel { display: none; }
@@ -103,10 +117,11 @@
 <body>
 
 <div class="intro">
-  <h1>Три направления стиля</h1>
+  <h1>Направления стиля</h1>
+  <p><b>Новое:</b> Г1 и Г2 — середина между А и В. Ниже для сравнения остались исходные А, Б, В.</p>
   <p>На всех трёх один и тот же кусок главной: шапка, первый экран, направления, врач, цены, предупреждение. Логотипы — эскизы идеи, чистовой вектор делаем после выбора. Можно смешивать: например, цвета из А и шрифты из Б.</p>
   <p>Фото — ресепшен клиники. Его цвета (дуб, тёплые серые стены, зелёная скамья, сиреневые цветы) легли в основу направлений А и В.</p>
-  <nav class="toc"><a href="#a">А. Как в клинике</a><a href="#b">Б. Светлая и спокойная</a><a href="#c">В. Студия</a></nav>
+  <nav class="toc"><a href="#g1"><b>Г1. Тёплая студия · с засечками</b></a><a href="#g2"><b>Г2. Тёплая студия · без засечек</b></a><a href="#a">А. Как в клинике</a><a href="#b">Б. Светлая и спокойная</a><a href="#c">В. Студия</a></nav>
 </div>
 
 <!-- символы для логотипов -->
@@ -116,6 +131,80 @@
     <path id="palette" d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z"/>
   </defs>
 </svg>
+
+<!-- ===== Г1. Тёплая студия · с засечками ===== -->
+<section class="dir" id="g1">
+  <div class="label"><h2>Г1. Тёплая студия · с засечками</h2>
+    <p>Основа от А: тёплый серо-бежевый и глубокий зелёный из интерьера, спокойные шрифты. Характер от В: логотип-палитра, четыре зуба-краски и четыре мягких цвета направлений. Цвета приглушены и взяты из той же комнаты: шалфей от скамьи, сирень от цветов, дуб, латунь.</p></div>
+  <div class="in"><div class="site">
+    <header class="hdr">
+      <a class="logo"><svg width="42" height="42" viewBox="0 0 100 100"><use href="#palette" fill="#2f5d43"/><circle cx="74" cy="40" r="7" fill="#fbf9f6"/><use href="#tooth" fill="#a9c79a" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#cdb3d4" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#d9ad7f" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#e8d39a" transform="translate(42 60) scale(.9)"/></svg>
+        <span class="word" style="font-size:22px">Студия улыбки<small>стоматология · Ачинск</small></span></a>
+      <nav><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Пациентам</span><span>О клинике</span><span>Контакты</span></nav>
+      <span class="tel">+7 (923) 313-05-33</span><span class="btn sm">Перезвоните мне</span>
+    </header>
+    <div class="hero">
+      <div><div class="dots"><i style="background:#a9c79a"></i><i style="background:#cdb3d4"></i><i style="background:#d9ad7f"></i><i style="background:#e8d39a"></i></div><h3>Стоматология «Студия улыбки» в Ачинске</h3>
+        <p>Лечение, удаление и протезирование зубов. Работаем с 2012 года.</p>
+        <div class="row"><span class="btn">Позвонить</span><span class="btn o">Перезвоните мне</span></div>
+        <div class="meta">мкр. 5, д. 33, пом. 72 · пн–пт 9–21, сб 9–15</div></div>
+      <div class="photo"><img src="reception.jpg" alt="Ресепшен клиники"><div class="badge"><svg width="32" height="32" viewBox="0 0 100 100"><use href="#palette" fill="#2f5d43"/><circle cx="74" cy="40" r="7" fill="#fbf9f6"/><use href="#tooth" fill="#a9c79a" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#cdb3d4" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#d9ad7f" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#e8d39a" transform="translate(42 60) scale(.9)"/></svg><span><b>С 2012 года</b><br>в Ачинске</span></div></div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#5f8a52"/></svg></div><h4>Лечение зубов</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#9a74a6"/></svg></div><h4>Гигиена и отбеливание</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#b07a45"/></svg></div><h4>Удаление зубов</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#b39a3e"/></svg></div><h4>Протезирование</h4><span>от ___ ₽</span></div>
+    </div>
+    <div class="bottom">
+      <div class="doc"><div class="av"></div><div><b>Иливанова Юлия Юрьевна</b><span>Врач-стоматолог общей практики</span></div></div>
+      <div class="prices"><div><span>Первичный приём</span><b>350 ₽</b></div><div><span>Профессиональная гигиена</span><b>2 600 ₽</b></div></div>
+    </div>
+    <div class="warn">Имеются противопоказания. Необходима консультация специалиста.</div>
+  </div>
+  <div class="spec">
+    <div><h5>Цвета</h5><div class="sw"><i style="background:#efeae3">#efeae3</i><i class="dk" style="background:#2f5d43">#2f5d43</i><i style="background:#a9c79a">#a9c79a</i><i style="background:#cdb3d4">#cdb3d4</i><i style="background:#d9ad7f">#d9ad7f</i><i style="background:#e8d39a">#e8d39a</i></div></div>
+    <div class="fonts"><h5>Шрифты</h5><p style="font:600 22px Lora,serif">Lora — заголовки</p><p style="font:500 16px Manrope,sans-serif">Manrope — текст</p></div>
+    <div><h5>Плюсы и минусы</h5><ul class="pc"><li>+ тепло и узнаваемо, но не скучно</li><li>+ засечки дают «студийность» без резкости</li><li>− засечки чуть строже, чем Г2</li></ul></div>
+  </div></div>
+</section>
+
+<!-- ===== Г2. Тёплая студия · без засечек ===== -->
+<section class="dir" id="g2">
+  <div class="label"><h2>Г2. Тёплая студия · без засечек</h2>
+    <p>То же, что Г1, но заголовки мягким современным гротеском Geologica. Чуть моложе и дружелюбнее, при этом без резкости Unbounded.</p></div>
+  <div class="in"><div class="site">
+    <header class="hdr">
+      <a class="logo"><svg width="42" height="42" viewBox="0 0 100 100"><use href="#palette" fill="#2f5d43"/><circle cx="74" cy="40" r="7" fill="#fbf9f6"/><use href="#tooth" fill="#a9c79a" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#cdb3d4" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#d9ad7f" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#e8d39a" transform="translate(42 60) scale(.9)"/></svg>
+        <span class="word" style="font-size:21px">Студия улыбки<small>стоматология · Ачинск</small></span></a>
+      <nav><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Пациентам</span><span>О клинике</span><span>Контакты</span></nav>
+      <span class="tel">+7 (923) 313-05-33</span><span class="btn sm">Перезвоните мне</span>
+    </header>
+    <div class="hero">
+      <div><div class="dots"><i style="background:#a9c79a"></i><i style="background:#cdb3d4"></i><i style="background:#d9ad7f"></i><i style="background:#e8d39a"></i></div><h3>Стоматология «Студия улыбки» в Ачинске</h3>
+        <p>Лечение, удаление и протезирование зубов. Работаем с 2012 года.</p>
+        <div class="row"><span class="btn">Позвонить</span><span class="btn o">Перезвоните мне</span></div>
+        <div class="meta">мкр. 5, д. 33, пом. 72 · пн–пт 9–21, сб 9–15</div></div>
+      <div class="photo"><img src="reception.jpg" alt="Ресепшен клиники"><div class="badge"><svg width="32" height="32" viewBox="0 0 100 100"><use href="#palette" fill="#2f5d43"/><circle cx="74" cy="40" r="7" fill="#fbf9f6"/><use href="#tooth" fill="#a9c79a" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#cdb3d4" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#d9ad7f" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#e8d39a" transform="translate(42 60) scale(.9)"/></svg><span><b>С 2012 года</b><br>в Ачинске</span></div></div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#5f8a52"/></svg></div><h4>Лечение зубов</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#9a74a6"/></svg></div><h4>Гигиена и отбеливание</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#b07a45"/></svg></div><h4>Удаление зубов</h4><span>от ___ ₽</span></div>
+      <div class="card"><div class="ic"><svg width="20" height="20" viewBox="0 0 20 22"><use href="#tooth" fill="#b39a3e"/></svg></div><h4>Протезирование</h4><span>от ___ ₽</span></div>
+    </div>
+    <div class="bottom">
+      <div class="doc"><div class="av"></div><div><b>Иливанова Юлия Юрьевна</b><span>Врач-стоматолог общей практики</span></div></div>
+      <div class="prices"><div><span>Первичный приём</span><b>350 ₽</b></div><div><span>Профессиональная гигиена</span><b>2 600 ₽</b></div></div>
+    </div>
+    <div class="warn">Имеются противопоказания. Необходима консультация специалиста.</div>
+  </div>
+  <div class="spec">
+    <div><h5>Цвета</h5><div class="sw"><i style="background:#efeae3">#efeae3</i><i class="dk" style="background:#2f5d43">#2f5d43</i><i style="background:#a9c79a">#a9c79a</i><i style="background:#cdb3d4">#cdb3d4</i><i style="background:#d9ad7f">#d9ad7f</i><i style="background:#e8d39a">#e8d39a</i></div></div>
+    <div class="fonts"><h5>Шрифты</h5><p style="font:600 22px Geologica,sans-serif">Geologica — заголовки</p><p style="font:500 16px Manrope,sans-serif">Manrope — текст</p></div>
+    <div><h5>Плюсы и минусы</h5><ul class="pc"><li>+ современно и мягко, хорошо читается на телефоне</li><li>+ нравится широкой аудитории</li><li>− чуть меньше «характера», чем у засечек</li></ul></div>
+  </div></div>
+</section>
 
 <!-- ===== А ===== -->
 <section class="dir" id="a">
