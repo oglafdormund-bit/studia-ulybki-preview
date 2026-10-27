@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Первый экран — 5 вариантов</title>
+<!-- Фото — Unsplash (бесплатная лицензия), только как примеры для выбора варианта -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1793140730">
+<style>
+  /* общая обвязка страницы с вариантами */
+  .lbl { background: var(--ink); color: #e9e6df; font: 600 13px var(--body); letter-spacing: .04em; padding: 12px 24px; display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+  .lbl b { color: var(--sky); font-size: 15px; }
+  .lbl span { color: #a7a99f; font-weight: 500; }
+  .v { position: relative; overflow: hidden; }
+  .v .hdr { position: absolute; }
+  .v h1 { font-size: clamp(44px, 5.4vw, 88px); letter-spacing: -.045em; line-height: .96; margin: 20px 0 26px; }
+  .v h1 em { color: var(--blue); }
+  .v .lead { font-size: 19px; color: var(--mute); max-width: 480px; }
+  .v .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .v img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .chipline { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 40px; font-size: 14px; color: var(--mute); }
+  .chipline b { display: block; color: var(--ink); font: 600 16px var(--head); }
+
+  /* 1. Полноэкранное фото */
+  .v1 { min-height: min(100vh, 920px); display: flex; align-items: flex-end; color: #fff; }
+  .v1 .bg { position: absolute; inset: 0; }
+  .v1 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,24,52,.8) 0%, rgba(11,24,52,.45) 45%, rgba(11,24,52,0) 75%), linear-gradient(0deg, rgba(11,24,52,.5), transparent 45%); }
+  .v1 .wrap { position: relative; width: 100%; padding-bottom: 64px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+  .v1 .kicker { color: #cfe0ff; }
+  .v1 h1 em { color: #9cc3ff; }
+  .v1 .lead { color: rgba(255,255,255,.82); }
+  .v1 .btn.ghost { color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5); }
+  .glass { background: rgba(251,248,243,.14); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.22); border-radius: 22px; padding: 22px 26px; min-width: 300px; }
+  .glass div { display: flex; justify-content: space-between; gap: 24px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.16); font-size: 15px; }
+  .glass div:last-child { border: 0; }
+  .glass .t { font: 600 22px var(--head); display: block; margin-bottom: 8px; border: 0; padding: 0; }
+
+  /* 2. Сплит: фото до края экрана */
+  .v2 { display: grid; grid-template-columns: 1fr 1fr; min-height: min(100vh, 900px); }
+  .v2 .txt { padding: 150px 64px 64px max(24px, calc((100vw - 1352px) / 2)); display: flex; flex-direction: column; justify-content: center; }
+  .v2 .ph { position: relative; }
+  .v2 .ph .tag { position: absolute; left: 24px; bottom: 24px; background: var(--paper); border-radius: 18px; padding: 16px 20px; font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.15); }
+  .v2 .ph .tag b { display: block; font: 600 18px var(--head); }
+
+  /* 3. Тёмный кинематографичный */
+  .v3 { background: #0f2350; color: #e9f0fc; min-height: min(100vh, 900px); display: flex; align-items: center; }
+  .v3 .bg { position: absolute; top: 0; right: 0; bottom: 0; width: 64%; }
+  .v3 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0f2350 0%, rgba(15,35,80,.65) 30%, rgba(15,35,80,0) 62%); }
+  .v3 .wrap { position: relative; width: 100%; padding-top: 110px; }
+  .v3 .kicker { color: #9cc3ff; }
+  .v3 h1 { color: #fff; max-width: 680px; }
+  .v3 h1 em { color: #9cc3ff; }
+  .v3 .lead { color: rgba(233,240,252,.75); }
+  .v3 .btn { background: #fff; color: #0f2350; }
+  .v3 .btn .ar { background: var(--blue); color: #fff; }
+  .v3 .btn.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(233,240,252,.35); }
+  .v3 .chipline { color: rgba(233,240,252,.6); }
+  .v3 .chipline b { color: #fff; }
+
+  /* 4. Заголовок по центру + широкая фото-лента */
+  .v4 { padding: 150px 0 60px; text-align: center; }
+  .v4 .lead { margin: 0 auto; }
+  .v4 .row { justify-content: center; }
+  .v4 .pano { position: relative; margin-top: 56px; border-radius: 28px; overflow: hidden; aspect-ratio: 21 / 8; }
+  .v4 .strip { position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); display: flex; background: var(--paper); border-radius: 999px; padding: 8px; box-shadow: 0 12px 34px rgba(0,0,0,.18); text-align: left; }
+  .v4 .strip div { padding: 8px 22px; font-size: 13px; color: var(--mute); white-space: nowrap; }
+  .v4 .strip div + div { border-left: 1px solid var(--line); }
+  .v4 .strip b { display: block; font: 600 16px var(--head); color: var(--ink); }
+
+  /* 5. Мозаика */
+  .v5 { padding: 140px 0 70px; }
+  .v5 .wrap { display: grid; grid-template-columns: .95fr 1.05fr; gap: 56px; align-items: center; }
+  .bento { display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; height: min(70vh, 640px); min-height: 520px; }
+  .bento > * { border-radius: 22px; overflow: hidden; }
+  .bento .big { grid-row: 1 / span 2; }
+  .bento .info { background: var(--blue); color: #e9f0fc; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+  .bento .info .k { font-size: 13px; color: rgba(233,240,252,.8); }
+  .bento .info b { font: 600 24px/1.15 var(--head); color: #fff; display: block; }
+  .bento .info small { font-size: 14px; color: rgba(233,240,252,.8); }
+  .bento .small { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border-radius: 0; }
+  .bento .small > div { border-radius: 22px; overflow: hidden; }
+
+  @media (max-width: 900px) {
+    .v .hdr .nav, .v .hdr .tel, .v .hdr .eye, .v .hdr .btn { display: none; }
+    .v1 { min-height: 760px; }
+    .v1 .wrap { grid-template-columns: 1fr; padding-bottom: 28px; }
+    .v1 .bg::after { background: linear-gradient(0deg, rgba(11,24,52,.9) 0%, rgba(11,24,52,.55) 50%, rgba(11,24,52,.1) 100%); }
+    .glass { min-width: 0; }
+    .v2 { grid-template-columns: 1fr; }
+    .v2 .txt { padding: 110px 18px 36px; }
+    .v2 .ph { height: 380px; }
+    .v3 { min-height: 0; display: block; }
+    .v3 .bg { position: relative; width: 100%; height: 340px; }
+    .v3 .bg::after { background: linear-gradient(0deg, #0f2350 0%, rgba(15,35,80,0) 55%); }
+    .v3 .wrap { padding: 0 18px 56px; margin-top: -60px; }
+    .v4 { padding: 110px 0 40px; }
+    .v4 .pano { aspect-ratio: 4 / 3.6; margin-top: 36px; border-radius: 22px; }
+    .v4 .strip { left: 10px; right: 10px; transform: none; border-radius: 18px; flex-wrap: wrap; }
+    .v4 .strip div { flex: 1 1 40%; padding: 8px 12px; }
+    .v4 .strip div + div { border-left: 0; }
+    .v5 { padding: 110px 0 40px; }
+    .v5 .wrap { grid-template-columns: 1fr; gap: 36px; }
+    .bento { height: auto; min-height: 0; grid-template-columns: 1fr 1fr; grid-template-rows: 240px auto; }
+    .bento .big { grid-column: 1 / -1; grid-row: auto; }
+    .bento .small { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; height: 160px; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <path id="tooth" d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/>
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#2457c5"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#9cc3ff" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#9cc3ff" transform="translate(42 60) scale(.9)"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<template id="hdr"><header class="hdr"><div class="bar">
+  <a class="logo"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a>Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header></template>
+
+<div class="lbl"><b>1. Полноэкранное фото</b><span>Фото на весь экран, текст на затемнении слева, график в «стеклянной» карточке. Самый эффектный, но держится только на очень хорошем фото.</span></div>
+<section class="v v1" data-h>
+  <div class="bg"><img src="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?w=2000&q=80&auto=format&fit=crop" alt="" style="object-position:70% 40%"></div>
+  <div class="wrap">
+    <div>
+      <span class="kicker">Стоматология в Ачинске · с 2012 года</span>
+      <h1>Студия, где делают<br><em>улыбки</em></h1>
+      <p class="lead">Лечим, удаляем и протезируем зубы. План лечения и стоимость — до начала работ.</p>
+      <div class="row"><a class="btn">Записаться на осмотр <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a><a class="btn ghost">+7 (923) 313-05-33</a></div>
+    </div>
+    <div class="glass"><span class="t">Сейчас открыто</span><div><span>Пн–пт</span><b>9:00–21:00</b></div><div><span>Суббота</span><b>9:00–15:00</b></div><div><span>мкр. 5, д. 33, пом. 72</span><b>Маршрут ↗</b></div></div>
+  </div>
+</section>
+
+<div class="lbl"><b>2. Сплит: фото до края экрана</b><span>Половина — текст, половина — фото без рамок, уходит за правый край. Спокойно и понятно, хорошо для вертикальных фото.</span></div>
+<section class="v v2" data-h>
+  <div class="txt">
+    <span class="kicker">Стоматология в Ачинске · с 2012 года</span>
+    <h1>Студия, где делают <em>улыбки</em></h1>
+    <p class="lead">Лечим, удаляем и протезируем зубы. План лечения и стоимость — до начала работ.</p>
+    <div class="row"><a class="btn">Записаться на осмотр <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a><a class="btn ghost">Цены</a></div>
+    <div class="chipline"><div><b>мкр. 5, д. 33</b>помещение 72</div><div><b>9:00 — 21:00</b>пн–пт, сб до 15:00</div><div><b>от 350 ₽</b>первичный приём</div></div>
+  </div>
+  <div class="ph"><img src="https://images.unsplash.com/photo-1631051103633-24959376b92d?w=1400&q=80&auto=format&fit=crop" alt=""><div class="tag"><b>+7 (923) 313-05-33</b>перезвоним и запишем</div></div>
+</section>
+
+<div class="lbl"><b>3. Глубокий синий</b><span>Тёмно-синий фон, фото растворяется в нём справа. Солидно и запоминается, но тёмный первый экран — смелое решение для клиники.</span></div>
+<section class="v v3" data-h>
+  <div class="bg"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=2000&q=80&auto=format&fit=crop" alt=""></div>
+  <div class="wrap">
+    <span class="kicker">Стоматология в Ачинске · с 2012 года</span>
+    <h1>Студия, где делают <em>улыбки</em></h1>
+    <p class="lead">Лечим, удаляем и протезируем зубы. План лечения и стоимость — до начала работ.</p>
+    <div class="row"><a class="btn">Записаться на осмотр <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a><a class="btn ghost">+7 (923) 313-05-33</a></div>
+    <div class="chipline"><div><b>мкр. 5, д. 33</b>помещение 72</div><div><b>9:00 — 21:00</b>пн–пт, сб до 15:00</div><div><b>от 350 ₽</b>первичный приём</div></div>
+  </div>
+</section>
+
+<div class="lbl"><b>4. Заголовок по центру + широкая фото-лента</b><span>Сначала крупный текст, под ним панорама на всю ширину колонки с плашкой «адрес · часы · цена». Журнальный, светлый.</span></div>
+<section class="v v4" data-h>
+  <div class="wrap">
+    <span class="kicker">Стоматология в Ачинске · с 2012 года</span>
+    <h1>Студия, где делают <em>улыбки</em></h1>
+    <p class="lead">Лечим, удаляем и протезируем зубы. План лечения и стоимость — до начала работ.</p>
+    <div class="row"><a class="btn">Записаться на осмотр <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a><a class="btn ghost">+7 (923) 313-05-33</a></div>
+    <div class="pano"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=2000&q=80&auto=format&fit=crop" alt="">
+      <div class="strip"><div><b>мкр. 5, д. 33</b>помещение 72</div><div><b>9:00 — 21:00</b>пн–пт, сб до 15:00</div><div><b>от 350 ₽</b>первичный приём</div></div></div>
+  </div>
+</section>
+
+<div class="lbl"><b>5. Мозаика</b><span>Текст слева, справа сетка: большое фото, два кадра-детали и зелёная плитка с телефоном. Можно собрать из нескольких средних фото — даже если одного сильного нет. Плитка — синяя.</span></div>
+<section class="v v5" data-h>
+  <div class="wrap">
+    <div>
+      <span class="kicker">Стоматология в Ачинске · с 2012 года</span>
+      <h1>Студия, где делают <em>улыбки</em></h1>
+      <p class="lead">Лечим, удаляем и протезируем зубы. План лечения и стоимость — до начала работ.</p>
+      <div class="row"><a class="btn">Записаться на осмотр <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a><a class="btn ghost">Цены</a></div>
+    </div>
+    <div class="bento">
+      <div class="big"><img src="https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?w=1400&q=80&auto=format&fit=crop" alt=""></div>
+      <div class="info"><span class="k">Сейчас открыто · до 21:00</span><div><b>+7 (923) 313-05-33</b><small>мкр. 5, д. 33, пом. 72</small></div></div>
+      <div class="small"><div><img src="https://images.unsplash.com/photo-1698749778813-ad5f2814e50f?w=700&q=80&auto=format&fit=crop" alt=""></div><div><img src="https://images.unsplash.com/photo-1606811856475-5e6fcdc6e509?w=700&q=80&auto=format&fit=crop" alt=""></div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const t = document.getElementById('hdr').content;
+  document.querySelectorAll('[data-h]').forEach(s => s.prepend(t.cloneNode(true)));
+</script>
+</body>
+</html>
