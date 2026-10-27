@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Geologica:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=5">
+<link rel="stylesheet" href="site.css?v=6">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -32,7 +32,7 @@
   <h1>Цены на <em>услуги</em></h1>
   <p class="muted" style="font-size:18px;max-width:640px">Прейскурант 2026 года, утверждён приказом № ___ от ___. Все услуги платные, цены в рублях.</p>
   <label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Найти услугу: пломба, коронка, удаление…" type="search"></label>
-  <div class="chips" id="chips"></div>
+  <div class="chips" id="chips" role="group" aria-label="Раздел прейскуранта"></div>
   <p class="pnote">Окончательная стоимость лечения — в плане лечения и смете до начала работ. Условия, договор и льготы — в разделе <a class="link">Платные услуги</a>.</p>
 </div></section>
 <section class="wrap" style="padding-bottom:40px">
@@ -61,30 +61,39 @@
   document.querySelectorAll('.rv, .rv-clip').forEach(el => io.observe(el));
 </script>
 <script>
-const order = ['Осмотр, консультация','Исследования и диагностика','Анестезия','Профилактика','Отбеливание зубов','Восстановление зуба пломбой','Пародонтология терапевтическая','Шинирование зубов','Хирургия','Несъемное протезирование','Съемное протезирование','Модели, прикус'];
-const names = {'Восстановление зуба пломбой':'Лечение и пломбы','Хирургия':'Хирургия и удаление'};
+// 13 разделов прейскуранта сведены в 5 групп для фильтра; внутри группы разделы остаются заголовками
+const groups = [
+  ['Приём и диагностика', ['Осмотр, консультация','Исследования и диагностика','Анестезия']],
+  ['Лечение', ['Восстановление зуба пломбой','Пародонтология терапевтическая','Шинирование зубов']],
+  ['Гигиена и отбеливание', ['Профилактика','Отбеливание зубов']],
+  ['Хирургия', ['Хирургия']],
+  ['Протезирование', ['Несъемное протезирование','Съемное протезирование','Модели, прикус']],
+];
+const names = {'Восстановление зуба пломбой':'Лечение и пломбы','Хирургия':'Хирургия и удаление','Профилактика':'Профилактика и гигиена','Модели, прикус':'Модели и прикус','Несъемное протезирование':'Несъёмное протезирование','Съемное протезирование':'Съёмное протезирование'};
 const rub = n => n.toLocaleString('ru-RU') + ' ₽';
 const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const word = n => n % 10 === 1 && n % 100 !== 11 ? 'позиция' : [2,3,4].includes(n % 10) && ![12,13,14].includes(n % 100) ? 'позиции' : 'позиций';
-let rows = [], cur = 'all';
+let rows = [], cur = -1;
 const draw = () => {
   const q = document.getElementById('q').value.trim().toLowerCase();
   let html = '', n = 0;
-  for (const s of order) {
-    if (cur !== 'all' && cur !== s) continue;
-    const r = rows.filter(o => o.s === s && (!q || o.n.toLowerCase().includes(q) || o.c.toLowerCase().includes(q)));
-    if (!r.length) continue; n += r.length;
-    html += `<div class="pgroup"><h2>${names[s] || s}<small>${r.length} ${word(r.length)}</small></h2><table class="ptable"><tbody>` +
-      r.map(o => `<tr><td class="code">${o.c}</td><td class="name">${esc(o.n)}</td><td class="num">${rub(o.p)}</td></tr>`).join('') + '</tbody></table></div>';
-  }
+  groups.forEach(([, secs], gi) => {
+    if (cur !== -1 && cur !== gi) return;
+    for (const s of secs) {
+      const r = rows.filter(o => o.s === s && (!q || o.n.toLowerCase().includes(q) || o.c.toLowerCase().includes(q)));
+      if (!r.length) continue; n += r.length;
+      html += `<div class="pgroup"><h2>${names[s] || s}<small>${r.length} ${word(r.length)}</small></h2><table class="ptable"><tbody>` +
+        r.map(o => `<tr><td class="code">${o.c}</td><td class="name">${esc(o.n)}</td><td class="num">${rub(o.p)}</td></tr>`).join('') + '</tbody></table></div>';
+    }
+  });
   document.getElementById('groups').innerHTML = html;
   document.getElementById('empty').hidden = n > 0;
 };
 fetch('prices.json').then(r => r.json()).then(d => {
   rows = d;
-  const chips = document.getElementById('chips');
-  chips.innerHTML = ['all', ...order].map(s => `<button class="chip${s === 'all' ? ' on' : ''}" data-s="${s}">${s === 'all' ? 'Все' : (names[s] || s)}</button>`).join('');
-  chips.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; cur = b.dataset.s; chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b)); draw(); });
+  const tabs = document.getElementById('chips');
+  tabs.innerHTML = [['Все'], ...groups].map(([t], i) => `<button type="button" class="chip${i ? '' : ' on'}" data-g="${i - 1}">${t}</button>`).join('');
+  tabs.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; cur = +b.dataset.g; tabs.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b)); draw(); });
   document.getElementById('q').addEventListener('input', draw);
   draw();
 });
