@@ -158,8 +158,7 @@
     pending = pending.filter(el => el.getBoundingClientRect().top < edge ? (el.classList.add('in'), false) : true);
     if (!pending.length) removeEventListener('scroll', onScroll);
   };
-  let tick = false;
-  const onScroll = () => { if (!tick) { tick = true; requestAnimationFrame(() => { tick = false; reveal(); }); } };
+  const onScroll = reveal; // ponytail: 16 блоков, getBoundingClientRect на каждый scroll дешёвый; rAF не нужен
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll);
   reveal();
