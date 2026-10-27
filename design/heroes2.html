@@ -28,7 +28,8 @@
 
   
   /* 6. Портрет врача */
-  .v6 { padding: 140px 0 70px; }
+  .v6 { min-height: 100vh; min-height: 100svh; padding: 110px 0 48px; display: flex; align-items: center; }
+  .v6 .wrap { width: 100%; }
   .v6 .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: center; }
   .v6 .facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 48px; border-top: 1px solid var(--line); }
   .v6 .facts div { padding: 20px 16px 0 0; font-size: 14px; color: var(--mute); }
@@ -36,7 +37,7 @@
   .v6 .facts b { display: block; font: 600 22px var(--head); color: var(--ink); }
   .v6 .por { position: relative; }
   .v6 .por .bgc { position: absolute; inset: 8% -6% 0 10%; background: var(--paper-2); border-radius: 40px; }
-  .v6 .por .img { position: relative; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; width: 86%; }
+  .v6 .por .img { position: relative; aspect-ratio: 4 / 5; max-height: calc(100svh - 190px); border-radius: 28px; overflow: hidden; width: 86%; }
   .v6 .por .cap { position: absolute; right: 0; bottom: 36px; background: var(--card); border-radius: 18px; padding: 16px 20px; box-shadow: 0 14px 40px rgba(15,26,46,.14); max-width: 260px; font-size: 14px; color: var(--mute); }
   .v6 .por .cap b { display: block; color: var(--ink); font: 600 17px var(--head); margin-bottom: 2px; }
 
@@ -87,7 +88,8 @@
 
   @media (max-width: 900px) {
     .v .hdr .nav, .v .hdr .tel, .v .hdr .eye, .v .hdr .btn { display: none; }
-    .v6 { padding: 110px 0 40px; } .v6 .wrap { grid-template-columns: 1fr; gap: 36px; }
+    .v6 { min-height: 0; display: block; padding: 110px 0 40px; }
+    .v6 .por .img { max-height: none; } .v6 .wrap { grid-template-columns: 1fr; gap: 36px; }
     .v6 .facts { grid-template-columns: 1fr 1fr; } .v6 .facts div:nth-child(3) { grid-column: 1 / -1; border-left: 0; padding-left: 0; }
     .v6 .por .img { width: 88%; } .v6 .por .cap { bottom: 16px; max-width: 220px; }
     .v7 { padding: 110px 0 40px; } .v7 .top { grid-template-columns: 1fr; gap: 0; }
