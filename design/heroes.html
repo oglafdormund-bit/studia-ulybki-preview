@@ -27,7 +27,7 @@
   .chipline b { display: block; color: var(--ink); font: 600 16px var(--head); }
 
   /* 1. Полноэкранное фото */
-  .v1 { min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; color: #fff; }
+  .v1 { min-height: min(100vh, 920px); display: flex; align-items: flex-end; color: #fff; }
   .v1 .bg { position: absolute; inset: 0; }
   .v1 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,26,44,.8) 0%, rgba(16,26,44,.45) 45%, rgba(16,26,44,0) 75%), linear-gradient(0deg, rgba(16,26,44,.5), transparent 45%); }
   .v1 .wrap { position: relative; width: 100%; padding-bottom: 64px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
@@ -48,7 +48,7 @@
   .v2 .ph .tag b { display: block; font: 600 18px var(--head); }
 
   /* 3. Тёмный кинематографичный */
-  .v3 { background: #1b2c4a; color: #e9f0fc; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; }
+  .v3 { background: #1b2c4a; color: #e9f0fc; min-height: min(100vh, 900px); display: flex; align-items: center; }
   .v3 .bg { position: absolute; top: 0; right: 0; bottom: 0; width: 64%; }
   .v3 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #1b2c4a 0%, rgba(27,44,74,.65) 30%, rgba(27,44,74,0) 62%); }
   .v3 .wrap { position: relative; width: 100%; padding-top: 110px; }
