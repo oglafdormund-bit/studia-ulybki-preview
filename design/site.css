@@ -67,25 +67,33 @@ p { margin: 0; }
 
 
 
-/* первый экран: фото на всю ширину, текст на тёмном градиенте.
-   Высота — всё окно (+44px под наехавший лист), не меньше 640. Градиент сильный,
-   чтобы экран держался и на среднем фото. */
-.hero { position: sticky; top: var(--stick, 0px); z-index: 0; display: flex; align-items: flex-end; min-height: calc(max(640px, 100svh) + 44px); color: #fff; overflow: hidden; }
+/* Первый экран — правила, а не подгонка под один монитор:
+   1. Высота = окно (не меньше 640) + 44px, которые потом закрывает наезжающий лист.
+   2. Содержимое — по центру свободной зоны: от низа шапки (~80px) до верха листа,
+      с небольшим сдвигом вниз. Ни к верху, ни к низу экрана не прилипает.
+   3. Заголовок масштабируется и по ширине, и по высоте окна.
+   4. Кадр подбирается под форму окна, сверху — затемнение под шапку,
+      слева — плотное под текст, чтобы экран держался и на среднем фото. */
+.hero { position: sticky; top: var(--stick, 0px); z-index: 0; display: flex; align-items: center; min-height: calc(max(640px, 100svh) + 44px); color: #fff; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background: #1a2333; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 30%; }
-@media (min-aspect-ratio: 2 / 1) { .hero-bg img { object-position: 70% 14%; } }
-.hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,20,30,.9) 0%, rgba(14,20,30,.72) 40%, rgba(14,20,30,.18) 72%, rgba(14,20,30,.05) 100%), linear-gradient(0deg, rgba(14,20,30,.6) 0%, rgba(14,20,30,0) 45%); }
-.hero .wrap { position: relative; width: 100%; display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: end; padding-top: 130px; padding-bottom: 64px; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 65% 22%; }
+@media (min-aspect-ratio: 16 / 9) { .hero-bg img { object-position: 70% 26%; } }
+@media (min-aspect-ratio: 2 / 1) { .hero-bg img { object-position: 70% 16%; } }
+.hero-bg::after { content: ""; position: absolute; inset: 0; background:
+  linear-gradient(180deg, rgba(14,20,30,.5) 0%, rgba(14,20,30,0) 22%),
+  linear-gradient(90deg, rgba(14,20,30,.9) 0%, rgba(14,20,30,.72) 40%, rgba(14,20,30,.2) 72%, rgba(14,20,30,.06) 100%),
+  linear-gradient(0deg, rgba(14,20,30,.45) 0%, rgba(14,20,30,0) 35%); }
+.hero .wrap { position: relative; width: 100%; display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: end; padding-top: 140px; padding-bottom: 92px; }
 .hero .kicker { color: rgba(255,255,255,.75); }
 .hero .kicker::before { background: #fff; }
-.hero h1 { font-size: clamp(44px, 5.4vw, 88px); letter-spacing: -.045em; line-height: .98; margin: 20px 0 24px; color: #fff; }
+.hero h1 { font-size: clamp(40px, min(5.4vw, 8.4vh), 88px); letter-spacing: -.045em; line-height: .98; margin: clamp(14px, 2vh, 20px) 0 clamp(16px, 2.6vh, 24px); color: #fff; }
 .hero h1 em { color: #fff; }
 .hero h1 .ln { display: block; overflow: hidden; padding-bottom: .06em; }
 .hero h1 .ln > span { display: block; transform: translateY(105%); animation: rise 1s var(--ease) forwards; }
 .hero h1 .ln:nth-child(2) > span { animation-delay: .1s; }
 @keyframes rise { to { transform: none; } }
 .hero .lead { font-size: 19px; color: rgba(255,255,255,.82); max-width: 500px; }
-.hero .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.hero .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: clamp(20px, 3.2vh, 32px); }
 .hero .btn.ghost { color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5); }
 .hero .btn.ghost:hover { box-shadow: inset 0 0 0 1.5px #fff; }
 .glass { background: rgba(14,20,30,.38); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border: 1px solid rgba(255,255,255,.18); border-radius: 22px; padding: 22px 24px; font-size: 15px; }
