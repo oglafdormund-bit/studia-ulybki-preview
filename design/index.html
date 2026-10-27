@@ -98,6 +98,7 @@
   .dots i { width: 10px; height: 10px; border-radius: 50%; }
 
   /* ===== Г2: палитры ===== */
+  #g2:not([data-p="pastel"]) .dots { display: none; }
   .pal { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
   .pal button { font: 500 14px system-ui, sans-serif; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); cursor: pointer; }
   .pal button[aria-pressed="true"] { background: var(--btn); color: var(--btn-ink); border-color: var(--btn); }
