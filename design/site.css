@@ -68,9 +68,9 @@ p { margin: 0; }
 
 
 /* первый экран: фото на всю ширину, текст на тёмном градиенте.
-   Высота — по окну, но не меньше 640 и не больше 960: на 2K-мониторе снизу виден следующий блок,
-   на ноутбуке ничего не сжимается. Градиент сильный, чтобы экран держался и на среднем фото. */
-.hero { position: sticky; top: var(--stick, 0px); z-index: 0; display: flex; align-items: flex-end; min-height: calc(max(700px, min(100svh, 1000px)) + 44px); color: #fff; overflow: hidden; }
+   Высота — всё окно (+44px под наехавший лист), не меньше 640. Градиент сильный,
+   чтобы экран держался и на среднем фото. */
+.hero { position: sticky; top: var(--stick, 0px); z-index: 0; display: flex; align-items: flex-end; min-height: calc(max(640px, 100svh) + 44px); color: #fff; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background: #1a2333; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 30%; }
 @media (min-aspect-ratio: 2 / 1) { .hero-bg img { object-position: 70% 14%; } }
