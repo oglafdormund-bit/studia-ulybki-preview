@@ -31,7 +31,7 @@
   body[data-view="desk"] .frame { width: 100%; min-width: 1024px; }
   body[data-view="desk"] .wrap { max-width: none; }
   /* экран меню — всегда телефонный: шторка и окно формы рядом */
-  #s-menu .frame { width: 780px !important; max-width: 100%; }
+  body[data-view="desk"] #s-menu .frame { width: 780px; min-width: 0; max-width: 100%; }
   body[data-view="desk"] .screen > :not(.frame-wrap) { max-width: 1440px; margin-left: auto; margin-right: auto; }
 
   /* Карта сайта */
