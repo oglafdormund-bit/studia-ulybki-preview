@@ -30,6 +30,8 @@
   body[data-view="phone"] .frame { width: 375px; }
   body[data-view="desk"] .frame { width: 100%; min-width: 1024px; }
   body[data-view="desk"] .wrap { max-width: none; }
+  /* экран меню — всегда телефонный: шторка и окно формы рядом */
+  #s-menu .frame { width: 780px !important; max-width: 100%; }
   body[data-view="desk"] .screen > :not(.frame-wrap) { max-width: 1440px; margin-left: auto; margin-right: auto; }
 
   /* Карта сайта */
@@ -285,7 +287,7 @@ const ftr = () => `
     <div><b>О клинике</b><a>Сведения об организации</a><a>Лицензия</a><a>Руководство</a><a>Вакансии</a></div>
     <div><b>Сайт</b><a>Карта сайта</a><a>Поиск</a><a>Политика обработки ПДн</a><a>Согласие на обработку ПДн</a><a>Версия для слабовидящих</a></div>
   </div>
-  <p class="in small muted" style="margin-top:16px">ООО «Студия улыбки» · ОГРН 1122443000921 · ИНН 2443039995 · Лицензия № Л041-01019-24/00377377 от 30.11.2012, выдана Минздравом Красноярского края</p>
+  <div class="in small muted" style="margin-top:16px">ООО «Студия улыбки» · ОГРН 1122443000921 · ИНН 2443039995 · Лицензия № Л041-01019-24/00377377 от 30.11.2012, выдана Минздравом Красноярского края</div>
   </footer>`;
 
 const form = (title = 'Перезвоните мне') => `
