@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Прототип «Студия улыбки»</title>
+<style>
+  :root {
+    --bg: #f4f4f2; --paper: #fff; --ink: #222; --mute: #777; --line: #cfcfcb;
+    --fill: #e6e6e3; --fill2: #d4d4d0; --dark: #555; --note: #2f6db5; --note-bg: #eaf1fa;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: inherit; }
+
+  /* Обвязка прототипа (не часть сайта) */
+  .top { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .top b { margin-right: auto; }
+  .seg { display: inline-flex; border: 1px solid var(--dark); border-radius: 8px; overflow: hidden; }
+  .seg button { border: 0; background: #fff; padding: 6px 12px; font: inherit; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--dark); color: #fff; }
+  .toc { display: flex; gap: 6px 14px; flex-wrap: wrap; font-size: 13px; width: 100%; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 24px 16px 80px; }
+  .screen { margin: 0 0 56px; }
+  .screen > h2 { margin: 0 0 4px; font-size: 22px; }
+  .why { margin: 0 0 14px; color: var(--mute); max-width: 820px; }
+  .frame-wrap { overflow-x: auto; padding-bottom: 6px; }
+  .frame { margin: 0 auto; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+  body[data-view="phone"] .frame { width: 375px; }
+  body[data-view="desk"] .frame { width: 1200px; }
+
+  /* Карта сайта */
+  .map { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .map ul { list-style: none; margin: 0; padding-left: 18px; border-left: 1px dashed var(--line); }
+  .map > ul { padding-left: 0; border: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .map li { margin: 4px 0; }
+  .map > ul > li > span { font-weight: 600; }
+  .map code { font-size: 12px; color: var(--mute); }
+  .tag { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 6px; margin-left: 4px; vertical-align: 1px; }
+  .t-law { background: #f3e3c9; color: #7a4b00; }
+  .t-pat { background: #dcebdc; color: #2d5a2d; }
+  .t-q { background: #f0d9d9; color: #7a2a2a; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin: 0 0 14px; font-size: 13px; }
+
+  /* ===== Вайрфрейм сайта ===== */
+  .wf { container: wf / inline-size; font-size: 14px; }
+  .wf h1 { font-size: 26px; line-height: 1.2; margin: 0 0 10px; }
+  .wf h2 { font-size: 20px; margin: 0 0 12px; }
+  .wf h3 { font-size: 15px; margin: 0 0 6px; }
+  .wf p { margin: 0 0 8px; }
+  .sec { padding: 24px 16px; border-top: 1px solid var(--fill); }
+  .in { max-width: 1080px; margin: 0 auto; }
+  .ph { background: var(--fill) linear-gradient(to top right, transparent calc(50% - .5px), var(--fill2) 50%, transparent calc(50% + .5px)), linear-gradient(to top left, transparent calc(50% - .5px), var(--fill2) 50%, transparent calc(50% + .5px)); border-radius: 10px; display: grid; place-items: center; color: var(--mute); font-size: 12px; text-align: center; padding: 6px; min-height: 80px; }
+  .bar { height: 9px; background: var(--fill); border-radius: 5px; margin: 6px 0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 16px; border-radius: 10px; border: 2px solid var(--dark); background: var(--dark); color: #fff; font-weight: 600; font-size: 14px; }
+  .btn.o { background: #fff; color: var(--dark); }
+  .btn.sm { min-height: 36px; padding: 0 12px; font-size: 13px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .card { border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  .muted { color: var(--mute); }
+  .small { font-size: 12px; }
+  .note { background: var(--note-bg); color: var(--note); border-left: 3px solid var(--note); border-radius: 6px; padding: 6px 10px; font-size: 12px; margin: 8px 0; }
+  .chip { display: inline-block; border: 1px solid var(--line); border-radius: 20px; padding: 4px 10px; font-size: 12px; background: #fff; }
+  .chip.on { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .field { border: 1px solid var(--dark); border-radius: 10px; min-height: 44px; padding: 10px 12px; color: var(--mute); background: #fff; }
+  .check { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; }
+  .check i { flex: none; width: 20px; height: 20px; border: 2px solid var(--dark); border-radius: 4px; }
+  table.t { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .t td, .t th { border-bottom: 1px solid var(--fill); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .t th { color: var(--mute); font-weight: 500; font-size: 12px; }
+  .t .num { text-align: right; white-space: nowrap; font-weight: 600; }
+  .t .code { color: var(--mute); white-space: nowrap; font-size: 12px; }
+  dl.kv { display: grid; grid-template-columns: 1fr; gap: 2px 16px; margin: 0; }
+  .kv dt { color: var(--mute); font-size: 12px; margin-top: 8px; }
+  .kv dd { margin: 0; }
+  .crumbs { font-size: 12px; color: var(--mute); margin-bottom: 8px; }
+  .g2, .g3, .g4 { display: grid; gap: 12px; grid-template-columns: 1fr; }
+  .d-only { display: none !important; }
+  .warn { border: 2px solid var(--dark); border-radius: 10px; padding: 10px 14px; font-weight: 700; font-size: 16px; text-align: center; }
+
+  /* шапка */
+  .hdr { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  .logo { width: 120px; height: 36px; border-radius: 8px; flex: none; }
+  .hdr .grow { flex: 1; }
+  .icon { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 10px; display: grid; place-items: center; font-size: 16px; flex: none; }
+  .nav { display: flex; gap: 18px; font-size: 14px; }
+  .util { background: var(--fill); font-size: 12px; padding: 4px 16px; display: flex; gap: 16px; justify-content: flex-end; color: var(--dark); }
+
+  /* подвал */
+  .ftr { background: var(--fill); padding: 24px 16px; font-size: 13px; }
+  .ftr .cols { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  .ftr a { display: block; margin: 3px 0; }
+
+  /* меню-шторка */
+  .drawer { padding: 12px 16px; }
+  .drawer details { border-bottom: 1px solid var(--fill); padding: 10px 0; }
+  .drawer summary { font-weight: 600; font-size: 16px; }
+  .drawer .lnk { display: block; padding: 10px 0; border-bottom: 1px solid var(--fill); font-weight: 600; font-size: 16px; }
+  .drawer details a { display: block; padding: 6px 0 6px 12px; color: var(--dark); }
+
+  .toc-side { display: none; }
+  .doccard { display: flex; gap: 12px; align-items: flex-start; }
+  .doccard .ph { width: 64px; min-height: 84px; flex: none; }
+
+  @container wf (min-width: 760px) {
+    .wf h1 { font-size: 40px; }
+    .wf h2 { font-size: 26px; }
+    .sec { padding: 48px 32px; }
+    .hdr { padding: 12px 32px; }
+    .util { padding: 4px 32px; }
+    .ftr { padding: 40px 32px; }
+    .ftr .cols { grid-template-columns: 1.3fr 1fr 1fr 1fr; }
+    .g2 { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    .d-only { display: revert !important; }
+    .m-only { display: none !important; }
+    .hero { grid-template-columns: 1.15fr 1fr !important; align-items: center; }
+    dl.kv { grid-template-columns: 260px 1fr; }
+    .kv dt { margin-top: 0; padding: 8px 0; border-bottom: 1px solid var(--fill); font-size: 13px; }
+    .kv dd { padding: 8px 0; border-bottom: 1px solid var(--fill); }
+    .with-side { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+    .toc-side { display: block; position: sticky; top: 0; }
+  }
+</style>
+</head>
+<body data-view="desk">
+
+<div class="top">
+  <b>Прототип сайта «Студия улыбки» · серые схемы, без стиля</b>
+  <div class="seg" role="group" aria-label="Ширина экрана">
+    <button type="button" data-view="phone">Телефон</button>
+    <button type="button" data-view="desk">Компьютер</button>
+  </div>
+  <nav class="toc">
+    <a href="#map">Карта сайта</a><a href="#s-home">Главная</a><a href="#s-menu">Меню и форма</a>
+    <a href="#s-service">Услуга</a><a href="#s-prices">Цены</a><a href="#s-doctors">Врачи</a>
+    <a href="#s-contacts">Контакты</a><a href="#s-org">О клинике</a><a href="#s-doc">Страница документов</a>
+  </nav>
+</div>
+
+<main class="wrap">
+
+<section class="screen" id="map">
+  <h2>Карта сайта</h2>
+  <p class="why">В верхнем меню шесть пунктов: Услуги, Цены, Врачи, Пациентам, О клинике, Контакты. Обязательные сведения по 118н и № 659 собраны в два раздела, «Пациентам» и «О клинике», и не мешают пациенту. Главные действия видны везде: позвонить и «Перезвоните мне».</p>
+  <div class="legend">
+    <span><span class="tag t-pat">пациенту</span> нужно людям</span>
+    <span><span class="tag t-law">норма</span> обязательно по 118н / № 659 / 152-ФЗ</span>
+    <span><span class="tag t-q">вопрос</span> зависит от ответа клиники или юриста</span>
+  </div>
+  <div class="map">
+    <ul>
+      <li><span>Главная</span> <code>/</code> <span class="tag t-pat">пациенту</span></li>
+      <li><span>Услуги</span> <code>/uslugi</code> <span class="tag t-pat">пациенту</span>
+        <ul>
+          <li>Лечение зубов <code>/uslugi/lechenie</code> — терапия, пломбы, каналы, пародонт</li>
+          <li>Гигиена и отбеливание <code>/uslugi/gigiena</code></li>
+          <li>Удаление зубов <code>/uslugi/udalenie</code> — хирургия</li>
+          <li>Протезирование <code>/uslugi/protezirovanie</code> — коронки, мосты, съёмные</li>
+        </ul>
+      </li>
+      <li><span>Цены</span> <code>/ceny</code> <span class="tag t-pat">пациенту</span><span class="tag t-law">норма</span>
+        <ul><li>Прейскурант с кодами 804н, приказом и датой утверждения</li></ul>
+      </li>
+      <li><span>Врачи</span> <code>/vrachi</code> <span class="tag t-pat">пациенту</span><span class="tag t-law">норма</span>
+        <ul><li>Карточки + образование, аккредитация, график (без номеров документов)</li><li>Медсестра <span class="tag t-q">вопрос</span></li></ul>
+      </li>
+      <li><span>Пациентам</span> <code>/pacientam</code>
+        <ul>
+          <li>Запись, перенос и отмена <code>/zapis</code> <span class="tag t-pat">пациенту</span></li>
+          <li>Платные услуги <code>/platnye-uslugi</code> <span class="tag t-law">норма</span> — правила, договор, ИДС, льготы, сроки ожидания</li>
+          <li>Правила внутреннего распорядка <code>/pravila</code> <span class="tag t-law">норма</span></li>
+          <li>Права и обязанности пациентов <code>/prava</code> <span class="tag t-law">норма</span></li>
+          <li>Медицинские документы <code>/med-dokumenty</code> <span class="tag t-law">норма</span> — выписки, медкарта</li>
+          <li>Бесплатная помощь <code>/besplatno</code> <span class="tag t-law">норма</span> — не участвуем в ОМС, программы госгарантий</li>
+          <li>Порядки и клин. рекомендации <code>/poryadki</code> <span class="tag t-law">норма</span></li>
+          <li>Доступная среда <code>/dostupnaya-sreda</code> <span class="tag t-law">норма</span></li>
+          <li>Анкета о качестве <code>/anketa</code> <span class="tag t-law">норма</span></li>
+          <li>Обращения и жалобы <code>/obrashcheniya</code> <span class="tag t-law">норма</span> — + надзорные органы</li>
+          <li>Подготовка к рентгену <span class="tag t-q">вопрос</span></li>
+        </ul>
+      </li>
+      <li><span>О клинике</span> <code>/o-klinike</code>
+        <ul>
+          <li>Сведения об организации <code>/svedeniya</code> <span class="tag t-law">норма</span> — реквизиты, учредитель, СОУТ</li>
+          <li>Лицензия <code>/licenziya</code> <span class="tag t-law">норма</span></li>
+          <li>Руководство и структура <code>/rukovodstvo</code> <span class="tag t-law">норма</span> — личный приём директора</li>
+          <li>Вакансии <code>/vakansii</code> <span class="tag t-law">норма</span></li>
+        </ul>
+      </li>
+      <li><span>Контакты</span> <code>/kontakty</code> <span class="tag t-pat">пациенту</span><span class="tag t-law">норма</span></li>
+      <li><span>Служебные (ссылки в подвале)</span>
+        <ul>
+          <li>Карта сайта <code>/karta-sayta</code> <span class="tag t-law">норма</span></li>
+          <li>Поиск <code>/poisk</code> <span class="tag t-law">норма</span></li>
+          <li>Политика обработки ПДн <code>/politika</code> <span class="tag t-law">норма</span></li>
+          <li>Согласие на обработку ПДн <code>/soglasie</code> <span class="tag t-law">норма</span></li>
+          <li>Версия для слабовидящих — переключатель в шапке, не отдельная страница <span class="tag t-law">норма</span></li>
+          <li>404</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="note">Не входит в программу-минимум: отзывы, акции, блог, онлайн-запись в расписание, личный кабинет. Окно cookie нужно только при Яндекс Метрике или живой карте. Пока закладываем карту картинкой со ссылкой, Метрику обсудим на этапе SEO.</div>
+  </div>
+</section>
+
+<section class="screen" id="s-home">
+  <h2>1. Главная</h2>
+  <p class="why">За первые секунды пациент должен понять, что это стоматология в Ачинске, где она находится, когда работает и как записаться. Дальше идут направления с ценами «от», врачи, шаги записи и контакты.</p>
+  <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="home"></div></div></div>
+</section>
+
+<section class="screen" id="s-menu">
+  <h2>2. Меню на телефоне и форма «Перезвоните мне»</h2>
+  <p class="why">На телефоне меню раскрывается шторкой, обязательные разделы спрятаны во вложенные списки. В форме только имя и телефон, без полей о здоровье. Галочка согласия по умолчанию не отмечена.</p>
+  <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="menu"></div></div></div>
+</section>
+
+<section class="screen" id="s-service">
+  <h2>3. Страница направления (на примере «Лечение зубов»)</h2>
+  <p class="why">Отдельная страница на каждое направление нужна для поиска («лечение зубов Ачинск»). Цены подтягиваются из общего прейскуранта, правятся в одном месте.</p>
+  <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="service"></div></div></div>
+</section>
+
+<section class="screen" id="s-prices">
+  <h2>4. Цены</h2>
+  <p class="why">Полный прейскурант: код по номенклатуре, официальное название и цена. Есть фильтр по разделам и поиск, на телефоне строки складываются в карточки.</p>
+  <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="prices"></div></div></div>
+</section>
+
+<section class="screen" id="s-doctors">
+  <h2>5. Врачи</h2>
+  <p class="why">Сверху то, что важно пациенту: фото, имя, кем работает, график. Сведения по 118н (образование, аккредитация) раскрываются под карточкой и все вместе стоят в таблице ниже.</p>
+  <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="doctors"></div></div></div>
+</section>
+
+<section class="screen" id="s-contacts">
+  <h2>6. Контакты</h2>
+  <p class="why">Адрес дословно как в реестре лицензий, с «пом. 72». Вместо живой карты картинка со ссылкой на Яндекс Карты, поэтому окно cookie не нужно.</p>
+  <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="contacts"></div></div></div>
+</section>
+
+<section class="screen" id="s-org">
+  <h2>7. О клинике → Сведения об организации</h2>
+  <p class="why">Все сведения даны текстом, без сканов: реквизиты, учредитель, лицензия, руководство. На подразделы ведут плитки, у каждой строка «что внутри».</p>
+  <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="org"></div></div></div>
+</section>
+
+<section class="screen" id="s-doc">
+  <h2>8. Типовая страница с документами (на примере «Платные услуги»)</h2>
+  <p class="why">Шаблон для всех страниц раздела «Пациентам». Короткий текст человеческим языком, оглавление и карточки документов: PDF с текстом на своём домене, а не Google Диск.</p>
+  <div class="frame-wrap"><div class="frame"><div class="wf" data-screen="doc"></div></div></div>
+</section>
+
+</main>
+
+<script>
+const hdr = () => `
+  <div class="util d-only"><span>◐ Версия для слабовидящих</span><span>⌕ Поиск</span><span>Пн–пт 9:00–21:00 · Сб 9:00–15:00</span></div>
+  <div class="hdr">
+    <div class="ph logo">логотип</div>
+    <nav class="nav d-only"><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Пациентам ▾</span><span>О клинике ▾</span><span>Контакты</span></nav>
+    <span class="grow"></span>
+    <b class="d-only">+7 (923) 313-05-33</b>
+    <span class="btn sm d-only">Перезвоните мне</span>
+    <span class="icon m-only" title="Позвонить">☎</span>
+    <span class="icon m-only" title="Меню">☰</span>
+  </div>`;
+
+const ftr = () => `
+  <div class="sec"><div class="in"><div class="warn">Имеются противопоказания. Необходима консультация специалиста.</div>
+  <p class="note">Предупреждение крупно на каждой странице, а не мелким серым шрифтом.</p></div></div>
+  <footer class="ftr"><div class="in cols">
+    <div><div class="ph logo" style="margin-bottom:10px">логотип</div>
+      <b>+7 (923) 313-05-33</b><br>Studiosmile24@mail.ru<br>
+      662161, Красноярский край, г. Ачинск, мкр. 5, д. 33, пом. 72<br>
+      Пн–пт 9:00–21:00, сб 9:00–15:00, вс — выходной</div>
+    <div><b>Пациентам</b><a>Запись и отмена</a><a>Платные услуги</a><a>Права и обязанности</a><a>Обращения и жалобы</a><a>Все разделы →</a></div>
+    <div><b>О клинике</b><a>Сведения об организации</a><a>Лицензия</a><a>Руководство</a><a>Вакансии</a></div>
+    <div><b>Сайт</b><a>Карта сайта</a><a>Поиск</a><a>Политика обработки ПДн</a><a>Согласие на обработку ПДн</a><a>Версия для слабовидящих</a></div>
+  </div>
+  <p class="in small muted" style="margin-top:16px">ООО «Студия улыбки» · ОГРН 1122443000921 · ИНН 2443039995 · Лицензия № Л041-01019-24/00377377 от 30.11.2012, выдана Минздравом Красноярского края</p>
+  </footer>`;
+
+const form = (title = 'Перезвоните мне') => `
+  <div class="card" style="max-width:460px">
+    <h3>${title}</h3><p class="small muted">Администратор перезвонит в рабочее время и подберёт удобное время приёма.</p>
+    <div class="field">Имя</div><div style="height:8px"></div>
+    <div class="field">+7 (___) ___-__-__</div><div style="height:10px"></div>
+    <label class="check"><i></i><span>Согласен(на) на обработку персональных данных по <u>согласию</u> и <u>политике</u></span></label>
+    <div style="height:10px"></div><span class="btn" style="width:100%">Отправить</span>
+    <p class="note">Галочка не отмечена заранее. Кнопка работает только с галочкой. Вместе с заявкой сохраняем версию текста согласия и время.</p>
+  </div>`;
+
+const doctor = (name, role, sched) => `
+  <div class="card"><div class="ph" style="aspect-ratio:4/5;margin-bottom:10px">фото</div>
+    <h3>${name}</h3><p class="small">${role}</p><p class="small muted">${sched}</p></div>`;
+
+const screens = {
+home: () => `${hdr()}
+  <div class="sec" style="border:0"><div class="in g2 hero">
+    <div><h1>Стоматология «Студия улыбки» в Ачинске</h1>
+      <p class="muted">Лечение, удаление и протезирование зубов. Работаем с 2012 года.</p>
+      <div class="row" style="margin:14px 0"><span class="btn">☎ Позвонить</span><span class="btn o">Перезвоните мне</span></div>
+      <p class="small">мкр. 5, д. 33, пом. 72 · Пн–пт 9–21, сб 9–15</p>
+      <p class="note">Без «лучшая», «гарантия», «безболезненно»: в рекламе медуслуг это запрещено. Факты берём только подтверждённые.</p></div>
+    <div class="ph" style="aspect-ratio:4/3">главное фото: клиника / врач / сток / генерация</div>
+  </div></div>
+  <div class="sec"><div class="in"><h2>Направления</h2><div class="g4">
+    ${['Лечение зубов','Гигиена и отбеливание','Удаление зубов','Протезирование'].map(t=>`<div class="card"><div class="ph" style="aspect-ratio:3/2;margin-bottom:10px">иллюстрация</div><h3>${t}</h3><div class="bar" style="width:80%"></div><p class="small"><b>от ___ ₽</b> · подробнее →</p></div>`).join('')}
+  </div></div></div>
+  <div class="sec"><div class="in"><h2>Почему к нам</h2><div class="g4">
+    ${['С 2012 года в Ачинске','Лечение под микроскопом','Врачи с действующей аккредитацией','Цены на сайте — те же, что в клинике'].map(t=>`<div><div class="ph" style="width:44px;min-height:44px;margin-bottom:8px">ик</div><h3>${t}</h3><div class="bar"></div></div>`).join('')}
+  </div><p class="note">Набор фактов подтвердить у клиники.</p></div></div>
+  <div class="sec"><div class="in"><div class="row" style="justify-content:space-between"><h2>Врачи</h2><span class="d-only">Все врачи →</span></div><div class="g3">
+    ${doctor('Иливанова Юлия Юрьевна','Врач-стоматолог общей практики, директор','Пн, ср, пт 9–15 · вт, чт 15–21')}
+    ${doctor('Козлова Наталья Андреевна','Врач-стоматолог общей практики','Пн, ср, пт 15–21 · вт, чт 9–15')}
+    ${doctor('Саблин Кирилл Андреевич','Врач-стоматолог-хирург, стоматолог-ортопед','Пн, ср, пт 12–20 · вт, чт 15–21')}
+  </div><p class="m-only" style="margin-top:10px">Все врачи →</p></div></div>
+  <div class="sec"><div class="in g2"><div><h2>Популярные цены</h2>
+    <table class="t"><tr><td>Первичный приём, осмотр</td><td class="num">___ ₽</td></tr><tr><td>Профессиональная гигиена</td><td class="num">___ ₽</td></tr><tr><td>Пломба</td><td class="num">от ___ ₽</td></tr><tr><td>Удаление зуба</td><td class="num">от ___ ₽</td></tr><tr><td>Коронка</td><td class="num">от ___ ₽</td></tr></table>
+    <p style="margin-top:10px">Полный прейскурант →</p>
+    <p class="note">«от» только там, где в прейскуранте несколько позиций, и рядом пояснение. Сами позиции прейскуранта — с фиксированной ценой.</p></div>
+    <div><h2>Как записаться</h2><ol style="padding-left:18px;margin:0 0 12px"><li>Позвоните или оставьте телефон</li><li>Администратор подберёт время</li><li>Приходите, возьмите паспорт</li></ol>${form()}</div>
+  </div></div>
+  <div class="sec"><div class="in g2"><div><h2>Как нас найти</h2>
+    <p><b>662161, г. Ачинск, мкр. 5, д. 33, пом. 72</b></p><p>Пн–пт 9:00–21:00 · Сб 9:00–15:00 · Вс — выходной</p><p><b>+7 (923) 313-05-33</b></p>
+    <span class="btn o sm">Открыть в Яндекс Картах ↗</span></div>
+    <div class="ph" style="aspect-ratio:16/10">схема проезда (картинка, не живая карта)</div></div></div>
+  ${ftr()}`,
+
+menu: () => `
+  <div class="g2" style="gap:0">
+  <div style="border-right:1px solid var(--line)">
+    <div class="hdr"><div class="ph logo">логотип</div><span class="grow"></span><span class="icon">✕</span></div>
+    <div class="drawer">
+      <div class="row" style="margin-bottom:10px"><span class="btn" style="flex:1">☎ Позвонить</span><span class="btn o" style="flex:1">Перезвоните</span></div>
+      <div class="field" style="margin-bottom:6px">⌕ Поиск по сайту</div>
+      <a class="lnk">Услуги</a><a class="lnk">Цены</a><a class="lnk">Врачи</a>
+      <details open><summary>Пациентам</summary><a>Запись, перенос и отмена</a><a>Платные услуги</a><a>Правила внутреннего распорядка</a><a>Права и обязанности</a><a>Медицинские документы</a><a>Бесплатная помощь</a><a>Порядки и клин. рекомендации</a><a>Доступная среда</a><a>Анкета о качестве</a><a>Обращения и жалобы</a></details>
+      <details><summary>О клинике</summary></details>
+      <a class="lnk">Контакты</a>
+      <p style="margin-top:12px">◐ Версия для слабовидящих</p>
+      <p class="small muted">Пн–пт 9–21 · Сб 9–15</p>
+    </div>
+  </div>
+  <div style="padding:16px;background:var(--fill)">
+    <p class="small muted">Окно поверх страницы:</p>
+    <div style="background:#fff;border-radius:14px;padding:4px">${form()}</div>
+    <div class="card" style="background:#fff;margin-top:14px;max-width:460px"><h3>✓ Заявка отправлена</h3><p class="small">Перезвоним в рабочее время. Если срочно, позвоните: <b>+7 (923) 313-05-33</b></p></div>
+    <p class="note">Заявка уходит на почту клиники через сервер в РФ. Хостинг выбираем отдельно.</p>
+  </div></div>`,
+
+service: () => `${hdr()}
+  <div class="sec" style="border:0"><div class="in">
+    <div class="crumbs">Главная / Услуги / Лечение зубов</div>
+    <div class="g2 hero"><div><h1>Лечение зубов</h1><p>Кариес, пульпит, лечение каналов, пародонт. Приём ведут врачи-стоматологи общей практики.</p>
+      <div class="row" style="margin-top:12px"><span class="btn">☎ Позвонить</span><span class="btn o">Перезвоните мне</span></div></div>
+      <div class="ph" style="aspect-ratio:4/3">фото / иллюстрация</div></div>
+  </div></div>
+  <div class="sec"><div class="in"><h2>Что лечим</h2><div class="g3">
+    ${['Кариес и пломбы','Пульпит, лечение каналов','Дёсны (пародонтология)'].map(t=>`<div class="card"><h3>${t}</h3><div class="bar"></div><div class="bar" style="width:70%"></div></div>`).join('')}
+  </div></div></div>
+  <div class="sec"><div class="in"><h2>Как проходит лечение</h2><div class="g4">
+    ${['Осмотр и диагностика','План и стоимость — до начала','Анестезия, лечение','Рекомендации и контроль'].map((t,i)=>`<div><b style="font-size:22px">${i+1}</b><h3>${t}</h3><div class="bar"></div></div>`).join('')}
+  </div></div></div>
+  <div class="sec"><div class="in"><h2>Цены</h2>
+    <table class="t"><tr><th class="d-only">Код</th><th>Услуга</th><th class="num">Цена</th></tr>
+    ${['Восстановление зуба пломбой I, V класс по Блэку','Восстановление зуба пломбой с нарушением контактного пункта','Временная реставрация одного зуба','Инфильтрационная анестезия'].map(t=>`<tr><td class="code d-only">A16.07.002.___</td><td>${t}</td><td class="num">___ ₽</td></tr>`).join('')}</table>
+    <p style="margin-top:10px">Весь прейскурант →</p><p class="note">Строки берутся из прейскуранта по разделу, отдельно здесь не хранятся.</p></div></div>
+  <div class="sec"><div class="in"><h2>Кто лечит</h2><div class="g3">
+    ${doctor('Иливанова Юлия Юрьевна','Врач-стоматолог общей практики','Пн, ср, пт 9–15 · вт, чт 15–21')}
+    ${doctor('Козлова Наталья Андреевна','Врач-стоматолог общей практики','Пн, ср, пт 15–21 · вт, чт 9–15')}
+  </div></div></div>
+  <div class="sec"><div class="in">${form('Записаться на лечение')}</div></div>
+  ${ftr()}`,
+
+prices: () => `${hdr()}
+  <div class="sec" style="border:0"><div class="in">
+    <div class="crumbs">Главная / Цены</div>
+    <h1>Цены на услуги</h1>
+    <p class="muted">Прейскурант утверждён приказом № ___ от ___.___.2026. Цены в рублях.</p>
+    <div class="field" style="max-width:420px;margin:12px 0">⌕ Найти услугу</div>
+    <div class="row" style="gap:6px">${['Все','Приём','Диагностика','Анестезия','Профилактика','Отбеливание','Лечение','Пародонтология','Хирургия','Протезирование'].map((t,i)=>`<span class="chip${i?'':' on'}">${t}</span>`).join('')}</div>
+    <p class="note">Окончательная стоимость указывается в плане лечения до начала работ. Скидки и льготы — <u>Платные услуги</u>.</p>
+    ${['Приём (осмотр, консультация)','Восстановление зуба пломбой'].map(sec=>`
+      <h2 style="margin-top:24px">${sec}</h2>
+      <table class="t d-only"><tr><th>Код</th><th>Наименование по номенклатуре</th><th class="num">Цена</th></tr>
+      ${[1,2,3,4].map(()=>`<tr><td class="code">B01.065.___</td><td><div class="bar" style="width:${50+Math.round(Math.random()*40)}%"></div></td><td class="num">___ ₽</td></tr>`).join('')}</table>
+      <div class="m-only">${[1,2,3].map(()=>`<div style="padding:10px 0;border-bottom:1px solid var(--fill)"><div class="bar" style="width:90%"></div><div class="bar" style="width:60%"></div><div class="row" style="justify-content:space-between"><span class="small muted">B01.065.___</span><b>___ ₽</b></div></div>`).join('')}</div>`).join('')}
+    <p class="note">Коды латиницей, без дублей, по номенклатуре 804н. Проверка скриптом при каждой правке. Радиовизиография и описание КТ остаются под вопросом к юристу (рентгенологии нет в лицензии).</p>
+    <div class="row" style="margin-top:16px"><span class="btn o sm">Скачать прейскурант (PDF)</span><span class="btn o sm">Правила платных услуг →</span></div>
+  </div></div>
+  ${ftr()}`,
+
+doctors: () => `${hdr()}
+  <div class="sec" style="border:0"><div class="in">
+    <div class="crumbs">Главная / Врачи</div><h1>Врачи и медицинский персонал</h1>
+    <div class="g3" style="margin-top:16px">
+      ${doctor('Иливанова Юлия Юрьевна','Врач-стоматолог общей практики','Пн, ср, пт 9–15 · вт, чт 15–21')}
+      ${doctor('Козлова Наталья Андреевна','Врач-стоматолог общей практики','Пн, ср, пт 15–21 · вт, чт 9–15')}
+      ${doctor('Саблин Кирилл Андреевич','Врач-стоматолог-хирург, стоматолог-ортопед','Пн, ср, пт 12–20 · вт, чт 15–21')}
+    </div>
+    <div class="card" style="margin-top:12px"><b>▸ Образование и аккредитация</b> <span class="small muted">— раскрывается под каждой карточкой</span>
+      <dl class="kv" style="margin-top:8px"><dt>Образование</dt><dd>Высшее, КрасГМА, 2006, «Стоматология»</dd><dt>Аккредитация</dt><dd>«Стоматология общей практики», действует до 15.09.2030</dd></dl></div>
+    <h2 style="margin-top:28px">Медицинская сестра</h2>
+    <div class="g3">${doctor('Петрова Наталья Евгеньевна','Медицинская сестра','график: ___')}</div>
+    <p class="note">Должность и аккредитацию медсестры пишем только после ответа клиники: в документах аккредитация по «Рентгенологии», а не по «Сестринскому делу».</p>
+    <h2 style="margin-top:28px">Сведения о медицинских работниках</h2>
+    <div style="overflow-x:auto"><table class="t" style="min-width:640px"><tr><th>ФИО</th><th>Должность</th><th>Образование</th><th>Аккредитация, срок</th><th>График</th></tr>
+      ${['Иливанова Ю. Ю.','Козлова Н. А.','Саблин К. А.','Петрова Н. Е.'].map(n=>`<tr><td>${n}</td><td><div class="bar"></div></td><td><div class="bar"></div></td><td><div class="bar"></div></td><td><div class="bar"></div></td></tr>`).join('')}</table></div>
+    <p class="note">Таблица по 118н, без номеров дипломов и сертификатов. На телефоне прокручивается вбок. Администратор не медработник, в таблице его нет.</p>
+  </div></div>
+  ${ftr()}`,
+
+contacts: () => `${hdr()}
+  <div class="sec" style="border:0"><div class="in">
+    <div class="crumbs">Главная / Контакты</div><h1>Контакты</h1>
+    <div class="g2 hero" style="margin-top:12px"><div>
+      <dl class="kv">
+        <dt>Адрес</dt><dd><b>662161, Красноярский край, г. Ачинск, мкр. 5, д. 33, пом. 72</b></dd>
+        <dt>Телефон</dt><dd><b>+7 (923) 313-05-33</b></dd>
+        <dt>Эл. почта</dt><dd>Studiosmile24@mail.ru</dd>
+        <dt>Режим работы</dt><dd>Пн–пт 9:00–21:00<br>Сб 9:00–15:00<br>Вс — выходной</dd>
+        <dt>Личный приём директора</dt><dd>Иливанова Ю. Ю. — пт 13:00–16:00, запись по телефону</dd>
+      </dl>
+      <div class="row" style="margin-top:12px"><span class="btn">☎ Позвонить</span><span class="btn o">Открыть в Яндекс Картах ↗</span></div></div>
+      <div><div class="ph" style="aspect-ratio:4/3">схема проезда (картинка)</div><p class="small muted" style="margin-top:6px">Как пройти: ___ (вход, этаж, ориентиры — от клиники)</p></div>
+    </div>
+    <div class="g2" style="margin-top:24px">
+      <div class="card"><h3>Доступная среда</h3><p class="small">Кнопка вызова персонала у входа, помощь при входе. Подробнее →</p></div>
+      <div class="card"><h3>Обращения и жалобы</h3><p class="small">Адреса, сроки ответа, надзорные органы →</p></div>
+    </div>
+    <div style="margin-top:24px">${form()}</div>
+  </div></div>
+  ${ftr()}`,
+
+org: () => `${hdr()}
+  <div class="sec" style="border:0"><div class="in">
+    <div class="crumbs">Главная / О клинике</div><h1>О клинике</h1>
+    <p class="muted">Короткий абзац о клинике: с 2012 года, частная, в ОМС не участвует.</p>
+    <div class="g4" style="margin-top:14px">
+      ${[['Сведения об организации','Реквизиты, учредитель, дата регистрации, СОУТ'],['Лицензия','Номер, работы, ссылка на реестр'],['Руководство и структура','Директор, личный приём, органы управления'],['Вакансии','Открытые вакансии или «сейчас нет»']].map(([a,b])=>`<div class="card"><h3>${a} →</h3><p class="small muted">${b}</p></div>`).join('')}
+    </div>
+    <h2 style="margin-top:32px">Сведения об организации</h2>
+    <dl class="kv">
+      <dt>Полное наименование</dt><dd>Общество с ограниченной ответственностью «Студия улыбки»</dd>
+      <dt>Сокращённое</dt><dd>ООО «Студия улыбки»</dd>
+      <dt>ОГРН / ИНН / КПП</dt><dd>1122443000921 / 2443039995 / 244301001</dd>
+      <dt>Дата регистрации</dt><dd>24.05.2012</dd>
+      <dt>Регистрирующий орган</dt><dd>___ (из свежей выписки ЕГРЮЛ)</dd>
+      <dt>Учредитель</dt><dd>___ (из свежей выписки ЕГРЮЛ)</dd>
+      <dt>Адрес</dt><dd>662161, Красноярский край, г. Ачинск, мкр. 5, д. 33, пом. 72</dd>
+      <dt>ОМС</dt><dd>Не участвует. Бесплатная помощь — по программам госгарантий →</dd>
+    </dl>
+    <h2 style="margin-top:32px">Лицензия</h2>
+    <dl class="kv">
+      <dt>Номер и дата</dt><dd>№ Л041-01019-24/00377377 от 30.11.2012, бессрочно</dd>
+      <dt>Выдана</dt><dd>Министерством здравоохранения Красноярского края</dd>
+      <dt>Работы и услуги</dt><dd>Сестринское дело; стоматология общей практики, ортопедическая, терапевтическая, хирургическая</dd>
+      <dt>Проверить</dt><dd><u>Выписка в реестре Росздравнадзора ↗</u> · QR-код выписки</dd>
+    </dl>
+    <p class="note">Сканов бланков, устава и выписки ЕГРЮЛ на сайте нет: только текст и ссылка на официальный реестр.</p>
+  </div></div>
+  ${ftr()}`,
+
+doc: () => `${hdr()}
+  <div class="sec" style="border:0"><div class="in">
+    <div class="crumbs">Главная / Пациентам / Платные услуги</div>
+    <h1>Платные медицинские услуги</h1>
+    <p class="muted">Все услуги клиники платные. Здесь правила, образец договора и что нужно знать до начала лечения.</p>
+    <div class="with-side" style="margin-top:16px">
+      <nav class="toc-side card small"><b>На странице</b><br>Правила<br>Прейскурант<br>Договор и согласие<br>Льготы<br>Сроки ожидания<br>Порядки и рекомендации<br>Нормативные акты</nav>
+      <div>
+        <details class="m-only card" style="margin-bottom:12px"><summary><b>На странице</b></summary></details>
+        <h2>Правила оказания платных услуг</h2>
+        <p>Коротко человеческим языком: как заключается договор, как меняется план лечения, как платить.</p>
+        <div class="card doccard"><div class="ph">PDF</div><div><h3>Правила предоставления платных медицинских услуг</h3><p class="small muted">Утверждены приказом № ___ от ___ · PDF, 12 стр., 180 КБ</p><div class="row"><span class="btn sm">Открыть</span><span class="btn sm o">Скачать</span></div></div></div>
+        <h2 style="margin-top:24px">Прейскурант</h2><p>Цены на все услуги — <u>страница «Цены»</u>.</p>
+        <h2 style="margin-top:24px">Договор и согласие</h2>
+        <div class="g2">
+          <div class="card doccard"><div class="ph">PDF</div><div><h3>Образец договора</h3><p class="small muted">PDF · ___ КБ</p></div></div>
+          <div class="card doccard"><div class="ph">PDF</div><div><h3>Информированное добровольное согласие (бланк)</h3><p class="small muted">PDF · ___ КБ</p></div></div>
+        </div>
+        <h2 style="margin-top:24px">Льготы</h2><div class="bar"></div><div class="bar" style="width:60%"></div>
+        <h2 style="margin-top:24px">Сроки ожидания</h2><div class="bar"></div><div class="bar" style="width:50%"></div>
+        <h2 style="margin-top:24px">Порядки и клинические рекомендации</h2><p class="small">Ссылки на pravo.gov.ru и cr.minzdrav.gov.ru, без QR-кодов.</p>
+        <h2 style="margin-top:24px">Нормативные акты</h2><p class="small">Постановление Правительства РФ № 659 от 30.05.2026 ↗ · 323-ФЗ ↗ · Закон «О защите прав потребителей» ↗</p>
+        <p class="note">Документы — PDF с текстовым слоем на своём домене (не сканы, не Google Диск), чтобы их находил поиск и читал экранный диктор.</p>
+      </div>
+    </div>
+  </div></div>
+  ${ftr()}`,
+};
+
+document.querySelectorAll('.wf').forEach(el => { el.innerHTML = screens[el.dataset.screen](); });
+
+const setView = v => {
+  document.body.dataset.view = v;
+  document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === v));
+};
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+setView(innerWidth < 900 ? 'phone' : 'desk');
+</script>
+</body>
+</html>
