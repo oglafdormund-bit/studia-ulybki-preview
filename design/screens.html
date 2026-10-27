@@ -35,7 +35,7 @@
   <p>Живые страницы по прототипу, с реальными фото, врачами и прейскурантом (146 позиций, коды уже латиницей). Внутри окон можно прокручивать и нажимать: на «Ценах» работают поиск и фильтр.</p>
   <p>Арки как окна студии (вертикальные фото в них смотрятся естественно), крутящийся знак, бегущая строка, индекс направлений с фото при наведении, тёмные скруглённые панели, огромное слово в подвале, появление блоков при прокрутке.</p>
   <div class="tabs" role="group" aria-label="Страница">
-    <button type="button" data-src="home.html" aria-pressed="true">Главная</button>
+    <button type="button" data-src="home.html?v=1793139844" aria-pressed="true">Главная</button>
     <button type="button" data-src="ceny.html">Цены</button>
   </div>
 </div>
@@ -43,11 +43,11 @@
   <div>
     <div class="lbl">Компьютер · 1440 px</div>
     <div class="browser"><div class="bar"><i></i><i></i><i></i><span id="url">студия-улыбки24.рф</span></div>
-      <div class="vp" id="dvp"><iframe id="desk" title="Компьютер" src="home.html"></iframe></div></div>
+      <div class="vp" id="dvp"><iframe id="desk" title="Компьютер" src="home.html?v=1793139844"></iframe></div></div>
   </div>
   <div class="phone-col" style="width:400px">
     <div class="lbl">Телефон · 376 px</div>
-    <div class="phone"><div class="vp"><iframe id="mob" title="Телефон" src="home.html"></iframe></div></div>
+    <div class="phone"><div class="vp"><iframe id="mob" title="Телефон" src="home.html?v=1793139844"></iframe></div></div>
   </div>
 </div>
 <script>
@@ -62,7 +62,7 @@
   addEventListener('resize', fit); fit();
   document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
     document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    desk.src = b.dataset.src; document.getElementById('mob').src = b.dataset.src;
+    const u = b.dataset.src + '?v=' + Date.now(); desk.src = u; document.getElementById('mob').src = u;
     document.getElementById('url').textContent = 'студия-улыбки24.рф' + (b.dataset.src === 'ceny.html' ? '/ceny' : '');
   }));
 </script>
