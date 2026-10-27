@@ -240,7 +240,8 @@ footer .req { padding-top: 24px; border-top: 1px solid #343a32; font-size: 13px;
   .hero .wrap { grid-template-columns: 1fr; gap: 36px; }
   .hero h1 { font-size: clamp(44px, 13vw, 64px); margin: 16px 0 20px; }
   .hero .lead { font-size: 17px; }
-  .hero .row .btn { flex: 1; }
+  .hero .row { flex-direction: column; }
+  .hero .row .btn { width: 100%; }
   .hero .info { margin-top: 36px; flex-wrap: wrap; }
   .hero .info div { flex: 1 1 45%; }
   .hero .info div:nth-child(3) { flex-basis: 100%; padding-left: 0; border-left: 0; }
