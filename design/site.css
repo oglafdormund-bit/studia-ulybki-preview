@@ -173,8 +173,11 @@ p { margin: 0; }
 
 /* врачи */
 /* команда — белые карточки на светло-голубой панели; фото выровнены по глазам, одна позиция кадра на всех */
-/* приглушённая текстура льна под светлой вуалью — заглушка, потом сгенерируем свою */
-.team { padding: 110px 0; background: linear-gradient(rgb(231 234 240 / .86), rgb(231 234 240 / .86)), url(ph/tex-len.jpg) center / cover; }
+/* под полосой — спрятанное, очень приглушённое ч/б фото (ВРЕМЕННО три варианта на выбор: tb1–tb3) */
+.team { --veil: rgb(231 234 240 / .88); padding: 110px 0; background: linear-gradient(var(--veil), var(--veil)), var(--team-bg, none) center / cover, var(--tint); }
+.team.tb1 { --team-bg: url(ph/team-bg-1.jpg); }
+.team.tb2 { --team-bg: url(ph/team-bg-2.jpg); }
+.team.tb3 { --team-bg: url(ph/team-bg-3.jpg); }
 .team .sec-head { margin-bottom: 40px; }
 .tgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
 .tcard { background: var(--card); border-radius: var(--r); padding: 10px 10px 22px; box-shadow: var(--shadow); }
