@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Врачи — одинаковые карточки, 5 вариантов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1793146361">
+<style>
+  .intro { max-width: 1400px; margin: 0 auto; padding: 48px 24px 40px; }
+  .intro h1 { font-size: 32px; margin-bottom: 8px; } .intro p { color: var(--mute); max-width: 900px; }
+  .var { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 56px 0; border-top: 1px solid var(--line); }
+  .lbl { max-width: 1400px; width: 100%; margin: 0 auto 36px; padding: 0 24px; box-sizing: border-box; }
+  .lbl b { font: 600 18px var(--head); } .lbl span { color: var(--mute); margin-left: 10px; }
+  .var .wrap { width: 100%; box-sizing: border-box; }
+  .var .sec-head { margin-bottom: 40px; }
+  .var img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+  .g { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  /* высота фото привязана к окну — весь состав всегда помещается в экран */
+  .c .ph { height: clamp(300px, 52vh, 600px); overflow: hidden; }
+  .c h3 { font-size: 22px; } .c p { color: var(--mute); margin-top: 6px; font-size: 15px; }
+
+  .v1 .c { background: var(--card); border-radius: 26px; padding: 12px; }
+  .v1 .ph { border-radius: 18px; } .v1 .t { padding: 20px 12px 12px; }
+
+  .v2 .c, .v3 .c { position: relative; border-radius: 26px; overflow: hidden; }
+  .v2 .ph, .v3 .ph { height: clamp(380px, 62vh, 700px); }
+  .v2 .c::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,20,30,.88), rgba(14,20,30,.25) 35%, rgba(14,20,30,0) 55%); }
+  .v2 .t { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 28px; color: #fff; }
+  .v2 .t p { color: rgba(255,255,255,.78); }
+
+  .v3 .t { position: absolute; left: 14px; right: 14px; bottom: 14px; padding: 18px 22px; border-radius: 18px; background: rgba(255,255,255,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+
+  .v4 .g { gap: 40px; }
+  .v4 .ph { border-radius: 4px; height: clamp(300px, 54vh, 620px); }
+  .v4 small { display: block; margin: 22px 0 10px; font: 600 12px var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+  .v4 h3 { font-size: clamp(22px, 1.6vw, 28px); font-weight: 500; line-height: 1.15; }
+  .v4 h3 span { display: block; font-weight: 600; font-size: 1.35em; letter-spacing: -.03em; }
+
+  .v5 { background: var(--ink); color: #fff; border-top: 0; }
+  .v5 .lbl span, .v5 .sec-head .link { color: rgba(255,255,255,.7); }
+  .v5 h2 em { color: var(--sky); } .v5 .kicker { color: var(--sky); }
+  .v5 .c .ph { padding: 10px; background: rgba(255,255,255,.06); border-radius: 22px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+  .v5 .c img { border-radius: 14px; }
+  .v5 .t { padding: 20px 4px 0; } .v5 .t p { color: rgba(255,255,255,.6); }
+
+  @media (max-width: 860px) {
+    .var { min-height: 0; }
+    .g { grid-template-columns: 1fr 1fr; gap: 12px; } .v4 .g { gap: 20px 12px; }
+    .c .ph, .v2 .ph, .v3 .ph, .v4 .ph { height: 240px; }
+    .c h3 { font-size: 17px; } .c p { font-size: 13px; }
+    .v1 .c { padding: 8px; border-radius: 20px; } .v1 .t { padding: 12px 6px 6px; }
+    .v2 .t { padding: 14px; } .v3 .t { left: 8px; right: 8px; bottom: 8px; padding: 10px 12px; }
+    .v4 small { font-size: 10px; margin: 12px 0 6px; }
+    .v5 .c .ph { padding: 6px; }
+    .lbl span { display: block; margin: 4px 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <path id="tooth" d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/>
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#33568f"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(42 60) scale(.9)"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+
+<div class="intro"><h1>Врачи — одинаковые карточки, 5 вариантов</h1><p>Все карточки равные, только имя и должность. Каждый вариант занимает один экран: высота фото подстраивается под окно, чтобы весь состав помещался целиком. Сетка сама перестроится, если врачей станет 4–5.</p></div>
+<section class="var v1"><div class="lbl"><b>1. Фото, подпись под ним</b><span>Светлая карточка: фото сверху, под ним имя и должность. Самый привычный и спокойный вид.</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Врачи</span><h2>Люди, которые <em>будут лечить</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><h3>Иливанова Юлия Юрьевна</h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><h3>Козлова Наталья Андреевна</h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><h3>Саблин Кирилл Андреевич</h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article></div></div></section>
+<section class="var v2"><div class="lbl"><b>2. Подпись поверх фото</b><span>Фото на всю карточку, имя и должность белым по затемнению снизу — как карточки направлений.</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Врачи</span><h2>Люди, которые <em>будут лечить</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><h3>Иливанова Юлия Юрьевна</h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><h3>Козлова Наталья Андреевна</h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><h3>Саблин Кирилл Андреевич</h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article></div></div></section>
+<section class="var v3"><div class="lbl"><b>3. Стеклянная плашка</b><span>Фото на всю карточку, подпись на светлой матовой плашке внутри фото. Мягче, чем затемнение.</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Врачи</span><h2>Люди, которые <em>будут лечить</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><h3>Иливанова Юлия Юрьевна</h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><h3>Козлова Наталья Андреевна</h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><h3>Саблин Кирилл Андреевич</h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article></div></div></section>
+<section class="var v4"><div class="lbl"><b>4. Типографика под фото</b><span>Фото без рамки, должность мелкими заглавными сверху, имя крупно в две строки — фамилия отдельно. Журнальный вид, без «карточек».</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Врачи</span><h2>Люди, которые <em>будут лечить</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><small>Главный врач, стоматолог общей практики</small><h3><span>Иливанова</span>Юлия Юрьевна</h3></article><article class="c"><div class="ph"><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><small>Стоматолог общей практики</small><h3><span>Козлова</span>Наталья Андреевна</h3></article><article class="c"><div class="ph"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><small>Стоматолог-хирург, стоматолог-ортопед</small><h3><span>Саблин</span>Кирилл Андреевич</h3></article></div></div></section>
+<section class="var v5"><div class="lbl"><b>5. Тёмная полоса</b><span>Весь блок на тёмном фоне, фото в светлых рамках-«паспарту», подпись белым. Даёт главной один тёмный акцент между светлыми блоками.</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Врачи</span><h2>Люди, которые <em>будут лечить</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><h3>Иливанова Юлия Юрьевна</h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><h3>Козлова Наталья Андреевна</h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><h3>Саблин Кирилл Андреевич</h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article></div></div></section>
+</body>
+</html>
