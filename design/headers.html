@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Шапка — 5 цветовых вариантов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1793146034">
+
+<style>
+  body { background: #e9edf3; }
+  .intro { max-width: 1400px; margin: 0 auto; padding: 28px 24px 4px; }
+  .intro h1 { font-size: 28px; margin: 0 0 6px; }
+  .intro p { color: var(--mute); max-width: 900px; }
+  .var { max-width: none; margin: 34px 0 0; }
+  .var .lbl { max-width: 1400px; margin: 0 auto 12px; padding: 0 24px; }
+  .var .lbl b { font: 600 20px var(--head); display: block; }
+  .var .lbl span { color: var(--mute); }
+  .scenes { display: grid; grid-template-rows: auto auto; gap: 10px; }
+  .scene { position: relative; overflow: hidden; height: 230px; }
+  .scene .hdr { position: absolute; }
+  .scene.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 22%; }
+  .scene.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,20,30,.5) 0%, rgba(14,20,30,0) 40%), linear-gradient(90deg, rgba(14,20,30,.85) 0%, rgba(14,20,30,.5) 45%, rgba(14,20,30,.1) 80%); }
+  .scene.photo .cap { position: absolute; left: 44px; bottom: 30px; z-index: 1; color: #fff; font: 600 44px/1 var(--head); letter-spacing: -.04em; }
+  .scene.light { background: var(--paper); }
+  .scene.light .cap { position: absolute; left: 44px; bottom: 34px; font: 600 40px/1.05 var(--head); letter-spacing: -.03em; }
+  .scene.light .cap em { display: block; }
+  .tag { position: absolute; right: 24px; bottom: 16px; z-index: 2; font: 600 12px var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.85); color: var(--ink); }
+
+  /* 1. тёмное стекло */
+  .v-dark .bar { background: rgba(18,26,40,.62); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 10px 30px rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.1); }
+  .v-dark .logo small { color: rgba(255,255,255,.6); }
+  .v-dark .eye { box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .v-dark .nav a:hover { background: rgba(255,255,255,.1); }
+
+  /* 2. фирменный синий */
+  .v-blue .bar { background: var(--blue); color: #fff; box-shadow: 0 10px 30px rgba(51,86,143,.3); }
+  .v-blue .logo small { color: rgba(255,255,255,.65); }
+  .v-blue .eye { box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+  .v-blue .btn { background: #fff; color: var(--blue); }
+  .v-blue .btn .ar { background: var(--blue); color: #fff; }
+  .v-blue .nav a:hover { background: rgba(255,255,255,.12); }
+  .v-blue .logo svg use { filter: brightness(0) invert(1); }
+
+  /* 3. меняется по фону: на фото — светлое стекло (как сейчас), на светлой странице — тёмная */
+  .v-auto .light .bar { background: rgba(18,26,40,.9); color: #fff; box-shadow: 0 10px 30px rgba(15,26,46,.18); }
+  .v-auto .light .logo small { color: rgba(255,255,255,.6); }
+  .v-auto .light .eye { box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+
+  /* 4. графит */
+  .v-ink .bar { background: #121a28; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+  .v-ink .logo small { color: rgba(255,255,255,.55); }
+  .v-ink .eye { box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
+  .v-ink .nav a:hover { background: rgba(255,255,255,.08); }
+
+  /* 5. полоса: на фото без плашки, на странице — синяя полоса у края без скругления */
+  .v-strip .hdr { top: 0; }
+  .v-strip .photo .bar { background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; color: #fff; margin: 0; border-radius: 0; padding: 18px 40px; }
+  .v-strip .photo .logo small { color: rgba(255,255,255,.65); }
+  .v-strip .photo .eye { box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+  .v-strip .light .bar { background: var(--blue); color: #fff; margin: 0; border-radius: 0; padding: 12px 40px; box-shadow: 0 6px 20px rgba(51,86,143,.25); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .v-strip .light .logo small { color: rgba(255,255,255,.65); }
+  .v-strip .light .eye { box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+  .v-strip .light .btn { background: #fff; color: var(--blue); }
+  .v-strip .light .btn .ar { background: var(--blue); color: #fff; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <path id="tooth" d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/>
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#33568f"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(42 60) scale(.9)"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+
+<div class="intro"><h1>Шапка — 5 цветовых вариантов</h1><p>Во всех вариантах шапка во всю ширину окна, как в «Полдне». Каждый показан дважды: над фото первого экрана и над светлой частью страницы — там, где сейчас «белое на белом».</p></div>
+<section class="var v-dark"><div class="lbl"><b>1. Тёмное стекло</b><span>Полупрозрачная тёмная плашка с размытием, светлый текст. Одинаково читается на фото и на светлых блоках, спокойная.</span></div>
+<div class="scenes">
+  <div class="scene photo"><img src="ph/v1.jpg" alt=""><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Студия, где делают улыбки</div><span class="tag">над фото</span></div>
+  <div class="scene light"><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Четыре направления — <em>одна команда</em></div><span class="tag">над страницей</span></div>
+</div></section>
+<section class="var v-blue"><div class="lbl"><b>2. Фирменный синий</b><span>Сплошная синяя плашка, белый текст, белая кнопка «Записаться». Самая заметная и «фирменная».</span></div>
+<div class="scenes">
+  <div class="scene photo"><img src="ph/v1.jpg" alt=""><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Студия, где делают улыбки</div><span class="tag">над фото</span></div>
+  <div class="scene light"><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Четыре направления — <em>одна команда</em></div><span class="tag">над страницей</span></div>
+</div></section>
+<section class="var v-auto"><div class="lbl"><b>3. Меняется по фону</b><span>Над фото первого экрана — светлое стекло, как сейчас; как только под шапкой светлая страница — становится тёмной. Белого на белом не бывает.</span></div>
+<div class="scenes">
+  <div class="scene photo"><img src="ph/v1.jpg" alt=""><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Студия, где делают улыбки</div><span class="tag">над фото</span></div>
+  <div class="scene light"><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Четыре направления — <em>одна команда</em></div><span class="tag">над страницей</span></div>
+</div></section>
+<section class="var v-ink"><div class="lbl"><b>4. Графит</b><span>Почти чёрная сплошная плашка, синий только у кнопки. Строго и контрастно на любом фоне.</span></div>
+<div class="scenes">
+  <div class="scene photo"><img src="ph/v1.jpg" alt=""><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Студия, где делают улыбки</div><span class="tag">над фото</span></div>
+  <div class="scene light"><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Четыре направления — <em>одна команда</em></div><span class="tag">над страницей</span></div>
+</div></section>
+<section class="var v-strip"><div class="lbl"><b>5. Полоса без плашки</b><span>Над фото — без фона, просто белый текст. При прокрутке — сплошная синяя полоса во всю ширину у верхнего края, без скругления. Классический вариант.</span></div>
+<div class="scenes">
+  <div class="scene photo"><img src="ph/v1.jpg" alt=""><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Студия, где делают улыбки</div><span class="tag">над фото</span></div>
+  <div class="scene light"><header class="hdr"><div class="bar">
+  <a class="logo" href="home.html?v=1793145910"><svg width="40" height="40"><use href="#mark"/></svg><span><b>Студия улыбки</b><small>стоматология · Ачинск</small></span></a>
+  <nav class="nav"><a>Услуги</a><a href="ceny.html?v=1793145910">Цены</a><a>Врачи</a><a>Пациентам</a><a>О клинике</a><a>Контакты</a></nav>
+  <a class="eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a class="tel">+7 (923) 313-05-33</a>
+  <a class="btn" href="#zapis">Записаться <span class="ar"><svg width="16" height="16"><use href="#arr"/></svg></span></a>
+  <a class="burger" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header><div class="cap">Четыре направления — <em>одна команда</em></div><span class="tag">над страницей</span></div>
+</div></section>
+</body>
+</html>
