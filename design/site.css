@@ -1,8 +1,8 @@
 /* «Студия улыбки»: синяя палитра, Onest + Manrope.
    Эскиз для согласования, не финальный CSS. */
 :root {
-  --paper: #e8ecf1;
-  --paper-2: #dce2ea;
+  --paper: #f6f7f9;
+  --paper-2: #eceff3;
   --card: #ffffff;
   --ink: #0f1a2e;
   --mute: #5b6577;
@@ -11,13 +11,16 @@
   --blue-2: #284676;
   --blue-ink: #e9f0fc;
   --accent: #33568f;
+  --terra: #c4613f;   /* второй акцент: кнопки, точки, стрелки */
+  --terra-2: #a84f30;
+  --edge: #cbd2dc;    /* контур карточек — отделяет белое от светлого фона */
   --sky: #b7c9e6;
   /* поверхности: фон страницы → белые карточки; фото всегда внутри карточки с отступом */
   --r-lg: 32px;      /* крупные блоки-панели */
   --r: 24px;         /* карточки */
   --r-in: 16px;      /* фото внутри карточки */
-  --shadow: 0 1px 0 rgba(15,26,46,.04), 0 18px 40px -30px rgba(15,26,46,.35);
-  --tint: #cfdaea; /* единственная тонированная подложка — команда */
+  --shadow: 0 0 0 1px var(--edge);
+  --tint: #e7eaf0; /* единственная тонированная подложка — команда */
   --head: "Onest", system-ui, sans-serif;
   --body: "Manrope", system-ui, sans-serif;
   --ease: cubic-bezier(.2, .7, .3, 1);
@@ -35,7 +38,7 @@ p { margin: 0; }
 .wrap { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
 .muted { color: var(--mute); }
 .kicker { font: 600 12px var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); display: inline-flex; gap: 10px; align-items: center; }
-.kicker::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--sky); }
+.kicker::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
 
 /* фото: общая обработка, чтобы снимки с телефона смотрелись одной серией */
 .photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -44,14 +47,14 @@ p { margin: 0; }
 .arch { border-radius: 24px; }
 
 /* кнопки */
-.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; padding: 0 28px; border-radius: 999px; font: 600 16px var(--body); border: 0; background: var(--blue); color: #fff; white-space: nowrap; cursor: pointer; overflow: hidden; transition: background .3s; }
-.btn:hover { background: var(--blue-2); }
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; padding: 0 28px; border-radius: 999px; font: 600 16px var(--body); border: 0; background: var(--terra); color: #fff; white-space: nowrap; cursor: pointer; overflow: hidden; transition: background .3s; }
+.btn:hover { background: var(--terra-2); }
 .btn .ar { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.14); transition: transform .4s var(--ease); }
 .btn:hover .ar { transform: translateX(3px); }
 .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px #c3cddb; }
 .btn.ghost:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
 .btn.light { background: var(--paper); color: var(--ink); }
-.btn.light .ar { background: var(--blue); color: #fff; }
+.btn.light .ar { background: var(--terra); color: #fff; }
 
 /* шапка — «таблетка» во всю ширину окна с отступом 20px, как в «Полдне» */
 .hdr { position: fixed; top: 14px; left: 0; right: 0; z-index: 20; pointer-events: none; }
@@ -142,7 +145,7 @@ p { margin: 0; }
 /* направления — как страница услуг «Полдня»: фото сверху внутри карточки, описание, сведения строкой */
 .svc { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .scard { position: relative; display: flex; flex-direction: column; background: var(--card); border-radius: var(--r); padding: 10px; box-shadow: var(--shadow); transition: translate .4s var(--ease), box-shadow .4s var(--ease); }
-.scard:hover { translate: 0 -4px; box-shadow: 0 30px 60px -30px rgba(15,26,46,.5); }
+.scard:hover { translate: 0 -4px; box-shadow: 0 0 0 1px var(--edge), 0 30px 60px -30px rgba(15,26,46,.4); }
 .sph { aspect-ratio: 16 / 7; overflow: hidden; border-radius: var(--r-in); background: var(--paper-2); }
 .sph img { width: 100%; height: 100%; object-fit: cover; transition: scale 1s var(--ease); }
 .scard:hover .sph img { scale: 1.04; }
@@ -155,7 +158,7 @@ p { margin: 0; }
 .smeta dd { margin: 6px 0 0; font-weight: 600; }
 .smeta .why { flex: 1 1 280px; } .smeta .why dd { font-weight: 500; }
 .go { margin-top: 26px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1.5px var(--line); transition: background .3s, color .3s, box-shadow .3s; }
-.scard:hover .go { background: var(--blue); color: #fff; box-shadow: none; }
+.scard:hover .go { background: var(--terra); color: #fff; box-shadow: none; }
 /* первый визит — крупная белая карточка: фото внутри слева, шаги справа */
 .visit { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: stretch; padding: 10px; }
 .vph { overflow: hidden; border-radius: calc(var(--r-lg) - 10px); min-height: 520px; }
