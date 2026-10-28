@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Команда — шторки, 4 подачи</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1793146361">
+<style>
+  .intro { max-width: 1400px; margin: 0 auto; padding: 48px 24px 40px; }
+  .intro h1 { font-size: 32px; margin-bottom: 8px; } .intro p { color: var(--mute); max-width: 900px; }
+  .var { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 48px 0; border-top: 1px solid var(--line); box-sizing: border-box; }
+  .lbl { max-width: 1400px; width: 100%; margin: 0 auto 28px; padding: 0 24px; box-sizing: border-box; }
+  .lbl b { font: 600 18px var(--head); } .lbl span { color: var(--mute); margin-left: 10px; }
+  .var .wrap { width: 100%; box-sizing: border-box; }
+  .var .sec-head { margin-bottom: 40px; }
+  .var img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+
+  /* общая механика шторок */
+  .g { display: flex; gap: 10px; height: min(62vh, 680px); }
+  .c { position: relative; flex: 1; min-width: 0; border-radius: 22px; overflow: hidden; outline: none; transition: flex .7s var(--ease); cursor: pointer; }
+  .g:not(.fixed) .c:hover, .g:not(.fixed) .c:focus-visible { flex: 2.2; }
+  .ph { position: absolute; inset: 0; overflow: hidden; }
+  .ph img { transition: scale 1.2s var(--ease); } .c:hover img { scale: 1.03; }
+  .c::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,20,30,.85), rgba(14,20,30,0) 42%); pointer-events: none; }
+  .t { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 24px; color: #fff; }
+  .t h3 { font-size: 20px; } .t .sur { display: block; font-size: 24px; letter-spacing: -.03em; } .t .io { font-weight: 500; font-size: 16px; }
+  .t p { color: rgba(255,255,255,.75); margin-top: 6px; font-size: 14px; }
+
+  .panel { max-width: 1400px; width: calc(100% - 48px); margin: 0 auto; box-sizing: border-box; border-radius: 36px; padding: 64px; }
+
+  /* 1 — тёмная подложка */
+  .p1 .panel, .p4 .panel { background: var(--ink); color: #fff; }
+  .p1 h2 em, .p4 h2 em, .p1 .kicker, .p4 .kicker { color: var(--sky); }
+  .p1 .link, .p4 .link { color: #fff; border-color: rgba(255,255,255,.3); }
+  .p1 .c, .p4 .c { box-shadow: 0 0 0 1px rgba(255,255,255,.06); }
+
+  /* 2 — белые карточки-рамки */
+  .p2 .c { background: var(--card); padding: 10px 10px 0; display: flex; flex-direction: column; box-shadow: 0 18px 40px -26px rgba(15,26,46,.4); }
+  .p2 .c::after { display: none; }
+  .p2 .ph { position: relative; inset: auto; flex: 1; border-radius: 15px; }
+  .p2 .t { position: static; color: var(--ink); padding: 18px 10px 20px; min-height: 104px; box-sizing: border-box; }
+  .p2 .t p { color: var(--mute); }
+  .p2 .t .sur, .p2 .t .io { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* 3 — заголовок слева на светлой панели */
+  .p3 .panel { background: var(--paper-2); display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: center; }
+  .p3 .txt h2 { margin: 16px 0 18px; font-size: clamp(34px, 3.4vw, 52px); } .p3 .txt p { color: var(--mute); margin-bottom: 24px; }
+
+  /* 4 — одна раскрыта */
+  .p4 .c { flex: 1; } .p4 .c.on { flex: 3.2; }
+  .p4 .c:not(.on) .io, .p4 .c:not(.on) p { opacity: 0; transition: opacity .2s; }
+  .p4 .c.on .io, .p4 .c.on p { opacity: 1; transition: opacity .4s .35s; }
+  .p4 .c:not(.on) .t { padding: 20px 16px; } .p4 .c:not(.on) .sur { font-size: 18px; }
+  .p4 .t .sur, .p4 .t .io, .p4 .t p { white-space: nowrap; }
+
+  @media (max-width: 860px) {
+    .var { min-height: 0; } .lbl span { display: block; margin: 4px 0 0; }
+    .panel { width: calc(100% - 24px); padding: 28px 14px; border-radius: 26px; }
+    .g { display: grid; grid-template-columns: 1fr 1fr; height: auto; gap: 10px; }
+    .c, .p4 .c.on { flex: none; height: 260px; } .c:last-child { grid-column: span 2; }
+    .t { padding: 14px; } .t .sur { font-size: 18px; } .t .io { font-size: 13px; } .t p { font-size: 12px; }
+    .p2 .c { height: auto; } .p2 .ph { height: 200px; flex: none; } .p2 .t { min-height: 0; padding: 12px 6px 14px; }
+    .p3 .panel { grid-template-columns: 1fr; gap: 28px; }
+    .p4 .c .io, .p4 .c p { opacity: 1 !important; } .p4 .t .sur, .p4 .t .io, .p4 .t p { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <path id="tooth" d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/>
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#33568f"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(42 60) scale(.9)"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+
+<div class="intro"><h1>Команда — шторки, 4 подачи</h1><p>Основа — вариант «Шторки». Фото всех пятерых заново обрезаны из оригиналов по одной мерке: глаза на одной высоте, одинаковое расстояние между глазами, лицо по центру. Наведите на человека — его фото раскрывается.</p></div>
+<section class="var p1"><div class="lbl"><b>1. Тёмная подложка</b><span>Шторки внутри большой тёмной панели со скруглением, заголовок белым. Блок отделяется от светлых соседей и выглядит как единое целое.</span></div><div class="panel"><div class="sec-head"><div><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c" tabindex="0"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></section>
+<section class="var p2"><div class="lbl"><b>2. Белые карточки-рамки</b><span>Каждая шторка — белая карточка: фото внутри с отступом, имя и должность под фото, на белом. При наведении карточка раскрывается вместе с подписью.</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c" tabindex="0"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></section>
+<section class="var p3"><div class="lbl"><b>3. Заголовок на подложке слева</b><span>Светлая панель на всю ширину: слева заголовок и короткий текст, справа шторки. Блок ниже, а фото всё равно крупные.</span></div><div class="panel"><div class="txt"><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2><p>Три врача, медсестра и администратор. Небольшая клиника, где вас запомнят по имени.</p><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c" tabindex="0"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></section>
+<section class="var p4"><div class="lbl"><b>4. Одна раскрыта всегда</b><span>Тёмная панель, но одна шторка всегда раскрыта — сначала главврач. Наведение или нажатие раскрывает другого человека. Подпись видна полностью только у раскрытой, у остальных — фамилия.</span></div><div class="panel"><div class="sec-head"><div><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c" tabindex="0"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c" tabindex="0"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></section>
+<script>
+  document.querySelectorAll('.p4 .g').forEach(g => {
+    g.classList.add('fixed');
+    const cs = [...g.children], pick = c => cs.forEach(x => x.classList.toggle('on', x === c));
+    pick(cs[0]);
+    cs.forEach(c => { c.addEventListener('mouseenter', () => pick(c)); c.addEventListener('focus', () => pick(c)); c.addEventListener('click', () => pick(c)); });
+  });
+</script>
+</body>
+</html>
