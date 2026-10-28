@@ -173,7 +173,8 @@ p { margin: 0; }
 
 /* врачи */
 /* команда — белые карточки на светло-голубой панели; фото выровнены по глазам, одна позиция кадра на всех */
-.team { padding: 110px 0; background: var(--tint); }
+/* приглушённая текстура льна под светлой вуалью — заглушка, потом сгенерируем свою */
+.team { padding: 110px 0; background: linear-gradient(rgb(231 234 240 / .86), rgb(231 234 240 / .86)), url(ph/tex-len.jpg) center / cover; }
 .team .sec-head { margin-bottom: 40px; }
 .tgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
 .tcard { background: var(--card); border-radius: var(--r); padding: 10px 10px 22px; box-shadow: var(--shadow); }
@@ -227,7 +228,7 @@ p { margin: 0; }
 
 
 /* подвал */
-footer { background: var(--ink); color: #c9d1df; margin-top: 110px; padding: 72px 0 28px; border-radius: 40px 40px 0 0; overflow: hidden; }
+footer { background: radial-gradient(ellipse 55% 90% at 12% 0%, rgb(140 170 220 / .16), transparent 70%), linear-gradient(rgb(15 26 46 / .9), rgb(15 26 46 / .9)), url(ph/tex-tkan.jpg) center / cover; color: #c9d1df; margin-top: 110px; padding: 72px 0 28px; border-radius: 40px 40px 0 0; overflow: hidden; }
 footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
 footer h4 { font: 600 12px var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--sky); margin: 0 0 16px; }
 footer a { display: block; margin: 9px 0; }
