@@ -1,8 +1,8 @@
 /* «Студия улыбки»: синяя палитра, Onest + Manrope.
    Эскиз для согласования, не финальный CSS. */
 :root {
-  --paper: #f4f5f7;
-  --paper-2: #e7eaef;
+  --paper: #e8ecf1;
+  --paper-2: #dce2ea;
   --card: #ffffff;
   --ink: #0f1a2e;
   --mute: #5b6577;
@@ -16,8 +16,8 @@
   --r-lg: 32px;      /* крупные блоки-панели */
   --r: 24px;         /* карточки */
   --r-in: 16px;      /* фото внутри карточки */
-  --shadow: 0 18px 40px -28px rgba(15,26,46,.45);
-  --tint: linear-gradient(160deg, #e6edf6, #d6e0ee); /* единственная тонированная подложка — команда */
+  --shadow: 0 1px 0 rgba(15,26,46,.04), 0 18px 40px -30px rgba(15,26,46,.35);
+  --tint: #cfdaea; /* единственная тонированная подложка — команда */
   --head: "Onest", system-ui, sans-serif;
   --body: "Manrope", system-ui, sans-serif;
   --ease: cubic-bezier(.2, .7, .3, 1);
@@ -127,9 +127,10 @@ p { margin: 0; }
 .hero .wrap { padding-bottom: 108px; }
 
 /* секции */
-.sec { padding: 64px 0; }
-.page > .sec:first-child { padding-top: 120px; }
-.page > .sec:last-child { padding-bottom: 40px; }
+.sec { padding: 110px 0; }
+.page > .sec:first-child { padding-top: 140px; }
+/* полоса во всю ширину окна (с полями как у шапки) — не больше двух на странице: команда и запись */
+.band { margin: 0 20px; border-radius: 40px; }
 .sec-head { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; margin-bottom: 56px; }
 .sec-head h2 { margin-top: 16px; max-width: 860px; }
 .link { font-weight: 600; display: inline-flex; gap: 10px; align-items: center; border-bottom: 1.5px solid var(--sky); padding-bottom: 2px; }
@@ -149,9 +150,10 @@ p { margin: 0; }
 .sbody h3 { font-size: clamp(26px, 2.2vw, 34px); letter-spacing: -.03em; }
 .sbody h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--r); }
 .sbody > p { margin-top: 12px; color: var(--mute); max-width: 52ch; }
-.smeta { display: flex; flex-wrap: wrap; gap: 14px 40px; margin: 24px 0 0; padding-top: 22px; border-top: 1px solid var(--line); }
+.smeta { display: flex; flex-wrap: wrap; gap: 14px 48px; margin: 24px 0 0; padding-top: 22px; border-top: 1px solid var(--line); }
 .smeta dt { font: 700 11px var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
 .smeta dd { margin: 6px 0 0; font-weight: 600; }
+.smeta .why { flex: 1 1 280px; } .smeta .why dd { font-weight: 500; }
 .go { margin-top: 26px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1.5px var(--line); transition: background .3s, color .3s, box-shadow .3s; }
 .scard:hover .go { background: var(--blue); color: #fff; box-shadow: none; }
 /* первый визит — крупная белая карточка: фото внутри слева, шаги справа */
@@ -167,7 +169,7 @@ p { margin: 0; }
 
 /* врачи */
 /* команда — белые карточки на светло-голубой панели; фото выровнены по глазам, одна позиция кадра на всех */
-.team { border-radius: var(--r-lg); padding: 64px; background: var(--tint); }
+.team { padding: 110px 0; background: var(--tint); }
 .team .sec-head { margin-bottom: 40px; }
 .tgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
 .tcard { background: var(--card); border-radius: var(--r); padding: 10px 10px 22px; box-shadow: var(--shadow); }
@@ -187,7 +189,7 @@ p { margin: 0; }
 .pcell p { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--mute); }
 
 /* запись: фото-фон под нейтральным затемнением; синий здесь только у кнопки */
-.cta { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; border-radius: var(--r-lg); padding: 96px 72px; min-height: 600px; background: #141c28; color: #fff; }
+.cta { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; padding: 120px max(56px, calc((100% - 1352px) / 2)); min-height: 640px; background: #141c28; color: #fff; }
 .cta-bg { position: absolute; inset: 0; }
 .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
 .cta-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,20,30,.88) 0%, rgba(14,20,30,.7) 45%, rgba(14,20,30,.45) 100%); }
@@ -293,13 +295,14 @@ footer .req { padding-top: 18px; border-top: 1px solid #24314a; font-size: 13px;
   .hdr .tel, .hdr .btn { display: none; }
   .logo { margin-right: auto; }
   .burger { display: grid; }
-  .sec { padding: 36px 0; }
-  .page > .sec:first-child { padding-top: 76px; }
+  .sec { padding: 64px 0; }
+  .page > .sec:first-child { padding-top: 84px; }
+  .band { margin: 0 8px; border-radius: 28px; }
   .sec-head { grid-template-columns: 1fr; margin-bottom: 36px; }
-  .cta { border-radius: 26px; }
   .step { grid-template-columns: 56px 1fr; }
   .step::before { font-size: 34px; }
-  .team { padding: 28px 14px; border-radius: 26px; margin: 0 -12px; }
+  .team { padding: 56px 0; }
+  .team .wrap { padding: 0 10px; }
   .tgrid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .tcard { padding: 8px 8px 16px; border-radius: 20px; }
   .tcard h3 { padding: 0 6px; font-size: 13px; } .tcard h3 span { font-size: 18px; } .tcard p { padding: 0 6px; font-size: 12px; }
