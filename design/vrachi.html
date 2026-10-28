@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Врачи — 4 варианта блока</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1793146361">
+<style>
+  .intro { max-width: 1400px; margin: 0 auto; padding: 48px 24px 0; }
+  .intro h1 { font-size: 32px; margin-bottom: 8px; } .intro p { color: var(--mute); max-width: 900px; }
+  .lbl { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+  .lbl b { font: 600 22px var(--head); display: block; } .lbl span { color: var(--mute); display: block; max-width: 900px; }
+  .var { padding: 70px 0 30px; border-top: 1px solid var(--line); margin-top: 60px; }
+  .var .sec { padding: 56px 0 30px; }
+  .tg { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .tg span { font-size: 13px; padding: 5px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); white-space: nowrap; }
+  .var img { display: block; }
+
+  /* А */
+  .va { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; }
+  .va-main { position: relative; margin: 0; min-height: 640px; border-radius: 28px; overflow: hidden; color: #fff; }
+  .va-main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+  .va-main::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,20,30,.88), rgba(14,20,30,.35) 45%, rgba(14,20,30,0) 70%); }
+  .va-main figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 40px; }
+  .va-main h3 { font-size: clamp(28px, 2.4vw, 38px); margin: 14px 0 10px; }
+  .va-main p { color: rgba(255,255,255,.8); max-width: 46ch; }
+  .va-main .tg span { box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+  .pill { font: 600 12px var(--body); letter-spacing: .1em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.16); backdrop-filter: blur(8px); }
+  .va-side { display: grid; grid-template-rows: 1fr 1fr auto; gap: 24px; }
+  .va-row { display: grid; grid-template-columns: minmax(160px, 40%) 1fr; gap: 28px; align-items: stretch; background: var(--card); border-radius: 28px; padding: 14px 28px 14px 14px; }
+  .va-row > div { align-self: center; }
+  .va-row img { width: 100%; height: 100%; min-height: 200px; object-fit: cover; object-position: 50% 25%; border-radius: 18px; }
+  .va-row h3 { margin-bottom: 6px; } .va-row p { color: var(--mute); }
+  .va-help { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; align-items: center; padding: 26px 30px; border-radius: 24px; background: var(--ink); color: #fff; }
+  .va-help b { font: 600 20px var(--head); } .va-help span { color: rgba(255,255,255,.7); grid-column: 1; }
+  .va-help i { grid-row: 1 / 3; grid-column: 2; width: 48px; height: 48px; border-radius: 50%; background: var(--blue); display: grid; place-items: center; }
+
+  /* Б */
+  .vb { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .vb-card { position: relative; aspect-ratio: 3 / 4.3; border-radius: 26px; overflow: hidden; color: #fff; background: #1a2333; }
+  .vb-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: scale 1s var(--ease); }
+  .vb-card:hover img { scale: 1.05; }
+  .vb-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,20,30,.9), rgba(14,20,30,.3) 40%, rgba(14,20,30,0) 60%); }
+  .vb-txt { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 26px; }
+  .vb-txt h3 { font-size: 24px; margin-bottom: 6px; } .vb-txt p { color: rgba(255,255,255,.78); font-size: 15px; }
+  .vb-txt .tg span { box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+  .vb-help { display: flex; flex-direction: column; gap: 14px; padding: 30px; background: var(--card); color: var(--ink); }
+  .vb-help::after { display: none; }
+  .vb-help b { font: 600 32px/1.05 var(--head); letter-spacing: -.03em; margin-top: 8px; } .vb-help > span:not(.kicker) { color: var(--mute); }
+  .vb-help .vb-tel { margin-top: auto; font: 600 22px var(--head); color: var(--blue); }
+
+  /* В */
+  .vc { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: start; }
+  .vc-list { list-style: none; margin: 0; padding: 0; }
+  .vc-row { display: grid; grid-template-columns: 70px 1fr auto; gap: 24px; align-items: center; padding: 38px 0; border-top: 1px solid var(--line); cursor: pointer; outline: none; }
+  .vc-row:last-child { border-bottom: 1px solid var(--line); }
+  .vc-n { font: 600 20px var(--head); color: var(--mute); transition: color .3s; }
+  .vc-row h3 { font-size: clamp(26px, 2.3vw, 36px); letter-spacing: -.03em; margin-bottom: 6px; transition: color .3s; }
+  .vc-row p { color: var(--mute); } .vc-row .tg { margin: 0; justify-content: flex-end; }
+  .vc-row.on h3, .vc-row.on .vc-n { color: var(--blue); }
+  .vc-ph { position: sticky; top: 110px; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--paper-2); }
+  .vc-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s; }
+  .vc-ph img.on { opacity: 1; }
+
+  /* Г */
+  .vd { display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: start; background: var(--paper-2); border-radius: 32px; padding: 90px 64px; }
+  .vd-who { background: var(--card); border-radius: 26px; padding: 30px; display: grid; gap: 18px; }
+  .vd-t { font: 600 13px var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+  .vd-doc { display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: center; padding-top: 18px; border-top: 1px solid var(--line); }
+  .vd-doc img { width: 110px; height: 130px; object-fit: cover; object-position: 50% 25%; border-radius: 16px; }
+  .vd-doc h3 { font-size: 20px; margin-bottom: 4px; } .vd-doc p { color: var(--mute); font-size: 15px; } .vd-doc small { color: var(--blue); font-weight: 600; font-size: 13px; }
+  .vd-who .link { justify-self: start; margin-top: 6px; }
+
+  @media (max-width: 1100px) { .vb { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 860px) {
+    .va, .vc, .vd { grid-template-columns: 1fr; } .va-main { min-height: 520px; } .va-main figcaption { padding: 24px; }
+    .va-row { grid-template-columns: 110px 1fr; padding: 12px 18px 12px 12px; gap: 18px; } .va-row img { min-height: 140px; }
+    .vb { gap: 12px; } .vb-txt { padding: 16px; } .vb-txt h3 { font-size: 18px; } .vb-txt p, .vb-txt .tg { display: none; } .vb-help { padding: 18px; } .vb-help b { font-size: 22px; } .vb-help .vb-tel { font-size: 16px; }
+    .vc-row { grid-template-columns: 1fr; gap: 10px; padding: 26px 0; } .vc-n { display: none; } .vc-row .tg { justify-content: flex-start; } .vc-ph { display: none; }
+    .vd { padding: 48px 20px; gap: 40px; } .vd-who { padding: 20px; } .vd-doc { grid-template-columns: 80px 1fr; } .vd-doc img { width: 80px; height: 96px; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <path id="tooth" d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/>
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#33568f"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(42 60) scale(.9)"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+
+<div class="intro"><h1>Блок «Врачи» — 4 варианта</h1><p>Фото и расписание настоящие, из материалов клиники. Каждый вариант показан так, как он встанет на главной между «Первым визитом» и ценами.</p></div>
+<section class="var"><div class="lbl"><b>А. Главврач крупно</b><span>Иливанова на большом фото с подписью, остальные — компактными строками справа. Внизу подсказка «не знаете, к кому?». Подчёркивает, что клиникой руководит врач, который сам лечит.</span></div><div class="sec"><div class="wrap"><div class="sec-head"><div><span class="kicker">Врачи</span><h2>Люди, которые <em>будут лечить</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="va">
+  <figure class="va-main"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"><figcaption><span class="pill">Главный врач</span><h3>Иливанова Юлия Юрьевна</h3><p>Стоматолог общей практики. Ведёт приём сама и отвечает за качество лечения в клинике.</p><div class="tg"><span>пн, ср, пт 9–15</span><span>вт, чт 15–21</span></div></figcaption></figure>
+  <div class="va-side">
+    <article class="va-row"><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"><div><h3>Козлова Наталья Андреевна</h3><p>Стоматолог общей практики</p><div class="tg"><span>пн, ср, пт 15–21</span><span>вт, чт 9–15</span></div></div></article>
+    <article class="va-row"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"><div><h3>Саблин Кирилл Андреевич</h3><p>Стоматолог-хирург, стоматолог-ортопед</p><div class="tg"><span>пн, ср, пт 12–20</span><span>вт, чт 15–21</span></div></div></article>
+    <a class="va-help"><b>Не знаете, к кому записаться?</b><span>Позвоните — администратор подберёт врача по вашей задаче.</span><i><svg width="16" height="16"><use href="#arr"/></svg></i></a>
+  </div>
+</div></div></div></section>
+<section class="var"><div class="lbl"><b>Б. Портреты карточками</b><span>Все врачи равны: высокие фото, имя и расписание поверх снизу — тем же приёмом, что направления выше. Четвёртое место занимает светлая карточка «не знаете, к кому?», чтобы ряд был полным.</span></div><div class="sec"><div class="wrap"><div class="sec-head"><div><span class="kicker">Врачи</span><h2>Люди, которые <em>будут лечить</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="vb">
+  <article class="vb-card"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"><div class="vb-txt"><h3>Иливанова Юлия Юрьевна</h3><p>Главный врач, стоматолог общей практики</p><div class="tg"><span>пн, ср, пт 9–15</span><span>вт, чт 15–21</span></div></div></article>
+  <article class="vb-card"><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"><div class="vb-txt"><h3>Козлова Наталья Андреевна</h3><p>Стоматолог общей практики</p><div class="tg"><span>пн, ср, пт 15–21</span><span>вт, чт 9–15</span></div></div></article>
+  <article class="vb-card"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"><div class="vb-txt"><h3>Саблин Кирилл Андреевич</h3><p>Стоматолог-хирург, стоматолог-ортопед</p><div class="tg"><span>пн, ср, пт 12–20</span><span>вт, чт 15–21</span></div></div></article>
+  <a class="vb-card vb-help"><span class="kicker">Запись</span><b>Не знаете, к кому?</b><span>Опишите задачу администратору — он подберёт врача и удобное время.</span><span class="vb-tel">+7 (923) 313-05-33</span></a>
+</div></div></div></section>
+<section class="var"><div class="lbl"><b>В. Список и одно фото</b><span>Без карточек: имена крупными строками, справа одно большое фото. Наведите на имя — фото меняется (на телефоне фото скрыто, остаётся список). Самый спокойный вариант.</span></div><div class="sec"><div class="wrap"><div class="sec-head"><div><span class="kicker">Врачи</span><h2>Люди, которые <em>будут лечить</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="vc"><ol class="vc-list">
+  <li class="vc-row on" data-i="0" tabindex="0"><span class="vc-n">01</span><div><h3>Иливанова Юлия Юрьевна</h3><p>Главный врач, стоматолог общей практики</p></div><div class="tg"><span>пн, ср, пт 9–15</span><span>вт, чт 15–21</span></div></li>
+  <li class="vc-row" data-i="1" tabindex="0"><span class="vc-n">02</span><div><h3>Козлова Наталья Андреевна</h3><p>Стоматолог общей практики</p></div><div class="tg"><span>пн, ср, пт 15–21</span><span>вт, чт 9–15</span></div></li>
+  <li class="vc-row" data-i="2" tabindex="0"><span class="vc-n">03</span><div><h3>Саблин Кирилл Андреевич</h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div><div class="tg"><span>пн, ср, пт 12–20</span><span>вт, чт 15–21</span></div></li>
+</ol><div class="vc-ph"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна" class=on><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"></div></div></div></div></section>
+<section class="var"><div class="lbl"><b>Г. Врачи в «Первом визите»</b><span>Отдельного блока на главной нет: «кто вас примет» стоит рядом с шагами первого приёма, на месте фото кресла. Подробные карточки — на странице «Врачи».</span></div><div class="sec"><div class="wrap"><div class="vd">
+  <div>
+    <span class="kicker">Первый визит</span><h2>Сначала план, <em>потом лечение</em></h2>
+    <div class="steps">
+      <div class="step"><div><h3>Позвоните или оставьте телефон</h3><p>Администратор подберёт время у нужного врача.</p></div></div>
+      <div class="step"><div><h3>Осмотр и диагностика</h3><p>Врач осматривает и объясняет варианты.</p></div></div>
+      <div class="step"><div><h3>План лечения и смета</h3><p>Этапы и стоимость — до начала работ.</p></div></div>
+      <div class="step"><div><h3>Лечение и контроль</h3><p>Работаем по плану, потом контрольный визит.</p></div></div>
+    </div>
+  </div>
+  <aside class="vd-who"><b class="vd-t">Кто вас примет</b>
+    <article class="vd-doc"><img src="dr-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"><div><h3>Иливанова Юлия Юрьевна</h3><p>Главный врач, стоматолог общей практики</p><small>пн, ср, пт 9–15 · вт, чт 15–21</small></div></article>
+    <article class="vd-doc"><img src="dr-kozlova.jpg" alt="Козлова Наталья Андреевна"><div><h3>Козлова Наталья Андреевна</h3><p>Стоматолог общей практики</p><small>пн, ср, пт 15–21 · вт, чт 9–15</small></div></article>
+    <article class="vd-doc"><img src="dr-sablin.jpg" alt="Саблин Кирилл Андреевич"><div><h3>Саблин Кирилл Андреевич</h3><p>Стоматолог-хирург, стоматолог-ортопед</p><small>пн, ср, пт 12–20 · вт, чт 15–21</small></div></article>
+    <a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a>
+  </aside>
+</div></div></div></section>
+<script>
+  document.querySelectorAll('.vc').forEach(vc => {
+    const rows = vc.querySelectorAll('.vc-row'), imgs = vc.querySelectorAll('.vc-ph img');
+    const pick = i => { rows.forEach((r, k) => r.classList.toggle('on', k == i)); imgs.forEach((m, k) => m.classList.toggle('on', k == i)); };
+    rows.forEach(r => { r.addEventListener('mouseenter', () => pick(r.dataset.i)); r.addEventListener('focus', () => pick(r.dataset.i)); });
+  });
+</script>
+</body>
+</html>
