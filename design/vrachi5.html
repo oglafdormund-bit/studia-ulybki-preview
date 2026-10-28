@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Команда — фото и подпись, 5 подач</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1793146361">
+<style>
+  .intro { max-width: 1400px; margin: 0 auto; padding: 48px 24px 40px; }
+  .intro h1 { font-size: 32px; margin-bottom: 8px; } .intro p { color: var(--mute); max-width: 900px; }
+  .var { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 48px 0; border-top: 1px solid var(--line); box-sizing: border-box; }
+  .lbl { max-width: 1400px; width: 100%; margin: 0 auto 28px; padding: 0 24px; box-sizing: border-box; }
+  .lbl b { font: 600 18px var(--head); } .lbl span { color: var(--mute); margin-left: 10px; }
+  .var .wrap { width: 100%; box-sizing: border-box; }
+  .var .sec-head { margin-bottom: 40px; }
+
+  /* общая карточка: фото 4:5, под ним имя и должность. Фото выровнены по глазам — одна позиция кадра на всех */
+  .g { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+  .c { position: relative; }
+  .ph { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+  .ph img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 6%; transition: scale 1s var(--ease); }
+  .c:hover .ph img { scale: 1.04; }
+  .n { display: none; font: 600 13px var(--head); font-style: normal; color: var(--mute); }
+  .t h3 { font-size: 19px; line-height: 1.2; } .t .sur { display: block; font-size: 23px; letter-spacing: -.03em; } .t .io { font-weight: 500; font-size: 16px; }
+  .t p { color: var(--mute); margin-top: 8px; font-size: 14px; line-height: 1.45; }
+
+  .panel { max-width: 1400px; width: calc(100% - 48px); margin: 0 auto; box-sizing: border-box; border-radius: 36px; padding: 64px; }
+
+  /* 1 — белые карточки на тёмной панели */
+  .q1 .panel { background: var(--ink); color: #fff; }
+  .q1 h2 em, .q1 .kicker { color: var(--sky); } .q1 .link { color: #fff; border-color: rgba(255,255,255,.3); }
+  .q1 .c { background: var(--card); color: var(--ink); border-radius: 24px; padding: 10px; }
+  .q1 .ph { border-radius: 16px; } .q1 .t { padding: 18px 10px 12px; }
+
+  /* 2 — плашка наезжает на фото */
+  .q2 .ph { border-radius: 24px; aspect-ratio: 4 / 5.2; }
+  .q2 .t { position: relative; z-index: 1; margin: -64px 14px 0; background: var(--card); border-radius: 18px; padding: 18px 20px 20px; box-shadow: 0 16px 34px -20px rgba(15,26,46,.35); }
+
+  /* 3 — фото на подложке-полукруге */
+  .q3 .ph { overflow: visible; background: none; }
+  .q3 .ph::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 78%; border-radius: 999px 999px 24px 24px; background: linear-gradient(180deg, #dfe6f0, #c9d5e6); }
+  .q3 .ph img { position: relative; border-radius: 0 0 24px 24px; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18%); mask-image: linear-gradient(to bottom, transparent 0, #000 18%); }
+  .q3 .t { padding: 20px 6px 0; }
+
+  /* 4 — карточка-пропуск */
+  .q4 .c { background: var(--card); border-radius: 22px; padding: 16px 16px 22px; box-shadow: 0 1px 0 var(--line); transition: translate .4s var(--ease), box-shadow .4s var(--ease); }
+  .q4 .c::before { content: ""; position: absolute; top: 0; left: 24px; right: 24px; height: 4px; border-radius: 0 0 4px 4px; background: var(--blue); }
+  .q4 .c:hover { translate: 0 -6px; box-shadow: 0 26px 50px -26px rgba(15,26,46,.4); }
+  .q4 .ph { border-radius: 14px; }
+  .q4 .t { display: grid; padding-top: 16px; } .q4 .n { display: block; order: -1; margin-bottom: 8px; }
+  .q4 .t p { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 12px; }
+
+  /* 5 — на фото клиники */
+  .q5 { padding: 0; border-top: 0; }
+  .bgph { position: relative; flex: 1; display: flex; align-items: center; padding: 72px 0; background: url(reception.jpg) center / cover; }
+  .bgph::before { content: ""; position: absolute; inset: 0; background: rgba(14,20,30,.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .bgph > * { position: relative; }
+  .q5 .lbl { position: absolute; top: 24px; left: 0; right: 0; z-index: 2; color: #fff; } .q5 .lbl span { color: rgba(255,255,255,.75); }
+  .q5 .sec-head { color: #fff; } .q5 h2 em, .q5 .kicker { color: var(--sky); } .q5 .link { color: #fff; border-color: rgba(255,255,255,.4); }
+  .q5 .c { background: var(--card); border-radius: 24px; padding: 10px; } .q5 .ph { border-radius: 16px; } .q5 .t { padding: 18px 10px 12px; }
+
+  @media (max-width: 1100px) { .g { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 860px) {
+    .var { min-height: 0; } .lbl span { display: block; margin: 4px 0 0; }
+    .panel { width: calc(100% - 24px); padding: 28px 14px; border-radius: 26px; }
+    .g { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .t .sur { font-size: 18px; } .t .io { font-size: 13px; } .t p { font-size: 12px; }
+    .q2 .t { margin: -40px 8px 0; padding: 12px; } .q4 .c { padding: 10px 10px 14px; }
+    .q5 .lbl { position: static; padding-top: 20px; } .q5 { background: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <path id="tooth" d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/>
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#33568f"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(42 60) scale(.9)"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+
+<div class="intro"><h1>Команда — фото и подпись, 5 подач</h1><p>Основа — «фото, под ним имя и должность», как в «Полдне». Фото всех пятерых обрезаны из оригиналов по одной мерке: глаза на одной высоте, одинаковый масштаб, лицо по центру. Отличается только подача блока.</p></div>
+<section class="var q1"><div class="lbl"><b>1. Белые карточки на тёмной панели</b><span>Как в «Полдне» — фото, под ним имя и должность, — но карточки белые и лежат на большой тёмной скруглённой панели. Блок читается как отдельная «витрина» команды.</span></div><div class="panel"><div class="sec-head"><div><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><i class="n">01</i><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><i class="n">02</i><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><i class="n">03</i><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><i class="n">04</i><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><i class="n">05</i><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></section>
+<section class="var q2"><div class="lbl"><b>2. Подпись-плашка наезжает на фото</b><span>Белая плашка с именем заходит на нижний край фото, как ярлык. Фото крупнее, а подпись всё равно на белом, не поверх лица.</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><i class="n">01</i><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><i class="n">02</i><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><i class="n">03</i><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><i class="n">04</i><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><i class="n">05</i><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></section>
+<section class="var q3"><div class="lbl"><b>3. Фото на цветном полукруге</b><span>Под каждым фото — мягкая серо-голубая подложка, фото стоит на ней как портрет на стене. Подпись под карточкой, без рамки.</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><i class="n">01</i><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><i class="n">02</i><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><i class="n">03</i><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><i class="n">04</i><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><i class="n">05</i><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></section>
+<section class="var q4"><div class="lbl"><b>4. Карточка-пропуск</b><span>Карточка как бейдж сотрудника: сверху номер и тонкая синяя полоса, фото в рамке, под ним фамилия крупно и должность. При наведении карточка приподнимается.</span></div><div class="wrap"><div class="sec-head"><div><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><i class="n">01</i><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><i class="n">02</i><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><i class="n">03</i><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><i class="n">04</i><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><i class="n">05</i><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></section>
+<section class="var q5"><div class="lbl"><b>5. Белые карточки на фото клиники</b><span>Блок лежит на размытом фото кабинета, сверху белые карточки команды. Показывает и людей, и место, где они работают.</span></div><div class="bgph"><div class="wrap"><div class="sec-head"><div><span class="kicker">Команда</span><h2>Команда <em>клиники</em></h2></div><a class="link">Образование и аккредитация <svg width="16" height="16"><use href="#arr"/></svg></a></div><div class="g"><article class="c"><div class="ph"><img src="team-ilivanova.jpg" alt="Иливанова Юлия Юрьевна"></div><div class="t"><i class="n">01</i><h3><span class="sur">Иливанова</span> <span class="io">Юлия Юрьевна</span></h3><p>Главный врач, стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-kozlova.jpg" alt="Козлова Наталья Андреевна"></div><div class="t"><i class="n">02</i><h3><span class="sur">Козлова</span> <span class="io">Наталья Андреевна</span></h3><p>Стоматолог общей практики</p></div></article><article class="c"><div class="ph"><img src="team-sablin.jpg" alt="Саблин Кирилл Андреевич"></div><div class="t"><i class="n">03</i><h3><span class="sur">Саблин</span> <span class="io">Кирилл Андреевич</span></h3><p>Стоматолог-хирург, стоматолог-ортопед</p></div></article><article class="c"><div class="ph"><img src="team-petrova.jpg" alt="Петрова Наталья Евгеньевна"></div><div class="t"><i class="n">04</i><h3><span class="sur">Петрова</span> <span class="io">Наталья Евгеньевна</span></h3><p>Медицинская сестра</p></div></article><article class="c"><div class="ph"><img src="team-mihaylova.jpg" alt="Михайлова Елена Владимировна"></div><div class="t"><i class="n">05</i><h3><span class="sur">Михайлова</span> <span class="io">Елена Владимировна</span></h3><p>Администратор</p></div></article></div></div></div></section>
+</body>
+</html>
