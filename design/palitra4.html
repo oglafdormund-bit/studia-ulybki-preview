@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Светлый фон и карточки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1793154859">
+<style>
+  body { background: #fff; }
+  .intro { max-width: 1400px; margin: 0 auto; padding: 48px 24px 10px; }
+  .intro h1 { font-size: 34px; margin-bottom: 10px; } .intro p { color: #5d646e; max-width: 980px; margin-top: 8px; }
+  .intro ul { color: #5d646e; max-width: 980px; padding-left: 20px; margin: 10px 0 0; }
+  .pal { max-width: 1400px; margin: 0 auto; padding: 56px 24px; border-top: 1px solid #e5e7eb; display: grid; grid-template-columns: 330px 1fr; gap: 40px; align-items: start; }
+  .pal h2 { font-size: 26px; letter-spacing: -.02em; } .pal .d { color: #5d646e; margin: 10px 0 22px; font-size: 15px; }
+  .sw { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; position: sticky; top: 20px; }
+  .side { position: sticky; top: 20px; }
+  .sw li { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; font-size: 14px; }
+  .sw i { width: 40px; height: 40px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+  .sw code { font-size: 12px; color: #6b7280; }
+  .ratio { display: flex; height: 14px; border-radius: 7px; overflow: hidden; margin-top: 18px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+  .ratio + small { display: block; color: #6b7280; font-size: 12px; margin-top: 6px; }
+
+  /* макет-миниатюра страницы в цветах палитры */
+  .mock { background: var(--bg); color: var(--ink); border-radius: 22px; padding: 14px 14px 18px; font-size: 13px; box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
+  .mock img { display: block; width: 100%; object-fit: cover; }
+  .mock h3 { font-size: 26px; letter-spacing: -.03em; margin: 6px 0 16px; } .mock h3 i { font-style: normal; color: var(--acc); }
+  .mock .k { font: 700 10px var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--acc); display: inline-flex; gap: 6px; align-items: center; }
+  .mock .k::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--acc2); }
+  .mbar { display: flex; align-items: center; gap: 18px; background: var(--dark); color: #fff; border-radius: 999px; padding: 8px 8px 8px 18px; font-size: 12px; }
+  .mlogo { font: 600 14px var(--head); margin-right: 12px; } .mbar span { opacity: .8; }
+  .mbtn { margin-left: auto; font-style: normal; background: var(--acc); color: #fff; border-radius: 999px; padding: 8px 14px; font-weight: 600; }
+  .msec { padding: 26px 18px 6px; }
+  .m2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sc, .tc, .pc { box-shadow: 0 0 0 1px var(--edge); }
+  .chk { list-style: none; margin: 18px 0 0; padding: 0; font-size: 13px; display: grid; gap: 4px; }
+  .chk li { display: flex; justify-content: space-between; padding: 6px 10px; border-radius: 8px; background: #f1f3f5; }
+  .chk li.ok b::after { content: " ✓"; color: #1f8a4c; } .chk li.bad b::after { content: " ✗"; color: #c0392b; }
+  .sc { position: relative; background: var(--card); border-radius: 16px; padding: 6px 6px 14px; }
+  .sc img { aspect-ratio: 16/6; border-radius: 11px; }
+  .sc b { display: block; font: 600 17px var(--head); margin: 12px 10px 4px; } .sc p { margin: 0 10px; color: var(--mute); }
+  .sc dl { margin: 10px 10px 0; padding-top: 10px; border-top: 1px solid var(--line); } .sc dt { font: 700 9px var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); } .sc dd { margin: 3px 0 0; font-weight: 600; }
+  .sc .go { position: absolute; right: 16px; bottom: 14px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1.5px var(--line); color: var(--ink); }
+  .mband { margin: 22px -14px 0; padding: 26px 32px 28px; background: var(--band); color: var(--bink); border-radius: 22px; }
+  .mband h3 i { color: inherit; opacity: .7; } .mband .k { color: inherit; opacity: .75; }
+  .m5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .tc { background: var(--card); color: var(--ink); border-radius: 14px; padding: 5px 5px 10px; }
+  .tc img { aspect-ratio: 4/4.4; object-position: 50% 8%; border-radius: 10px; margin-bottom: 8px; }
+  .tc b { display: block; font: 600 14px var(--head); margin: 0 6px; } .tc span { display: block; margin: 2px 6px 0; color: var(--mute); font-size: 11px; }
+  .m3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pc { background: var(--card); border-radius: 16px; padding: 16px 18px; } .pc b { display: block; font: 600 26px var(--head); letter-spacing: -.03em; } .pc span { display: block; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); color: var(--mute); }
+  .mdark { margin: 22px -14px 0; padding: 30px 32px; background: var(--dark); color: #fff; border-radius: 22px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; }
+  .mdark h3 { color: #fff; margin-bottom: 0; } .mdark .k { color: rgba(255,255,255,.75); }
+  .mform { background: #fff; color: #111; border-radius: 16px; padding: 16px; display: grid; gap: 8px; }
+  .mform span { font-size: 11px; color: #6b7280; } .mform i { height: 1.5px; background: #d5d9df; margin-bottom: 8px; }
+  .mform .mcta { margin: 0; text-align: center; background: var(--acc2); }
+
+  @media (max-width: 1000px) { .pal { grid-template-columns: 1fr; } .side, .sw { position: static; } }
+  @media (max-width: 700px) { .m2, .m3 { grid-template-columns: 1fr; } .m5 { grid-template-columns: repeat(3, 1fr); } .mdark { grid-template-columns: 1fr; } .mbar span { display: none; } }
+</style>
+<style>
+  body { --pagebg: #f6f7f9; --a2: #e8674a; --a2i: #fff; background: #fff; }
+  .ctrl { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-bottom: 1px solid #e5e7eb; }
+  .ctrl .in { max-width: 1400px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: center; font-size: 14px; }
+  .seg { display: inline-flex; background: #eef0f3; border-radius: 999px; padding: 4px; gap: 2px; }
+  .seg button { border: 0; background: none; font: 500 13px var(--body); padding: 7px 14px; border-radius: 999px; cursor: pointer; display: inline-flex; gap: 7px; align-items: center; color: #333; }
+  .seg button.on { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.15); color: #000; }
+  .seg i { width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+  .pal { grid-template-columns: 300px 1fr; }
+  .mock { box-shadow: 0 0 0 1px #e3e6ea; }
+  .v-line .sc, .v-line .pc, .v-top .sc, .v-top .pc { box-shadow: 0 0 0 1px #cbd2dc; }
+  .v-top .sc { box-shadow: 0 0 0 1px #cbd2dc, inset 0 4px 0 var(--a2); padding-top: 10px; }
+  .v-shadow .sc, .v-shadow .pc { box-shadow: 0 0 0 1px rgba(15,26,46,.05), 0 14px 30px -14px rgba(15,26,46,.35); }
+  .v-flat .sc, .v-flat .pc { background: none; box-shadow: none; padding: 0; border-radius: 0; }
+  .v-flat .sc b, .v-flat .sc p, .v-flat .sc dl { margin-left: 0; margin-right: 0; } .v-flat .sc dl { border-top-color: #cbd2dc; }
+  .v-flat .sc .go { right: 0; bottom: 0; }
+  .v-flat .pc { border-top: 2px solid var(--ink); padding-top: 14px; } .v-flat .pc span { border-top: 0; padding-top: 0; }
+  .v-dark .sc, .v-dark .pc { background: #1c2c4c; color: #fff; box-shadow: none; }
+  .v-dark .sc p, .v-dark .pc span { color: rgba(255,255,255,.72); } .v-dark .sc dt { color: #9fb6dd; }
+  .v-dark .sc dl, .v-dark .pc span { border-top-color: rgba(255,255,255,.16); }
+  .v-dark .mband { margin-top: 22px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <path id="tooth" d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/>
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M50 6C76 6 95 23 95 45c0 15-10 21-21 18-8-2-13 5-9 13 4 9-2 18-17 18C24 94 5 75 5 50S24 6 50 6z" fill="#33568f"/><circle cx="74" cy="40" r="7" fill="#ffffff"/><use href="#tooth" fill="#ffffff" transform="translate(20 20) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(46 14) scale(.95)"/><use href="#tooth" fill="#ffffff" transform="translate(16 50) scale(1.05)"/><use href="#tooth" fill="#b7c9e6" transform="translate(42 60) scale(.9)"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+
+<div class="ctrl"><div class="in"><b>Фон:</b><div class="seg" data-k="bg"><button data-v="#ffffff" class=""><i style="background:#ffffff"></i>Белый</button><button data-v="#f6f7f9" class="on"><i style="background:#f6f7f9"></i>Светло-серый</button><button data-v="#eef0f3" class=""><i style="background:#eef0f3"></i>Серый</button></div><b>Акцент:</b><div class="seg" data-k="a2"><button data-v="#e8674a" data-i="#ffffff" class="on"><i style="background:#e8674a"></i>Коралл</button><button data-v="#f2a93b" data-i="#14171b" class=""><i style="background:#f2a93b"></i>Янтарь</button><button data-v="#c4613f" data-i="#ffffff" class=""><i style="background:#c4613f"></i>Терракота</button><button data-v="#2fb193" data-i="#14171b" class=""><i style="background:#2fb193"></i>Мята</button><button data-v="#d6456b" data-i="#ffffff" class=""><i style="background:#d6456b"></i>Малиновый</button><button data-v="#e9cf3e" data-i="#14171b" class=""><i style="background:#e9cf3e"></i>Лимонный</button><button data-v="#4aa8e8" data-i="#14171b" class=""><i style="background:#4aa8e8"></i>Небесный</button><button data-v="#8a6fd8" data-i="#ffffff" class=""><i style="background:#8a6fd8"></i>Сиреневый</button></div></div></div>
+<div class="intro"><h1>Светлый фон: как отделить карточки</h1>
+<p>Фон белый или слегка серый, чтобы не слепил. Карточки отделяются не разницей оттенков (её глаз почти не видит), а другим приёмом — ниже пять способов.
+Сверху можно переключить фон и акцентный цвет — меняется на всех вариантах сразу.</p></div>
+<section class="pal v-line"><div class="side"><h2>1. Контур</h2><p class="d">Карточки белые, у каждой тонкая серая обводка. Видна на любом мониторе и при любом фоне — даже на чисто белом. Самый надёжный и спокойный способ.</p></div><div class="mock" style="--bg:var(--pagebg);--card:#ffffff;--band:#22365e;--bink:#ffffff;--ink:#0f1a2e;--mute:#525d70;--line:#dbe2ec;--acc:#33568f;--acc2:var(--a2);--a2ink:var(--a2i);--dark:#162540;--edge:transparent">
+  <div class="mbar"><b class="mlogo">Студия улыбки</b><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Контакты</span><em class="mbtn">Записаться</em></div>
+  <div class="msec"><span class="k">Направления</span><h3>Четыре направления — <i>одна команда</i></h3>
+    <div class="m2">
+      <div class="sc"><img src="ph/v7a.jpg" alt=""><b>Лечение зубов</b><p>Кариес, пульпит, лечение каналов.</p><dl><dt>Стоимость</dt><dd>пломба от 3 500 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+      <div class="sc"><img src="ph/v7d.jpg" alt=""><b>Протезирование</b><p>Коронки, вкладки, мосты, протезы.</p><dl><dt>Стоимость</dt><dd>коронка от 3 700 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+    </div></div>
+  <div class="mband"><span class="k">Команда</span><h3>Команда <i>клиники</i></h3><div class="m5"><div class="tc"><img src="team-ilivanova.jpg" alt=""><b>Иливанова</b><span>Главный врач</span></div><div class="tc"><img src="team-kozlova.jpg" alt=""><b>Козлова</b><span>Стоматолог</span></div><div class="tc"><img src="team-sablin.jpg" alt=""><b>Саблин</b><span>Хирург, ортопед</span></div><div class="tc"><img src="team-petrova.jpg" alt=""><b>Петрова</b><span>Медсестра</span></div><div class="tc"><img src="team-mihaylova.jpg" alt=""><b>Михайлова</b><span>Администратор</span></div></div></div>
+  <div class="msec"><div class="m3"><div class="pc"><b>350 ₽</b><span>Первичный приём</span></div><div class="pc"><b>2 500 ₽</b><span>Гигиена</span></div><div class="pc"><b>3 500 ₽</b><span>Пломба</span></div></div></div>
+  <div class="mdark"><div><span class="k">Запись</span><h3>Оставьте телефон — перезвоним</h3></div><div class="mform"><span>Телефон</span><i></i><em class="mbtn mcta">Перезвоните мне</em></div></div>
+</div></section>
+<section class="pal v-shadow"><div class="side"><h2>2. Тень</h2><p class="d">Без обводки, карточка «приподнята» мягкой тенью. Выглядит объёмнее, но на очень ярком мониторе тень слабее контура.</p></div><div class="mock" style="--bg:var(--pagebg);--card:#ffffff;--band:#22365e;--bink:#ffffff;--ink:#0f1a2e;--mute:#525d70;--line:#dbe2ec;--acc:#33568f;--acc2:var(--a2);--a2ink:var(--a2i);--dark:#162540;--edge:transparent">
+  <div class="mbar"><b class="mlogo">Студия улыбки</b><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Контакты</span><em class="mbtn">Записаться</em></div>
+  <div class="msec"><span class="k">Направления</span><h3>Четыре направления — <i>одна команда</i></h3>
+    <div class="m2">
+      <div class="sc"><img src="ph/v7a.jpg" alt=""><b>Лечение зубов</b><p>Кариес, пульпит, лечение каналов.</p><dl><dt>Стоимость</dt><dd>пломба от 3 500 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+      <div class="sc"><img src="ph/v7d.jpg" alt=""><b>Протезирование</b><p>Коронки, вкладки, мосты, протезы.</p><dl><dt>Стоимость</dt><dd>коронка от 3 700 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+    </div></div>
+  <div class="mband"><span class="k">Команда</span><h3>Команда <i>клиники</i></h3><div class="m5"><div class="tc"><img src="team-ilivanova.jpg" alt=""><b>Иливанова</b><span>Главный врач</span></div><div class="tc"><img src="team-kozlova.jpg" alt=""><b>Козлова</b><span>Стоматолог</span></div><div class="tc"><img src="team-sablin.jpg" alt=""><b>Саблин</b><span>Хирург, ортопед</span></div><div class="tc"><img src="team-petrova.jpg" alt=""><b>Петрова</b><span>Медсестра</span></div><div class="tc"><img src="team-mihaylova.jpg" alt=""><b>Михайлова</b><span>Администратор</span></div></div></div>
+  <div class="msec"><div class="m3"><div class="pc"><b>350 ₽</b><span>Первичный приём</span></div><div class="pc"><b>2 500 ₽</b><span>Гигиена</span></div><div class="pc"><b>3 500 ₽</b><span>Пломба</span></div></div></div>
+  <div class="mdark"><div><span class="k">Запись</span><h3>Оставьте телефон — перезвоним</h3></div><div class="mform"><span>Телефон</span><i></i><em class="mbtn mcta">Перезвоните мне</em></div></div>
+</div></section>
+<section class="pal v-top"><div class="side"><h2>3. Контур + акцентная кромка</h2><p class="d">Как «Контур», но у карточек направлений сверху полоска акцентного цвета. Акцент работает и как украшение, и как разделитель.</p></div><div class="mock" style="--bg:var(--pagebg);--card:#ffffff;--band:#22365e;--bink:#ffffff;--ink:#0f1a2e;--mute:#525d70;--line:#dbe2ec;--acc:#33568f;--acc2:var(--a2);--a2ink:var(--a2i);--dark:#162540;--edge:transparent">
+  <div class="mbar"><b class="mlogo">Студия улыбки</b><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Контакты</span><em class="mbtn">Записаться</em></div>
+  <div class="msec"><span class="k">Направления</span><h3>Четыре направления — <i>одна команда</i></h3>
+    <div class="m2">
+      <div class="sc"><img src="ph/v7a.jpg" alt=""><b>Лечение зубов</b><p>Кариес, пульпит, лечение каналов.</p><dl><dt>Стоимость</dt><dd>пломба от 3 500 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+      <div class="sc"><img src="ph/v7d.jpg" alt=""><b>Протезирование</b><p>Коронки, вкладки, мосты, протезы.</p><dl><dt>Стоимость</dt><dd>коронка от 3 700 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+    </div></div>
+  <div class="mband"><span class="k">Команда</span><h3>Команда <i>клиники</i></h3><div class="m5"><div class="tc"><img src="team-ilivanova.jpg" alt=""><b>Иливанова</b><span>Главный врач</span></div><div class="tc"><img src="team-kozlova.jpg" alt=""><b>Козлова</b><span>Стоматолог</span></div><div class="tc"><img src="team-sablin.jpg" alt=""><b>Саблин</b><span>Хирург, ортопед</span></div><div class="tc"><img src="team-petrova.jpg" alt=""><b>Петрова</b><span>Медсестра</span></div><div class="tc"><img src="team-mihaylova.jpg" alt=""><b>Михайлова</b><span>Администратор</span></div></div></div>
+  <div class="msec"><div class="m3"><div class="pc"><b>350 ₽</b><span>Первичный приём</span></div><div class="pc"><b>2 500 ₽</b><span>Гигиена</span></div><div class="pc"><b>3 500 ₽</b><span>Пломба</span></div></div></div>
+  <div class="mdark"><div><span class="k">Запись</span><h3>Оставьте телефон — перезвоним</h3></div><div class="mform"><span>Телефон</span><i></i><em class="mbtn mcta">Перезвоните мне</em></div></div>
+</div></section>
+<section class="pal v-flat"><div class="side"><h2>4. Без карточек</h2><p class="d">Подложек нет вообще: фото, текст и тонкие линии прямо на фоне. Сливаться нечему. Самый «журнальный» и лёгкий вид.</p></div><div class="mock" style="--bg:var(--pagebg);--card:#ffffff;--band:#22365e;--bink:#ffffff;--ink:#0f1a2e;--mute:#525d70;--line:#dbe2ec;--acc:#33568f;--acc2:var(--a2);--a2ink:var(--a2i);--dark:#162540;--edge:transparent">
+  <div class="mbar"><b class="mlogo">Студия улыбки</b><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Контакты</span><em class="mbtn">Записаться</em></div>
+  <div class="msec"><span class="k">Направления</span><h3>Четыре направления — <i>одна команда</i></h3>
+    <div class="m2">
+      <div class="sc"><img src="ph/v7a.jpg" alt=""><b>Лечение зубов</b><p>Кариес, пульпит, лечение каналов.</p><dl><dt>Стоимость</dt><dd>пломба от 3 500 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+      <div class="sc"><img src="ph/v7d.jpg" alt=""><b>Протезирование</b><p>Коронки, вкладки, мосты, протезы.</p><dl><dt>Стоимость</dt><dd>коронка от 3 700 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+    </div></div>
+  <div class="mband"><span class="k">Команда</span><h3>Команда <i>клиники</i></h3><div class="m5"><div class="tc"><img src="team-ilivanova.jpg" alt=""><b>Иливанова</b><span>Главный врач</span></div><div class="tc"><img src="team-kozlova.jpg" alt=""><b>Козлова</b><span>Стоматолог</span></div><div class="tc"><img src="team-sablin.jpg" alt=""><b>Саблин</b><span>Хирург, ортопед</span></div><div class="tc"><img src="team-petrova.jpg" alt=""><b>Петрова</b><span>Медсестра</span></div><div class="tc"><img src="team-mihaylova.jpg" alt=""><b>Михайлова</b><span>Администратор</span></div></div></div>
+  <div class="msec"><div class="m3"><div class="pc"><b>350 ₽</b><span>Первичный приём</span></div><div class="pc"><b>2 500 ₽</b><span>Гигиена</span></div><div class="pc"><b>3 500 ₽</b><span>Пломба</span></div></div></div>
+  <div class="mdark"><div><span class="k">Запись</span><h3>Оставьте телефон — перезвоним</h3></div><div class="mform"><span>Телефон</span><i></i><em class="mbtn mcta">Перезвоните мне</em></div></div>
+</div></section>
+<section class="pal v-dark"><div class="side"><h2>5. Тёмные карточки</h2><p class="d">Карточки направлений и цен тёмно-синие с белым текстом. Контраст максимальный, но страница становится тяжелее.</p></div><div class="mock" style="--bg:var(--pagebg);--card:#ffffff;--band:#22365e;--bink:#ffffff;--ink:#0f1a2e;--mute:#525d70;--line:#dbe2ec;--acc:#33568f;--acc2:var(--a2);--a2ink:var(--a2i);--dark:#162540;--edge:transparent">
+  <div class="mbar"><b class="mlogo">Студия улыбки</b><span>Услуги</span><span>Цены</span><span>Врачи</span><span>Контакты</span><em class="mbtn">Записаться</em></div>
+  <div class="msec"><span class="k">Направления</span><h3>Четыре направления — <i>одна команда</i></h3>
+    <div class="m2">
+      <div class="sc"><img src="ph/v7a.jpg" alt=""><b>Лечение зубов</b><p>Кариес, пульпит, лечение каналов.</p><dl><dt>Стоимость</dt><dd>пломба от 3 500 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+      <div class="sc"><img src="ph/v7d.jpg" alt=""><b>Протезирование</b><p>Коронки, вкладки, мосты, протезы.</p><dl><dt>Стоимость</dt><dd>коронка от 3 700 ₽</dd></dl><span class="go"><svg width="14" height="14"><use href="#arr"/></svg></span></div>
+    </div></div>
+  <div class="mband"><span class="k">Команда</span><h3>Команда <i>клиники</i></h3><div class="m5"><div class="tc"><img src="team-ilivanova.jpg" alt=""><b>Иливанова</b><span>Главный врач</span></div><div class="tc"><img src="team-kozlova.jpg" alt=""><b>Козлова</b><span>Стоматолог</span></div><div class="tc"><img src="team-sablin.jpg" alt=""><b>Саблин</b><span>Хирург, ортопед</span></div><div class="tc"><img src="team-petrova.jpg" alt=""><b>Петрова</b><span>Медсестра</span></div><div class="tc"><img src="team-mihaylova.jpg" alt=""><b>Михайлова</b><span>Администратор</span></div></div></div>
+  <div class="msec"><div class="m3"><div class="pc"><b>350 ₽</b><span>Первичный приём</span></div><div class="pc"><b>2 500 ₽</b><span>Гигиена</span></div><div class="pc"><b>3 500 ₽</b><span>Пломба</span></div></div></div>
+  <div class="mdark"><div><span class="k">Запись</span><h3>Оставьте телефон — перезвоним</h3></div><div class="mform"><span>Телефон</span><i></i><em class="mbtn mcta">Перезвоните мне</em></div></div>
+</div></section>
+<script>
+document.querySelectorAll('.seg').forEach(s => s.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  s.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+  const st = document.body.style;
+  if (s.dataset.k === 'bg') st.setProperty('--pagebg', b.dataset.v);
+  else { st.setProperty('--a2', b.dataset.v); st.setProperty('--a2i', b.dataset.i); }
+}));
+</script></body>
+</html>
