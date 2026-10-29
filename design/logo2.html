@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Логотип — 15 направлений</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Forum&family=Lora:ital,wght@0,500;1,500&family=Manrope:wght@400;500;600&family=Montserrat+Alternates:wght@500&family=Nunito:wght@800&family=Onest:wght@500;600;700&family=Philosopher:wght@700&family=Playfair+Display:wght@600&family=Raleway:wght@300;600&family=Unbounded:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #1c2230; --muted: #6b7280; --bg: #f3f2ef; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Manrope, sans-serif; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font: 700 2.4rem/1.1 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .lead { color: var(--muted); max-width: 70ch; margin: 0 0 36px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 22px; display: grid; gap: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05); }
+  .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .head h2 { margin: 0; font: 600 1.15rem Onest, sans-serif; }
+  .head h2 b { color: var(--c); margin-right: 6px; }
+  .swatches { display: flex; gap: 4px; }
+  .swatches i { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+  .big { height: 190px; border-radius: 16px; display: grid; place-items: center; background: var(--paper, #faf9f6); }
+  .big svg { width: 140px; height: 140px; color: var(--c); }
+  .lock { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 16px; }
+  .lock.light { background: var(--paper, #faf9f6); }
+  .lock.dark { background: var(--dark, #1c2230); }
+  .lock svg { width: 46px; height: 46px; flex: none; color: var(--c); }
+  .lock.dark svg { color: var(--cl); }
+  .word { font-family: var(--f); font-weight: var(--w); font-size: var(--fs, 1.5rem); line-height: 1; letter-spacing: var(--ls, -0.01em); text-transform: var(--tt, none); font-style: var(--fst, normal); color: var(--wc, var(--ink)); }
+  .lock.dark .word { color: #fff; }
+  .kind { margin-top: 6px; font: 600 .625rem Manrope, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .lock.dark .kind { color: rgba(255,255,255,.6); }
+  .wordonly svg { display: none; }
+  .sizes { display: flex; align-items: end; gap: 14px; }
+  .sizes svg { color: var(--c); }
+  .sizes small { display: block; text-align: center; font-size: .7rem; color: var(--muted); }
+  .card p { margin: 0; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Контур зуба в квадрате 100×100 -->
+    <path id="tooth" d="M34 16C24 16 19 24 19 34c0 11 5 18 7 28l4 22c1 5 8 5 9 0l5-20c1-4 11-4 12 0l5 20c1 5 8 5 9 0l4-22c2-10 7-17 7-28 0-10-5-18-15-18-7 0-10 4-16 4s-9-4-16-4z"/>
+    <clipPath id="toothClip"><use href="#tooth"/></clipPath>
+    <path id="sealArc" d="M50 50m-36 0a36 36 0 1 1 72 0a36 36 0 1 1-72 0"/>
+    <linearGradient id="peach" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2a093"/><stop offset="1" stop-color="#f6cf8c"/></linearGradient>
+
+    <!-- 1. Линия: контур зуба с улыбкой -->
+    <symbol id="l1" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#tooth"/><path d="M36 37q14 10 28 0"/></g></symbol>
+    <!-- 2. Тонкая палитра, зубы-контуры, кисть -->
+    <symbol id="l2" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M46 14c24 0 40 15 40 33 0 11-7 16-16 14-7-2-11 3-9 10 3 8-3 15-15 15C25 86 10 71 10 50s15-36 36-36z"/><circle cx="68" cy="42" r="5"/>
+      <use href="#tooth" transform="translate(20 24) scale(.17)" stroke-width="13"/><use href="#tooth" transform="translate(36 19) scale(.15)" stroke-width="14"/><use href="#tooth" transform="translate(18 46) scale(.17)" stroke-width="13"/>
+      <path d="M94 8 58 60"/><path d="M58 60c-2 4 0 8 5 7"/></g></symbol>
+    <!-- 3. Мазок кистью — улыбка -->
+    <symbol id="l3" viewBox="0 0 100 100"><path fill="currentColor" d="M8 52c14 30 62 36 86 2 1-2-1-4-3-3-4 3-8 9-16 13-17 9-40 7-56-8-4-4-9-7-11-4z"/><g stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".7"><path d="M16 62c6 5 12 8 18 10M62 76c8-2 14-5 20-11M30 74c10 4 22 5 32 3"/></g></symbol>
+    <!-- 4. Монограмма СУ тонкой линией -->
+    <symbol id="l4" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M58 28a26 26 0 1 0 0 44"/><path d="M52 32l18 26M88 32 60 86"/></g></symbol>
+    <!-- 5. Зуб из двух дуг -->
+    <symbol id="l5" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M48 22C34 10 14 18 16 38c1 12 7 20 10 30l6 18"/><path d="M52 22c14-12 34-4 32 16-1 12-7 20-10 30l-6 18"/><path d="M42 86l4-18c1-5 7-5 8 0l4 18"/></g></symbol>
+    <!-- 6. Печать с надписью по кругу -->
+    <symbol id="l6" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width=".9"/>
+      <text font-family="Forum" font-size="9.4" letter-spacing="1.6" fill="currentColor"><textPath href="#sealArc">СТУДИЯ УЛЫБКИ · АЧИНСК · С 2012 ·</textPath></text>
+      <use href="#tooth" transform="translate(35 34) scale(.3)" fill="var(--gold, #b8955a)"/></symbol>
+    <!-- 7. Геометрия: коронка-полукруг и два корня -->
+    <symbol id="l7" viewBox="0 0 100 100"><g fill="var(--c2, #7cc4b0)"><circle cx="35" cy="36" r="17"/><circle cx="65" cy="36" r="17"/><rect x="18" y="36" width="64" height="16"/></g><rect x="24" y="56" width="16" height="30" rx="8" fill="currentColor"/><rect x="60" y="56" width="16" height="30" rx="8" fill="currentColor"/></symbol>
+    <!-- 8. Зуб в раме картины -->
+    <symbol id="l8" viewBox="0 0 100 100"><rect x="6" y="6" width="88" height="88" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="14" y="14" width="72" height="72" fill="none" stroke="var(--c2, #b98a5a)" stroke-width="1.2"/><use href="#tooth" transform="translate(25 24) scale(.5)" fill="none" stroke="currentColor" stroke-width="4.4"/></symbol>
+    <!-- 9. Только надпись, знак-иконка «су» с улыбкой -->
+    <symbol id="l9" viewBox="0 0 100 100"><text x="50" y="58" text-anchor="middle" font-family="Comfortaa" font-weight="700" font-size="44" fill="currentColor">су</text><path d="M26 70q24 16 48 0" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+    <!-- 10. Мягкий зуб с градиентом -->
+    <symbol id="l10" viewBox="0 0 100 100"><use href="#tooth" fill="url(#peach)"/><path d="M38 38q12 8 24 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
+    <!-- 11. Зуб-контур и блеск -->
+    <symbol id="l11" viewBox="0 0 100 100"><use href="#tooth" transform="translate(-4 6) scale(.92)" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M82 8c1 7 3 9 10 10-7 1-9 3-10 10-1-7-3-9-10-10 7-1 9-3 10-10z" fill="currentColor"/><path d="M68 30c.5 3 1.5 4 4.5 4.5-3 .5-4 1.5-4.5 4.5-.5-3-1.5-4-4.5-4.5 3-.5 4-1.5 4.5-4.5z" fill="currentColor"/></symbol>
+    <!-- 12. Кисть, у которой вместо ворса — зуб -->
+    <symbol id="l12" viewBox="0 0 100 100"><g transform="rotate(25 50 50)"><path d="M50 2v30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="42" y="30" width="16" height="10" rx="2" fill="currentColor"/><use href="#tooth" transform="translate(29 98) scale(.42 -.58)" fill="var(--c2, #c8714f)"/></g></symbol>
+    <!-- 13. Буква «У» из корней зуба -->
+    <symbol id="l13" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M50 6v8M30 94l12-30M70 94 58 64M50 64v30"/><rect x="20" y="14" width="60" height="50" rx="2"/></g><use href="#tooth" transform="translate(35 21) scale(.3)" fill="currentColor"/></symbol>
+    <!-- 14. Мозаика: зуб из красок палитры -->
+    <symbol id="l14" viewBox="0 0 100 100"><g clip-path="url(#toothClip)"><rect x="0" y="0" width="50" height="50" fill="#8fae8b"/><rect x="50" y="0" width="50" height="50" fill="#c9a27a"/><rect x="0" y="50" width="50" height="50" fill="#9d8fb8"/><rect x="50" y="50" width="50" height="50" fill="#d48a6a"/></g><g stroke="#fff" stroke-width="2.4" clip-path="url(#toothClip)"><path d="M50 0v100M0 50h100"/></g></symbol>
+    <!-- 15. Зуб с листком -->
+    <symbol id="l15" viewBox="0 0 100 100"><use href="#tooth" transform="translate(0 8) scale(.9)" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M60 20C62 8 76 2 90 4c0 14-8 24-22 24-3 0-6-1-8-2z" fill="var(--c2, #a9c79a)"/><path d="M62 24c8-6 16-12 24-17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Логотип — 15 направлений</h1>
+  <p class="lead">Второй круг: тоньше, светлее и в разных цветах. Каждое направление — своя идея, свой цвет и свой шрифт названия. Показано крупно, в шапке на светлом и тёмном, в размере иконки. Это эскизы направлений: выбранное доведу до чистовика.</p>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  const V = [
+    { id: 'l1', dark: '#2a332b', t: 'Линия-улыбка', d: 'Контур зуба тонкой линией и улыбка внутри. Спокойно, аккуратно, «медицински», но тепло.', c: '#5f7f63', cl: '#a9c7a4', pal: ['#5f7f63', '#e8efe4', '#2a332b'], f: "'Cormorant Garamond', serif", w: 600, fs: '1.75rem' },
+    { id: 'l2', dark: '#33281d', t: 'Палитра в линию', d: 'Наследник старого логотипа: палитра, зубы-краски и зонд, но тонко и без заливки.', c: '#9a6a3e', cl: '#d9b48d', pal: ['#9a6a3e', '#f4ebe1', '#33281d'], f: 'Lora, serif', w: 500 },
+    { id: 'l3', dark: '#3a2219', t: 'Мазок-улыбка', d: 'Один живой мазок кистью — улыбка. Название рукописным шрифтом. Самый «студийный».', c: '#c4643f', cl: '#f0a27f', pal: ['#c4643f', '#fbeee6', '#3a2219'], f: 'Caveat, cursive', w: 700, fs: '2rem', ls: '0' },
+    { id: 'l4', dark: '#2a2438', t: 'Монограмма СУ', d: 'Буквы «С» и «У» одной линией. Строго, по-взрослому, хорошо на вывеске и форме врачей.', c: '#76679a', cl: '#bcb0dd', pal: ['#76679a', '#efecf6', '#2a2438'], f: 'Raleway, sans-serif', w: 300, tt: 'uppercase', ls: '.12em', fs: '1.15rem' },
+    { id: 'l5', dark: '#173634', t: 'Зуб из двух дуг', d: 'Зуб собран из двух мягких дуг — как два человека или две руки. Лёгкий и современный.', c: '#2f7f7a', cl: '#86cfc8', pal: ['#2f7f7a', '#e3f2f0', '#173634'], f: 'Manrope, sans-serif', w: 600 },
+    { id: 'l6', dark: '#1f2d4a', t: 'Печать', d: 'Круглая печать с годом основания. Солидно, «с историей»: клинике с 2012 года.', c: '#1f2d4a', cl: '#d8c39a', pal: ['#1f2d4a', '#b8955a', '#f5f1e8'], f: 'Forum, serif', w: 400, tt: 'uppercase', ls: '.08em', fs: '1.25rem' },
+    { id: 'l7', dark: '#26343a', t: 'Геометрия', d: 'Зуб из простых фигур: полукруг и два корня. Яркий, графичный, для молодой аудитории.', c: '#26343a', cl: '#e6edef', c2: '#7cc4b0', pal: ['#7cc4b0', '#26343a', '#f1f7f5'], f: 'Unbounded, sans-serif', w: 500, tt: 'lowercase', fs: '1.2rem' },
+    { id: 'l8', dark: '#2b2b2b', t: 'Рама картины', d: 'Зуб в раме, как работа в галерее: «студия», где улыбку делают как произведение.', c: '#2b2b2b', cl: '#e9e3d8', c2: '#b98a5a', pal: ['#2b2b2b', '#b98a5a', '#f6f2ea'], f: "'Playfair Display', serif", w: 600 },
+    { id: 'l9', dark: '#3b1522', t: 'Только надпись', d: 'Без отдельного знака: название, под «улыбки» — дуга улыбки. Иконка — «су» с улыбкой.', c: '#a33b5c', cl: '#f19ab5', pal: ['#a33b5c', '#fbe9ef', '#3b1522'], f: 'Comfortaa, sans-serif', w: 700, wordonly: true },
+    { id: 'l10', dark: '#3a2a28', t: 'Мягкий зуб', d: 'Зуб тёплым градиентом с улыбкой. Дружелюбно и легко, ближе к семейной клинике.', c: '#e9907f', cl: '#f6cf8c', pal: ['#f2a093', '#f6cf8c', '#3a2a28'], f: 'Nunito, sans-serif', w: 800 },
+    { id: 'l11', dark: '#16324a', t: 'Блеск', d: 'Контур зуба и искорка — чистота и свежесть. Самый «гигиенический» вариант.', c: '#3a85c9', cl: '#9dcbf2', pal: ['#3a85c9', '#e8f2fb', '#16324a'], f: "'Montserrat Alternates', sans-serif", w: 500, fs: '1.3rem' },
+    { id: 'l12', dark: '#2c3a2f', t: 'Кисть-зуб', d: 'Кисть, у которой вместо ворса — зуб. Прямо про «студию»: здесь улыбки рисуют.', c: '#4f6b55', cl: '#a7c4ad', c2: '#c8714f', pal: ['#4f6b55', '#c8714f', '#f3efe7'], f: 'Philosopher, sans-serif', w: 700 },
+    { id: 'l13', dark: '#262d12', t: 'Мольберт', d: 'Мольберт, на холсте — зуб. «Студия» в прямом смысле: мастерская, где работают над улыбкой.', c: '#5f6f2f', cl: '#c3d18c', pal: ['#5f6f2f', '#f1f3e3', '#262d12'], f: 'Onest, sans-serif', w: 600 },
+    { id: 'l14', dark: '#2a2a2a', t: 'Мозаика красок', d: 'Зуб из четырёх красок палитры — шалфей, дуб, лиловый, терракота: цвета самой клиники.', c: '#3a3a3a', cl: '#f1f1f1', pal: ['#8fae8b', '#c9a27a', '#9d8fb8', '#d48a6a'], f: 'Raleway, sans-serif', w: 600 },
+    { id: 'l15', dark: '#26331f', t: 'Зуб и листок', d: 'Контур зуба и молодой листок — бережность и забота. Мягко и натурально.', c: '#55734f', cl: '#bcd9ae', c2: '#a9c79a', pal: ['#55734f', '#a9c79a', '#f2f6ee'], f: 'Lora, serif', w: 500, fst: 'italic', fs: '1.6rem' },
+  ];
+  const mark = (id, s) => `<svg viewBox="0 0 100 100" width="${s}" height="${s}" aria-hidden="true"><use href="#${id}"/></svg>`;
+  const word = (v) => v.wordonly
+    ? `<div><div class="word">студия <span style="position:relative;display:inline-block">улыбки<svg viewBox="0 0 100 20" style="position:absolute;left:0;right:0;bottom:-.45em;width:100%;height:.45em;color:var(--c)" preserveAspectRatio="none"><path d="M4 4q46 18 92 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span></div><div class="kind" style="margin-top:12px">Стоматология · Ачинск</div></div>`
+    : `<div><div class="word">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div>`;
+  document.getElementById('grid').innerHTML = V.map((v, i) => {
+    const style = `--c:${v.c};--cl:${v.cl};--f:${v.f};--w:${v.w};${v.fs ? `--fs:${v.fs};` : ''}${v.ls ? `--ls:${v.ls};` : ''}${v.tt ? `--tt:${v.tt};` : ''}${v.fst ? `--fst:${v.fst};` : ''}${v.c2 ? `--c2:${v.c2};` : ''}--dark:${v.dark}`;
+    return `<article class="card" style="${style}">
+      <div class="head"><h2><b>${i + 1}</b>${v.t}</h2><span class="swatches">${v.pal.map((c) => `<i style="background:${c}"></i>`).join('')}</span></div>
+      <div class="big">${mark(v.id, 140)}</div>
+      <div class="lock light">${v.wordonly ? '' : mark(v.id, 46)}${word(v)}</div>
+      <div class="lock dark">${v.wordonly ? '' : mark(v.id, 46)}${word(v)}</div>
+      <div class="sizes"><div>${mark(v.id, 32)}<small>32</small></div><div>${mark(v.id, 16)}<small>16</small></div></div>
+      <p>${v.d}</p>
+    </article>`;
+  }).join('');
+</script>
+</body>
+</html>
