@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Логотип — обновление старого</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat:wght@700&family=Manrope:wght@400;500;600&family=Marck+Script&family=Neucha&family=Onest:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #2b2b33; --muted: #6f6a72; --bg: #f4f2ef; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Manrope, sans-serif; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font: 700 2.4rem/1.1 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .lead { color: var(--muted); max-width: 74ch; margin: 0 0 20px; }
+  .ref { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 36px; }
+  .ref figure { margin: 0; background: #fff; border-radius: 16px; padding: 12px 16px; display: flex; gap: 12px; align-items: center; }
+  .ref img { height: 90px; }
+  .ref figcaption { font-size: .85rem; color: var(--muted); max-width: 20ch; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 22px; display: grid; gap: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05); }
+  .card h2 { margin: 0; font: 600 1.15rem Onest, sans-serif; }
+  .card h2 b { color: #c8432f; margin-right: 6px; }
+  .big { height: 240px; border-radius: 16px; display: grid; place-items: center; background: #faf9f7; }
+  .big svg { width: 170px; height: 190px; }
+  .lock { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 16px; }
+  .lock.light { background: #faf9f7; }
+  .lock.dark { background: #1f2333; --ink: #eceaf2; }
+  .lock svg { width: 50px; height: 56px; flex: none; }
+  .word { font-family: var(--f); font-size: var(--fs, 2rem); line-height: 1.05; color: var(--wc, #233a7a); }
+  .word .s { font: 600 .78rem Onest, sans-serif; letter-spacing: .3em; text-transform: uppercase; display: block; margin-bottom: 2px; color: var(--muted); }
+  .lock.dark .word { color: #fff; }
+  .lock.dark .word .s { color: rgba(255,255,255,.65); }
+  .kind { margin-top: 6px; font: 600 .625rem Manrope, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .lock.dark .kind { color: rgba(255,255,255,.6); }
+  .sizes { display: flex; align-items: end; gap: 14px; }
+  .sizes small { display: block; text-align: center; font-size: .7rem; color: var(--muted); }
+  .card p { margin: 0; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="tooth" d="M34 16C24 16 19 24 19 34c0 11 5 18 7 28l4 22c1 5 8 5 9 0l5-20c1-4 11-4 12 0l5 20c1 5 8 5 9 0l4-22c2-10 7-17 7-28 0-10-5-18-15-18-7 0-10 4-16 4s-9-4-16-4z"/>
+    <filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Логотип — обновление старого</h1>
+  <p class="lead">Четвёртый круг: старый цветной логотип, перерисованный заново. Композиция та же — палитра, зубы-краски, кисть и зеркало в отверстии, двойная улыбка снизу, — но линии ровные, зубы одной формы, инструменты не торчат снизу, цвета спокойнее, название читается.</p>
+  <div class="ref">
+    <figure><img src="ph/old-palitra.png" alt="Старая палитра"><figcaption>Старая палитра с визитки</figcaption></figure>
+    <figure><img src="ph/old-ulybka.png" alt="Старая улыбка" style="height:60px"><figcaption>Старая улыбка — два красных серпа</figcaption></figure>
+    <figure><img src="ph/logo-old-color.jpg" alt="Старый логотип целиком"><figcaption>Логотип целиком</figcaption></figure>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  // Палитра «как у старой»: левый округлый край, ямка сверху, правый выступ с отверстием.
+  const PAL = 'M26 22C12 22 6 36 6 52c0 22 16 42 40 42 18 0 30-14 30-32 0-10 4-16 4-26 0-12-8-18-16-16-8 2-10 10-18 10S36 22 26 22z';
+  const HOLE = 'M57.5 37a6.5 4.6 -18 1 0 13 0a6.5 4.6 -18 1 0 -13 0z';
+  const SMILE1 = 'M14 96C34 109 62 109 86 94 62 103 36 103 14 96z';
+  const SMILE2 = 'M24 107C40 115 62 115 78 105 62 111 42 111 24 107z';
+  const TEETH = [[8, 26, .24], [11, 45, .22], [20, 61, .2], [34, 72, .18]];
+
+  function draw(o) {
+    const ink = o.ink ?? 'var(--ink)';
+    let s = '';
+    // Инструменты рисуются под палитрой: видны над ней и в отверстии.
+    if (o.inst >= 3) s += `<path d="M70 50 82 14c1-4 5-5 6-2" fill="none" stroke="${ink}" stroke-width="2.4" stroke-linecap="round"/>`;
+    if (o.inst >= 2) s += `<path d="M62 50 56 13" stroke="${ink}" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="55" cy="7.5" rx="5.5" ry="6" fill="${o.mirror ?? '#fff'}" stroke="${ink}" stroke-width="2.2"/>`;
+    if (o.inst >= 1) s += `<path d="M66 50 77 12" stroke="${o.br}" stroke-width="3.2" stroke-linecap="round"/><path d="M77 12 78.6 6.6" stroke="${ink}" stroke-width="3.6" stroke-linecap="round"/><path d="M78.6 6.6C79 3 81 1 82.5 0c.3 3-.6 6-2.2 8z" fill="${o.br}"/>`;
+    s += `<path d="${PAL}${o.hole === false ? '' : HOLE}" fill="${o.pf}" fill-rule="evenodd" stroke="${o.ol}" stroke-width="${o.sw}" stroke-linejoin="round" ${o.rough ? 'filter="url(#rough)"' : ''}/>`;
+    const teeth = o.teeth ?? TEETH;
+    teeth.forEach(([x, y, k], i) => {
+      s += `<use href="#tooth" transform="translate(${x} ${y}) scale(${k})" fill="${o.tc[i % o.tc.length]}" ${o.rough ? 'filter="url(#rough)"' : ''}/>`;
+    });
+    if (o.smile !== 0) {
+      s += `<path d="${SMILE1}" fill="${o.sm}"/>`;
+      if (o.smile !== 1) s += `<path d="${SMILE2}" fill="${o.sm}"/>`;
+    }
+    return s;
+  }
+
+  const OLD = ['#e8b830', '#b8357a', '#9467c4', '#2f2b78'];
+  const MUTED = ['#d6a548', '#a8436f', '#8e74b6', '#33568f'];
+  const V = [
+    { t: 'Почти как было', d: 'Тот же логотип, только аккуратно: ровный контур, зубы одной формы, три инструмента, яркие краски и красная двойная улыбка. Узнают все, кто видел визитку.',
+      o: { pf: '#fff', ol: 'var(--ink)', sw: 3.6, tc: OLD, br: '#d8382c', sm: '#d8382c', inst: 3 }, f: "'Marck Script', cursive", fs: '2.05rem', wc: '#1f2b8a' },
+    { t: 'Аккуратно и спокойнее', d: 'Контур тоньше, краски приглушены, инструментов два — кисть и зеркало. Улыбка терракотовая. Самый сбалансированный.',
+      o: { pf: '#fff', ol: 'var(--ink)', sw: 2.6, tc: MUTED, br: '#cf5a3c', sm: '#cf5a3c', inst: 2 }, f: "'Marck Script', cursive", fs: '2.05rem', wc: '#233a7a' },
+    { t: 'Без контура', d: 'Палитра — мягкое светлое пятно без обводки, зубы и инструменты цветные. Самый лёгкий и современный из близких к старому.',
+      o: { pf: '#efe7dc', ol: 'none', sw: 0, tc: MUTED, br: '#cf5a3c', sm: '#cf5a3c', inst: 2 }, f: "'Bad Script', cursive", fs: '1.75rem', wc: '#233a7a' },
+    { t: 'Синий контур', d: 'Контур палитры в синий цвет надписи — знак и название становятся одним целым. Кисть и улыбка красные, как было.',
+      o: { pf: '#fff', ol: '#2c4a8a', sw: 3, tc: MUTED, br: '#d8432f', sm: '#d8432f', inst: 2, ink: '#2c4a8a' }, f: "'Marck Script', cursive", fs: '2.05rem', wc: '#2c4a8a' },
+    { t: 'Тёмная палитра', d: 'Палитра залита тёмно-синим, на ней яркие зубы-краски. Сильно смотрится на светлом фоне и вывеске.',
+      o: { pf: '#24305e', ol: 'none', sw: 0, tc: ['#f0c04f', '#e0679b', '#b597e3', '#ffffff'], br: '#e2533a', sm: '#e2533a', inst: 2, mirror: '#fff' }, f: 'Caveat, cursive', fs: '2.15rem', wc: '#24305e' },
+    { t: 'Упрощённый', d: 'Три зуба, одна кисть, одна улыбка. Всё лишнее убрано, но идея та же. Название — «СТУДИЯ» строгими буквами и «улыбки» от руки.',
+      o: { pf: '#fff', ol: 'var(--ink)', sw: 2.6, tc: MUTED, br: '#cf5a3c', sm: '#cf5a3c', inst: 1, smile: 1, teeth: [[9, 28, .25], [13, 49, .23], [26, 66, .21]] }, f: "'Marck Script', cursive", fs: '2.05rem', wc: '#233a7a', combo: true },
+    { t: 'Значок без инструментов', d: 'Палитра, четыре зуба и улыбка — без кисти и зеркала. Компактно: годится для иконки сайта, аватарки, печати на форме.',
+      o: { pf: '#fff', ol: 'var(--ink)', sw: 3, tc: MUTED, br: '#cf5a3c', sm: '#cf5a3c', inst: 0 }, f: 'Neucha, cursive', fs: '1.85rem', wc: '#233a7a' },
+    { t: 'Живая краска', d: 'Как вариант «мазок» из прошлых кругов: контур и зубы с неровным краем, как настоящая краска. Тёплая терракота, рукописное название.',
+      o: { pf: '#fff', ol: '#c4643f', sw: 3.4, tc: ['#d0a574', '#8fae8b', '#9d8fb8', '#c4643f'], br: '#c4643f', sm: '#c4643f', inst: 2, rough: true, ink: '#5a3b2e' }, f: 'Caveat, cursive', fs: '2.15rem', wc: '#5a3b2e' },
+  ];
+
+  const mark = (v, w, h) => `<svg viewBox="0 0 100 114" width="${w}" height="${h}" aria-hidden="true">${draw(v.o)}</svg>`;
+  const word = (v) => v.combo
+    ? `<div><div class="word"><span class="s">Студия</span>улыбки</div><div class="kind">Стоматология · Ачинск</div></div>`
+    : `<div><div class="word">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div>`;
+  document.getElementById('grid').innerHTML = V.map((v, i) => `
+    <article class="card" style="--f:${v.f};--fs:${v.fs};--wc:${v.wc}">
+      <h2><b>${i + 1}</b>${v.t}</h2>
+      <div class="big">${mark(v, 170, 194)}</div>
+      <div class="lock light">${mark(v, 50, 57)}${word(v)}</div>
+      <div class="lock dark">${mark(v, 50, 57)}${word(v)}</div>
+      <div class="sizes"><div>${mark(v, 28, 32)}<small>32</small></div><div>${mark(v, 14, 16)}<small>16</small></div></div>
+      <p>${v.d}</p>
+    </article>`).join('');
+</script>
+</body>
+</html>
