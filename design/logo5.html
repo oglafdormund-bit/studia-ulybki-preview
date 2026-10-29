@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Логотип — 12 идей из исходника</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat:wght@700&family=Comfortaa:wght@700&family=Great+Vibes&family=Lobster&family=Lora:ital,wght@1,500&family=Manrope:wght@400;500;600&family=Marck+Script&family=Neucha&family=Onest:wght@500;600;700&family=Philosopher:ital,wght@1,700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #262833; --muted: #6f6a72; --bg: #f4f2ef; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Manrope, sans-serif; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font: 700 2.4rem/1.1 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .lead { color: var(--muted); max-width: 74ch; margin: 0 0 20px; }
+  .ref { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 36px; }
+  .ref figure { margin: 0; background: #fff; border-radius: 16px; padding: 12px 16px; display: flex; gap: 12px; align-items: center; }
+  .ref img { height: 80px; }
+  .ref figcaption { font-size: .85rem; color: var(--muted); max-width: 20ch; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 22px; display: grid; gap: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05); }
+  .card h2 { margin: 0; font: 600 1.15rem Onest, sans-serif; display: flex; justify-content: space-between; gap: 10px; }
+  .card h2 b { color: var(--a); margin-right: 6px; }
+  .sw { display: flex; gap: 4px; } .sw i { width: 13px; height: 13px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+  .big { height: 220px; border-radius: 16px; display: grid; place-items: center; background: #faf9f7; }
+  .big svg { width: 170px; height: 170px; }
+  .lock { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 16px; }
+  .lock.light { background: #faf9f7; }
+  .lock.dark { background: var(--d); --ink: #f1eee9; }
+  .lock svg { width: 54px; height: 54px; flex: none; }
+  .word { font-family: var(--f); font-size: var(--fs, 2rem); line-height: 1.05; color: var(--wc); font-style: var(--fst, normal); font-weight: var(--fw, 400); }
+  .lock.dark .word { color: #fff; }
+  .kind { margin-top: 6px; font: 600 .625rem Manrope, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .lock.dark .kind { color: rgba(255,255,255,.6); }
+  .sizes { display: flex; align-items: end; gap: 14px; }
+  .sizes small { display: block; text-align: center; font-size: .7rem; color: var(--muted); }
+  .card p { margin: 0; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="tooth" d="M34 16C24 16 19 24 19 34c0 11 5 18 7 28l4 22c1 5 8 5 9 0l5-20c1-4 11-4 12 0l5 20c1 5 8 5 9 0l4-22c2-10 7-17 7-28 0-10-5-18-15-18-7 0-10 4-16 4s-9-4-16-4z"/>
+    <path id="pal" d="M26 18C12 18 6 32 6 48c0 22 16 42 40 42 18 0 30-14 30-32 0-10 4-16 4-26 0-12-8-18-16-16-8 2-10 10-18 10S36 18 26 18z"/>
+    <path id="heart" d="M50 90C30 76 8 60 8 38 8 24 18 14 31 14c9 0 15 5 19 12 4-7 10-12 19-12 13 0 23 10 23 24 0 22-22 38-42 52z"/>
+    <filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter>
+    <filter id="blur"><feGaussianBlur stdDeviation="2.2"/></filter>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Логотип — 12 идей из исходника</h1>
+  <p class="lead">Пятый круг: снова совсем разные варианты, но каждый вырос из старого логотипа — палитра, зубы вместо красок, инструменты вместо кистей, мазок-улыбка, каллиграфия. Разные задумки, разная манера рисунка и разные цвета.</p>
+  <div class="ref">
+    <figure><img src="ph/logo-old-color.jpg" alt="Старый логотип"><figcaption>Исходник — старый логотип</figcaption></figure>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  const T = (x, y, k, fill, rot = 0, extra = '') =>
+    `<use href="#tooth" transform="translate(${x} ${y}) rotate(${rot} ${31 * k} ${52 * k}) scale(${k})" fill="${fill}" ${extra}/>`;
+  const ink = 'var(--ink)';
+
+  const V = [
+    {
+      t: 'Палитра из улыбки', a: '#d8392c', d: '#1d2a5c', pal: ['#1d2a5c', '#d8392c', '#e8b830', '#b8357a'],
+      d1: 'Нижний край палитры — двойной красный мазок-улыбка из старого логотипа. Палитра и улыбка стали одним знаком.',
+      f: "'Marck Script', cursive", fs: '2.05rem', wc: '#1d2a5c',
+      svg: `<path d="M9 50C11 27 30 14 52 14c24 0 40 15 39 34" fill="none" stroke="#1d2a5c" stroke-width="3.4" stroke-linecap="round"/>
+        <circle cx="74" cy="34" r="5" fill="none" stroke="#1d2a5c" stroke-width="3"/>
+        <path d="M7 50c18 34 66 38 86 -2-20 24-62 24-86 2z" fill="#d8392c"/>
+        <path d="M22 72c16 18 44 18 60 -3-16 11-42 12-60 3z" fill="#d8392c"/>
+        ${T(18, 26, .2, '#e8b830')}${T(36, 21, .19, '#b8357a')}${T(54, 24, .17, '#7f5fc0')}`,
+    },
+    {
+      t: 'Зуб-стакан для кистей', a: '#c4643f', d: '#2f2622', pal: ['#c4643f', '#2f2622', '#8fae8b', '#d6a548'],
+      d1: 'Как стакан с кистями в мастерской: из зуба торчат кисть, зеркало и зонд. Инструменты-кисти из старого знака — главный герой.',
+      f: 'Caveat, cursive', fs: '2.15rem', wc: '#2f2622',
+      svg: `<path d="M36 34 26 4" stroke="${ink}" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="25" cy="7" rx="6" ry="6.5" fill="#fff" stroke="${ink}" stroke-width="2.4"/>
+        <path d="M50 36 52 4" stroke="#c4643f" stroke-width="3.4" stroke-linecap="round"/><path d="M52 4c-1-2 0-4 2-4 0 2-1 4-2 4z" fill="#c4643f" stroke="#c4643f" stroke-width="3"/>
+        <path d="M62 36 72 8c1-4 6-5 7-2" fill="none" stroke="${ink}" stroke-width="2.6" stroke-linecap="round"/>
+        <use href="#tooth" transform="translate(13 16) scale(.84)" fill="#fff" stroke="${ink}" stroke-width="3.4" stroke-linejoin="round"/>
+        <circle cx="36" cy="54" r="5" fill="#8fae8b"/><circle cx="50" cy="60" r="4.2" fill="#d6a548"/><circle cx="62" cy="52" r="4.6" fill="#c4643f"/>`,
+    },
+    {
+      t: 'Капля-зуб', a: '#2f6f6a', d: '#173634', pal: ['#2f6f6a', '#d97a4a', '#f0d7a8', '#173634'],
+      d1: 'С кисти падает капля краски в форме зуба, внизу — мазок-улыбка. Живо и с движением.',
+      f: "'Bad Script', cursive", fs: '1.8rem', wc: '#173634',
+      svg: `<path d="M94 4 58 40" stroke="${ink}" stroke-width="3" stroke-linecap="round"/><path d="M60 37c-6 2-10 7-11 13 6-1 11-5 13-11z" fill="#2f6f6a"/>
+        ${T(30, 40, .36, '#d97a4a', -12)}
+        <path d="M10 82c22 18 58 18 80 -2-22 10-58 10-80 2z" fill="#2f6f6a"/>`,
+    },
+    {
+      t: 'Улыбка из красок', a: '#7a5aa8', d: '#2a2140', pal: ['#7a5aa8', '#e2a33c', '#d8577e', '#4d8f9a'],
+      d1: 'Внутри палитры зубы-краски выстроены дугой — получается улыбка из цветных зубов. Палитра лиловым контуром.',
+      f: 'Lobster, cursive', fs: '1.75rem', wc: '#2a2140',
+      svg: `<use href="#pal" transform="translate(4 4)" fill="none" stroke="#7a5aa8" stroke-width="3.2" stroke-linejoin="round"/>
+        <ellipse cx="68" cy="36" rx="6" ry="4.5" fill="none" stroke="#7a5aa8" stroke-width="3" transform="rotate(-18 68 36)"/>
+        ${T(12, 46, .17, '#e2a33c', -24)}${T(22, 58, .17, '#d8577e', -12)}${T(36, 63, .17, '#4d8f9a')}${T(50, 59, .17, '#7a5aa8', 12)}`,
+    },
+    {
+      t: 'Веер зубов', a: '#d8392c', d: '#262833', pal: ['#e8b830', '#b8357a', '#7f5fc0', '#2f2b78'],
+      d1: 'Четыре цветных зуба развёрнуты веером, как образцы красок, под ними мазок-улыбка. Краски старого логотипа — без палитры.',
+      f: "'Marck Script', cursive", fs: '2.05rem', wc: '#2f2b78',
+      svg: `${T(14, 28, .34, '#e8b830', -34)}${T(26, 18, .34, '#b8357a', -12)}${T(40, 18, .34, '#7f5fc0', 12)}${T(52, 28, .34, '#2f2b78', 34)}
+        <path d="M14 86c20 14 52 14 72 -2-20 8-52 8-72 2z" fill="#d8392c"/>`,
+    },
+    {
+      t: 'Линогравюра', a: '#1f3a6b', d: '#1f3a6b', pal: ['#1f3a6b', '#f4efe6', '#d24a3a'],
+      d1: 'Как оттиск резной печати: тёмный квадрат, палитра и зубы вырезаны белым, улыбка красная. Солидно, хорошо на вывеске и штампе.',
+      f: "'Philosopher', sans-serif", fs: '1.6rem', wc: '#1f3a6b', fst: 'italic', fw: 700,
+      svg: `<rect x="4" y="4" width="92" height="92" rx="14" fill="#1f3a6b"/>
+        <use href="#pal" transform="translate(16 12) scale(.72)" fill="#f4efe6"/><ellipse cx="62" cy="34" rx="4.5" ry="3.4" fill="#1f3a6b" transform="rotate(-18 62 34)"/>
+        ${T(19, 24, .19, '#1f3a6b')}${T(22, 42, .18, '#1f3a6b')}${T(34, 55, .16, '#d24a3a')}
+        <path d="M22 80c16 10 40 10 56 -2-16 6-40 6-56 2z" fill="#d24a3a"/>`,
+    },
+    {
+      t: 'Палитра одной линией', a: '#2a8a86', d: '#123b3a', pal: ['#2a8a86', '#123b3a', '#f2b544'],
+      d1: 'Палитра, зубы и кисть — одной ровной линией одной толщины. Строгая геометрия, но идея старого знака вся на месте.',
+      f: 'Comfortaa, sans-serif', fs: '1.4rem', wc: '#123b3a', fw: 700,
+      svg: `<g fill="none" stroke="#2a8a86" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M66 74c2 10-4 16-18 16C26 90 10 74 10 52S26 14 48 14c24 0 42 14 42 32 0 10-6 15-14 14-8-1-12 4-10 14"/>
+        <circle cx="70" cy="38" r="5"/>
+        <use href="#tooth" transform="translate(20 28) scale(.18)" stroke-width="16"/><use href="#tooth" transform="translate(36 22) scale(.16)" stroke-width="18"/><use href="#tooth" transform="translate(20 50) scale(.16)" stroke-width="18"/>
+        <path d="M96 6 74 34"/></g><circle cx="73" cy="35" r="3.2" fill="#f2b544"/>`,
+    },
+    {
+      t: 'Краски над улыбкой', a: '#d8392c', d: '#1d2a5c', pal: ['#d8392c', '#e8b830', '#b8357a', '#7f5fc0'],
+      d1: 'Палитры нет: двойной мазок-улыбка, а над ним дугой четыре цветных зуба, как капли красок. Самый лёгкий знак.',
+      f: "'Great Vibes', cursive", fs: '2.3rem', wc: '#1d2a5c',
+      svg: `${T(10, 34, .22, '#e8b830', -20)}${T(29, 24, .22, '#b8357a', -7)}${T(49, 24, .22, '#7f5fc0', 7)}${T(68, 34, .22, '#2f6fbf', 20)}
+        <path d="M8 66c22 26 62 26 84 -4-22 16-62 16-84 4z" fill="#d8392c"/><path d="M20 80c18 14 44 14 60 -2-16 8-44 8-60 2z" fill="#d8392c"/>`,
+    },
+    {
+      t: 'Палитра-сердце', a: '#c23b5a', d: '#3b1522', pal: ['#c23b5a', '#f2a093', '#d6a548', '#8e74b6'],
+      d1: 'Палитра в форме сердца — «с любовью к улыбкам». Зубы-краски, кисть в отверстии. Тёплый и семейный.',
+      f: "'Bad Script', cursive", fs: '1.8rem', wc: '#3b1522',
+      svg: `<path d="M72 34 88 4" stroke="#c23b5a" stroke-width="3.2" stroke-linecap="round"/><path d="M88 4c1-3 4-4 5-3-1 3-3 5-5 5z" fill="#c23b5a"/>
+        <use href="#heart" fill="#fff" stroke="#c23b5a" stroke-width="3.2" stroke-linejoin="round"/>
+        <circle cx="70" cy="34" r="5" fill="#fff" stroke="#c23b5a" stroke-width="2.6"/><path d="M71 32 74 26" stroke="#c23b5a" stroke-width="3.2" stroke-linecap="round"/>
+        ${T(18, 28, .19, '#d6a548')}${T(20, 46, .18, '#f2a093')}${T(32, 60, .17, '#8e74b6')}`,
+    },
+    {
+      t: 'Каллиграфическая «С»', a: '#1f2b8a', d: '#141a4a', pal: ['#1f2b8a', '#e8b830', '#b8357a', '#d8392c'],
+      d1: 'Заглавная «С» из старой надписи становится знаком: росчерк пером, а в его чаше — зубы-краски и красная кисть.',
+      f: "'Great Vibes', cursive", fs: '2.4rem', wc: '#1f2b8a',
+      svg: `<path d="M82 22C70 8 44 6 26 20 8 34 8 66 28 82c18 14 44 12 58-2-14 8-34 8-46-4C24 62 26 36 42 24c12-9 28-8 38 2z" fill="#1f2b8a"/>
+        <path d="M82 22c4 4 4 10-1 12" fill="none" stroke="#1f2b8a" stroke-width="2.6" stroke-linecap="round"/>
+        ${T(40, 34, .19, '#e8b830')}${T(44, 52, .18, '#b8357a')}
+        <path d="M92 40 62 74" stroke="#d8392c" stroke-width="3" stroke-linecap="round"/>`,
+    },
+    {
+      t: 'Набросок акварелью', a: '#b0603c', d: '#3a2219', pal: ['#b0603c', '#9bbf95', '#e7b98a', '#a99ac8'],
+      d1: 'Палитра обведена от руки двумя линиями, как карандашный набросок, под зубами — пятна акварели. Самый «художественный».',
+      f: 'Caveat, cursive', fs: '2.15rem', wc: '#3a2219',
+      svg: `<g filter="url(#blur)" opacity=".75"><circle cx="26" cy="38" r="11" fill="#9bbf95"/><circle cx="28" cy="60" r="11" fill="#e7b98a"/><circle cx="46" cy="30" r="9" fill="#a99ac8"/></g>
+        <g fill="none" stroke="#b0603c" stroke-linecap="round" filter="url(#rough)"><use href="#pal" transform="translate(4 4)" stroke-width="2.4"/><use href="#pal" transform="translate(5.5 3) rotate(1.5 50 50)" stroke-width="1.2" opacity=".7"/></g>
+        <ellipse cx="68" cy="36" rx="6" ry="4.5" fill="none" stroke="#b0603c" stroke-width="2.2" transform="rotate(-18 68 36)" filter="url(#rough)"/>
+        ${T(20, 30, .17, '#fff', 0, 'stroke="#b0603c" stroke-width="12"')}${T(22, 52, .17, '#fff', 0, 'stroke="#b0603c" stroke-width="12"')}${T(40, 22, .15, '#fff', 0, 'stroke="#b0603c" stroke-width="13"')}
+        <path d="M94 6 66 36" stroke="#3a2219" stroke-width="2.4" stroke-linecap="round"/>`,
+    },
+    {
+      t: 'Круглая эмблема', a: '#c4643f', d: '#2a2420', pal: ['#c4643f', '#fff', '#2a2420', '#d6a548'],
+      d1: 'Круг цвета терракоты, в нём белая палитра с зубами и кистью, по низу круга — улыбка. Цельный знак для аватарки и вывески.',
+      f: "'Marck Script', cursive", fs: '2.05rem', wc: '#2a2420',
+      svg: `<circle cx="50" cy="50" r="47" fill="#c4643f"/>
+        <path d="M66 42 82 14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+        <use href="#pal" transform="translate(20 16) scale(.62)" fill="#fff"/><ellipse cx="61" cy="36" rx="4" ry="3" fill="#c4643f" transform="rotate(-18 61 36)"/><path d="M62 35 66 28" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+        ${T(26, 30, .12, '#d6a548')}${T(27, 42, .11, '#8fae8b')}${T(34, 52, .1, '#9d8fb8')}
+        <path d="M22 76c16 12 40 12 56 -2-16 6-40 6-56 2z" fill="#fff"/>`,
+    },
+  ];
+
+  const mark = (v, s) => `<svg viewBox="0 0 100 100" width="${s}" height="${s}" aria-hidden="true">${v.svg}</svg>`;
+  document.getElementById('grid').innerHTML = V.map((v, i) => `
+    <article class="card" style="--a:${v.a};--d:${v.d};--f:${v.f};--fs:${v.fs};--wc:${v.wc};${v.fst ? `--fst:${v.fst};` : ''}${v.fw ? `--fw:${v.fw};` : ''}">
+      <h2><span><b>${i + 1}</b>${v.t}</span><span class="sw">${v.pal.map((c) => `<i style="background:${c}"></i>`).join('')}</span></h2>
+      <div class="big">${mark(v, 170)}</div>
+      <div class="lock light">${mark(v, 54)}<div><div class="word">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div></div>
+      <div class="lock dark">${mark(v, 54)}<div><div class="word">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div></div>
+      <div class="sizes"><div>${mark(v, 32)}<small>32</small></div><div>${mark(v, 16)}<small>16</small></div></div>
+      <p>${v.d1}</p>
+    </article>`).join('');
+</script>
+</body>
+</html>
