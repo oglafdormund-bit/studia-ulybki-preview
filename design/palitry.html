@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Палитры сайта — сравнение</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e9e7e3; color: #262330; font: 15px/1.5 Manrope, sans-serif; }
+  .bar { position: sticky; top: 0; z-index: 2; background: #fff; border-bottom: 1px solid #ddd; padding: 12px 16px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .bar h1 { font: 700 1.1rem Onest, sans-serif; margin: 0 12px 0 0; }
+  .tabs, .dev { display: flex; gap: 6px; flex-wrap: wrap; }
+  button { font: 600 .9rem Manrope, sans-serif; border: 1px solid #d5d2cc; background: #fff; border-radius: 999px; padding: 8px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+  button[aria-pressed='true'] { background: #262330; color: #fff; border-color: #262330; }
+  button i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+  .dev { margin-left: auto; }
+  .info { max-width: 1400px; margin: 14px auto 0; padding: 0 16px; }
+  .info p { margin: 0; color: #5b5965; }
+  .info b { color: #262330; }
+  .stage { display: flex; justify-content: center; padding: 14px 16px 40px; }
+  iframe { border: 0; background: #fff; border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,.12); width: 100%; max-width: 1440px; height: calc(100vh - 150px); min-height: 600px; transition: max-width .2s; }
+  iframe.mobile { max-width: 390px; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <h1>Палитры сайта</h1>
+  <div class="tabs" id="tabs"></div>
+  <div class="dev"><button data-dev="desktop" aria-pressed="true">Компьютер</button><button data-dev="mobile" aria-pressed="false">Телефон</button></div>
+</div>
+<div class="info"><p id="desc"></p></div>
+<div class="stage"><iframe id="frame" title="Сайт в выбранной палитре"></iframe></div>
+
+<script>
+  // Живая главная сайта; поверх неё подменяются цвета (через переменные сайта) и логотип.
+  const SITE = new URLSearchParams(location.search).get('site') ?? '../site/';
+
+  // Логотип «Зуб-стакан, потёки краски». Линии — цветом текста шапки/подвала (currentColor).
+  const JAR = (handle) => `<svg class="logo-mark" viewBox="16 -2 88 142" aria-hidden="true">
+    <defs><path id="jb" d="M33 62c-4 9-6 21-2 33 2 7 5 11 6 18l2 13c1 7 9 7 10 0l4-18c1-4 13-4 14 0l4 18c1 7 9 7 10 0l2-13c1-7 4-11 6-18 4-12 2-24-2-33a27 6 0 0 1-54 0z"/><clipPath id="jc"><use href="#jb"/></clipPath></defs>
+    <ellipse cx="60" cy="62" rx="27" ry="6" fill="#4a3a33" stroke="currentColor" stroke-width="3.4"/>
+    <path d="M50 64 39 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 52 43 40" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="36" cy="13" r="8.5" fill="#dfe7ef" stroke="currentColor" stroke-width="3"/>
+    <path d="M60 64 64 22" stroke="currentColor" stroke-width="7.4" stroke-linecap="round"/><path d="M60 64 64 22" stroke="${handle}" stroke-width="4.2" stroke-linecap="round"/><path d="M63.6 26 64.8 14" stroke="currentColor" stroke-width="7.6"/><path d="M63.6 26 64.8 14" stroke="#cfd6de" stroke-width="4.6"/><path d="M62.2 14.4c-.6-6 1-11 3.6-14 1.6 4 2 9 1 14.2z" fill="#d6a548" stroke="currentColor" stroke-width="2"/>
+    <path d="M71 64 83 30" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M83 30c2-6 2-10 6-12 3-1 5 1 4 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <use href="#jb" fill="#fff" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>
+    <g clip-path="url(#jc)"><path d="M33 62a27 6 0 0 0 54 0v6a27 6 0 0 1-54 0z" fill="#c4643f"/><path d="M37 66v14a3.2 3.2 0 0 0 6.4 0V69z" fill="#c4643f"/><path d="M52 68v9a3 3 0 0 0 6 0v-8z" fill="#8fae8b"/><path d="M56 67.6a27 6 0 0 0 14 0v4a27 6 0 0 1-14 0z" fill="#8fae8b"/><path d="M71 67v18a3.4 3.4 0 0 0 6.8 0V65z" fill="#d6a548"/><path d="M66 67.3a27 6 0 0 0 21-5.3v5a27 6 0 0 1-21 5z" fill="#d6a548"/></g>
+    <path d="M33 62a27 6 0 0 0 54 0" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>`;
+
+  // Общие правила подмены: логотип, точки над заголовками, тёмные полосы — от переменных палитры.
+  const COMMON = `
+    .logo-mark { width: 30px !important; height: 48px !important; }
+    .logo-name { font-family: Caveat, cursive !important; font-weight: 700 !important; font-size: 1.65rem !important; letter-spacing: 0 !important; }
+    .kicker::before { background: var(--p-dot) !important; }
+    .hdr.dark .bar { background: var(--p-dark-a) !important; }
+    .site-footer { background: linear-gradient(var(--p-dark-a), var(--p-dark-a)), url('${SITE}images/fon/tkan.jpg') center / cover !important; }
+    .cta-bg::after { background: linear-gradient(90deg, var(--p-dark-a) 0%, var(--p-dark-b) 55%, transparent 100%) !important; }
+    .hero .kicker::before { background: var(--p-dot-photo) !important; }
+    .hero :is(h1, h2) em { color: var(--p-dot-photo) !important; }
+    :is(h1, h2, h3) em { color: var(--color-brass) !important; }
+    .panel-dark :is(h1, h2, h3) em, .site-footer em, .cta em { color: var(--accent-on-photo) !important; }`;
+
+  const P = [
+    { id: 'A', t: 'А. Синий + тёплые акценты', sw: ['#33568f', '#a8502f', '#eef1f5'],
+      d: '<b>Как в брендбуке сейчас.</b> Синий остаётся главным (кнопки, ссылки, тёмные полосы), фон холодный светло-серый. Терракота — выделенные слова в заголовках и точки над ними. Текст — тушь вместо чёрно-синего.',
+      handle: '#c4643f',
+      css: `:root{--color-text:#262330;--color-brass:#a8502f;--p-dot:#c4643f;--p-dot-photo:#e9926c;--accent-on-photo:#f0b393;--p-dark-a:rgba(18,26,40,.92);--p-dark-b:rgba(18,26,40,.7);}` },
+    { id: 'B', t: 'Б. Тёплая мастерская', sw: ['#a8502f', '#2b2420', '#f5f0ea'],
+      d: '<b>Смело.</b> Главный цвет — тёмная терракота (кнопки, ссылки), текст — тёплый «какао», фон тёплый бумажный, тёмные полосы коричневые. Синего нет. Полностью в цвет логотипа.',
+      handle: '#c4643f',
+      css: `:root{--color-bg:#f5f0ea;--color-bg-sunken:#ece3d7;--color-surface:#fffdf9;--color-surface-strong:#f1ebe2;--color-border:#e7ddd0;--color-border-strong:#d9ccbb;--color-text:#2b2420;--color-text-muted:#6e6259;--color-accent:#a8502f;--color-accent-strong:#8e4226;--color-accent-soft:#f6e4da;--color-focus:#a8502f;--color-accent-muted:#7a5240;--color-brass:#a8502f;--p-dot:#d6a548;--p-dot-photo:#e9b25c;--accent-on-photo:#f0b393;--photo-scrim:43 36 32;--photo-placeholder:#3a2c24;--p-dark-a:rgba(43,32,26,.93);--p-dark-b:rgba(43,32,26,.72);}` },
+    { id: 'C', t: 'В. Шалфей и дуб', sw: ['#4f7a5a', '#a8502f', '#f3f1ec'],
+      d: '<b>Спокойно и природно.</b> Главный цвет — глубокий шалфейный, фон тёплый светлый, тёмные полосы тёмно-зелёные. Терракота — только выделенные слова и логотип.',
+      handle: '#c4643f',
+      css: `:root{--color-bg:#f3f1ec;--color-bg-sunken:#e6ebe2;--color-surface:#ffffff;--color-surface-strong:#eef0ea;--color-border:#dfe3d8;--color-border-strong:#cdd3c6;--color-text:#22302a;--color-text-muted:#5e6a62;--color-accent:#4f7a5a;--color-accent-strong:#3e6248;--color-accent-soft:#e5efe6;--color-focus:#4f7a5a;--color-accent-muted:#4a6352;--color-brass:#a8502f;--p-dot:#c4643f;--p-dot-photo:#e9926c;--accent-on-photo:#bcd9c2;--photo-scrim:28 44 35;--photo-placeholder:#24382c;--p-dark-a:rgba(26,40,32,.93);--p-dark-b:rgba(26,40,32,.72);}` },
+    { id: 'D', t: 'Г. Глубокий синий + терракота, тёплый фон', sw: ['#1f2b5a', '#a8502f', '#f5f0ea'],
+      d: '<b>Мой фаворит.</b> Наследник старого логотипа (синяя надпись + красная улыбка), но приглушённо и тепло. Кнопки и ссылки — глубокий тёмно-синий, выделенные слова и точки — терракота, фон тёплый бумажный.',
+      handle: '#c4643f',
+      css: `:root{--color-bg:#f5f0ea;--color-bg-sunken:#ebe4da;--color-surface:#fffdf9;--color-surface-strong:#f1ebe3;--color-border:#e6ddd1;--color-border-strong:#d6ccbe;--color-text:#1f2440;--color-text-muted:#5f5f6e;--color-accent:#1f2b5a;--color-accent-strong:#151e44;--color-accent-soft:#e7e8f0;--color-focus:#1f2b5a;--color-accent-muted:#3b4470;--color-brass:#a8502f;--p-dot:#c4643f;--p-dot-photo:#e9926c;--accent-on-photo:#f0b393;--photo-scrim:24 30 62;--photo-placeholder:#1c2450;--p-dark-a:rgba(22,28,58,.93);--p-dark-b:rgba(22,28,58,.72);}` },
+  ];
+
+  const frame = document.getElementById('frame');
+  let current = P[3];
+
+  function apply() {
+    const doc = frame.contentDocument;
+    if (!doc || !doc.head) return;
+    if (!doc.getElementById('caveat-font')) {
+      const l = doc.createElement('link'); l.id = 'caveat-font'; l.rel = 'stylesheet';
+      l.href = 'https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap'; doc.head.append(l);
+    }
+    let st = doc.getElementById('pal-override');
+    if (!st) { st = doc.createElement('style'); st.id = 'pal-override'; doc.head.append(st); }
+    st.textContent = current.css + COMMON;
+    doc.querySelectorAll('.logo-mark').forEach((m) => { m.outerHTML = JAR(current.handle); });
+    doc.querySelectorAll('.logo-kind').forEach((k) => { k.style.marginTop = '2px'; });
+  }
+
+  frame.addEventListener('load', () => {
+    apply();
+    // Сайт переходит между страницами без перезагрузки — подмену повторяем после каждого перехода.
+    frame.contentDocument.addEventListener('astro:page-load', apply);
+    frame.contentDocument.addEventListener('astro:after-swap', apply);
+  });
+
+  function select(p) {
+    current = p;
+    document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.id === p.id)));
+    document.getElementById('desc').innerHTML = p.d;
+    apply();
+  }
+  document.getElementById('tabs').innerHTML = P.map((p) => `<button data-id="${p.id}" aria-pressed="false"><span style="display:inline-flex;gap:3px">${p.sw.map((c) => `<i style="background:${c}"></i>`).join('')}</span>${p.t}</button>`).join('');
+  document.querySelectorAll('#tabs button').forEach((b) => b.addEventListener('click', () => select(P.find((p) => p.id === b.dataset.id))));
+  document.querySelectorAll('[data-dev]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-dev]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    frame.classList.toggle('mobile', b.dataset.dev === 'mobile');
+  }));
+  select(current);
+  frame.src = SITE;
+</script>
+</body>
+</html>
