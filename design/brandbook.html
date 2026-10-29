@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Брендбук «Студии улыбки»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #262330; --muted: #5b6577; --bg: #eef1f5; --paper: #fff;
+    --blue: #33568f; --terra: #c4643f; --terra-d: #a8502f; --sage: #8fae8b; --ochre: #d6a548; --oak: #9f8e65; --wall: #e1e0db;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 Manrope, sans-serif; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  header.cover { background: var(--paper); padding: 56px 0 48px; border-bottom: 1px solid #dfe4eb; }
+  .cover-in { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .cover svg { width: 120px; height: 140px; }
+  .cover h1 { font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 8px; }
+  .cover p { margin: 0; color: var(--muted); max-width: 60ch; }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .toc a { padding: 6px 14px; border-radius: 999px; background: var(--bg); color: var(--ink); text-decoration: none; font-weight: 600; font-size: .9rem; }
+  section { padding: 56px 0 8px; }
+  h2 { font: 700 2rem/1.1 Onest, sans-serif; letter-spacing: -0.02em; margin: 0 0 8px; }
+  h2 small { display: block; font: 600 .75rem Manrope, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--terra-d); margin-bottom: 8px; }
+  h3 { font: 600 1.2rem Onest, sans-serif; margin: 28px 0 10px; }
+  .lead { color: var(--muted); max-width: 70ch; margin: 0 0 24px; }
+  .card { background: var(--paper); border-radius: 20px; padding: 24px; box-shadow: 0 1px 2px rgba(15,26,46,.05), 0 8px 24px rgba(15,26,46,.05); }
+  .grid { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+  .g3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .g4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e6e9ee; vertical-align: top; }
+  th { font-weight: 600; color: var(--muted); font-size: .85rem; }
+  .sw { border-radius: 16px; overflow: hidden; background: var(--paper); box-shadow: 0 1px 2px rgba(15,26,46,.05); }
+  .sw .chip { height: 110px; display: flex; align-items: flex-end; padding: 12px; font-weight: 700; }
+  .sw .meta { padding: 12px 14px 14px; font-size: .88rem; }
+  .sw .meta b { display: block; font: 600 1rem Onest, sans-serif; }
+  .sw code { font: 600 .82rem ui-monospace, Consolas, monospace; color: var(--muted); }
+  .logo-box { display: grid; place-items: center; border-radius: 16px; min-height: 180px; padding: 20px; }
+  .lock { display: flex; align-items: center; gap: 14px; }
+  .lock .word { font: 700 2.3rem/1 Caveat, cursive; }
+  .lock .kind { margin-top: 6px; font: 600 .66rem Manrope, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .stack { display: grid; justify-items: center; gap: 6px; text-align: center; }
+  .cap { font-size: .85rem; color: var(--muted); margin-top: 10px; text-align: center; }
+  .dont { position: relative; }
+  .dont::after { content: '✕'; position: absolute; top: 10px; right: 14px; color: #c0392b; font-weight: 700; }
+  .ph { border-radius: 14px; overflow: hidden; background: #ddd; aspect-ratio: 4 / 3; }
+  .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ph.tall { aspect-ratio: 3 / 4; }
+  figure { margin: 0; } figcaption { font-size: .85rem; color: var(--muted); margin-top: 6px; }
+  ul.check { padding-left: 1.2em; margin: 8px 0; } ul.check li { margin: 4px 0; }
+  .yes li::marker { content: '✓  '; color: #3d8a5a; } .no li::marker { content: '✕  '; color: #c0392b; }
+  pre { white-space: pre-wrap; background: var(--bg); border-radius: 12px; padding: 14px 16px; font: 13px/1.55 ui-monospace, Consolas, monospace; margin: 8px 0; }
+  .type-h { font-family: Onest, sans-serif; } .type-b { font-family: Manrope, sans-serif; }
+  .btn { display: inline-flex; align-items: center; padding: 12px 22px; border-radius: 999px; font-weight: 600; color: #fff; text-decoration: none; }
+  footer { padding: 48px 0 64px; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="jarBody" d="M33 62c-4 9-6 21-2 33 2 7 5 11 6 18l2 13c1 7 9 7 10 0l4-18c1-4 13-4 14 0l4 18c1 7 9 7 10 0l2-13c1-7 4-11 6-18 4-12 2-24-2-33a27 6 0 0 1-54 0z"/>
+    <clipPath id="jarClip"><use href="#jarBody"/></clipPath>
+  </defs>
+</svg>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-in">
+      <span id="coverMark"></span>
+      <div>
+        <h1>Брендбук «Студии улыбки»</h1>
+        <p>Стоматология в Ачинске. Цвета, шрифты, логотип, тон текстов и правила для фотографий — опора для сайта, вывески, соцсетей и генерации фото. Версия 0.1 от 30.10.2026, рабочая.</p>
+        <nav class="toc"><a href="#idea">Идея</a><a href="#logo">Логотип</a><a href="#color">Цвета</a><a href="#type">Шрифты</a><a href="#voice">Тон</a><a href="#photo">Фото</a><a href="#prompts">Промпты</a></nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="idea">
+    <h2><small>01</small>Идея бренда</h2>
+    <p class="lead">«Студия улыбки» — мастерская, где улыбку делают руками и с вниманием, как художник работает над картиной. Это идея старого логотипа (палитра, зубы вместо красок, инструменты вместо кистей), и мы её сохраняем.</p>
+    <div class="grid g3">
+      <div class="card"><h3 style="margin-top:0">Мастерская</h3><p style="margin:0">Ручная работа, внимание к деталям, без конвейера. Зуб-стакан с инструментами — как стакан с кистями на столе художника.</p></div>
+      <div class="card"><h3 style="margin-top:0">Честно</h3><p style="margin:0">План лечения и стоимость — до начала работ. Цены открыты, без «от 1 рубля» и обещаний.</p></div>
+      <div class="card"><h3 style="margin-top:0">По-соседски</h3><p style="margin:0">Небольшая клиника в 5-м микрорайоне с 2012 года. Спокойно, тепло, без пафоса сетевых клиник.</p></div>
+    </div>
+  </section>
+
+  <section id="logo">
+    <h2><small>02</small>Логотип</h2>
+    <p class="lead">Зуб-стакан, из которого торчат зеркало, кисть и зонд; с краёв стекает краска трёх цветов. Название — рукописным шрифтом Caveat. Рабочая версия: чистовик (выверенные пропорции, файлы SVG и PNG для печати) — следующим шагом.</p>
+    <div class="grid g2">
+      <div><div class="logo-box card" id="logoMain"></div><p class="cap">Основной: знак + название в строку. Шапка сайта, вывеска, бланки.</p></div>
+      <div><div class="logo-box card" id="logoStack"></div><p class="cap">Вертикальный: для квадратных мест — аватарка, визитка, наклейка.</p></div>
+    </div>
+    <div class="grid g4" style="margin-top:16px">
+      <div><div class="logo-box card" id="logoIcon"></div><p class="cap">Знак отдельно: иконка сайта, соцсети.</p></div>
+      <div><div class="logo-box card" style="background:var(--ink)" id="logoDark"></div><p class="cap">На тёмном: линии светлые.</p></div>
+      <div><div class="logo-box card" id="logoMono"></div><p class="cap">Одна краска: печать, штамп, вышивка.</p></div>
+      <div><div class="logo-box card" id="logoTiny"></div><p class="cap">Малые размеры: от 24 px — упрощённый знак (без зонда и потёков).</p></div>
+    </div>
+    <h3>Правила</h3>
+    <div class="grid g2">
+      <div class="card"><ul class="check yes">
+        <li>Свободное поле вокруг — не меньше ширины ободка стакана.</li>
+        <li>Минимальный размер полного логотипа — 120 px по ширине на экране, 30 мм в печати.</li>
+        <li>На фото — только на спокойном участке или на плашке цвета «Бумага».</li>
+        <li>Цвета — только из палитры ниже.</li>
+      </ul></div>
+      <div class="card"><ul class="check no">
+        <li>Не растягивать, не наклонять, не обводить.</li>
+        <li>Не перекрашивать краску в случайные цвета.</li>
+        <li>Не добавлять тени, градиенты, свечение.</li>
+        <li>Не ставить на пёстрый фон и на лица на фото.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="color">
+    <h2><small>03</small>Цвета</h2>
+    <p class="lead">Палитра собрана из трёх источников: синий — цвет сайта и надписи старого логотипа; терракота — кисть нового логотипа (наследник красной улыбки и кисти старого); шалфей, охра и дуб — краски логотипа и настоящий интерьер клиники (зелёная скамья, дубовая стойка, светлые стены).</p>
+    <h3>Основные</h3>
+    <div class="grid g4" id="primary"></div>
+    <h3>Поддерживающие — краски</h3>
+    <div class="grid g4" id="support"></div>
+    <h3>Нейтральные</h3>
+    <div class="grid g4" id="neutral"></div>
+    <h3>Сочетания и контраст</h3>
+    <div class="card">
+      <table>
+        <tr><th>Пара</th><th>Контраст</th><th>Где можно</th></tr>
+        <tr><td>Белый на синем</td><td>7,3 : 1</td><td>Кнопки, тёмные полосы, любой текст</td></tr>
+        <tr><td>Белый на тёмной терракоте #a8502f</td><td>5,5 : 1</td><td>Кнопки и плашки с текстом</td></tr>
+        <tr><td>Белый на терракоте #c4643f</td><td>4,0 : 1</td><td>Только графика и крупный текст от 24 px — не для мелкого текста</td></tr>
+        <tr><td>Тушь на фоне сайта</td><td>13,6 : 1</td><td>Основной текст</td></tr>
+        <tr><td>Серый текст на фоне сайта</td><td>5,2 : 1</td><td>Подписи, второстепенный текст</td></tr>
+        <tr><td>Тушь на шалфее / охре</td><td>6,3 / 6,8 : 1</td><td>Плашки, иллюстрации с подписями</td></tr>
+      </table>
+    </div>
+    <h3>Пропорции</h3>
+    <div class="card">
+      <div style="display:flex;height:28px;border-radius:8px;overflow:hidden">
+        <span style="flex:60;background:var(--bg)"></span><span style="flex:20;background:var(--paper);box-shadow:inset 0 0 0 1px #e1e5ea"></span><span style="flex:10;background:var(--ink)"></span><span style="flex:6;background:var(--blue)"></span><span style="flex:4;background:var(--terra)"></span>
+      </div>
+      <p style="margin:12px 0 0;color:var(--muted)">Фон и бумага — 80%, тушь — текст, синий — действия и ссылки, терракота — редкие акценты (кисть, отметки, «важное»). Краски — только в логотипе и иллюстрациях, не в интерфейсе.</p>
+    </div>
+  </section>
+
+  <section id="type">
+    <h2><small>04</small>Шрифты</h2>
+    <p class="lead">Те же шрифты, что на сайте сейчас, плюс рукописный Caveat — только для названия в логотипе. Все три бесплатные (Google Fonts), с кириллицей.</p>
+    <div class="grid g3">
+      <div class="card"><div class="type-h" style="font-size:2.4rem;font-weight:700;line-height:1">Onest</div><p style="margin:10px 0 0;color:var(--muted)">Заголовки, цифры, цены. 500–700.</p><p class="type-h" style="font-size:1.4rem;font-weight:600;margin:12px 0 0">Сначала план, потом лечение</p></div>
+      <div class="card"><div class="type-b" style="font-size:2.4rem;font-weight:600;line-height:1">Manrope</div><p style="margin:10px 0 0;color:var(--muted)">Основной текст, кнопки, подписи. 400–600.</p><p class="type-b" style="margin:12px 0 0">Перезвоним в рабочее время, подберём удобный день и врача.</p></div>
+      <div class="card"><div style="font:700 2.6rem/1 Caveat, cursive">Caveat</div><p style="margin:10px 0 0;color:var(--muted)">Только название в логотипе. Не для текста и заголовков на сайте.</p><p style="font:700 1.8rem Caveat, cursive;margin:12px 0 0">Студия улыбки</p></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <table>
+        <tr><th>Элемент</th><th>Шрифт</th><th>Вес</th><th>Размер, ноутбук / телефон</th></tr>
+        <tr><td>Заголовок страницы</td><td>Onest</td><td>700</td><td>56 / 34 px</td></tr>
+        <tr><td>Заголовок раздела</td><td>Onest</td><td>700</td><td>40 / 28 px</td></tr>
+        <tr><td>Подзаголовок</td><td>Onest</td><td>600</td><td>22 / 19 px</td></tr>
+        <tr><td>Основной текст</td><td>Manrope</td><td>400</td><td>17–19 / 16 px</td></tr>
+        <tr><td>Подписи, мелкое</td><td>Manrope</td><td>500</td><td>13–14 px, не меньше 13</td></tr>
+        <tr><td>Надпись над заголовком</td><td>Manrope</td><td>600, заглавные, разрядка 0,14em</td><td>13 px</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="voice">
+    <h2><small>05</small>Тон текстов</h2>
+    <p class="lead">Говорим как внимательный врач-сосед: спокойно, по делу, на «вы», без медицинского жаргона и рекламных обещаний. Сайт медклиники — это реклама медуслуг (ст. 24 закона «О рекламе»), поэтому часть слов под запретом.</p>
+    <div class="grid g2">
+      <div class="card"><h3 style="margin-top:0">Мы</h3><ul class="check yes">
+        <li>Объясняем, что будет и сколько стоит, до начала работ.</li>
+        <li>Пишем коротко и конкретно: «Осмотр и план лечения — 350 ₽».</li>
+        <li>Признаём, что бывает страшно: «Давно не были? Так бывает у многих».</li>
+      </ul></div>
+      <div class="card"><h3 style="margin-top:0">Не пишем</h3><ul class="check no">
+        <li>«Безболезненно», «гарантия результата», «навсегда».</li>
+        <li>«Лучшие врачи», «№ 1 в Ачинске» и другие превосходные степени.</li>
+        <li>Отзывы и фото «до/после» без письменного согласия пациента.</li>
+        <li>Цены «от 1 ₽» и скидки-приманки.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="photo">
+    <h2><small>06</small>Фотографии</h2>
+    <p class="lead">Опорный стиль — настоящая клиника. Ниже реальные снимки из материалов клиники: всё, что генерируется, должно выглядеть так, будто снято там же, тем же светом.</p>
+    <h3>Как выглядит клиника на самом деле</h3>
+    <div class="grid g4">
+      <figure><div class="ph"><img src="reception.jpg" alt="Ресепшен клиники"></div><figcaption>Ресепшен: светлые стены, дубовая стойка, шалфейно-зелёная скамья</figcaption></figure>
+      <figure><div class="ph"><img src="chair.jpg" alt="Кабинет"></div><figcaption>Кабинет: тёмно-серое кресло, белые стены, свет сверху</figcaption></figure>
+      <figure><div class="ph"><img src="instruments.jpg" alt="Инструменты"></div><figcaption>Инструменты: металл на тёмном, холодный блеск</figcaption></figure>
+      <figure><div class="ph"><img src="models.jpg" alt="Модели челюстей"></div><figcaption>Модели челюстей — работа ортопеда</figcaption></figure>
+    </div>
+    <div class="grid g4" style="margin-top:16px">
+      <figure><div class="ph tall"><img src="../site/images/vrachi/ilivanova.jpg" alt="Врач в форме"></div><figcaption>Форма врачей — серо-лиловая</figcaption></figure>
+      <figure><div class="ph tall"><img src="../site/images/vrachi/kozlova.jpg" alt="Врач"></div><figcaption>Светлый фон, естественный свет</figcaption></figure>
+      <figure><div class="ph tall"><img src="../site/images/vrachi/sablin.jpg" alt="Врач"></div><figcaption>У мужчин-врачей — оливковая форма</figcaption></figure>
+      <figure><div class="ph tall"><img src="../site/images/vrachi/petrova.jpg" alt="Медсестра"></div><figcaption>Спокойные позы, без постановки</figcaption></figure>
+    </div>
+    <h3>Цвета реальных фото</h3>
+    <div class="grid g4" id="photoColors"></div>
+    <h3>Правила кадра</h3>
+    <div class="grid g2">
+      <div class="card"><ul class="check yes">
+        <li>Дневной мягкий свет, слегка тёплый; тени мягкие.</li>
+        <li>Белые и светло-серые стены, светлый дуб, шалфейно-зелёные акценты.</li>
+        <li>Форма врачей серо-лиловая (женщины) или оливковая (мужчины).</li>
+        <li>Обычные люди 25–60 лет, славянская внешность, естественная улыбка и зубы.</li>
+        <li>Взгляд и жесты — разговор, объяснение, спокойствие.</li>
+        <li>Сдержанная цветокоррекция: чуть приглушённые цвета, без перенасыщения.</li>
+      </ul></div>
+      <div class="card"><ul class="check no">
+        <li>Голливудские виниры, неестественно белые зубы, «стоковые» улыбки в камеру.</li>
+        <li>Рот крупно, кровь, щипцы, инструменты во рту.</li>
+        <li>Синий «медицинский» свет, глянец, неон.</li>
+        <li>Надписи, логотипы, вывески других клиник в кадре.</li>
+        <li>Выдавать сгенерированных людей за сотрудников клиники.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="prompts">
+    <h2><small>07</small>Промпты для генерации фото</h2>
+    <p class="lead">Базовая часть ставится в начало каждого промпта, затем сюжет, в конце — что исключить. Так все фото получатся в одном стиле. Готовые промпты для конкретных мест сайта — на странице <a href="foto.html">«Фото для сайта»</a>.</p>
+    <div class="card">
+      <h3 style="margin-top:0">Основа (в начало)</h3>
+      <pre id="base">Photorealistic documentary-style photo in a small modern private dental clinic in a Russian town. White and light warm-grey walls, light oak wood furniture, muted sage-green accents, dark grey dental chair. Soft natural daylight from a window, slightly warm, gentle shadows. Muted, natural color grading, no oversaturation. Staff wear grey-lilac scrubs (women) or olive scrubs (men). Ordinary Slavic-looking people, natural skin and natural teeth. Calm, friendly, honest mood. 35mm lens, shallow depth of field.</pre>
+      <h3>Исключить (в конец или в поле negative)</h3>
+      <pre id="neg">No text, no logos, no signage, no watermarks. No veneers or unnaturally white teeth, no open mouth close-ups, no blood, no forceps, no instruments inside the mouth. No blue clinical lighting, no neon, no glossy stock-photo look, no posed smiles at camera.</pre>
+      <h3>Пример сюжета</h3>
+      <pre>[Основа] A female dentist sits on a stool and explains a treatment plan on a tablet to an adult female patient in the dental chair; both relaxed, mid-conversation. Subjects in the right third of the frame, calm blurred interior on the left. [Исключить]</pre>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Брендбук рабочий: логотип — до чистовика, цвета сайта пока синие (переход на палитру брендбука — отдельным шагом). Источники: старый логотип клиники, фото из материалов клиники, текущий сайт.</footer>
+
+<script>
+  // Знак «Зуб-стакан, потёки краски» (design/logo6.html, вариант 1).
+  function jar(o) {
+    const L = o.line, W = 3;
+    let s = `<ellipse cx="60" cy="62" rx="27" ry="6" fill="${o.inside}" stroke="${L}" stroke-width="${W}"/>`;
+    if (!o.simple) s += `<path d="M50 64 39 26" stroke="${L}" stroke-width="2.6" stroke-linecap="round"/><path d="M46 52 43 40" stroke="${L}" stroke-width="5.4" stroke-linecap="round"/><path d="M39 26 37.6 21" stroke="${L}" stroke-width="2" stroke-linecap="round"/><circle cx="36" cy="13" r="8.5" fill="${o.metal}" stroke="${L}" stroke-width="2.6"/><path d="M31 10a6 6 0 0 1 6-3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`;
+    s += `<path d="M60 64 64 22" stroke="${L}" stroke-width="6.4" stroke-linecap="round"/><path d="M60 64 64 22" stroke="${o.handle}" stroke-width="3.8" stroke-linecap="round"/><path d="M63.6 26 64.8 14" stroke="${L}" stroke-width="7.4"/><path d="M63.6 26 64.8 14" stroke="${o.metal}" stroke-width="4.6"/><path d="M62.2 14.4c-.6-6 1-11 3.6-14 1.6 4 2 9 1 14.2z" fill="${o.paint}" stroke="${L}" stroke-width="1.8" stroke-linejoin="round"/>`;
+    if (!o.simple) s += `<path d="M71 64 83 30" stroke="${L}" stroke-width="2.4" stroke-linecap="round"/><path d="M74 54 79 41" stroke="${L}" stroke-width="5" stroke-linecap="round"/><path d="M83 30c2-6 2-10 6-12 3-1 5 1 4 4" fill="none" stroke="${L}" stroke-width="2" stroke-linecap="round"/>`;
+    s += `<use href="#jarBody" fill="${o.body}" stroke="${L}" stroke-width="${W}" stroke-linejoin="round"/>`;
+    const c = o.drips;
+    if (c && !o.simple) s += `<g clip-path="url(#jarClip)"><path d="M33 62a27 6 0 0 0 54 0v6a27 6 0 0 1-54 0z" fill="${c[0]}"/><path d="M37 66v14a3.2 3.2 0 0 0 6.4 0V69z" fill="${c[0]}"/><path d="M52 68v9a3 3 0 0 0 6 0v-8z" fill="${c[1]}"/><path d="M56 67.6a27 6 0 0 0 14 0v4a27 6 0 0 1-14 0z" fill="${c[1]}"/><path d="M71 67v18a3.4 3.4 0 0 0 6.8 0V65z" fill="${c[2]}"/><path d="M66 67.3a27 6 0 0 0 21-5.3v5a27 6 0 0 1-21 5z" fill="${c[2]}"/></g><path d="M38 72c-2 6-2 13 0 19" fill="none" stroke="${o.shine}" stroke-width="3" stroke-linecap="round"/>`;
+    if (c && o.simple) s += `<g clip-path="url(#jarClip)"><path d="M33 62a27 6 0 0 0 54 0v8a27 6 0 0 1-54 0z" fill="${c[0]}"/></g>`;
+    s += `<path d="M33 62a27 6 0 0 0 54 0" fill="none" stroke="${L}" stroke-width="${W}" stroke-linecap="round"/>`;
+    return s;
+  }
+  const BASE = { line: '#262330', body: '#fff', inside: '#4a3a33', handle: '#c4643f', paint: '#d6a548', metal: '#dfe7ef', drips: ['#c4643f', '#8fae8b', '#d6a548'], shine: '#e9e2db' };
+  const mk = (o, w, h) => `<svg viewBox="16 -2 88 142" width="${w}" height="${h}" aria-hidden="true">${jar(o)}</svg>`;
+  const word = (dark) => `<div><div class="word" style="color:${dark ? '#fff' : '#262330'}">Студия улыбки</div><div class="kind" style="${dark ? 'color:rgba(255,255,255,.6)' : ''}">Стоматология · Ачинск</div></div>`;
+  document.getElementById('coverMark').innerHTML = mk(BASE, 120, 140);
+  document.getElementById('logoMain').innerHTML = `<div class="lock">${mk(BASE, 70, 82)}${word()}</div>`;
+  document.getElementById('logoStack').innerHTML = `<div class="stack">${mk(BASE, 80, 94)}<div class="word" style="font:700 2.3rem/1 Caveat">Студия улыбки</div><div class="kind" style="font:600 .66rem Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Стоматология · Ачинск</div></div>`;
+  document.getElementById('logoIcon').innerHTML = mk(BASE, 90, 106);
+  const DARK = { ...BASE, line: '#f1ece6', shine: '#5a5560' };
+  document.getElementById('logoDark').innerHTML = `<div class="lock">${mk(DARK, 50, 60)}${word(true).replace('2.3rem', '1.6rem')}</div>`;
+  document.getElementById('logoDark').querySelector('.word').style.fontSize = '1.7rem';
+  const MONO = { line: '#33568f', body: '#fff', inside: '#33568f', handle: '#33568f', paint: '#33568f', metal: '#fff', drips: ['#33568f', '#33568f', '#33568f'], shine: '#fff' };
+  document.getElementById('logoMono').innerHTML = mk(MONO, 80, 94);
+  document.getElementById('logoTiny').innerHTML = `<div style="display:flex;gap:18px;align-items:end">${[48, 32, 24].map((s) => `<div style="text-align:center">${mk({ ...BASE, simple: true }, s * .86, s)}<div class="cap" style="margin-top:4px">${s}</div></div>`).join('')}</div>`;
+
+  const sw = (el, list) => document.getElementById(el).innerHTML = list.map(([name, hex, use, light]) => {
+    const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+    return `<div class="sw"><div class="chip" style="background:${hex};color:${light ? '#262330' : '#fff'};${light ? 'box-shadow:inset 0 0 0 1px #e1e5ea' : ''}">Аа</div><div class="meta"><b>${name}</b><code>${hex} · RGB ${r} ${g} ${b}</code><div style="margin-top:6px">${use}</div></div></div>`;
+  }).join('');
+  sw('primary', [
+    ['Синий «Студия»', '#33568f', 'Кнопки, ссылки, тёмные полосы. Наследник синей надписи старого логотипа.'],
+    ['Терракота', '#c4643f', 'Кисть в логотипе, акценты, отметки. Наследник красной улыбки.'],
+    ['Тёмная терракота', '#a8502f', 'Терракота для текста и кнопок с белым текстом.'],
+    ['Тушь', '#262330', 'Основной текст, линии логотипа.'],
+  ]);
+  sw('support', [
+    ['Шалфей', '#8fae8b', 'Краска логотипа; скамья на ресепшене. Иллюстрации, плашки.', true],
+    ['Охра', '#d6a548', 'Краска на кисти. Мелкие акценты, иллюстрации.', true],
+    ['Дуб', '#9f8e65', 'Стойка ресепшена. Только в фото и иллюстрациях.'],
+    ['Серо-лиловый', '#8a86a3', 'Форма врачей. Только в фото.'],
+  ]);
+  sw('neutral', [
+    ['Фон сайта', '#eef1f5', 'Фон страниц.', true],
+    ['Бумага', '#ffffff', 'Карточки, плашки под логотип.', true],
+    ['Стена', '#e1e0db', 'Тёплый светлый — фон фото, печать.', true],
+    ['Серый текст', '#5b6577', 'Подписи и второстепенный текст.'],
+  ]);
+  sw('photoColors', [
+    ['Стены ресепшена', '#d8d9d9', '48% кадра на фото ресепшена', true],
+    ['Шалфейно-серый', '#a6a69a', 'Скамья, тени', true],
+    ['Дуб', '#96744d', 'Стойка, мебель'],
+    ['Кресло', '#5f6260', 'Тёмно-серое кресло в кабинете'],
+  ]);
+</script>
+</body>
+</html>
