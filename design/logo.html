@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Логотип — варианты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #33568f;
+    --accent-soft: #b7c9e6;
+    --warm: #e9b48a;
+    --ink: #0f1a2e;
+    --muted: #5b6577;
+    --bg: #eef1f5;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 Manrope, sans-serif; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font: 700 2.4rem/1.1 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .lead { color: var(--muted); max-width: 60ch; margin: 0 0 40px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 24px; box-shadow: 0 1px 2px rgba(15,26,46,.06), 0 8px 24px rgba(15,26,46,.06); display: grid; gap: 18px; }
+  .card h2 { font: 600 1.25rem Onest, sans-serif; margin: 0; display: flex; gap: 10px; align-items: baseline; }
+  .card h2 b { color: var(--accent); font-size: 1rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .9375rem; }
+  .big { display: grid; place-items: center; height: 200px; background: var(--bg); border-radius: 16px; }
+  .big svg { width: 150px; height: 150px; color: var(--accent); }
+  .bar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; }
+  .bar.light { background: #fff; box-shadow: inset 0 0 0 1px #dfe4eb; }
+  .bar.dark { background: var(--ink); color: #fff; }
+  .bar svg { width: 40px; height: 40px; flex: none; color: var(--accent); }
+  .bar.dark svg { color: #8fb0e3; }
+  .name { font: 600 1.1875rem/1 Onest, sans-serif; letter-spacing: -0.02em; }
+  .kind { margin-top: 4px; font: 600 .625rem Manrope, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .dark .kind { color: #9aa3b2; }
+  .sizes { display: flex; align-items: end; gap: 16px; }
+  .sizes svg { color: var(--accent); }
+  .sizes .mono svg { color: var(--ink); }
+  .sizes small { display: block; font-size: .75rem; color: var(--muted); text-align: center; }
+  .old { display: grid; grid-template-columns: 160px 1fr; gap: 20px; align-items: center; margin-bottom: 32px; }
+  .old img { width: 160px; background: #fff; border-radius: 16px; padding: 12px; }
+  @media (max-width: 600px) { .old { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Зуб (моляр) в квадрате 20×21 -->
+    <symbol id="t" viewBox="2 0.5 16 20.8"><path d="M7.2 1C4.4 1 2.5 3.1 2.5 6.4c0 2.6 1 4.6 1.8 7.2l1 6.2c.2 1.3 2 1.3 2.2 0l1.2-5.6h2.6l1.2 5.6c.3 1.3 2 1.3 2.3 0l1-6.2c.8-2.6 1.7-4.6 1.7-7.2C17.5 3.1 15.6 1 12.8 1c-1.3 0-1.9.6-2.8.6S8.5 1 7.2 1z"/></symbol>
+    <!-- 1. Палитра: зубы вместо красок, зонд вместо кисти -->
+    <symbol id="v1" viewBox="0 0 100 100">
+      <mask id="m1"><rect width="100" height="100" fill="#fff"/><path d="M96 4 58 62c-3 4-1 9 4 9" stroke="#000" stroke-width="13" stroke-linecap="round" fill="none"/></mask>
+      <g mask="url(#m1)">
+        <path fill="currentColor" fill-rule="evenodd" d="M48 10C74 10 92 27 92 47c0 13-8 19-18 16-8-2-13 4-10 12 4 9-3 17-17 17C24 92 7 74 7 51S23 10 48 10zm23 26a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+        <use href="#t" x="19" y="24" width="13" height="16" fill="#fff"/>
+        <use href="#t" x="38" y="18" width="12" height="15" fill="#fff"/>
+        <use href="#t" x="16" y="49" width="13" height="16" fill="#fff"/>
+        <use href="#t" x="33" y="64" width="12" height="15" fill="#fff"/>
+      </g>
+      <path d="M96 4 58 62c-3 4-1 9 4 9" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </symbol>
+    <!-- 2. Палитра-контур, зубы выстроены улыбкой -->
+    <symbol id="v2" viewBox="0 0 100 100">
+      <path fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" d="M48 10C74 10 92 27 92 47c0 13-8 19-18 16-8-2-13 4-10 12 4 9-3 17-17 17C24 92 7 74 7 51S23 10 48 10z"/>
+      <circle cx="71" cy="43" r="6" fill="none" stroke="currentColor" stroke-width="5"/>
+      <g fill="currentColor">
+        <use href="#t" x="22" y="24" width="12" height="15"/>
+        <use href="#t" x="40" y="21" width="11" height="14"/>
+        <use href="#t" x="19" y="46" width="12" height="15"/>
+        <use href="#t" x="34" y="64" width="11" height="14"/>
+      </g>
+    </symbol>
+    <!-- 3. Зуб-палитра: силуэт зуба с отверстием для пальца и мазками -->
+    <symbol id="v3" viewBox="0 0 100 100">
+      <path fill="currentColor" fill-rule="evenodd" d="M31 8C19 8 11 17 11 31c0 11 4 20 8 31l4 26c1 6 9 6 10 0l5-24h24l5 24c1 6 9 6 10 0l4-26c4-11 8-20 8-31C89 17 81 8 69 8c-6 0-8 3-12 3h-14c-4 0-6-3-12-3zm34 14a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+      <path d="M24 44c8 6 22 7 34 3" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="29" cy="27" r="5" fill="var(--accent-soft, #b7c9e6)"/>
+      <circle cx="42" cy="22" r="4" fill="var(--warm, #e9b48a)"/>
+    </symbol>
+    <!-- 4. Мазок-улыбка: один мазок кистью и зуб над ним -->
+    <symbol id="v4" viewBox="0 0 100 100">
+      <path fill="currentColor" d="M8 50c7 27 30 40 50 37 18-3 32-17 36-36 1-4-4-6-6-2-9 17-24 26-41 25C33 73 21 65 15 49c-2-4-8-3-7 1z"/>
+      <use href="#t" x="36" y="14" width="28" height="35" fill="currentColor"/>
+    </symbol>
+    <!-- 5. Монограмма «С»: улыбка-полукруг, в раскрытии — зуб -->
+    <symbol id="v5" viewBox="0 0 100 100">
+      <path fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" d="M80 28A36 36 0 1 0 80 72"/>
+      <use href="#t" x="50" y="34" width="26" height="32" fill="currentColor"/>
+    </symbol>
+    <!-- 6. Зуб и кисть: кисть рисует улыбку на зубе -->
+    <symbol id="v6" viewBox="0 0 100 100">
+      <mask id="m6"><rect width="100" height="100" fill="#fff"/><path d="M95 5 68 32" stroke="#000" stroke-width="14" stroke-linecap="round"/><path d="M70 28l-7 7c-4 4-6 8-3 11 3 3 7 1 11-3l7-7z" fill="#000" stroke="#000" stroke-width="6"/></mask>
+      <use href="#t" x="10" y="14" width="68" height="84" fill="currentColor" mask="url(#m6)"/>
+      <path d="M24 42c10 9 30 9 40 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" mask="url(#m6)"/>
+      <path d="M95 5 70 30" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+      <path d="M71 27l-6 6c-3 3-5 7-3 9 2 2 6 0 9-3l6-6z" fill="var(--warm, #e9b48a)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Логотип «Студии улыбки» — варианты</h1>
+  <p class="lead">Шесть направлений от идеи старого логотипа: палитра художника, зубы вместо красок, инструмент вместо кисти — «студия, где делают улыбки». Каждый показан крупно, в шапке сайта на светлом и тёмном фоне и в размере иконки вкладки (32 и 16 px). Цвет — синий сайта; в брендбуке будет и одноцветная версия.</p>
+
+  <div class="old">
+    <img src="ph/logo-old.png" alt="Старый логотип клиники" onerror="this.remove()">
+    <p class="lead" style="margin:0">Старый логотип: идея хорошая, но мелкие детали и каллиграфия не читаются на телефоне и во вкладке браузера. Название во всех вариантах — наборным шрифтом Onest.</p>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  const variants = [
+    ['v1', 'Палитра', 'Ближе всего к старому логотипу: палитра, четыре зуба-краски, зонд вместо кисти.'],
+    ['v2', 'Палитра-контур', 'Та же палитра, но линией: легче и современнее первого, хорошо смотрится на вывеске и в одну краску.'],
+    ['v3', 'Улыбающийся зуб', 'Зуб-палитра с отверстием для пальца, мазками краски и улыбкой. Самый дружелюбный, хорошо узнаётся мелко; ближе к детской стоматологии.'],
+    ['v4', 'Мазок-улыбка', 'Один мазок кистью — улыбка, над ним зуб. Самый простой и «рукотворный».'],
+    ['v5', 'Монограмма С', 'Буква «С» — дуга улыбки, в раскрытии зуб. Строгий, хорош для иконки и вывески.'],
+    ['v6', 'Зуб и кисть', 'Кисть рисует улыбку на зубе. Прямо говорит «студия» и «улыбка».'],
+  ];
+  const mark = (id, size) => `<svg viewBox="0 0 100 100" width="${size}" height="${size}" aria-hidden="true"><use href="#${id}"/></svg>`;
+  document.getElementById('grid').innerHTML = variants.map(([id, title, text], i) => `
+    <article class="card">
+      <h2><b>${i + 1}</b>${title}</h2>
+      <div class="big">${mark(id, 150)}</div>
+      <div class="bar light">${mark(id, 40)}<div><div class="name">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div></div>
+      <div class="bar dark">${mark(id, 40)}<div><div class="name">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div></div>
+      <div class="sizes">
+        <div>${mark(id, 32)}<small>32</small></div>
+        <div>${mark(id, 16)}<small>16</small></div>
+        <div class="mono">${mark(id, 32)}<small>1 цвет</small></div>
+      </div>
+      <p>${text}</p>
+    </article>`).join('');
+</script>
+</body>
+</html>
