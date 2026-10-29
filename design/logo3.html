@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Логотип — мазок и палитра</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat:wght@600;700&family=Great+Vibes&family=Lobster&family=Manrope:wght@400;500;600&family=Marck+Script&family=Neucha&family=Onest:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #2f2622; --muted: #7a6f69; --bg: #f5f0ea; --t: #c4643f; --p1: #8fae8b; --p2: #9d8fb8; --p3: #d0a574; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Manrope, sans-serif; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font: 700 2.4rem/1.1 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .lead { color: var(--muted); max-width: 72ch; margin: 0 0 20px; }
+  .ref { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin: 0 0 36px; }
+  .ref figure { margin: 0; background: #fff; border-radius: 16px; padding: 12px 16px; display: flex; gap: 14px; align-items: center; }
+  .ref img { height: 70px; }
+  .ref svg { width: 70px; height: 70px; color: var(--t); }
+  .ref figcaption { font-size: .85rem; color: var(--muted); max-width: 18ch; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 22px; display: grid; gap: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(60,30,10,.06); }
+  .card h2 { margin: 0; font: 600 1.15rem Onest, sans-serif; }
+  .card h2 b { color: var(--t); margin-right: 6px; }
+  .big { height: 200px; border-radius: 16px; display: grid; place-items: center; background: #fbf8f4; }
+  .big svg { width: 150px; height: 150px; color: var(--t); }
+  .lock { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 16px; }
+  .lock.light { background: #fbf8f4; }
+  .lock.dark { background: #2f2622; --ink: #f3e9e1; }
+  .lock svg { width: 52px; height: 52px; flex: none; color: var(--t); }
+  .lock.dark svg { color: #e9926c; }
+  .word { font-family: var(--f); font-size: var(--fs, 2rem); line-height: 1.05; color: var(--ink); letter-spacing: var(--ls, 0); }
+  .word .s { font: 600 .8rem Onest, sans-serif; letter-spacing: .3em; text-transform: uppercase; display: block; margin-bottom: 2px; color: var(--muted); }
+  .lock.dark .word { color: #fff; }
+  .lock.dark .word .s { color: rgba(255,255,255,.65); }
+  .kind { margin-top: 6px; font: 600 .625rem Manrope, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .lock.dark .kind { color: rgba(255,255,255,.6); }
+  .sizes { display: flex; align-items: end; gap: 14px; }
+  .sizes svg { color: var(--t); }
+  .sizes small { display: block; text-align: center; font-size: .7rem; color: var(--muted); }
+  .card p { margin: 0; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="tooth" d="M34 16C24 16 19 24 19 34c0 11 5 18 7 28l4 22c1 5 8 5 9 0l5-20c1-4 11-4 12 0l5 20c1 5 8 5 9 0l4-22c2-10 7-17 7-28 0-10-5-18-15-18-7 0-10 4-16 4s-9-4-16-4z"/>
+    <!-- Палитра с отверстием для пальца -->
+    <path id="pal" d="M48 12C74 12 92 28 92 47c0 12-8 17-17 15-8-2-12 4-9 11 3 9-3 16-17 16C25 89 8 72 8 50S25 12 48 12z"/>
+    <!-- Мазок-улыбка из варианта 3 -->
+    <path id="smile" d="M8 52c14 30 62 36 86 2 1-2-1-4-3-3-4 3-8 9-16 13-17 9-40 7-56-8-4-4-9-7-11-4z"/>
+    <!-- Неровный край, как у краски -->
+    <filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter>
+    <filter id="wash" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="8"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+
+    <!-- 1. Палитра мазком, зубы-краски, кисть -->
+    <symbol id="b1" viewBox="0 0 100 100">
+      <mask id="m1"><rect width="100" height="100" fill="#fff"/><path d="M97 6 62 50" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask>
+      <g mask="url(#m1)"><use href="#pal" fill="none" stroke="currentColor" stroke-width="5.5" filter="url(#rough)"/><circle cx="71" cy="42" r="6" fill="none" stroke="currentColor" stroke-width="4" filter="url(#rough)"/></g>
+      <use href="#tooth" transform="translate(19 26) scale(.17)" fill="var(--p1)"/>
+      <use href="#tooth" transform="translate(38 20) scale(.15)" fill="var(--p3)"/>
+      <use href="#tooth" transform="translate(17 50) scale(.17)" fill="var(--p2)"/>
+      <path d="M97 6 66 45" stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M68 41c-5 3-9 8-10 14 5-1 10-5 13-10z" fill="currentColor"/>
+    </symbol>
+    <!-- 2. Палитра, нижний край — мазок-улыбка -->
+    <symbol id="b2" viewBox="0 0 100 100">
+      <use href="#pal" fill="currentColor" opacity=".14"/>
+      <circle cx="71" cy="40" r="5.5" fill="#fff" stroke="currentColor" stroke-width="2"/>
+      <use href="#smile" transform="translate(6 14) scale(.88)" fill="currentColor" filter="url(#rough)"/>
+      <use href="#tooth" transform="translate(22 24) scale(.18)" fill="var(--p1)"/>
+      <use href="#tooth" transform="translate(41 18) scale(.16)" fill="var(--p3)"/>
+      <use href="#tooth" transform="translate(24 44) scale(.15)" fill="var(--p2)"/>
+    </symbol>
+    <!-- 3. Кисть рисует улыбку, капли краски — зубы -->
+    <symbol id="b3" viewBox="0 0 100 100">
+      <use href="#smile" transform="translate(-2 8) scale(.92)" fill="currentColor" filter="url(#rough)"/>
+      <path d="M96 10 82 44" stroke="var(--ink)" stroke-width="2.8" stroke-linecap="round"/>
+      <path d="M83 41c-3 4-4 9-3 14 4-3 7-8 7-13z" fill="currentColor"/>
+      <use href="#tooth" transform="translate(24 16) scale(.2)" fill="var(--p1)"/>
+      <use href="#tooth" transform="translate(46 10) scale(.17)" fill="var(--p3)"/>
+    </symbol>
+    <!-- 4. Классика: палитра, белые зубы, два инструмента крест-накрест -->
+    <symbol id="b4" viewBox="0 0 100 100">
+      <mask id="m4"><rect width="100" height="100" fill="#fff"/><path d="M94 4 56 66M60 2l8 70" stroke="#000" stroke-width="10" stroke-linecap="round"/></mask>
+      <g mask="url(#m4)"><use href="#pal" fill="currentColor"/><circle cx="71" cy="42" r="6" fill="#fff"/>
+        <use href="#tooth" transform="translate(18 26) scale(.16)" fill="#fff"/><use href="#tooth" transform="translate(34 18) scale(.14)" fill="#fff"/><use href="#tooth" transform="translate(15 50) scale(.16)" fill="#fff"/><use href="#tooth" transform="translate(30 64) scale(.14)" fill="#fff"/></g>
+      <path d="M94 4 58 63c-2 4 1 7 4 6" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      <path d="M60 2l7 64" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"/><circle cx="67.5" cy="70" r="4.5" fill="none" stroke="var(--ink)" stroke-width="2.2"/>
+    </symbol>
+    <!-- 5. Каллиграфическая палитра: толстая слева, тонкая справа -->
+    <symbol id="b5" viewBox="0 0 100 100">
+      <mask id="m5"><use href="#pal" fill="#fff"/><use href="#pal" transform="translate(11 8) scale(.82)" fill="#000"/></mask>
+      <rect width="100" height="100" fill="currentColor" mask="url(#m5)"/>
+      <circle cx="70" cy="42" r="5" fill="currentColor"/>
+      <use href="#tooth" transform="translate(30 30) scale(.15)" fill="var(--p1)"/>
+      <use href="#tooth" transform="translate(46 25) scale(.13)" fill="var(--p3)"/>
+      <use href="#tooth" transform="translate(30 50) scale(.15)" fill="var(--p2)"/>
+    </symbol>
+    <!-- 6. Три мазка-зуба по дуге улыбки -->
+    <symbol id="b6" viewBox="0 0 100 100">
+      <g filter="url(#rough)"><use href="#tooth" transform="translate(8 34) rotate(-18 15 15) scale(.32)" fill="var(--p1)"/><use href="#tooth" transform="translate(34 46) scale(.32)" fill="currentColor"/><use href="#tooth" transform="translate(64 30) rotate(18 15 15) scale(.32)" fill="var(--p3)"/></g>
+      <path d="M14 82q36 20 72 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+    </symbol>
+    <!-- 7. Акварельная палитра, зубы — светлые пятна -->
+    <symbol id="b7" viewBox="0 0 100 100">
+      <g filter="url(#wash)"><use href="#pal" fill="currentColor" opacity=".85"/><circle cx="30" cy="34" r="14" fill="var(--p1)" opacity=".7"/><circle cx="34" cy="64" r="13" fill="var(--p2)" opacity=".7"/><circle cx="52" cy="26" r="10" fill="var(--p3)" opacity=".8"/></g>
+      <circle cx="71" cy="42" r="6" fill="#fff"/>
+      <use href="#tooth" transform="translate(24 27) scale(.13)" fill="#fff"/><use href="#tooth" transform="translate(28 57) scale(.13)" fill="#fff"/><use href="#tooth" transform="translate(46 19) scale(.12)" fill="#fff"/>
+    </symbol>
+    <!-- 8. Одна линия: палитра переходит в кисть -->
+    <symbol id="b8" viewBox="0 0 100 100">
+      <path d="M66 73c3 9-3 16-17 16C25 89 8 72 8 50S25 12 48 12c26 0 44 16 44 35 0 12-8 17-17 15-6-1-9 1-10 4L40 96" fill="none" stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M42 92c-3 2-6 5-6 8 3 0 6-2 8-5z" fill="currentColor"/>
+      <circle cx="70" cy="40" r="5" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+      <use href="#tooth" transform="translate(20 26) scale(.17)" fill="currentColor"/><use href="#tooth" transform="translate(40 21) scale(.15)" fill="var(--p1)"/><use href="#tooth" transform="translate(18 50) scale(.16)" fill="var(--p3)"/>
+    </symbol>
+    <!-- 9. Эмблема в круге -->
+    <symbol id="b9" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2" filter="url(#rough)"/>
+      <use href="#pal" transform="translate(17 19) scale(.62)" fill="currentColor"/>
+      <circle cx="61" cy="45" r="4" fill="#fff"/>
+      <use href="#tooth" transform="translate(28 34) scale(.11)" fill="#fff"/><use href="#tooth" transform="translate(40 29) scale(.1)" fill="#fff"/><use href="#tooth" transform="translate(27 49) scale(.11)" fill="#fff"/>
+      <path d="M86 20 58 58" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"/><path d="M60 55c-4 2-6 6-7 10 4-1 7-3 9-7z" fill="var(--p1)"/>
+    </symbol>
+    <!-- 10. Отверстие палитры в форме зуба -->
+    <symbol id="b10" viewBox="0 0 100 100">
+      <mask id="m10"><use href="#pal" fill="#fff"/><use href="#tooth" transform="translate(58 26) scale(.26)" fill="#000"/></mask>
+      <rect width="100" height="100" fill="currentColor" mask="url(#m10)"/>
+      <g filter="url(#rough)"><circle cx="28" cy="34" r="7" fill="var(--p1)"/><circle cx="46" cy="25" r="6" fill="var(--p3)"/><circle cx="26" cy="56" r="7" fill="var(--p2)"/><circle cx="42" cy="70" r="5.5" fill="#fff"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Логотип — мазок и палитра</h1>
+  <p class="lead">Третий круг: десять вариантов в духе «Мазка-улыбки» из второго круга, с палитрой из старого логотипа. Идея та же — палитра художника, зубы вместо красок, инструменты вместо кистей, рукописное название, — но проще, чище и в цветах клиники: терракота, шалфей, лиловый, дуб.</p>
+  <div class="ref">
+    <figure><img src="ph/logo-old.png" alt="Старый логотип"><figcaption>Старый логотип — от него идём</figcaption></figure>
+    <figure><svg viewBox="0 0 100 100"><use href="#smile" fill="currentColor" filter="url(#rough)"/></svg><figcaption>«Мазок-улыбка» из второго круга</figcaption></figure>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  const V = [
+    ['b1', 'Палитра мазком', 'Палитра нарисована кистью, три зуба-краски в цветах клиники, кисть. Самый прямой наследник старого знака.', 'Caveat, cursive', '2.1rem'],
+    ['b2', 'Палитра-улыбка', 'Нижний край палитры — тот самый мазок-улыбка, сверху зубы-краски. Сразу и палитра, и улыбка.', "'Marck Script', cursive", '2rem'],
+    ['b3', 'Кисть рисует улыбку', 'Кисть только что провела улыбку, над ней две капли-зуба. Без палитры — легче всех.', 'Caveat, cursive', '2.1rem'],
+    ['b4', 'Классика', 'Ближе всего к старому: заливная палитра, белые зубы и два инструмента крест-накрест — зонд и зеркало.', "'Marck Script', cursive", '2rem'],
+    ['b5', 'Каллиграфическая палитра', 'Линия палитры толстая слева и тонкая справа, как росчерк пером. Название — настоящая каллиграфия, как в старом логотипе.', "'Great Vibes', cursive", '2.3rem'],
+    ['b6', 'Три мазка-зуба', 'Три зуба мазками разных красок выстроены улыбкой. Без палитры, но «краски» на месте.', "'Bad Script', cursive", '1.75rem'],
+    ['b7', 'Акварель', 'Палитра как акварельное пятно, зубы — просветы в краске. Самый живописный.', "'Pacifico', cursive", '1.55rem'],
+    ['b8', 'Одна линия', 'Палитра одной линией, которая уходит в ручку кисти. Цветные зубы-краски. Тонко и современно.', 'Neucha, cursive', '1.9rem'],
+    ['b9', 'Эмблема', 'Палитра с кистью в круге, обведённом от руки. Подходит для печати, вывески, аватарки.', 'Lobster, cursive', '1.7rem'],
+    ['b10', 'Зуб-отверстие', 'Отверстие для пальца в палитре — в форме зуба, вокруг краски. Одна умная деталь, хорошо узнаётся.', "'Marck Script', cursive", '2rem', true],
+  ];
+  const mark = (id, s) => `<svg viewBox="0 0 100 100" width="${s}" height="${s}" aria-hidden="true"><use href="#${id}"/></svg>`;
+  const word = (combo) => combo
+    ? `<div><div class="word"><span class="s">Студия</span>улыбки</div><div class="kind">Стоматология · Ачинск</div></div>`
+    : `<div><div class="word">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div>`;
+  document.getElementById('grid').innerHTML = V.map(([id, t, d, f, fs, combo], i) => `
+    <article class="card" style="--f:${f};--fs:${fs}">
+      <h2><b>${i + 1}</b>${t}</h2>
+      <div class="big">${mark(id, 150)}</div>
+      <div class="lock light">${mark(id, 52)}${word(combo)}</div>
+      <div class="lock dark">${mark(id, 52)}${word(combo)}</div>
+      <div class="sizes"><div>${mark(id, 32)}<small>32</small></div><div>${mark(id, 16)}<small>16</small></div></div>
+      <p>${d}</p>
+    </article>`).join('');
+</script>
+</body>
+</html>
