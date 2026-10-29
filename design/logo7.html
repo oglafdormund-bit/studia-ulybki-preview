@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Логотип — формы зуба-стакана</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Manrope:wght@400;500;600&family=Onest:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #2f2622; --muted: #6f6a72; --bg: #f4f2ef; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Manrope, sans-serif; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font: 700 2.4rem/1.1 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .lead { color: var(--muted); max-width: 76ch; margin: 0 0 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 20px; display: grid; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05); }
+  .card h2 { margin: 0; font: 600 1.1rem Onest, sans-serif; }
+  .card h2 b { color: #c4643f; margin-right: 6px; }
+  .big { height: 280px; border-radius: 16px; display: grid; place-items: center; background: #faf9f7; }
+  .big svg { width: 200px; height: 260px; }
+  .lock { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: #faf9f7; }
+  .lock svg { width: 44px; height: 56px; flex: none; }
+  .word { font: 700 1.9rem/1 Caveat, cursive; }
+  .kind { margin-top: 4px; font: 600 .6rem Manrope, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .sizes { display: flex; align-items: end; gap: 12px; }
+  .sizes small { display: block; text-align: center; font-size: .7rem; color: var(--muted); }
+  .card p { margin: 0; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Логотип — формы зуба-стакана</h1>
+  <p class="lead">Восемь разных форм зуба для «стакана с инструментами». Инструменты, цвета и надпись у всех одинаковые — сравниваем только форму. Выбранную форму потом соединим с деталями из прошлого круга: потёки краски, улыбка, краска внутри.</p>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  /**
+   * Каждая форма — контур зуба от левого края ободка вниз и обратно к правому краю.
+   * Верх (ободок-эллипс) достраивается автоматически по концам контура.
+   */
+  const SHAPES = [
+    { t: 'Моляр', d: 'Классический коренной зуб: широкая коронка с талией и два корня. Сразу читается как зуб.',
+      p: 'M33 62c-4 9-6 21-2 33 2 7 5 11 6 18l2 13c1 7 9 7 10 0l4-18c1-4 13-4 14 0l4 18c1 7 9 7 10 0l2-13c1-7 4-11 6-18 4-12 2-24-2-33' },
+    { t: 'Резец', d: 'Передний зуб: высокий и стройный, один корень. Элегантно, стакан узкий и высокий.',
+      p: 'M43 60c-2 12-3 24 0 34 3 8 8 12 10 20l3 14c1 5 7 5 8 0l3-14c2-8 7-12 10-20 3-10 2-22 0-34' },
+    { t: 'Пухлый', d: 'Мягкая округлая коронка и короткие толстые корни. Дружелюбно, почти игрушечно — хорош для детей и семей.',
+      p: 'M32 60c-6 10-7 24-1 33 3 4 4 9 4 15 0 8 11 8 12 0 1-5 3-8 6-8h6c3 0 5 3 6 8 1 8 12 8 12 0 0-6 1-11 4-15 6-9 5-23-1-33' },
+    { t: 'Геометрия', d: 'Прямые линии и скошенные углы: зуб собран из простых фигур. Современно и строго.',
+      p: 'M36 60l-4 28 6 6 4 30h10l4-22h4l4 22h10l4-30 6-6-4-28' },
+    { t: 'Ваза', d: 'Верх шире, к середине сужается, корни как ножки вазы. Больше «студия» и ремесло, чем медицина.',
+      p: 'M28 58c4 10 8 16 8 26 0 8-4 12-4 20l2 18c1 6 9 6 10 0l2-14c1-4 11-4 12 0l2 14c1 6 9 6 10 0l2-18c0-8-4-12-4-20 0-10 4-16 8-26' },
+    { t: 'На ножках', d: 'Узкий стакан на широко расставленных корнях-ножках, как мольберт или табурет художника.',
+      p: 'M38 60c-4 8-5 18-2 26 2 4 2 8-2 14l-6 16c-2 6 5 9 8 4l10-18c2-3 12-3 14 0l10 18c3 5 10 2 8-4l-6-16c-4-6-4-10-2-14 3-8 2-18-2-26' },
+    { t: 'Живой, от руки', d: 'Слегка асимметричный, ободок наклонён, корни разной длины — будто нарисован кистью. Тёплый и неидеальный.',
+      p: 'M34 62c-6 8-8 22-3 32 3 6 4 12 3 20-1 8 8 10 10 2l4-16c1-4 9-4 11 1l3 17c2 7 10 5 10-2l-1-14c0-8 6-12 8-22 2-10-1-18-5-24' },
+    { t: 'Зуб-кружка', d: 'Моляр с ручкой сбоку — кружка для кистей. Добавляет юмора и «домашности» мастерской.',
+      p: 'M33 62c-4 9-6 21-2 33 2 7 5 11 6 18l2 13c1 7 9 7 10 0l4-18c1-4 13-4 14 0l4 18c1 7 9 7 10 0l2-13c1-7 4-11 6-18 4-12 2-24-2-33',
+      extra: (L) => `<path d="M88 72c12-2 16 8 12 15-3 5-8 6-12 5" fill="none" stroke="${L}" stroke-width="3.4" stroke-linecap="round"/>` },
+  ];
+
+  // Скрытый svg для замера контура (концы — чтобы достроить ободок).
+  const svgNS = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svgNS.style.cssText = 'position:absolute;width:0;height:0';
+  document.body.append(svgNS);
+
+  function mark(s) {
+    const L = '#2f2622', W = 3;
+    const tmp = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    tmp.setAttribute('d', s.p); svgNS.append(tmp);
+    const len = tmp.getTotalLength(); const a = tmp.getPointAtLength(0), b = tmp.getPointAtLength(len); tmp.remove();
+    const cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2;
+    const rx = Math.hypot(b.x - a.x, b.y - a.y) / 2, ry = Math.max(3.6, rx * 0.2);
+    const rot = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+    const body = `${s.p}A${rx} ${ry} ${rot} 0 1 ${a.x} ${a.y}z`;
+    const tools = (bx, by) => `
+      <path d="M${bx - 10} ${by + 2} ${bx - 21} ${by - 36}" stroke="${L}" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M${bx - 14} ${by - 10} ${bx - 17} ${by - 22}" stroke="${L}" stroke-width="5.4" stroke-linecap="round"/>
+      <path d="M${bx - 21} ${by - 36} ${bx - 22.4} ${by - 41}" stroke="${L}" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="${bx - 24}" cy="${by - 49}" r="8.5" fill="#dfe7ef" stroke="${L}" stroke-width="2.6"/>
+      <path d="M${bx - 29} ${by - 52}a6 6 0 0 1 6-3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <path d="M${bx} ${by + 2} ${bx + 4} ${by - 40}" stroke="${L}" stroke-width="6.4" stroke-linecap="round"/>
+      <path d="M${bx} ${by + 2} ${bx + 4} ${by - 40}" stroke="#c4643f" stroke-width="3.8" stroke-linecap="round"/>
+      <path d="M${bx + 3.6} ${by - 36} ${bx + 4.8} ${by - 48}" stroke="${L}" stroke-width="7.4"/>
+      <path d="M${bx + 3.6} ${by - 36} ${bx + 4.8} ${by - 48}" stroke="#cfd6de" stroke-width="4.6"/>
+      <path d="M${bx + 2.2} ${by - 47.6}c-.6-6 1-11 3.6-14 1.6 4 2 9 1 14.2z" fill="#d6a548" stroke="${L}" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M${bx + 11} ${by + 2} ${bx + 23} ${by - 32}" stroke="${L}" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M${bx + 14} ${by - 8} ${bx + 19} ${by - 21}" stroke="${L}" stroke-width="5" stroke-linecap="round"/>
+      <path d="M${bx + 23} ${by - 32}c2-6 2-10 6-12 3-1 5 1 4 4" fill="none" stroke="${L}" stroke-width="2" stroke-linecap="round"/>`;
+    return `
+      <ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${cx} ${cy})" fill="#4a3a33" stroke="${L}" stroke-width="${W}"/>
+      ${tools(cx, cy)}
+      <path d="${body}" fill="#fff" stroke="${L}" stroke-width="${W}" stroke-linejoin="round"/>
+      ${s.extra ? s.extra(L) : ''}
+      <path d="M${a.x} ${a.y}A${rx} ${ry} ${rot} 0 0 ${b.x} ${b.y}" fill="none" stroke="${L}" stroke-width="${W}" stroke-linecap="round"/>`;
+  }
+
+  const svg = (s, w, h) => `<svg viewBox="14 -2 92 142" width="${w}" height="${h}" aria-hidden="true">${mark(s)}</svg>`;
+  document.getElementById('grid').innerHTML = SHAPES.map((s, i) => `
+    <article class="card">
+      <h2><b>${i + 1}</b>${s.t}</h2>
+      <div class="big">${svg(s, 200, 260)}</div>
+      <div class="lock">${svg(s, 44, 56)}<div><div class="word">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div></div>
+      <div class="sizes"><div>${svg(s, 26, 32)}<small>32</small></div><div>${svg(s, 13, 16)}<small>16</small></div></div>
+      <p>${s.d}</p>
+    </article>`).join('');
+</script>
+</body>
+</html>
