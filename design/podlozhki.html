@@ -28,8 +28,8 @@
 </head>
 <body>
 <header>
-  <h1>Подложки, текстуры и объекты по краям — тема «студия-мастерская»</h1>
-  <p class="lead">Живая главная; выбранный вариант подставляется поверх: полоса «Команда», блок цен, подвал, края блоков. Кнопки справа прокручивают к нужному месту. «Кодом» — нарисовано SVG (весит копейки, перекрашивается в любой цвет). «Сгенерировано» — картинки Higgsfield.</p>
+  <h1>Подложки и фактуры — ненавязчиво, по образцу «Полдня»</h1>
+  <p class="lead">Живая главная; выбранный вариант подставляется в полосу «Команда», блок цен и подвал. Фактуры — размытые снимки света, тонированные в синий и закрытые вуалью: видно движение света, а не предмет.</p>
   <div id="tabs"></div>
   <div class="bar">
     <div id="desc"></div>
@@ -84,39 +84,37 @@
   const edge = (sel, pseudo, img, pos, size, extra = '') => `${sel}::${pseudo} { content: ''; position: absolute; ${pos}; width: ${size}; aspect-ratio: 1; background: ${img} center / contain no-repeat; pointer-events: none; z-index: 0; ${extra} }`;
   const navyFooter = (layer) => `${F} { background: ${layer}, #13203a !important; }`;
 
+  // Как у «Полдня»: размытый низкоконтрастный снимок света, тонированный в цвет бренда
+  // (режим «яркость» берёт оттенок у цвета под снимком), сверху вуаль. Видно только движение света.
+  const NAVY = '19 32 58';
+  const footerPhoto = (img, veil = 0.45) => `${F} { background: linear-gradient(rgb(${NAVY} / ${veil}), rgb(${NAVY} / ${veil})), url(${TEX(img)}) center / cover, rgb(${NAVY}) !important; background-blend-mode: normal, luminosity, normal !important; }`;
+  const bandPhoto = (img, op = 1) => `${T} { background: linear-gradient(rgb(233 238 245 / ${1 - op}), rgb(233 238 245 / ${1 - op})), url(${TEX(img)}) center / cover, var(--color-bg-sunken) !important; background-blend-mode: normal, luminosity, normal !important; }`;
+  const glowBand = `${T} { background: radial-gradient(40% 70% at 8% 10%, rgb(51 86 143 / .16), transparent 70%), radial-gradient(35% 60% at 95% 100%, rgb(196 100 63 / .14), transparent 70%), var(--color-bg-sunken) !important; }`;
+  const glowFooter = navyFooter('radial-gradient(45% 80% at 10% 0%, rgb(110 150 220 / .3), transparent 70%), radial-gradient(40% 70% at 100% 100%, rgb(196 100 63 / .22), transparent 70%)');
+  const glowPrices = `${PR} { background: radial-gradient(35% 55% at 0% 30%, rgb(51 86 143 / .08), transparent 70%), radial-gradient(30% 50% at 100% 90%, rgb(196 100 63 / .07), transparent 70%); }`;
+
   const V = [
-    { grp: 'Кодом' },
-    { id: 'k1', t: 'Зерно бумаги', d: '<b>Самое тихое.</b> На полосе команды и в подвале — мелкое зерно, как у печатной бумаги. Плоские заливки перестают выглядеть «пластиковыми», а цвет не меняется.',
-      css: `${T} { background: ${grain(0.07)}, var(--color-bg-sunken) !important; } ${navyFooter(grain(0.1, 0.85, '255 255 255'))}` },
-    { id: 'k2', t: 'Холст кодом', d: '<b>Мастерская художника.</b> Тонкое плетение холста на полосе команды и в подвале. Работает как фактура ткани у «Полдня», но наша — холст под краску.',
-      css: `${T} { background: ${weave('#33568f', 0.08)}, var(--color-bg-sunken) !important; } ${navyFooter(weave('#ffffff', 0.06))}` },
-    { id: 'k3', t: 'Акварельные пятна', d: '<b>Мягко и живо.</b> По углам полосы команды и блока цен проступают акварельные пятна цветов сайта: синий и терракота. Пустоты по бокам заполняются, середина остаётся чистой.',
-      css: `${BASE} ${edge(T, 'before', blob('#33568f', 0.42, 3), 'left: calc(50% - 860px); top: -140px', '720px')} ${edge(T, 'after', blob('#c4643f', 0.34, 7), 'right: calc(50% - 840px); bottom: -180px', '660px')} ${edge(PR, 'before', blob('#33568f', 0.3, 11), 'left: calc(50% - 880px); bottom: -140px', '720px')} ${navyFooter(`${blob('#5c86c8', 0.25, 5)} -120px -140px / 700px no-repeat`)}` },
-    { id: 'k4', t: 'Мазки кистью', d: '<b>Динамика.</b> Широкие мазки краски: синий — в пустом углу у заголовка команды, терракотовый — из-за края цен. Повторяют кисть из логотипа.',
-      css: `${BASE} ${T}::before { content: ''; position: absolute; right: calc(50% - 640px); top: 40px; width: 640px; height: 190px; background: ${stroke('#33568f', 4)} center / contain no-repeat; opacity: .45; transform: rotate(-6deg); z-index: 0; } ${PR}::before { content: ''; position: absolute; right: calc(50% - 920px); bottom: 60px; width: 820px; height: 240px; background: ${stroke('#c4643f', 9, 900, 260, 'M60 120 C 300 220, 600 40, 840 160')} center / contain no-repeat; opacity: .45; z-index: 0; transform: rotate(-14deg); } ${navyFooter(`${stroke('#6f97d6', 5)} right -120px top -40px / 900px no-repeat`)}` },
-    { id: 'k5', t: 'Линии улыбки', d: '<b>Свой мотив из логотипа.</b> Двойная улыбка из знака — тонкими линиями по краям блоков. Узнаваемо, легко, ни на что чужое не похоже.',
-      css: `${BASE} ${edge(T, 'before', smiles('#33568f', 0.55), 'right: calc(50% - 780px); top: 20px', '520px', 'aspect-ratio: 420/240')} ${edge(PR, 'before', smiles('#c4643f', 0.6), 'left: calc(50% - 800px); bottom: 40px', '540px', 'aspect-ratio: 420/240; transform: rotate(8deg)')} ${navyFooter(`${smiles('#ffffff', 0.12)} right 40px bottom 30px / 520px no-repeat`)}` },
-    { id: 'k6', t: 'Капли краски', d: '<b>Игриво.</b> Короткие мазки красками палитры логотипа (жёлтый, малиновый, фиолетовый, синий) рассыпаны по краям — как брызги на столе художника. Самый яркий вариант.',
-      css: `${BASE} ${edge(T, 'before', dabs(3), 'left: calc(50% - 790px); top: -20px', '440px')} ${edge(T, 'after', dabs(8), 'right: calc(50% - 790px); bottom: -20px', '440px')} ${edge(PR, 'before', dabs(5), 'right: calc(50% - 780px); top: 20px', '400px')}` },
-    { id: 'k7', t: 'Мягкое свечение', d: '<b>Чисто и современно.</b> Размытые световые пятна синего и терракоты на полосе команды и в подвале. Без фактур, просто глубина.',
-      css: `${T} { background: radial-gradient(40% 70% at 8% 10%, rgb(51 86 143 / .16), transparent 70%), radial-gradient(35% 60% at 95% 100%, rgb(196 100 63 / .14), transparent 70%), var(--color-bg-sunken) !important; } ${navyFooter('radial-gradient(45% 80% at 10% 0%, rgb(110 150 220 / .3), transparent 70%), radial-gradient(40% 70% at 100% 100%, rgb(196 100 63 / .22), transparent 70%)')}` },
-    { grp: 'Сгенерировано' },
-    { id: 'g1', t: 'Холст (фото)', d: '<b>Настоящий холст.</b> Полоса команды — светлый голубой холст, подвал — тёмно-синий холст. Самый «материальный» вариант: как ткань у «Полдня», но наш — холст художника.',
-      css: `${T} { background: url(${TEX('holst-light.jpg')}) center / cover !important; } ${F} { background: linear-gradient(rgb(15 26 46 / .35), rgb(15 26 46 / .35)), url(${TEX('holst-navy.jpg')}) center / cover !important; }` },
-    { id: 'g2', t: 'Акварель (фото)', d: '<b>Акварельный лист.</b> Полоса команды — бумага с голубой акварелью по углам; у блока цен справа проступает тёплая акварель. Белое у картинок растворяется в фоне.',
-      css: `${BASE} ${T} { background: url(${TEX('akvarel-blue.jpg')}) center / cover, var(--color-bg-sunken) !important; background-blend-mode: multiply !important; } ${PR}::before { content: ''; position: absolute; right: calc(50% - 900px); top: -40px; width: 900px; height: 520px; background: url(${TEX('akvarel-warm.jpg')}) right top / contain no-repeat; mix-blend-mode: multiply; opacity: .55; z-index: 0; }` },
-    { id: 'g3', t: 'Мазки (фото)', d: '<b>Настоящая краска.</b> Синий мазок лежит в пустом углу справа от заголовка команды, терракотовый — выходит из-за таблицы цен. Белый фон картинок исчезает, остаётся только краска.',
-      css: `${BASE} ${T}::before { content: ''; position: absolute; right: calc(50% - 640px); top: 30px; width: 600px; height: 300px; background: url(${TEX('mazok-blue.jpg')}) center / contain no-repeat; mix-blend-mode: multiply; opacity: .45; transform: rotate(-6deg); z-index: 0; } ${PR}::before { content: ''; position: absolute; right: calc(50% - 920px); bottom: 40px; width: 680px; height: 380px; background: url(${TEX('mazok-terra.jpg')}) center / contain no-repeat; mix-blend-mode: multiply; opacity: .5; transform: rotate(8deg); z-index: 0; }` },
-    { id: 'g4', t: 'Гипс', d: '<b>Тихо и дорого.</b> Полоса команды — матовая гипсовая стена с мягким светом из окна; у края — гипсовый зуб, как слепок в мастерской. Гипс понятен и стоматологу, и скульптору.',
-      css: `${BASE} ${T} { background: url(${TEX('gips-tex.jpg')}) center / cover, var(--color-bg-sunken) !important; background-blend-mode: soft-light !important; } ${edge(T, 'after', `url(${TEX('gips-zub.jpg')})`, 'right: calc(50% - 800px); top: -40px', '300px', 'border-radius: 50%; background-size: 115%; box-shadow: 0 30px 60px -30px rgb(15 26 46 / .35);')}` },
-    { id: 'g5', t: 'Предметы мастерской', d: '<b>Объекты по краям.</b> Глиняная палитра с красками у команды, кисть у цен, брызги краски у направлений. Выходят за контейнер и заполняют пустые поля.',
-      css: `${BASE} ${edge(T, 'after', `url(${TEX('glina-palitra.jpg')})`, 'right: calc(50% - 820px); top: -60px', '320px', 'mix-blend-mode: multiply;')} ${edge(PR, 'before', `url(${TEX('kist.jpg')})`, 'left: calc(50% - 820px); bottom: 0', '380px', 'mix-blend-mode: multiply; -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent); mask-image: radial-gradient(closest-side, #000 55%, transparent);')} ${edge(DIR, 'before', `url(${TEX('kapli.jpg')})`, 'right: calc(50% - 800px); top: 0', '380px', 'mix-blend-mode: multiply; opacity: .85; -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent); mask-image: radial-gradient(closest-side, #000 55%, transparent);')}` },
-    { id: 'g6', t: 'Свет из окна', d: '<b>Атмосфера.</b> На полосе команды — мягкие тени оконной рамы и тюля, как утром в кабинете. Совпадает со светом на фотографиях сайта.',
-      css: `${T} { background: url(${TEX('okno-teni.jpg')}) center / cover, var(--color-bg-sunken) !important; background-blend-mode: soft-light !important; }` },
+    { grp: 'Нравится' },
+    { id: 's0', t: 'Мягкое свечение', d: '<b>Ваш выбор.</b> Размытые пятна света синего и терракоты на полосе команды и в подвале. Без фактуры, просто глубина.',
+      css: `${glowBand} ${glowFooter}` },
+    { grp: 'Ненавязчивая фактура (по образцу «Полдня»)' },
+    { id: 's1', t: 'Луч на стене', d: '<b>Самый близкий к «Полдню».</b> В подвале — косой луч света на гипсе, размытый и тонированный в синий, под вуалью. Полоса команды — тот же свет, едва заметный.',
+      css: `${bandPhoto('l-luch.jpg', 0.55)} ${footerPhoto('f-luch.jpg', 0.25)}` },
+    { id: 's2', t: 'Свет из окна', d: '<b>Утренний кабинет.</b> Размытые полосы света от окна и тюля: в подвале чуть заметнее, на полосе команды — только переход светлее-темнее.',
+      css: `${bandPhoto('l-okno.jpg', 0.6)} ${footerPhoto('f-okno.jpg', 0.25)}` },
+    { id: 's3', t: 'Холст', d: '<b>Только на ощупь.</b> Фактура холста почти не видна глазом — даёт ощущение материала вместо плоской заливки. В подвале чуть сильнее.',
+      css: `${bandPhoto('l-holst.jpg', 0.5)} ${footerPhoto('f-holst.jpg', 0.5)}` },
+    { grp: 'Свечение + фактура' },
+    { id: 's4', t: 'Свечение + луч в подвале', d: '<b>Комбинация.</b> Полоса команды и цены — мягкое свечение, подвал — луч на стене. Светлые блоки чистые, тёмный низ — живой.',
+      css: `${glowBand} ${glowPrices} ${footerPhoto('f-luch.jpg', 0.25)}` },
+    { id: 's5', t: 'Свечение + зерно', d: '<b>Свечение с плёночным зерном.</b> То же свечение, но с едва заметным зерном, как на снимках «Полдня» — заливки перестают выглядеть «цифровыми».',
+      css: `${T} { background: ${grain(0.035)}, radial-gradient(40% 70% at 8% 10%, rgb(51 86 143 / .16), transparent 70%), radial-gradient(35% 60% at 95% 100%, rgb(196 100 63 / .14), transparent 70%), var(--color-bg-sunken) !important; } ${navyFooter(`${grain(0.05, 0.85, '255 255 255')}, radial-gradient(45% 80% at 10% 0%, rgb(110 150 220 / .3), transparent 70%), radial-gradient(40% 70% at 100% 100%, rgb(196 100 63 / .22), transparent 70%)`)}` },
+    { id: 's6', t: 'Свечение + свет из окна', d: '<b>Комбинация.</b> Полоса команды — свечение, подвал — размытый свет из окна.',
+      css: `${glowBand} ${glowPrices} ${footerPhoto('f-okno.jpg', 0.25)}` },
   ];
 
   const frame = document.getElementById('frame');
-  let current = V[1];
+  let current = V.find((v) => v.id === 's1');
 
   function apply() {
     const doc = frame.contentDocument;
