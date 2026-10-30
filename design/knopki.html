@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Кнопки и ссылки — система</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef1f5; --sunken: #e2e7ee; --surface: #fff; --border: #dbe2ec; --border-strong: #c3cddb;
+    --text: #0f1a2e; --muted: #5b6577; --accent: #33568f; --accent-strong: #284676; --accent-soft: #e7edf6;
+    --shadow-card: 0 1px 2px rgba(15, 26, 46, .05), 0 10px 30px -12px rgba(15, 26, 46, .12);
+    --shadow-lift: 0 2px 4px rgba(15, 26, 46, .06), 0 18px 40px -14px rgba(15, 26, 46, .22);
+    --ease: cubic-bezier(.32, .72, 0, 1);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 Manrope, system-ui, sans-serif; }
+  h1, h2, h3 { font-family: Onest, sans-serif; letter-spacing: -.02em; margin: 0; }
+  .top { position: sticky; top: 0; z-index: 5; background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--border); }
+  .top .in { max-width: 1180px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; }
+  .top h1 { font-size: 1.1rem; margin-right: auto; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tabs button { font: 600 .875rem Manrope, sans-serif; border: 1px solid var(--border-strong); background: #fff; color: var(--text); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+  .tabs button[aria-pressed="true"] { background: var(--text); border-color: var(--text); color: #fff; }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 20px 100px; }
+  .intro { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 36px; }
+  .intro div { background: #fff; border-radius: 16px; padding: 18px 20px; font-size: .9rem; color: var(--muted); }
+  .intro b { display: block; color: var(--text); font-family: Onest, sans-serif; margin-bottom: 4px; }
+  #vdesc { font-size: 1rem; margin: 0 0 28px; padding: 16px 20px; border-radius: 16px; background: var(--accent-soft); color: var(--text); }
+  section.demo { margin-bottom: 44px; }
+  .demo > h2 { font-size: 1.05rem; margin-bottom: 4px; }
+  .demo > p.why { margin: 0 0 16px; color: var(--muted); font-size: .9rem; max-width: 80ch; }
+  .stage { background: var(--surface); border-radius: 24px; padding: 32px; box-shadow: var(--shadow-card); }
+  .stage.sunken { background: var(--sunken); box-shadow: none; }
+  .stage.dark { background: #13203a; color: #fff; }
+  .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .note { font-size: .8rem; color: var(--muted); margin-top: 10px; }
+  .states { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; }
+  .states figure { margin: 0; display: grid; gap: 8px; justify-items: start; }
+  .states figcaption { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+
+  /* ===================== Общая основа ===================== */
+  .btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border: 0; font: 600 1rem Manrope, sans-serif; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background .25s, color .25s, box-shadow .25s, transform .15s; }
+  .btn svg { flex: none; width: 18px; height: 18px; }
+  .btn:active, .btn.is-active { transform: translateY(1px) scale(.99); }
+  .btn:focus-visible, .btn.is-focus, .go:focus-visible, .go.is-focus, .card:focus-visible, .card.is-focus { outline: 3px solid #7fa0d6; outline-offset: 3px; }
+  .btn[disabled], .btn.is-disabled { opacity: .45; cursor: not-allowed; transform: none; }
+  .go { display: inline-flex; align-items: center; gap: 8px; font: 600 1rem Manrope, sans-serif; color: var(--accent); text-decoration: none; }
+  .go svg { width: 16px; height: 16px; transition: transform .4s var(--ease); }
+  .go:hover svg, .go.is-hover svg { transform: translateX(4px); }
+  .inline a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; text-decoration-color: rgb(51 86 143 / .4); }
+  .inline a:hover { text-decoration-color: currentColor; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { display: flex; flex-direction: column; gap: 8px; padding: 26px 26px 22px; background: #fff; color: var(--text); text-decoration: none; transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s, background .3s; }
+  .card h3 { font-size: 1.2rem; }
+  .card p { margin: 0 0 14px; color: var(--muted); font-size: .9rem; }
+  .card .go { margin-top: auto; }
+
+  .doc { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  .sheet { display: block; width: 132px; aspect-ratio: 210 / 297; background: #fff center / cover; border-radius: 4px; box-shadow: 0 1px 2px rgba(15, 26, 46, .08), 0 12px 28px -10px rgba(15, 26, 46, .3); transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+  .sheet:hover { transform: translateY(-4px) rotate(-1deg); box-shadow: 0 2px 4px rgba(15, 26, 46, .08), 0 22px 40px -12px rgba(15, 26, 46, .35); }
+  .doc-info h3 { font-size: 1.15rem; }
+  .doc-info .meta { margin: 4px 0 18px; color: var(--muted); font-size: .9rem; }
+  .doc-info .row { gap: 22px; }
+
+  .field { display: grid; gap: 6px; max-width: 360px; }
+  .field label { font-size: .85rem; color: var(--muted); }
+  .field input { font: inherit; padding: 13px 16px; border: 1px solid var(--border-strong); border-radius: 12px; background: #fff; }
+
+  /* ===================== Вариант А: таблетки ===================== */
+  [data-v="a"] .btn { border-radius: 999px; }
+  [data-v="a"] .btn-primary { background: var(--accent); color: #fff; }
+  [data-v="a"] .btn-primary:hover, [data-v="a"] .btn-primary.is-hover { background: var(--accent-strong); }
+  [data-v="a"] .btn-secondary { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1.5px var(--border-strong); }
+  [data-v="a"] .btn-secondary:hover, [data-v="a"] .btn-secondary.is-hover { box-shadow: inset 0 0 0 1.5px var(--text); }
+  [data-v="a"] .dark .btn-primary { background: #fff; color: var(--accent); }
+  [data-v="a"] .dark .btn-secondary { color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .4); }
+  [data-v="a"] .card { border-radius: 24px; box-shadow: var(--shadow-card); }
+  [data-v="a"] .card:hover, [data-v="a"] .card.is-hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+  [data-v="a"] .card:hover .go svg, [data-v="a"] .card.is-hover .go svg { transform: translateX(4px); }
+
+  /* ===================== Вариант Б: мягкий квадрат + тонированная вторичная ===================== */
+  [data-v="b"] .btn { border-radius: 14px; }
+  [data-v="b"] .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 1px 0 rgba(255, 255, 255, .15) inset, 0 8px 20px -10px rgba(51, 86, 143, .7); }
+  [data-v="b"] .btn-primary:hover, [data-v="b"] .btn-primary.is-hover { background: var(--accent-strong); }
+  [data-v="b"] .btn-secondary { background: var(--accent-soft); color: var(--accent-strong); }
+  [data-v="b"] .btn-secondary:hover, [data-v="b"] .btn-secondary.is-hover { background: #d8e2f1; }
+  [data-v="b"] .dark .btn-primary { background: #fff; color: var(--accent); box-shadow: none; }
+  [data-v="b"] .dark .btn-secondary { background: rgba(255, 255, 255, .12); color: #fff; }
+  [data-v="b"] .go { position: relative; }
+  [data-v="b"] .go span { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat; transition: background-size .35s var(--ease); padding-bottom: 2px; }
+  [data-v="b"] .go:hover span, [data-v="b"] .go.is-hover span, [data-v="b"] .card:hover .go span, [data-v="b"] .card.is-hover .go span { background-size: 100% 1.5px; }
+  [data-v="b"] .card { border-radius: 18px; border: 1.5px solid transparent; box-shadow: var(--shadow-card); }
+  [data-v="b"] .card:hover, [data-v="b"] .card.is-hover { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  [data-v="b"] .card:hover .go svg, [data-v="b"] .card.is-hover .go svg { transform: translateX(4px); }
+  [data-v="b"] .field input { border-radius: 12px; }
+
+  /* ===================== Вариант В: минимум кнопок ===================== */
+  [data-v="c"] .btn { border-radius: 999px; }
+  [data-v="c"] .btn-primary { background: var(--text); color: #fff; }
+  [data-v="c"] .btn-primary:hover, [data-v="c"] .btn-primary.is-hover { background: var(--accent); }
+  /* Вторичная — не кнопка, а ссылка-переход: рядом с главной кнопкой второй «кнопки» нет. */
+  [data-v="c"] .btn-secondary { min-height: 52px; padding: 0 6px; background: none; color: var(--accent); border-radius: 8px; }
+  [data-v="c"] .btn-secondary span { background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; padding-bottom: 2px; }
+  [data-v="c"] .btn-secondary:hover span, [data-v="c"] .btn-secondary.is-hover span { background-size: 100% 2px; }
+  [data-v="c"] .dark .btn-primary { background: #fff; color: var(--text); }
+  [data-v="c"] .dark .btn-secondary { color: #fff; }
+  [data-v="c"] .card { border-radius: 22px; background: #fff; }
+  [data-v="c"] .card .go { display: none; }
+  [data-v="c"] .card h3 { display: flex; align-items: center; gap: 10px; }
+  [data-v="c"] .card h3::after { content: ''; width: 18px; height: 18px; flex: none; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat; opacity: .35; transition: transform .4s var(--ease), opacity .3s; }
+  [data-v="c"] .card:hover, [data-v="c"] .card.is-hover { background: var(--accent); color: #fff; }
+  [data-v="c"] .card:hover p, [data-v="c"] .card.is-hover p { color: rgba(255, 255, 255, .8); }
+  [data-v="c"] .card:hover h3::after, [data-v="c"] .card.is-hover h3::after { opacity: 1; transform: translateX(4px); }
+
+  @media (max-width: 640px) {
+    .stage { padding: 22px 18px; }
+    .row.cta .btn { width: 100%; }
+    .top h1 { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body data-v="a">
+<div class="top"><div class="in">
+  <h1>Кнопки и ссылки — единая система</h1>
+  <div class="tabs" role="group" aria-label="Вариант оформления">
+    <button data-set="a" aria-pressed="true">А. Таблетки</button>
+    <button data-set="b" aria-pressed="false">Б. Мягкий квадрат</button>
+    <button data-set="c" aria-pressed="false">В. Минимум кнопок</button>
+  </div>
+</div></div>
+
+<main>
+  <div class="intro">
+    <div><b>Пять ролей — пять видов</b>Главное действие, альтернатива, переход, карточка-ссылка, ссылка в тексте. Каждая роль выглядит одинаково по всему сайту — человек учится один раз.</div>
+    <div><b>Одно главное действие на экран</b>Синяя кнопка — только «Записаться», «Позвонить», «Перезвоните мне», «Открыть PDF». Всё остальное — тише.</div>
+    <div><b>Значок — только со смыслом</b>Трубка у телефона, стрелка вниз у скачивания, «↗» у чужого сайта. «→» — только «перейти дальше», и всегда рядом со словами.</div>
+    <div><b>Удобно пальцем</b>Высота кнопки 52 px, на телефоне главная кнопка во всю ширину. Фокус с клавиатуры виден, при нажатии кнопка чуть вдавливается.</div>
+  </div>
+
+  <p id="vdesc"></p>
+
+  <section class="demo">
+    <h2>1. Главное действие и альтернатива — первый экран</h2>
+    <p class="why">Пара «главное + запасное»: записаться или сразу позвонить. Запасное не должно спорить с главным.</p>
+    <div class="stage dark"><div class="row cta">
+      <a class="btn btn-primary" href="#">Записаться на осмотр</a>
+      <a class="btn btn-secondary" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+7 (923) 313-05-33</span></a>
+    </div></div>
+  </section>
+
+  <section class="demo">
+    <h2>2. Переход в конце блока</h2>
+    <p class="why">«Весь прейскурант», «Все врачи» — не действие, а путь дальше. Стоит под тем, к чему относится, текстом со стрелкой.</p>
+    <div class="stage">
+      <div class="row"><a class="go" href="#"><span>Весь прейскурант</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>3. Карточки-ссылки — «Другие направления», «Пациентам», «О клинике»</h2>
+    <p class="why">Нажимается вся карточка. Признак — строка «Подробнее →» (А, Б) или стрелка у заголовка (В), а при наведении вся карточка отвечает. Пустого кружка нет.</p>
+    <div class="stage sunken"><div class="cards">
+      <a class="card" href="#"><h3>Гигиена и отбеливание</h3><p>Профессиональная чистка, фторирование и отбеливание зубов.</p><span class="go"><span>Подробнее</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="card" href="#"><h3>Удаление зубов</h3><p>Простое и сложное удаление, зубы мудрости, малые операции.</p><span class="go"><span>Подробнее</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="card" href="#"><h3>Протезирование</h3><p>Коронки, вкладки, мосты и съёмные протезы — от слепка до примерки.</p><span class="go"><span>Подробнее</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div></div>
+  </section>
+
+  <section class="demo">
+    <h2>4. Документ — прейскурант, лицензия, правила</h2>
+    <p class="why">Без лишней подложки: лист лежит на фоне страницы, нажимается и сам. Главное — открыть; скачать в Word — тише, со значком скачивания. Размер файла — один раз.</p>
+    <div class="stage sunken"><div class="doc">
+      <a class="sheet" href="#" data-sheet aria-label="Открыть прейскурант"></a>
+      <div class="doc-info">
+        <h3>Прейскурант на медицинские услуги</h3>
+        <p class="meta">PDF, 10 страниц</p>
+        <div class="row">
+          <a class="btn btn-primary" href="#">Открыть PDF</a>
+          <a class="go" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>Скачать в Word · 42 КБ</span></a>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="demo">
+    <h2>5. Форма — «Перезвоните мне»</h2>
+    <p class="why">Кнопка отправки — главное действие формы; в тёмной полосе — светлая.</p>
+    <div class="stage">
+      <div class="field"><label for="ph">Телефон</label><input id="ph" value="+7 (___) ___-__-__"></div>
+      <div class="row" style="margin-top:16px"><button class="btn btn-primary" type="button">Перезвоните мне</button></div>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>6. Ссылка в тексте</h2>
+    <div class="stage inline"><p style="margin:0;max-width:70ch">Сведения о лицензии можно проверить в <a href="#">едином реестре лицензий Росздравнадзора ↗</a>. Порядок записи и отмены — на странице <a href="#">«Порядок записи»</a>.</p></div>
+  </section>
+
+  <section class="demo">
+    <h2>7. Состояния</h2>
+    <p class="why">Обычное, наведение, фокус с клавиатуры, нажатие, недоступно — у каждой роли.</p>
+    <div class="stage"><div class="states" id="states"></div></div>
+  </section>
+</main>
+
+<script>
+  const SITE = new URLSearchParams(location.search).get('site') ?? '../site/';
+  document.querySelector('[data-sheet]').style.backgroundImage = `url(${SITE}documents/prays-list.webp)`;
+  const D = {
+    a: '<b>А. Таблетки</b> — как сейчас на сайте, но без кружков: главная кнопка синяя, альтернатива — с тонкой обводкой, переходы — текстом со стрелкой. Карточка при наведении приподнимается. Самый привычный и спокойный.',
+    b: '<b>Б. Мягкий квадрат</b> — скругление 14 px в тон карточкам; альтернатива — бледно-голубая заливка без обводки (мягче и легче). У ссылок при наведении «прорисовывается» подчёркивание; карточка обводится синим. Аккуратно и современно.',
+    c: '<b>В. Минимум кнопок</b> — на экране одна кнопка (тёмная), всё остальное — ссылки. Альтернатива рядом с главной — подчёркнутый текст. Карточка при наведении заливается синим целиком (как у НАКФФ), стрелка у заголовка. Самый чистый и смелый.',
+  };
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const st = [['Обычное', ''], ['Наведение', 'is-hover'], ['Фокус', 'is-focus'], ['Нажатие', 'is-active'], ['Недоступно', 'is-disabled']];
+  document.getElementById('states').innerHTML = st.map(([t, c]) => `<figure><figcaption>${t}</figcaption><a class="btn btn-primary ${c}" href="#">Записаться</a><a class="btn btn-secondary ${c}" href="#"><span>Как добраться</span></a>${c === 'is-disabled' ? '' : `<a class="go ${c}" href="#"><span>Подробнее</span>${arrow}</a>`}</figure>`).join('');
+  const set = (v) => {
+    document.body.dataset.v = v;
+    document.querySelectorAll('[data-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.set === v)));
+    document.getElementById('vdesc').innerHTML = D[v];
+  };
+  document.querySelectorAll('[data-set]').forEach((b) => b.addEventListener('click', () => set(b.dataset.set)));
+  document.querySelectorAll('a[href="#"]').forEach((a) => a.addEventListener('click', (e) => e.preventDefault()));
+  set('a');
+</script>
+</body>
+</html>
