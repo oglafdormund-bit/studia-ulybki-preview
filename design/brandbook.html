@@ -7,7 +7,7 @@
 <title>Брендбук «Студии улыбки»</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #1f2440; --muted: #5f5f6e; --bg: #f5f0ea; --paper: #fffdf9;
@@ -43,7 +43,7 @@
   .sw code { font: 600 .82rem ui-monospace, Consolas, monospace; color: var(--muted); }
   .logo-box { display: grid; place-items: center; border-radius: 16px; min-height: 180px; padding: 20px; }
   .lock { display: flex; align-items: center; gap: 14px; }
-  .lock .word { font: 700 2.3rem/1 Caveat, cursive; }
+  .lock .word { font: 500 2.3rem/1 Caveat, cursive; }
   .lock .kind { margin-top: 6px; font: 600 .66rem Manrope, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
   .stack { display: grid; justify-items: center; gap: 6px; text-align: center; }
   .cap { font-size: .85rem; color: var(--muted); margin-top: 10px; text-align: center; }
@@ -161,7 +161,7 @@
     <div class="grid g3">
       <div class="card"><div class="type-h" style="font-size:2.4rem;font-weight:700;line-height:1">Onest</div><p style="margin:10px 0 0;color:var(--muted)">Заголовки, цифры, цены. 500–700.</p><p class="type-h" style="font-size:1.4rem;font-weight:600;margin:12px 0 0">Сначала план, потом лечение</p></div>
       <div class="card"><div class="type-b" style="font-size:2.4rem;font-weight:600;line-height:1">Manrope</div><p style="margin:10px 0 0;color:var(--muted)">Основной текст, кнопки, подписи. 400–600.</p><p class="type-b" style="margin:12px 0 0">Перезвоним в рабочее время, подберём удобный день и врача.</p></div>
-      <div class="card"><div style="font:700 2.6rem/1 Caveat, cursive">Caveat</div><p style="margin:10px 0 0;color:var(--muted)">Только название в логотипе. Не для текста и заголовков на сайте.</p><p style="font:700 1.8rem Caveat, cursive;margin:12px 0 0">Студия улыбки</p></div>
+      <div class="card"><div style="font:500 2.6rem/1 Caveat, cursive">Caveat</div><p style="margin:10px 0 0;color:var(--muted)">Только название в логотипе, начертание 500. Не для текста и заголовков на сайте.</p><p style="font:500 1.8rem Caveat, cursive;margin:12px 0 0">Студия улыбки</p></div>
     </div>
     <div class="card" style="margin-top:16px">
       <table>
@@ -268,7 +268,7 @@
   const word = (dark) => `<div><div class="word" style="color:${dark ? '#fff' : '#1f2440'}">Студия улыбки</div><div class="kind" style="${dark ? 'color:rgba(255,255,255,.6)' : ''}">Стоматология · Ачинск</div></div>`;
   document.getElementById('coverMark').innerHTML = mk(BASE, 120, 140);
   document.getElementById('logoMain').innerHTML = `<div class="lock">${mk(BASE, 70, 82)}${word()}</div>`;
-  document.getElementById('logoStack').innerHTML = `<div class="stack">${mk(BASE, 80, 94)}<div class="word" style="font:700 2.3rem/1 Caveat">Студия улыбки</div><div class="kind" style="font:600 .66rem Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Стоматология · Ачинск</div></div>`;
+  document.getElementById('logoStack').innerHTML = `<div class="stack">${mk(BASE, 80, 94)}<div class="word" style="font:500 2.3rem/1 Caveat">Студия улыбки</div><div class="kind" style="font:600 .66rem Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Стоматология · Ачинск</div></div>`;
   document.getElementById('logoIcon').innerHTML = mk(BASE, 90, 106);
   const DARK = { ...BASE, line: '#f1ece6', shine: '#5a5560' };
   document.getElementById('logoDark').innerHTML = `<div class="lock">${mk(DARK, 50, 60)}${word(true).replace('2.3rem', '1.6rem')}</div>`;
