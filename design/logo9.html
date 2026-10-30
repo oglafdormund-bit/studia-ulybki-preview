@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Логотип — улыбка вместо потёков</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Manrope:wght@400;500;600&family=Onest:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #0f1a2e; --muted: #5b6577; --bg: #eef1f5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Manrope, sans-serif; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font: 700 2.4rem/1.1 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .lead { color: var(--muted); max-width: 76ch; margin: 0 0 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 22px; display: grid; gap: 14px; box-shadow: 0 1px 2px rgba(15,26,46,.05), 0 8px 24px rgba(15,26,46,.06); }
+  .card.was { opacity: .75; }
+  .card h2 { margin: 0; font: 600 1.15rem Onest, sans-serif; } .card h2 b { color: #33568f; margin-right: 6px; }
+  .big { height: 280px; border-radius: 16px; display: grid; place-items: center; background: #f6f8fb; }
+  .big svg { width: 200px; height: 240px; color: var(--ink); }
+  .lock { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 999px; }
+  .lock.light { background: rgba(251,248,243,.9); box-shadow: inset 0 0 0 1px #dfe4eb; }
+  .lock.dark { background: rgba(18,26,40,.95); color: #fff; }
+  .lock svg { width: 30px; height: 48px; flex: none; color: var(--ink); }
+  .lock.dark svg { color: #f1ece6; }
+  .name { font: 500 1.65rem/.9 Caveat, cursive; }
+  .kind { margin-top: 3px; font: 600 .6rem Manrope, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .lock.dark .kind { color: rgba(255,255,255,.6); }
+  .lock i { flex: 1; } .lock em { font: 600 .8rem Manrope; font-style: normal; padding: 8px 14px; border-radius: 999px; background: #33568f; color: #fff; }
+  .lock.dark em { background: #fff; color: #33568f; }
+  .sizes { display: flex; align-items: end; gap: 14px; } .sizes svg { color: var(--ink); } .sizes small { display: block; text-align: center; font-size: .7rem; color: var(--muted); }
+  .card p { margin: 0; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="jb" d="M33 62c-4 9-6 21-2 33 2 7 5 11 6 18l2 13c1 7 9 7 10 0l4-18c1-4 13-4 14 0l4 18c1 7 9 7 10 0l2-13c1-7 4-11 6-18 4-12 2-24-2-33a27 6 0 0 1-54 0z"/>
+    <clipPath id="jc"><use href="#jb"/></clipPath>
+    <filter id="dry" x="-10%" y="-20%" width="120%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="1.4 .25" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter>
+    <linearGradient id="rain" x1="0" x2="1"><stop offset="0" stop-color="#8fae8b"/><stop offset=".5" stop-color="#d6a548"/><stop offset="1" stop-color="#c4643f"/></linearGradient>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Логотип — улыбка вместо потёков</h1>
+  <p class="lead">Потёки убраны: на тусклом мониторе они читались как кровь. Вместо них на зубе — улыбка мазком кисти. Пять вариантов улыбки: двойной серп как в старом логотипе, мазок кистью, трёхцветный мазок, тонкая линия, улыбка, которую кисть рисует прямо сейчас. Первая карточка — нынешний логотип для сравнения. Каждый вариант показан в шапке на светлом и тёмном фоне и в размере иконки.</p>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  // Зуб-стакан без потёков. o.inside — цвет внутри стакана, o.brushDown — кисть опущена к улыбке, o.smile — разметка улыбки.
+  function jar(o) {
+    let s = `<ellipse cx="60" cy="62" rx="27" ry="6" fill="${o.inside ?? '#3a4252'}" stroke="currentColor" stroke-width="3.4"/>`;
+    s += `<path d="M50 64 39 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 52 43 40" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="36" cy="13" r="8.5" fill="#dfe7ef" stroke="currentColor" stroke-width="3"/><path d="M31 10a6 6 0 0 1 6-3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`;
+    if (!o.brushDown) s += `<path d="M60 64 64 22" stroke="currentColor" stroke-width="7.4" stroke-linecap="round"/><path d="M60 64 64 22" stroke="${o.handle ?? '#c4643f'}" stroke-width="4.2" stroke-linecap="round"/><path d="M63.6 26 64.8 14" stroke="currentColor" stroke-width="7.6"/><path d="M63.6 26 64.8 14" stroke="#cfd6de" stroke-width="4.6"/><path d="M62.2 14.4c-.6-6 1-11 3.6-14 1.6 4 2 9 1 14.2z" fill="${o.paint ?? '#d6a548'}" stroke="currentColor" stroke-width="2"/>`;
+    s += `<path d="M71 64 83 30" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M74 54 79 41" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M83 30c2-6 2-10 6-12 3-1 5 1 4 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>`;
+    s += `<use href="#jb" fill="#fff" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>`;
+    if (o.drips) s += `<g clip-path="url(#jc)"><path d="M33 62a27 6 0 0 0 54 0v6a27 6 0 0 1-54 0z" fill="#c4643f"/><path d="M37 66v14a3.2 3.2 0 0 0 6.4 0V69z" fill="#c4643f"/><path d="M52 68v9a3 3 0 0 0 6 0v-8z" fill="#8fae8b"/><path d="M56 67.6a27 6 0 0 0 14 0v4a27 6 0 0 1-14 0z" fill="#8fae8b"/><path d="M71 67v18a3.4 3.4 0 0 0 6.8 0V65z" fill="#d6a548"/><path d="M66 67.3a27 6 0 0 0 21-5.3v5a27 6 0 0 1-21 5z" fill="#d6a548"/></g>`;
+    // Улыбка — по центру коронки, ниже ободка.
+    if (o.smile) s += `<g transform="translate(0 6)">${o.smile}</g>`;
+    if (o.brushDown) s += `<g transform="translate(0 6)">${o.brushDown}</g>`;
+    s += `<path d="M33 62a27 6 0 0 0 54 0" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>`;
+    return s;
+  }
+
+  // Улыбки. Зона на зубе: x 36–84, y 74–96.
+  const V = [
+    { t: 'Сейчас: потёки', was: true, d: 'Нынешний логотип — для сравнения. Потёки на тусклом экране похожи на кровь.', o: { drips: true, inside: '#4a3a33' } },
+    { t: 'Двойной серп', d: 'Как в старом логотипе: два красных серпа-улыбки, только на зубе. Прямая связь с тем, что клиника использовала 12 лет.',
+      o: { smile: `<path d="M41 79c10 12 30 12 40 -2-10 7-30 7-40 2z" fill="#c4643f"/><path d="M46 88c8 7 22 7 30 -1-8 4-22 4-30 1z" fill="#c4643f"/>` } },
+    { t: 'Мазок кистью', d: 'Одна улыбка широким мазком с «сухим» краем, будто только что проведена кистью. Синий, как сайт.',
+      o: { handle: '#33568f', paint: '#33568f', smile: `<path d="M38 80c8 13 36 15 46 -2 1-2-2-3-3-2-6 7-17 11-27 9-6-1-10-4-13-7-1-1-4 0-3 2z" fill="#33568f" filter="url(#dry)"/>` } },
+    { t: 'Улыбка из трёх красок', d: 'Мазок переливается тремя красками палитры — шалфей, охра, терракота. Краски из старой идеи остаются, но без потёков.',
+      o: { smile: `<path d="M38 80c8 13 36 15 46 -2 1-2-2-3-3-2-6 7-17 11-27 9-6-1-10-4-13-7-1-1-4 0-3 2z" fill="url(#rain)" filter="url(#dry)"/>` } },
+    { t: 'Тонкая линия', d: 'Улыбка тонкой линией цветом контура и маленькая искорка. Самый сдержанный и «медицинский».',
+      o: { smile: `<path d="M44 82c7 7 25 7 32 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M80 74l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="#d6a548"/>` } },
+    { t: 'Кисть рисует улыбку', d: 'Кисть опущена к зубу и прямо сейчас дорисовывает улыбку — «студия, где делают улыбки» в одной картинке.',
+      o: { smile: `<path d="M40 80c8 12 28 13 38 2" fill="none" stroke="#c4643f" stroke-width="5" stroke-linecap="round" filter="url(#dry)"/>`,
+        brushDown: `<path d="M98 40 79 79" stroke="currentColor" stroke-width="7.4" stroke-linecap="round"/><path d="M98 40 79 79" stroke="#33568f" stroke-width="4.2" stroke-linecap="round"/><path d="M80.6 76 76.4 84" stroke="currentColor" stroke-width="7.4"/><path d="M80.6 76 76.4 84" stroke="#cfd6de" stroke-width="4.4"/><path d="M76.6 83.4c-1.8 2.6-3.2 3.4-5.4 3.2 .4-2.4 1.8-3.8 4.2-5z" fill="#c4643f" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>` } },
+  ];
+
+  const svg = (v, w, h) => `<svg viewBox="16 -2 88 142" width="${w}" height="${h}" aria-hidden="true">${jar(v.o)}</svg>`;
+  let n = 0;
+  document.getElementById('grid').innerHTML = V.map((v) => { if (!v.was) n += 1; return `
+    <article class="card${v.was ? ' was' : ''}">
+      <h2>${v.was ? '' : `<b>${n}</b>`}${v.t}</h2>
+      <div class="big">${svg(v, 200, 240)}</div>
+      <div class="lock light">${svg(v, 30, 48)}<div><div class="name">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div><i></i><em>Записаться</em></div>
+      <div class="lock dark">${svg(v, 30, 48)}<div><div class="name">Студия улыбки</div><div class="kind">Стоматология · Ачинск</div></div><i></i><em>Записаться</em></div>
+      <div class="sizes"><div>${svg(v, 28, 32)}<small>32</small></div><div>${svg(v, 14, 16)}<small>16</small></div></div>
+      <p>${v.d}</p>
+    </article>`; }).join('');
+</script>
+</body>
+</html>
