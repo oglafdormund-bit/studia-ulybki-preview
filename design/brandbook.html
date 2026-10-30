@@ -193,50 +193,47 @@
 
   <section id="photo">
     <h2><small>06</small>Фотографии</h2>
-    <p class="lead">Опорный стиль — настоящая клиника. Ниже реальные снимки из материалов клиники: всё, что генерируется, должно выглядеть так, будто снято там же, тем же светом.</p>
-    <h3>Как выглядит клиника на самом деле</h3>
-    <div class="grid g4">
-      <figure><div class="ph"><img src="reception.jpg" alt="Ресепшен клиники"></div><figcaption>Ресепшен: светлые стены, дубовая стойка, шалфейно-зелёная скамья</figcaption></figure>
-      <figure><div class="ph"><img src="chair.jpg" alt="Кабинет"></div><figcaption>Кабинет: тёмно-серое кресло, белые стены, свет сверху</figcaption></figure>
-      <figure><div class="ph"><img src="instruments.jpg" alt="Инструменты"></div><figcaption>Инструменты: металл на тёмном, холодный блеск</figcaption></figure>
-      <figure><div class="ph"><img src="models.jpg" alt="Модели челюстей"></div><figcaption>Модели челюстей — работа ортопеда</figcaption></figure>
+    <p class="lead">Эталон стиля — наши сгенерированные снимки: светлая современная клиника, какой её должен видеть пациент. Клинике отдаём их как образец — на что ориентироваться при будущих съёмках и в оформлении. Фото сотрудников в разделе «Врачи» — настоящие, их не трогаем.</p>
+    <h3>Что генерируем</h3>
+    <div class="card">
+      <table>
+        <tr><th>Место на сайте</th><th>Кадр</th><th>Формат</th></tr>
+        <tr><td>Первый экран главной</td><td>Врач объясняет план лечения пациентке в кресле; люди справа, слева спокойный фон под текст</td><td>16:9</td></tr>
+        <tr><td>Полоса «Перезвоните мне»</td><td>Пустой светлый ресепшен или холл, без людей (кадр затемняется)</td><td>3:2</td></tr>
+        <tr><td>«Первый визит»</td><td>Кабинет: кресло, свет, порядок, без людей</td><td>4:3</td></tr>
+        <tr><td>Карточки услуг</td><td>По одному спокойному сюжету на направление: лечение, гигиена, удаление, протезирование</td><td>4:3</td></tr>
+      </table>
     </div>
-    <div class="grid g4" style="margin-top:16px">
-      <figure><div class="ph tall"><img src="../site/images/vrachi/ilivanova.jpg" alt="Врач в форме"></div><figcaption>Форма врачей — серо-лиловая</figcaption></figure>
-      <figure><div class="ph tall"><img src="../site/images/vrachi/kozlova.jpg" alt="Врач"></div><figcaption>Светлый фон, естественный свет</figcaption></figure>
-      <figure><div class="ph tall"><img src="../site/images/vrachi/sablin.jpg" alt="Врач"></div><figcaption>У мужчин-врачей — оливковая форма</figcaption></figure>
-      <figure><div class="ph tall"><img src="../site/images/vrachi/petrova.jpg" alt="Медсестра"></div><figcaption>Спокойные позы, без постановки</figcaption></figure>
-    </div>
-    <h3>Цвета реальных фото</h3>
-    <div class="grid g4" id="photoColors"></div>
-    <h3>Правила кадра</h3>
+    <h3>Стиль</h3>
     <div class="grid g2">
       <div class="card"><ul class="check yes">
-        <li>Дневной мягкий свет, слегка тёплый; тени мягкие.</li>
-        <li>Белые и светло-серые стены, светлый дуб, шалфейно-зелёные акценты.</li>
-        <li>Форма врачей серо-лиловая (женщины) или оливковая (мужчины).</li>
-        <li>Обычные люди 25–60 лет, славянская внешность, естественная улыбка и зубы.</li>
-        <li>Взгляд и жесты — разговор, объяснение, спокойствие.</li>
-        <li>Сдержанная цветокоррекция: чуть приглушённые цвета, без перенасыщения.</li>
+        <li>Светлая клиника: белые и светло-серые стены, светлое дерево, мягкие серо-голубые акценты — в тон сайту.</li>
+        <li>Дневной мягкий свет из окна, тени мягкие, цвета естественные и чуть приглушённые.</li>
+        <li>Форма врачей — спокойных тонов (серо-голубая, серо-лиловая), без ярких цветов.</li>
+        <li>Обычные люди 25–60 лет, славянская внешность, естественные зубы и улыбка.</li>
+        <li>Сюжет — разговор, объяснение, спокойствие; кадр как репортаж, а не постановка.</li>
+        <li>Место под текст там, где на сайте лежит надпись (первый экран — слева).</li>
       </ul></div>
       <div class="card"><ul class="check no">
-        <li>Голливудские виниры, неестественно белые зубы, «стоковые» улыбки в камеру.</li>
-        <li>Рот крупно, кровь, щипцы, инструменты во рту.</li>
-        <li>Синий «медицинский» свет, глянец, неон.</li>
-        <li>Надписи, логотипы, вывески других клиник в кадре.</li>
-        <li>Выдавать сгенерированных людей за сотрудников клиники.</li>
+        <li>Голливудские виниры, неестественно белые зубы, улыбки в камеру.</li>
+        <li>Рот крупно, кровь, щипцы, инструменты во рту, импланты (клиника их не ставит).</li>
+        <li>Синий «больничный» свет, неон, глянец стока.</li>
+        <li>Надписи, логотипы, вывески, экраны с текстом в кадре.</li>
+        <li>Выдавать сгенерированных людей за сотрудников клиники — люди на этих фото не подписываются именами.</li>
       </ul></div>
     </div>
+    <h3>Цвета кадра</h3>
+    <div class="grid g4" id="photoColors"></div>
   </section>
 
   <section id="prompts">
     <h2><small>07</small>Промпты для генерации фото</h2>
-    <p class="lead">Базовая часть ставится в начало каждого промпта, затем сюжет, в конце — что исключить. Так все фото получатся в одном стиле. Готовые промпты для конкретных мест сайта — на странице <a href="foto.html">«Фото для сайта»</a>.</p>
+    <p class="lead">Базовая часть ставится в начало каждого промпта, затем сюжет, в конце — что исключить. Так все фото получатся в одном стиле. Сгенерированные варианты для каждого места сайта — на странице <a href="foto.html">«Фото для сайта»</a>.</p>
     <div class="card">
       <h3 style="margin-top:0">Основа (в начало)</h3>
-      <pre id="base">Photorealistic documentary-style photo in a small modern private dental clinic in a Russian town. White and light warm-grey walls, light oak wood furniture, muted sage-green accents, dark grey dental chair. Soft natural daylight from a window, slightly warm, gentle shadows. Muted, natural color grading, no oversaturation. Staff wear grey-lilac scrubs (women) or olive scrubs (men). Ordinary Slavic-looking people, natural skin and natural teeth. Calm, friendly, honest mood. 35mm lens, shallow depth of field.</pre>
+      <pre id="base">Photorealistic documentary-style photo in a bright modern private dental clinic. White and light grey walls, light natural wood details, soft muted grey-blue accents, clean and calm. Soft natural daylight from a large window, gentle shadows, natural slightly muted colors, no oversaturation. Staff in calm grey-blue scrubs. Ordinary Slavic-looking people, natural skin, natural teeth. Calm, friendly, honest mood. 35mm lens, shallow depth of field.</pre>
       <h3>Исключить (в конец или в поле negative)</h3>
-      <pre id="neg">No text, no logos, no signage, no watermarks. No veneers or unnaturally white teeth, no open mouth close-ups, no blood, no forceps, no instruments inside the mouth. No blue clinical lighting, no neon, no glossy stock-photo look, no posed smiles at camera.</pre>
+      <pre id="neg">No text, no logos, no signage, no watermarks. No veneers or unnaturally white teeth, no open mouth close-ups, no blood, no forceps, no instruments inside the mouth. No blue clinical lighting, no neon, no glossy stock-photo look, no posed smiles at camera, no dental implants.</pre>
       <h3>Пример сюжета</h3>
       <pre>[Основа] A female dentist sits on a stool and explains a treatment plan on a tablet to an adult female patient in the dental chair; both relaxed, mid-conversation. Subjects in the right third of the frame, calm blurred interior on the left. [Исключить]</pre>
     </div>

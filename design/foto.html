@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Фото для сайта</title>
+<title>Фото для сайта — выбор</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,82 +12,49 @@
   :root { --accent: #33568f; --ink: #0f1a2e; --muted: #5b6577; --bg: #eef1f5; }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Manrope, sans-serif; }
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 48px 16px 80px; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 48px 16px 80px; }
   h1 { font: 700 2.4rem/1.1 Onest, sans-serif; letter-spacing: -0.03em; margin: 0 0 12px; }
-  h2 { font: 600 1.3rem Onest, sans-serif; margin: 0 0 6px; }
-  .lead { color: var(--muted); max-width: 70ch; }
-  .rules { background: #fff; border-radius: 20px; padding: 20px 24px; margin: 24px 0 32px; }
-  .rules li { margin: 4px 0; }
-  .slot { display: grid; grid-template-columns: 260px 1fr; gap: 24px; background: #fff; border-radius: 24px; padding: 24px; margin-bottom: 20px; }
-  .slot img { width: 100%; border-radius: 14px; display: block; }
-  .meta { font-size: .875rem; color: var(--muted); margin: 0 0 12px; }
-  .meta b { color: var(--ink); }
-  pre { white-space: pre-wrap; background: var(--bg); border-radius: 12px; padding: 14px 16px; font: 13px/1.5 ui-monospace, Consolas, monospace; margin: 0 0 10px; }
-  button { font: 600 .875rem Manrope, sans-serif; border: 0; border-radius: 999px; padding: 8px 16px; background: var(--accent); color: #fff; cursor: pointer; }
-  @media (max-width: 720px) { .slot { grid-template-columns: 1fr; } }
+  h2 { font: 600 1.3rem Onest, sans-serif; margin: 0 0 4px; }
+  .lead { color: var(--muted); max-width: 74ch; margin: 0 0 32px; }
+  .slot { background: #fff; border-radius: 24px; padding: 22px; margin-bottom: 20px; }
+  .meta { font-size: .9rem; color: var(--muted); margin: 0 0 14px; }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  figure { margin: 0; }
+  figure img { width: 100%; display: block; border-radius: 14px; background: #dfe4eb; aspect-ratio: var(--ar); object-fit: cover; }
+  figcaption { margin-top: 6px; font-size: .85rem; color: var(--muted); }
+  figcaption b { color: var(--ink); }
+  .now img { opacity: .7; }
+  details { margin-top: 12px; font-size: .85rem; color: var(--muted); }
+  pre { white-space: pre-wrap; background: var(--bg); border-radius: 10px; padding: 12px 14px; font: 12.5px/1.5 ui-monospace, Consolas, monospace; }
+  @media (max-width: 800px) { .row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Фото для сайта — что сгенерировать</h1>
-  <p class="lead">Шесть мест на сайте сейчас занимают фото со стока — их нужно заменить до запуска. Для каждого: где стоит, какой нужен кадр и формат, и готовый промпт (на английском — так генераторы понимают лучше). Сгенерированные файлы кладите в чат с названием места — я обрежу, сожму и поставлю на сайт. Общие правила стиля — в <a href="brandbook.html#photo">брендбуке</a>.</p>
-
-  <div class="rules">
-    <b>Общие правила для всех кадров</b>
-    <ul>
-      <li>Стиль клиники: тёплое светлое дерево, белый, шалфейно-зелёный, форма врачей серо-лилового цвета. Свет дневной, мягкий; без «глянца» и голливудских улыбок.</li>
-      <li>Люди — обычные, славянской внешности, 25–60 лет; врачи в масках или без — по сюжету.</li>
-      <li>Никаких надписей, вывесок, логотипов и чужих брендов в кадре.</li>
-      <li>Не показывать рот пациента крупно, кровь, инструменты во рту — это отталкивает и спорно с точки зрения рекламы медуслуг.</li>
-      <li>Фото — иллюстрация: на сайте не будем выдавать сгенерированных людей за сотрудников клиники (настоящие сотрудники — в разделе «Врачи»).</li>
-    </ul>
-  </div>
-
+  <h1>Фото для сайта — выбор</h1>
+  <p class="lead">Сгенерировано в Higgsfield (модель Soul 2.0) по правилам <a href="brandbook.html#photo">брендбука</a>: светлая клиника, мягкий дневной свет, серо-голубые акценты, без глянца и крупного рта. Для каждого места — текущее временное фото и новые варианты (по клику открываются крупно). Неудачные кадры — с надписями, артефактами, коллажами — отсеяны. Напишите номер места и вариант (например «1 — А») или что переделать.</p>
   <div id="slots"></div>
 </div>
 
 <script>
-  const base = 'Photorealistic editorial photo, modern small private dental clinic in a Russian town, warm light oak wood, white walls, sage green accents, soft natural daylight, calm and friendly mood, shallow depth of field, shot on 35mm, no text, no logos, no signage';
-  const slots = [
-    {
-      file: 'hero.jpg', place: 'Главная, первый экран (фон во весь экран)', size: '2560×1440, 16:9',
-      note: 'Текст сайта лежит слева — главное в кадре должно быть справа. Слева спокойный фон (стена, окно, размытие).',
-      prompt: `${base}. A female dentist in grey-lilac scrubs sitting on a stool talks with a smiling adult female patient in a dental chair, explaining a treatment plan on a tablet. Subjects placed in the right third of the frame, left side is calm blurred clinic interior. Wide shot, eye level. Aspect ratio 16:9.`,
-    },
-    {
-      file: 'zapis.jpg', place: 'Полоса «Оставьте телефон — перезвоним» (под тёмной вуалью)', size: '2000×1333, 3:2',
-      note: 'Кадр затемняется почти до тёмно-синего, справа белая форма. Нужен спокойный интерьер без людей или с ресепшеном.',
-      prompt: `${base}. Empty reception area of the clinic: light oak reception desk, a sage green upholstered bench, a plant, large window. No people. Wide shot, slightly from the side. Aspect ratio 3:2.`,
-    },
-    {
-      file: 'napravlenie-lechenie.jpg', place: 'Карточка «Лечение зубов»', size: '1200×900, 4:3',
-      note: 'Карточка небольшая — один ясный сюжет.',
-      prompt: `${base}. A dentist in grey-lilac scrubs and a mask works with a dental microscope next to a reclined patient, patient's face mostly out of frame. Focus on the doctor's hands and the microscope. Medium shot. Aspect ratio 4:3.`,
-    },
-    {
-      file: 'napravlenie-gigiena.jpg', place: 'Карточка «Гигиена и отбеливание»', size: '1200×900, 4:3',
-      note: 'Без макро зубов — лучше человек с естественной улыбкой.',
-      prompt: `${base}. Close-up portrait of a young woman with a natural, relaxed smile, healthy natural teeth (not perfect veneers), sitting in a dental chair, a hygienist's gloved hand with a mirror slightly visible at the edge. Aspect ratio 4:3.`,
-    },
-    {
-      file: 'napravlenie-udalenie.jpg', place: 'Карточка «Удаление зубов»', size: '1200×900, 4:3',
-      note: 'Тема пугающая — кадр должен успокаивать: никаких щипцов и крови.',
-      prompt: `${base}. A calm male dental surgeon in grey-lilac scrubs, mask lowered, reassuring a middle-aged male patient who is sitting in the dental chair, hand on the patient's shoulder. Medium shot, warm and trustworthy. Aspect ratio 4:3.`,
-    },
-    {
-      file: 'napravlenie-protezirovanie.jpg', place: 'Карточка «Протезирование»', size: '1200×900, 4:3',
-      note: 'В клинике есть модели челюстей — можно и снять свои, это лучше генерации.',
-      prompt: `${base}. A dental plaster jaw model with several white ceramic crowns on a light oak table, a dentist's hand holding a shade guide next to it. Close-up still life. Aspect ratio 4:3.`,
-    },
+  // [id, место, формат, текущее фото, заметка, [[файл, подпись]], модель]
+  const SLOTS = [
+    ['hero', 'Первый экран главной', '16:9', 'hero.jpg', 'Текст лежит слева — людям место справа.', [['hero-a', 'А — две женщины, слева спокойный фон под текст'], ['hero-b', 'Б — три человека, теснее']], 'Soul 2.0'],
+    ['zapis', 'Полоса «Оставьте телефон — перезвоним»', '3:2', 'zapis.jpg', 'Кадр затемняется, поверх белая форма.', [['zapis-a', 'А — холл с диваном'], ['zapis-b', 'Б — ресепшен у окна (на стене постер с губами — убрать при выборе)']], 'Soul 2.0'],
+    ['kreslo', '«Первый визит»', '4:3', 'kreslo.jpg', 'Сейчас — настоящее фото кресла, тёмное. Новый кадр — светлый кабинет через дверной проём.', [['kreslo-a', 'А — кабинет через дверь']], 'Z Image'],
+    ['lechenie', 'Карточка «Лечение зубов»', '4:3', 'napravlenie-lechenie.jpg', 'Вместо разреза зуба — врач объясняет снимок.', [['lechenie-a', 'А — врач-женщина в халате'], ['lechenie-b', 'Б — врач-мужчина в форме']], 'Soul 2.0'],
+    ['gigiena', 'Карточка «Гигиена и отбеливание»', '4:3', 'napravlenie-gigiena.jpg', 'Вместо губ крупно — пациентка с зеркалом.', [['gigiena-a', 'А — крупнее, ближе'], ['gigiena-b', 'Б — шире, видно кабинет']], 'Soul 2.0'],
+    ['udalenie', 'Карточка «Удаление зубов»', '4:3', 'napravlenie-udalenie.jpg', 'Хирург спокойно поддерживает пациента.', [['udalenie-a', 'А — светлая форма'], ['udalenie-b', 'Б — тёмная форма (на ней логотип — убрать при выборе)']], 'Soul 2.0'],
+    ['protezirovanie', 'Карточка «Протезирование»', '4:3', 'napravlenie-protezirovanie.jpg', 'Сейчас на фото имплант — клиника их не ставит. Новый кадр: модель с коронками и шкала оттенков.', [['protezirovanie-a', 'А — модель и шкала на столе']], 'Z Image'],
   ];
-  document.getElementById('slots').innerHTML = slots.map((s, i) => `
-    <section class="slot">
-      <img src="../site/images/${s.file}" alt="Сейчас: ${s.place}" onerror="this.style.display='none'">
-      <div>
-        <h2>${i + 1}. ${s.place}</h2>
-        <p class="meta">Файл <b>${s.file}</b> · формат <b>${s.size}</b><br>${s.note}</p>
-        <pre id="p${i}">${s.prompt}</pre>
-        <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('p${i}').textContent); this.textContent='Скопировано'">Скопировать промпт</button>
+  const ar = (r) => r.replace(':', ' / ');
+  document.getElementById('slots').innerHTML = SLOTS.map(([id, place, ratio, now, note, vars, model], i) => `
+    <section class="slot" style="--ar:${ar(ratio)}">
+      <h2>${i + 1}. ${place}</h2>
+      <p class="meta">Формат ${ratio}, модель ${model}. ${note}</p>
+      <div class="row">
+        <figure class="now"><img src="../site/images/${now}" alt="Сейчас на сайте"><figcaption>Сейчас на сайте</figcaption></figure>
+        ${vars.map(([f, cap]) => `<figure><a href="gen/${f}.jpg" target="_blank"><img src="gen/${f}.jpg" alt="${cap}" loading="lazy"></a><figcaption><b>${cap}</b></figcaption></figure>`).join('')}
       </div>
     </section>`).join('');
 </script>
