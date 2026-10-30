@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Логотип — улыбка вместо потёков</title>
+<title>Логотип — 5 вариантов без потёков</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Manrope:wght@400;500;600&family=Onest:wght@600;700&display=swap" rel="stylesheet">
@@ -46,8 +46,8 @@
 </svg>
 
 <div class="wrap">
-  <h1>Логотип — улыбка вместо потёков</h1>
-  <p class="lead">Потёки убраны: на тусклом мониторе они читались как кровь. Вместо них на зубе — улыбка мазком кисти. Пять вариантов улыбки: двойной серп как в старом логотипе, мазок кистью, трёхцветный мазок, тонкая линия, улыбка, которую кисть рисует прямо сейчас. Первая карточка — нынешний логотип для сравнения. Каждый вариант показан в шапке на светлом и тёмном фоне и в размере иконки.</p>
+  <h1>Логотип — 5 вариантов без потёков</h1>
+  <p class="lead">Потёки убраны: на тусклом экране они похожи на кровь. Пять вариантов того же зуба-стакана с инструментами: без улыбки и с ней, белый и голубой зуб, три инструмента и два, кисть в стакане и кисть, рисующая улыбку. Первая карточка — нынешний логотип для сравнения.</p>
   <div class="grid" id="grid"></div>
 </div>
 
@@ -55,10 +55,12 @@
   // Зуб-стакан без потёков. o.inside — цвет внутри стакана, o.brushDown — кисть опущена к улыбке, o.smile — разметка улыбки.
   function jar(o) {
     let s = `<ellipse cx="60" cy="62" rx="27" ry="6" fill="${o.inside ?? '#3a4252'}" stroke="currentColor" stroke-width="3.4"/>`;
-    s += `<path d="M50 64 39 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 52 43 40" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="36" cy="13" r="8.5" fill="#dfe7ef" stroke="currentColor" stroke-width="3"/><path d="M31 10a6 6 0 0 1 6-3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`;
-    if (!o.brushDown) s += `<path d="M60 64 64 22" stroke="currentColor" stroke-width="7.4" stroke-linecap="round"/><path d="M60 64 64 22" stroke="${o.handle ?? '#c4643f'}" stroke-width="4.2" stroke-linecap="round"/><path d="M63.6 26 64.8 14" stroke="currentColor" stroke-width="7.6"/><path d="M63.6 26 64.8 14" stroke="#cfd6de" stroke-width="4.6"/><path d="M62.2 14.4c-.6-6 1-11 3.6-14 1.6 4 2 9 1 14.2z" fill="${o.paint ?? '#d6a548'}" stroke="currentColor" stroke-width="2"/>`;
-    s += `<path d="M71 64 83 30" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M74 54 79 41" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M83 30c2-6 2-10 6-12 3-1 5 1 4 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>`;
-    s += `<use href="#jb" fill="#fff" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>`;
+    const t = o.tools ?? ['mirror', 'brush', 'probe'];
+    if (t.includes('mirror')) s += `<path d="M50 64 39 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 52 43 40" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="36" cy="13" r="8.5" fill="#dfe7ef" stroke="currentColor" stroke-width="3"/><path d="M31 10a6 6 0 0 1 6-3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`;
+    if (!o.brushDown && t.includes('brush')) s += `<path d="M60 64 64 22" stroke="currentColor" stroke-width="7.4" stroke-linecap="round"/><path d="M60 64 64 22" stroke="${o.handle ?? '#c4643f'}" stroke-width="4.2" stroke-linecap="round"/><path d="M63.6 26 64.8 14" stroke="currentColor" stroke-width="7.6"/><path d="M63.6 26 64.8 14" stroke="#cfd6de" stroke-width="4.6"/><path d="M62.2 14.4c-.6-6 1-11 3.6-14 1.6 4 2 9 1 14.2z" fill="${o.paint ?? '#d6a548'}" stroke="currentColor" stroke-width="2"/>`;
+    if (t.includes('probe')) s += `<path d="M71 64 83 30" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M74 54 79 41" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M83 30c2-6 2-10 6-12 3-1 5 1 4 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>`;
+    s += `<use href="#jb" fill="${o.body ?? '#fff'}" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>`;
+    if (o.shine) s += `<path d="M38 74c-2 6-2 13 0 19" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>`;
     if (o.drips) s += `<g clip-path="url(#jc)"><path d="M33 62a27 6 0 0 0 54 0v6a27 6 0 0 1-54 0z" fill="#c4643f"/><path d="M37 66v14a3.2 3.2 0 0 0 6.4 0V69z" fill="#c4643f"/><path d="M52 68v9a3 3 0 0 0 6 0v-8z" fill="#8fae8b"/><path d="M56 67.6a27 6 0 0 0 14 0v4a27 6 0 0 1-14 0z" fill="#8fae8b"/><path d="M71 67v18a3.4 3.4 0 0 0 6.8 0V65z" fill="#d6a548"/><path d="M66 67.3a27 6 0 0 0 21-5.3v5a27 6 0 0 1-21 5z" fill="#d6a548"/></g>`;
     // Улыбка — по центру коронки, ниже ободка.
     if (o.smile) s += `<g transform="translate(0 6)">${o.smile}</g>`;
@@ -67,20 +69,20 @@
     return s;
   }
 
-  // Улыбки. Зона на зубе: x 36–84, y 74–96.
+  const SMILE_BLUE = `<path d="M38 80c8 13 36 15 46 -2 1-2-2-3-3-2-6 7-17 11-27 9-6-1-10-4-13-7-1-1-4 0-3 2z" fill="#33568f" filter="url(#dry)"/>`;
   const V = [
     { t: 'Сейчас: потёки', was: true, d: 'Нынешний логотип — для сравнения. Потёки на тусклом экране похожи на кровь.', o: { drips: true, inside: '#4a3a33' } },
-    { t: 'Двойной серп', d: 'Как в старом логотипе: два красных серпа-улыбки, только на зубе. Прямая связь с тем, что клиника использовала 12 лет.',
-      o: { smile: `<path d="M41 79c10 12 30 12 40 -2-10 7-30 7-40 2z" fill="#c4643f"/><path d="M46 88c8 7 22 7 30 -1-8 4-22 4-30 1z" fill="#c4643f"/>` } },
-    { t: 'Мазок кистью', d: 'Одна улыбка широким мазком с «сухим» краем, будто только что проведена кистью. Синий, как сайт.',
-      o: { handle: '#33568f', paint: '#33568f', smile: `<path d="M38 80c8 13 36 15 46 -2 1-2-2-3-3-2-6 7-17 11-27 9-6-1-10-4-13-7-1-1-4 0-3 2z" fill="#33568f" filter="url(#dry)"/>` } },
-    { t: 'Улыбка из трёх красок', d: 'Мазок переливается тремя красками палитры — шалфей, охра, терракота. Краски из старой идеи остаются, но без потёков.',
-      o: { smile: `<path d="M38 80c8 13 36 15 46 -2 1-2-2-3-3-2-6 7-17 11-27 9-6-1-10-4-13-7-1-1-4 0-3 2z" fill="url(#rain)" filter="url(#dry)"/>` } },
-    { t: 'Тонкая линия', d: 'Улыбка тонкой линией цветом контура и маленькая искорка. Самый сдержанный и «медицинский».',
-      o: { smile: `<path d="M44 82c7 7 25 7 32 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M80 74l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="#d6a548"/>` } },
+    { t: 'Чистый', d: 'Без потёков и без улыбки: белый зуб-стакан, зеркало, кисть и зонд. Самый простой и спокойный.',
+      o: {} },
+    { t: 'С улыбкой', d: 'То же, но на зубе мазок-улыбка синим, в цвет сайта. Сразу читается «улыбка».',
+      o: { smile: SMILE_BLUE } },
+    { t: 'Голубой зуб', d: 'Без улыбки, зуб залит светло-голубым с бликом — объёмнее и «чище», лучше виден на белом фоне.',
+      o: { body: '#e3ecf8', shine: true } },
+    { t: 'Проще: два инструмента', d: 'Только кисть и зеркало, на зубе улыбка. Меньше деталей — лучше читается в маленьком размере и на вывеске.',
+      o: { tools: ['mirror', 'brush'], smile: SMILE_BLUE } },
     { t: 'Кисть рисует улыбку', d: 'Кисть опущена к зубу и прямо сейчас дорисовывает улыбку — «студия, где делают улыбки» в одной картинке.',
-      o: { smile: `<path d="M40 80c8 12 28 13 38 2" fill="none" stroke="#c4643f" stroke-width="5" stroke-linecap="round" filter="url(#dry)"/>`,
-        brushDown: `<path d="M98 40 79 79" stroke="currentColor" stroke-width="7.4" stroke-linecap="round"/><path d="M98 40 79 79" stroke="#33568f" stroke-width="4.2" stroke-linecap="round"/><path d="M80.6 76 76.4 84" stroke="currentColor" stroke-width="7.4"/><path d="M80.6 76 76.4 84" stroke="#cfd6de" stroke-width="4.4"/><path d="M76.6 83.4c-1.8 2.6-3.2 3.4-5.4 3.2 .4-2.4 1.8-3.8 4.2-5z" fill="#c4643f" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>` } },
+      o: { tools: ['mirror', 'probe'], smile: `<path d="M40 80c8 12 28 13 38 2" fill="none" stroke="#33568f" stroke-width="5" stroke-linecap="round" filter="url(#dry)"/>`,
+        brushDown: `<path d="M98 40 79 79" stroke="currentColor" stroke-width="7.4" stroke-linecap="round"/><path d="M98 40 79 79" stroke="#c4643f" stroke-width="4.2" stroke-linecap="round"/><path d="M80.6 76 76.4 84" stroke="currentColor" stroke-width="7.4"/><path d="M80.6 76 76.4 84" stroke="#cfd6de" stroke-width="4.4"/><path d="M76.6 83.4c-1.8 2.6-3.2 3.4-5.4 3.2 .4-2.4 1.8-3.8 4.2-5z" fill="#33568f" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>` } },
   ];
 
   const svg = (v, w, h) => `<svg viewBox="16 -2 88 142" width="${w}" height="${h}" aria-hidden="true">${jar(v.o)}</svg>`;
