@@ -1,0 +1,12 @@
+holst-light|16:9|Seamless close-up texture of fine artist linen canvas, very pale cool blue-grey tint, even soft daylight, subtle weave, no objects, no text, flat top-down
+holst-navy|16:9|Seamless close-up texture of artist linen canvas dyed deep navy blue, subtle weave and slight variation, soft even light, no objects, no text, flat top-down
+akvarel-blue|16:9|Soft watercolor wash on white cold-press paper, pale dusty blue pigment pooling gently in the corners, lots of empty white space in the center, paper grain visible, no text
+akvarel-warm|16:9|Watercolor wash on white paper, soft terracotta and ochre pigment blooming from the right edge, rest of the sheet empty white, delicate granulation, no text
+mazok-blue|16:9|Single wide expressive brushstroke of dusty blue acrylic paint on pure white background, visible bristle texture, dry brush edges, isolated, no shadow, no text
+mazok-terra|16:9|Single curved swoosh brushstroke of terracotta orange paint on pure white background, dry brush texture at the end, isolated, no text
+gips-tex|16:9|Matte white plaster wall texture, soft hand-troweled surface, gentle diagonal daylight from a window, very subtle shadows, minimal, no objects, no text
+gips-zub|1:1|Smooth matte white plaster sculpture of a single tooth, studio object, soft daylight, on pure white background, minimal, isolated, no text
+glina-palitra|1:1|Soft 3D clay render of an artist palette with small paint blobs in dusty blue, terracotta, ochre and violet, pastel matte look, on pure white background, isolated, no text
+kapli|1:1|Splashes and droplets of dusty blue paint scattered on pure white background, watercolor style, isolated, no text
+kist|1:1|Single artist paintbrush with a dusty blue paint tip lying diagonally, minimal, soft shadow, on pure white background, isolated, no text
+okno-teni|16:9|Soft shadows of window frame and sheer curtain falling on a pale warm white wall, gentle morning light, minimal, no objects, no text

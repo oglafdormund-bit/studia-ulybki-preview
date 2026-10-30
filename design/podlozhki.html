@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Подложки и текстуры — варианты</title>
+<style>
+  :root { --ink: #0f1a2e; --muted: #5b6577; --bg: #e9edf2; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 2; background: #fff; box-shadow: 0 1px 0 #dde3ea; padding: 12px 16px; }
+  h1 { margin: 0 0 4px; font-size: 1.15rem; }
+  .lead { margin: 0 0 10px; color: var(--muted); font-size: .9rem; max-width: 110ch; }
+  #tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+  #tabs button { border: 1px solid #d3dae3; background: #fff; border-radius: 999px; padding: 6px 12px; font: inherit; font-size: .85rem; cursor: pointer; }
+  #tabs button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  #tabs .grp { width: 100%; margin: 6px 0 0; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .bar { display: flex; gap: 12px; align-items: center; margin-top: 10px; }
+  #desc { flex: 1; font-size: .9rem; }
+  .jump { display: flex; gap: 6px; }
+  .jump button, [data-dev] { border: 1px solid #d3dae3; background: #fff; border-radius: 8px; padding: 4px 10px; font: inherit; font-size: .8rem; cursor: pointer; }
+  [data-dev][aria-pressed="true"] { background: #eef2f8; }
+  .stage { display: flex; justify-content: center; padding: 16px; }
+  iframe { border: 0; background: #fff; border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,.12); width: 100%; max-width: 1440px; height: calc(100vh - 210px); min-height: 560px; }
+  iframe.mobile { max-width: 390px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Подложки, текстуры и объекты по краям — тема «студия-мастерская»</h1>
+  <p class="lead">Живая главная; выбранный вариант подставляется поверх: полоса «Команда», блок цен, подвал, края блоков. Кнопки справа прокручивают к нужному месту. «Кодом» — нарисовано SVG (весит копейки, перекрашивается в любой цвет). «Сгенерировано» — картинки Higgsfield.</p>
+  <div id="tabs"></div>
+  <div class="bar">
+    <div id="desc"></div>
+    <div class="jump">
+      <button data-go="komanda">К команде</button>
+      <button data-go="ceny">К ценам</button>
+      <button data-go="napravleniya">К направлениям</button>
+      <button data-go="footer">К подвалу</button>
+      <button data-dev="desktop" aria-pressed="true">Компьютер</button>
+      <button data-dev="mobile" aria-pressed="false">Телефон</button>
+    </div>
+  </div>
+</header>
+<div class="stage"><iframe id="frame" title="Сайт с выбранной подложкой"></iframe></div>
+
+<script>
+  const SITE = new URLSearchParams(location.search).get('site') ?? '../site/';
+  const TEX = (name) => new URL(`tex/${name}`, location.href).href;
+  const svg = (w, h, body) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}' viewBox='0 0 ${w} ${h}'>${body}</svg>`)}")`;
+
+  // ---------- Узоры кодом ----------
+  // Зерно: шум, у которого непрозрачность задана альфой.
+  const grain = (alpha = 0.08, freq = 0.85, color = '15 26 46') => {
+    const [r, g, b] = color.split(' ').map((c) => (Number(c) / 255).toFixed(3));
+    return svg(260, 260, `<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='${freq}' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 ${r} 0 0 0 0 ${g} 0 0 0 0 ${b} 0 0 0 ${alpha * 9} -${alpha * 3}'/></filter><rect width='100%' height='100%' filter='url(#n)'/>`);
+  };
+  // Холст: частые горизонтальные и вертикальные нити, слегка дрожащие.
+  const weave = (color = '#0f1a2e', a = 0.07) => svg(120, 120, `<filter id='d'><feTurbulence type='fractalNoise' baseFrequency='0.9 0.05' numOctaves='2' seed='3'/><feDisplacementMap in='SourceGraphic' scale='2.4'/></filter><g filter='url(#d)' stroke='${color}' stroke-opacity='${a}' stroke-width='1'>${Array.from({ length: 40 }, (_, i) => `<path d='M0 ${i * 3 + 1}H120'/>`).join('')}${Array.from({ length: 40 }, (_, i) => `<path d='M${i * 3 + 1} 0V120' stroke-opacity='${a * 0.6}'/>`).join('')}</g>`);
+  // Акварельное пятно: круг, размытый турбулентностью, с более тёмным краем.
+  const blob = (color, op = 0.35, seed = 2, w = 700, h = 520) => svg(w, h, `<filter id='w' x='-30%' y='-30%' width='160%' height='160%'><feTurbulence type='fractalNoise' baseFrequency='0.008' numOctaves='4' seed='${seed}'/><feDisplacementMap in='SourceGraphic' scale='170'/><feGaussianBlur stdDeviation='5'/></filter><filter id='e' x='-30%' y='-30%' width='160%' height='160%'><feTurbulence type='fractalNoise' baseFrequency='0.008' numOctaves='4' seed='${seed}'/><feDisplacementMap in='SourceGraphic' scale='170'/><feGaussianBlur stdDeviation='1.2'/></filter><g filter='url(#w)'><ellipse cx='${w / 2}' cy='${h / 2}' rx='${w * 0.3}' ry='${h * 0.3}' fill='${color}' fill-opacity='${op}'/></g><g filter='url(#e)'><ellipse cx='${w / 2}' cy='${h / 2}' rx='${w * 0.3}' ry='${h * 0.3}' fill='none' stroke='${color}' stroke-opacity='${op * 0.9}' stroke-width='3'/></g>`);
+  // Мазок кистью: толстая линия с рваным краем и полосами от щетины.
+  const stroke = (color, seed = 4, w = 900, h = 260, d = 'M60 170 C 260 60, 560 210, 840 90') => svg(w, h, `<filter id='b' x='-10%' y='-30%' width='120%' height='160%'><feTurbulence type='fractalNoise' baseFrequency='0.02 0.3' numOctaves='3' seed='${seed}'/><feDisplacementMap in='SourceGraphic' scale='26'/></filter><mask id='m'><rect width='100%' height='100%' fill='white'/><g stroke='black' stroke-width='1.4' opacity='.55'>${Array.from({ length: 14 }, (_, i) => `<path d='${d}' transform='translate(0 ${i * 5 - 35})' fill='none'/>`).join('')}</g></mask><g filter='url(#b)' mask='url(#m)'><path d='${d}' fill='none' stroke='${color}' stroke-width='78' stroke-linecap='round'/></g>`);
+  // Двойная улыбка из логотипа — тонкими линиями, как графический мотив.
+  const smiles = (color = '#c4643f', a = 0.5) => svg(420, 240, `<g fill='none' stroke='${color}' stroke-opacity='${a}' stroke-linecap='round'><path d='M30 70 C 130 150, 290 150, 390 60' stroke-width='3'/><path d='M80 120 C 160 175, 270 175, 345 110' stroke-width='3'/><path d='M120 165 C 180 200, 250 200, 305 160' stroke-width='2' stroke-opacity='${a * 0.6}'/></g>`);
+  // Мазки краски из палитры логотипа — короткие капли.
+  const dabs = (seed = 1) => {
+    const cols = ['#d6a548', '#a8436f', '#8e74b6', '#33568f', '#c4643f'];
+    let x = seed * 97, rnd = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
+    const items = Array.from({ length: 14 }, () => `<ellipse cx='${(rnd() * 380 + 20).toFixed(0)}' cy='${(rnd() * 380 + 20).toFixed(0)}' rx='${(rnd() * 16 + 6).toFixed(0)}' ry='${(rnd() * 9 + 4).toFixed(0)}' transform='rotate(${(rnd() * 180).toFixed(0)})' fill='${cols[Math.floor(rnd() * cols.length)]}' fill-opacity='.8'/>`).join('');
+    return svg(420, 420, `<filter id='r'><feTurbulence baseFrequency='0.05' numOctaves='2' seed='${seed}'/><feDisplacementMap in='SourceGraphic' scale='9'/></filter><g filter='url(#r)'>${items}</g>`);
+  };
+
+  // ---------- Общие куски CSS ----------
+  const T = '.team.band';
+  const PR = 'section[aria-labelledby="ceny"]';
+  const DIR = 'section[aria-labelledby="napravleniya"]';
+  const F = '.site-footer';
+  const BASE = `${T}, ${PR}, ${DIR} { position: relative; isolation: isolate; }
+    ${T} > .wrap, ${PR} > .wrap, ${DIR} > .wrap { position: relative; z-index: 1; }
+    ${PR}, ${DIR} { overflow: clip; }`;
+  // Объект у края: картинка в ::before/::after секции, может выходить за контейнер контента.
+  const edge = (sel, pseudo, img, pos, size, extra = '') => `${sel}::${pseudo} { content: ''; position: absolute; ${pos}; width: ${size}; aspect-ratio: 1; background: ${img} center / contain no-repeat; pointer-events: none; z-index: 0; ${extra} }`;
+  const navyFooter = (layer) => `${F} { background: ${layer}, #13203a !important; }`;
+
+  const V = [
+    { grp: 'Кодом' },
+    { id: 'k1', t: 'Зерно бумаги', d: '<b>Самое тихое.</b> На полосе команды и в подвале — мелкое зерно, как у печатной бумаги. Плоские заливки перестают выглядеть «пластиковыми», а цвет не меняется.',
+      css: `${T} { background: ${grain(0.07)}, var(--color-bg-sunken) !important; } ${navyFooter(grain(0.1, 0.85, '255 255 255'))}` },
+    { id: 'k2', t: 'Холст кодом', d: '<b>Мастерская художника.</b> Тонкое плетение холста на полосе команды и в подвале. Работает как фактура ткани у «Полдня», но наша — холст под краску.',
+      css: `${T} { background: ${weave('#33568f', 0.08)}, var(--color-bg-sunken) !important; } ${navyFooter(weave('#ffffff', 0.06))}` },
+    { id: 'k3', t: 'Акварельные пятна', d: '<b>Мягко и живо.</b> По углам полосы команды и блока цен проступают акварельные пятна цветов сайта: синий и терракота. Пустоты по бокам заполняются, середина остаётся чистой.',
+      css: `${BASE} ${edge(T, 'before', blob('#33568f', 0.42, 3), 'left: calc(50% - 860px); top: -140px', '720px')} ${edge(T, 'after', blob('#c4643f', 0.34, 7), 'right: calc(50% - 840px); bottom: -180px', '660px')} ${edge(PR, 'before', blob('#33568f', 0.3, 11), 'left: calc(50% - 880px); bottom: -140px', '720px')} ${navyFooter(`${blob('#5c86c8', 0.25, 5)} -120px -140px / 700px no-repeat`)}` },
+    { id: 'k4', t: 'Мазки кистью', d: '<b>Динамика.</b> Широкие мазки краски: синий — в пустом углу у заголовка команды, терракотовый — из-за края цен. Повторяют кисть из логотипа.',
+      css: `${BASE} ${T}::before { content: ''; position: absolute; right: calc(50% - 640px); top: 40px; width: 640px; height: 190px; background: ${stroke('#33568f', 4)} center / contain no-repeat; opacity: .45; transform: rotate(-6deg); z-index: 0; } ${PR}::before { content: ''; position: absolute; right: calc(50% - 920px); bottom: 60px; width: 820px; height: 240px; background: ${stroke('#c4643f', 9, 900, 260, 'M60 120 C 300 220, 600 40, 840 160')} center / contain no-repeat; opacity: .45; z-index: 0; transform: rotate(-14deg); } ${navyFooter(`${stroke('#6f97d6', 5)} right -120px top -40px / 900px no-repeat`)}` },
+    { id: 'k5', t: 'Линии улыбки', d: '<b>Свой мотив из логотипа.</b> Двойная улыбка из знака — тонкими линиями по краям блоков. Узнаваемо, легко, ни на что чужое не похоже.',
+      css: `${BASE} ${edge(T, 'before', smiles('#33568f', 0.55), 'right: calc(50% - 780px); top: 20px', '520px', 'aspect-ratio: 420/240')} ${edge(PR, 'before', smiles('#c4643f', 0.6), 'left: calc(50% - 800px); bottom: 40px', '540px', 'aspect-ratio: 420/240; transform: rotate(8deg)')} ${navyFooter(`${smiles('#ffffff', 0.12)} right 40px bottom 30px / 520px no-repeat`)}` },
+    { id: 'k6', t: 'Капли краски', d: '<b>Игриво.</b> Короткие мазки красками палитры логотипа (жёлтый, малиновый, фиолетовый, синий) рассыпаны по краям — как брызги на столе художника. Самый яркий вариант.',
+      css: `${BASE} ${edge(T, 'before', dabs(3), 'left: calc(50% - 790px); top: -20px', '440px')} ${edge(T, 'after', dabs(8), 'right: calc(50% - 790px); bottom: -20px', '440px')} ${edge(PR, 'before', dabs(5), 'right: calc(50% - 780px); top: 20px', '400px')}` },
+    { id: 'k7', t: 'Мягкое свечение', d: '<b>Чисто и современно.</b> Размытые световые пятна синего и терракоты на полосе команды и в подвале. Без фактур, просто глубина.',
+      css: `${T} { background: radial-gradient(40% 70% at 8% 10%, rgb(51 86 143 / .16), transparent 70%), radial-gradient(35% 60% at 95% 100%, rgb(196 100 63 / .14), transparent 70%), var(--color-bg-sunken) !important; } ${navyFooter('radial-gradient(45% 80% at 10% 0%, rgb(110 150 220 / .3), transparent 70%), radial-gradient(40% 70% at 100% 100%, rgb(196 100 63 / .22), transparent 70%)')}` },
+    { grp: 'Сгенерировано' },
+    { id: 'g1', t: 'Холст (фото)', d: '<b>Настоящий холст.</b> Полоса команды — светлый голубой холст, подвал — тёмно-синий холст. Самый «материальный» вариант: как ткань у «Полдня», но наш — холст художника.',
+      css: `${T} { background: url(${TEX('holst-light.jpg')}) center / cover !important; } ${F} { background: linear-gradient(rgb(15 26 46 / .35), rgb(15 26 46 / .35)), url(${TEX('holst-navy.jpg')}) center / cover !important; }` },
+    { id: 'g2', t: 'Акварель (фото)', d: '<b>Акварельный лист.</b> Полоса команды — бумага с голубой акварелью по углам; у блока цен справа проступает тёплая акварель. Белое у картинок растворяется в фоне.',
+      css: `${BASE} ${T} { background: url(${TEX('akvarel-blue.jpg')}) center / cover, var(--color-bg-sunken) !important; background-blend-mode: multiply !important; } ${PR}::before { content: ''; position: absolute; right: calc(50% - 900px); top: -40px; width: 900px; height: 520px; background: url(${TEX('akvarel-warm.jpg')}) right top / contain no-repeat; mix-blend-mode: multiply; opacity: .55; z-index: 0; }` },
+    { id: 'g3', t: 'Мазки (фото)', d: '<b>Настоящая краска.</b> Синий мазок лежит в пустом углу справа от заголовка команды, терракотовый — выходит из-за таблицы цен. Белый фон картинок исчезает, остаётся только краска.',
+      css: `${BASE} ${T}::before { content: ''; position: absolute; right: calc(50% - 640px); top: 30px; width: 600px; height: 300px; background: url(${TEX('mazok-blue.jpg')}) center / contain no-repeat; mix-blend-mode: multiply; opacity: .45; transform: rotate(-6deg); z-index: 0; } ${PR}::before { content: ''; position: absolute; right: calc(50% - 920px); bottom: 40px; width: 680px; height: 380px; background: url(${TEX('mazok-terra.jpg')}) center / contain no-repeat; mix-blend-mode: multiply; opacity: .5; transform: rotate(8deg); z-index: 0; }` },
+    { id: 'g4', t: 'Гипс', d: '<b>Тихо и дорого.</b> Полоса команды — матовая гипсовая стена с мягким светом из окна; у края — гипсовый зуб, как слепок в мастерской. Гипс понятен и стоматологу, и скульптору.',
+      css: `${BASE} ${T} { background: url(${TEX('gips-tex.jpg')}) center / cover, var(--color-bg-sunken) !important; background-blend-mode: soft-light !important; } ${edge(T, 'after', `url(${TEX('gips-zub.jpg')})`, 'right: calc(50% - 800px); top: -40px', '300px', 'border-radius: 50%; background-size: 115%; box-shadow: 0 30px 60px -30px rgb(15 26 46 / .35);')}` },
+    { id: 'g5', t: 'Предметы мастерской', d: '<b>Объекты по краям.</b> Глиняная палитра с красками у команды, кисть у цен, брызги краски у направлений. Выходят за контейнер и заполняют пустые поля.',
+      css: `${BASE} ${edge(T, 'after', `url(${TEX('glina-palitra.jpg')})`, 'right: calc(50% - 820px); top: -60px', '320px', 'mix-blend-mode: multiply;')} ${edge(PR, 'before', `url(${TEX('kist.jpg')})`, 'left: calc(50% - 820px); bottom: 0', '380px', 'mix-blend-mode: multiply; -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent); mask-image: radial-gradient(closest-side, #000 55%, transparent);')} ${edge(DIR, 'before', `url(${TEX('kapli.jpg')})`, 'right: calc(50% - 800px); top: 0', '380px', 'mix-blend-mode: multiply; opacity: .85; -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent); mask-image: radial-gradient(closest-side, #000 55%, transparent);')}` },
+    { id: 'g6', t: 'Свет из окна', d: '<b>Атмосфера.</b> На полосе команды — мягкие тени оконной рамы и тюля, как утром в кабинете. Совпадает со светом на фотографиях сайта.',
+      css: `${T} { background: url(${TEX('okno-teni.jpg')}) center / cover, var(--color-bg-sunken) !important; background-blend-mode: soft-light !important; }` },
+  ];
+
+  const frame = document.getElementById('frame');
+  let current = V[1];
+
+  function apply() {
+    const doc = frame.contentDocument;
+    if (!doc || !doc.head) return;
+    let st = doc.getElementById('tex-override');
+    if (!st) { st = doc.createElement('style'); st.id = 'tex-override'; doc.head.append(st); }
+    st.textContent = current.css + ' [data-cookie-banner]{display:none!important}';
+    doc.querySelectorAll('[data-reveal]').forEach((e) => e.classList.add('is-in', 'is-revealed'));
+  }
+  frame.addEventListener('load', () => {
+    apply();
+    frame.contentDocument.addEventListener('astro:page-load', apply);
+  });
+  function select(v) {
+    current = v;
+    document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.id === v.id)));
+    document.getElementById('desc').innerHTML = v.d;
+    apply();
+  }
+  document.getElementById('tabs').innerHTML = V.map((v) => (v.grp ? `<span class="grp">${v.grp}</span>` : `<button data-id="${v.id}" aria-pressed="false">${v.t}</button>`)).join('');
+  document.querySelectorAll('#tabs button').forEach((b) => b.addEventListener('click', () => select(V.find((v) => v.id === b.dataset.id))));
+  document.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => {
+    const doc = frame.contentDocument;
+    const el = b.dataset.go === 'footer' ? doc.querySelector('.site-footer') : doc.getElementById(b.dataset.go);
+    el?.scrollIntoView({ block: 'start' });
+    frame.contentWindow.scrollBy(0, -120);
+  }));
+  document.querySelectorAll('[data-dev]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-dev]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    frame.classList.toggle('mobile', b.dataset.dev === 'mobile');
+  }));
+  select(current);
+  frame.src = SITE;
+</script>
+</body>
+</html>
