@@ -18,7 +18,7 @@
   .lead { color: var(--muted); max-width: 74ch; margin: 0 0 32px; }
   .slot { background: #fff; border-radius: 24px; padding: 22px; margin-bottom: 20px; }
   .meta { font-size: .9rem; color: var(--muted); margin: 0 0 14px; }
-  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
   figure { margin: 0; }
   figure img { width: 100%; display: block; border-radius: 14px; background: #dfe4eb; aspect-ratio: var(--ar); object-fit: cover; }
   figcaption { margin-top: 6px; font-size: .85rem; color: var(--muted); }
@@ -39,8 +39,8 @@
 <script>
   // [id, место, формат, текущее фото, заметка, [[файл, подпись]], модель]
   const SLOTS = [
-    ['hero', 'Первый экран главной', '16:9', 'hero.jpg', 'Кабинет без людей: кресло справа, слева спокойная стена под текст.', [['hero-a', 'А — кресло справа, больше места слева'], ['hero-b', 'Б — кресло ближе к центру']], 'Soul 2.0'],
-    ['zapis', 'Полоса «Оставьте телефон — перезвоним»', '3:2', 'zapis.jpg', 'Ресепшен: дубовая стойка, растение, солнечные пятна на стене. Кадр затемняется, поверх белая форма.', [['zapis-a', 'А — стойка в солнечных пятнах'], ['zapis-b', 'Б — угловая стойка']], 'Soul 2.0'],
+    ['hero', 'Первый экран главной', '16:9', 'hero.jpg', 'Без кресла (оно уже в «Лечении»). Справа сцена, слева спокойная стена под текст.', [['hero-1', '1 — стакан с инструментами, как в логотипе'], ['hero-2', '2 — тюльпаны в вазе на дубовом столе'], ['hero-3', '3 — скамья у окна']], 'Soul 2.0'],
+    ['zapis', 'Полоса «Оставьте телефон — перезвоним»', '3:2', 'zapis.jpg', 'Кадр затемняется, поверх белая форма.', [['zapis-1', '1 — настольный телефон и чай'], ['zapis-2', '2 — живая стойка ресепшена'], ['zapis-3', '3 — кресло ожидания с пледом']], 'Soul 2.0'],
     ['kreslo', '«Первый визит»', '4:3', 'kreslo.jpg', 'Уголок консультации: дубовый стол, кресла, вода — первый визит начинается с разговора.', [['kreslo-a', 'А — у окна, светлее'], ['kreslo-b', 'Б — в углу']], 'Soul 2.0'],
     ['lechenie', 'Карточка «Лечение зубов»', '4:3', 'napravlenie-lechenie.jpg', 'Кабинет крупно: кресло и установка, тёплый луч, без людей.', [['lechenie-a', 'А — серое кресло, графитовая стена'], ['lechenie-b', 'Б — белое кресло, дуб']], 'Soul 2.0'],
     ['gigiena', 'Карточка «Гигиена и отбеливание»', '4:3', 'napravlenie-gigiena.jpg', 'То, чем чистят зубы в клинике: полировочные щёточки, паста, зонд на дубовом подносе.', [['gigiena-a', 'А — поднос на синем фоне']], 'Soul 2.0'],
@@ -48,7 +48,7 @@
     ['protezirovanie', 'Карточка «Протезирование»', '4:3', 'napravlenie-protezirovanie.jpg', 'Гипсовая модель на верстаке зуботехника.', [['protezirovanie-b', 'А — модель и инструменты, сине-серая стена'], ['protezirovanie-c', 'Б — модель на дубовом столе'], ['protezirovanie-a', 'В — светлый вариант со шкалой оттенков']], 'Soul 2.0 / Z Image'],
   ];
   // Версия — чтобы браузер не показывал старые фото из кэша после перегенерации.
-  const VER = '20261030-3';
+  const VER = '20261030-4';
   const ar = (r) => r.replace(':', ' / ');
   document.getElementById('slots').innerHTML = SLOTS.map(([id, place, ratio, now, note, vars, model], i) => `
     <section class="slot" style="--ar:${ar(ratio)}">
