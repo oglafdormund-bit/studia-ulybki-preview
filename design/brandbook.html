@@ -207,11 +207,11 @@
     <h3>Стиль</h3>
     <div class="grid g2">
       <div class="card"><ul class="check yes">
-        <li>Светлая клиника: белые и светло-серые стены, светлое дерево, мягкие серо-голубые акценты — в тон сайту.</li>
-        <li>Дневной мягкий свет из окна, тени мягкие, цвета естественные и чуть приглушённые.</li>
-        <li>Форма врачей — спокойных тонов (серо-голубая, серо-лиловая), без ярких цветов.</li>
-        <li>Обычные люди 25–60 лет, славянская внешность, естественные зубы и улыбка.</li>
-        <li>Сюжет — разговор, объяснение, спокойствие; кадр как репортаж, а не постановка.</li>
+        <li>Стены — глубокий приглушённый графитово-синий, мебель — светлый дуб, оборудование — белое и светло-серое, металл матовый.</li>
+        <li>Тёплый полуденный солнечный луч или пятна света на стене, длинные мягкие тени. Цвета естественные, чуть приглушённые.</li>
+        <li>Без людей и без рук — генерация их портит. Кадр — кабинет, ресепшен или предметы клиники (подносы, модели, светильник).</li>
+        <li>Одна сцена или один предмет, ничего лишнего; крупные и средние планы вместо общих.</li>
+        <li>Каждый кадр — про клинику: никаких домашних предметов (зубных щёток и т.п.).</li>
         <li>Место под текст там, где на сайте лежит надпись (первый экран — слева).</li>
       </ul></div>
       <div class="card"><ul class="check no">
@@ -231,11 +231,11 @@
     <p class="lead">Базовая часть ставится в начало каждого промпта, затем сюжет, в конце — что исключить. Так все фото получатся в одном стиле. Сгенерированные варианты для каждого места сайта — на странице <a href="foto.html">«Фото для сайта»</a>.</p>
     <div class="card">
       <h3 style="margin-top:0">Основа (в начало)</h3>
-      <pre id="base">Photorealistic documentary-style photo in a bright modern private dental clinic. White and light grey walls, light natural wood details, soft muted grey-blue accents, clean and calm. Soft natural daylight from a large window, gentle shadows, natural slightly muted colors, no oversaturation. Staff in calm grey-blue scrubs. Ordinary Slavic-looking people, natural skin, natural teeth. Calm, friendly, honest mood. 35mm lens, shallow depth of field.</pre>
+      <pre id="base">Editorial photograph of [сцена: a calm modern dental treatment room / a small clinic reception / a light oak tray with sterile instruments / a plaster jaw model on a workbench], soft warm noon sunlight with long gentle shadows, deep muted slate blue walls in soft shadow, light oak wood, white and brushed steel details. Minimal, calm, clean, reassuring, sharp focus, high detail.</pre>
       <h3>Исключить (в конец или в поле negative)</h3>
-      <pre id="neg">No text, no logos, no signage, no watermarks. No veneers or unnaturally white teeth, no open mouth close-ups, no blood, no forceps, no instruments inside the mouth. No blue clinical lighting, no neon, no glossy stock-photo look, no posed smiles at camera, no dental implants.</pre>
-      <h3>Пример сюжета</h3>
-      <pre>[Основа] A female dentist sits on a stool and explains a treatment plan on a tablet to an adult female patient in the dental chair; both relaxed, mid-conversation. Subjects in the right third of the frame, calm blurred interior on the left. [Исключить]</pre>
+      <pre id="neg">No people, no hands, no text, no letters, no logos, no screens.</pre>
+      <h3>Как генерировать</h3>
+      <p style="margin:0;color:var(--muted)">Модель Higgsfield Soul 2.0, качество 2k. По одной задаче за раз. Запреты писать без слов «кровь», «иглы», «щипцы» — сервис отбивает такие промпты. Отбраковывать кадры с надписями, коллажами, лишними предметами.</p>
     </div>
   </section>
 </main>
