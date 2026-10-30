@@ -95,7 +95,7 @@
 
   <section id="logo">
     <h2><small>02</small>Логотип</h2>
-    <p class="lead">Зуб-стакан, из которого торчат зеркало, кисть и зонд; с краёв стекает краска трёх цветов. Название — рукописным шрифтом Caveat. Рабочая версия: чистовик (выверенные пропорции, файлы SVG и PNG для печати) — следующим шагом.</p>
+    <p class="lead">Зуб-стакан, из которого торчат зеркало, кисть и зонд — как стакан с кистями в мастерской. Потёков краски нет: на тусклом экране они читались как кровь. Название — рукописным шрифтом Caveat 500. Рабочая версия: чистовик (выверенные пропорции, файлы SVG и PNG для печати) — следующим шагом.</p>
     <div class="grid g2">
       <div><div class="logo-box card" id="logoMain"></div><p class="cap">Основной: знак + название в строку. Шапка сайта, вывеска, бланки.</p></div>
       <div><div class="logo-box card" id="logoStack"></div><p class="cap">Вертикальный: для квадратных мест — аватарка, визитка, наклейка.</p></div>
@@ -104,7 +104,7 @@
       <div><div class="logo-box card" id="logoIcon"></div><p class="cap">Знак отдельно: иконка сайта, соцсети.</p></div>
       <div><div class="logo-box card" style="background:var(--ink)" id="logoDark"></div><p class="cap">На тёмном: линии светлые.</p></div>
       <div><div class="logo-box card" id="logoMono"></div><p class="cap">Одна краска: печать, штамп, вышивка.</p></div>
-      <div><div class="logo-box card" id="logoTiny"></div><p class="cap">Малые размеры: от 24 px — упрощённый знак (без зонда и потёков).</p></div>
+      <div><div class="logo-box card" id="logoTiny"></div><p class="cap">Малые размеры: от 24 px — упрощённый знак (без зонда).</p></div>
     </div>
     <h3>Правила</h3>
     <div class="grid g2">
@@ -125,7 +125,7 @@
 
   <section id="color">
     <h2><small>03</small>Цвета</h2>
-    <p class="lead">Сайт — в одном синем акценте на светло-сером фоне (утверждено 28–29.10.2026). Тёплые цвета — терракота, шалфей, охра — живут <b>только в логотипе</b>: это краски в зубе-стакане. На сайте их не используем (пробовали 30.10 — отказались).</p>
+    <p class="lead">Сайт — в одном синем акценте на светло-сером фоне (утверждено 28–29.10.2026). Тёплые цвета — терракота и охра — живут <b>только в логотипе</b>: кисть и краска на ней. На сайте их не используем (пробовали 30.10 — отказались).</p>
     <h3>Цвета сайта</h3>
     <div class="grid g4" id="primary"></div>
     <h3>Цвета логотипа — только в знаке</h3>
@@ -246,7 +246,7 @@
 <footer class="wrap">Брендбук рабочий: логотип — до чистовика. Цвета сайта — синие, как утверждено 28–29.10.2026. Источники: старый логотип клиники, фото из материалов клиники, текущий сайт.</footer>
 
 <script>
-  // Знак «Зуб-стакан, потёки краски» (design/logo6.html, вариант 1).
+  // Знак «Зуб-стакан, чистый» (design/logo9.html, вариант 1).
   function jar(o) {
     const L = o.line, W = 3;
     let s = `<ellipse cx="60" cy="62" rx="27" ry="6" fill="${o.inside}" stroke="${L}" stroke-width="${W}"/>`;
@@ -260,7 +260,7 @@
     s += `<path d="M33 62a27 6 0 0 0 54 0" fill="none" stroke="${L}" stroke-width="${W}" stroke-linecap="round"/>`;
     return s;
   }
-  const BASE = { line: '#0f1a2e', body: '#fff', inside: '#4a3a33', handle: '#c4643f', paint: '#d6a548', metal: '#dfe7ef', drips: ['#c4643f', '#8fae8b', '#d6a548'], shine: '#e9e2db' };
+  const BASE = { line: '#0f1a2e', body: '#fff', inside: '#3a4252', handle: '#c4643f', paint: '#d6a548', metal: '#dfe7ef' };
   const mk = (o, w, h) => `<svg viewBox="16 -2 88 142" width="${w}" height="${h}" aria-hidden="true">${jar(o)}</svg>`;
   const word = (dark) => `<div><div class="word" style="color:${dark ? '#fff' : '#0f1a2e'}">Студия улыбки</div><div class="kind" style="${dark ? 'color:rgba(255,255,255,.6)' : ''}">Стоматология · Ачинск</div></div>`;
   document.getElementById('coverMark').innerHTML = mk(BASE, 120, 140);
@@ -270,7 +270,7 @@
   const DARK = { ...BASE, line: '#f1ece6', shine: '#5a5560' };
   document.getElementById('logoDark').innerHTML = `<div class="lock">${mk(DARK, 50, 60)}${word(true).replace('2.3rem', '1.6rem')}</div>`;
   document.getElementById('logoDark').querySelector('.word').style.fontSize = '1.7rem';
-  const MONO = { line: '#33568f', body: '#fff', inside: '#33568f', handle: '#33568f', paint: '#33568f', metal: '#fff', drips: ['#33568f', '#33568f', '#33568f'], shine: '#fff' };
+  const MONO = { line: '#33568f', body: '#fff', inside: '#33568f', handle: '#33568f', paint: '#33568f', metal: '#fff' };
   document.getElementById('logoMono').innerHTML = mk(MONO, 80, 94);
   document.getElementById('logoTiny').innerHTML = `<div style="display:flex;gap:18px;align-items:end">${[48, 32, 24].map((s) => `<div style="text-align:center">${mk({ ...BASE, simple: true }, s * .86, s)}<div class="cap" style="margin-top:4px">${s}</div></div>`).join('')}</div>`;
 
@@ -285,10 +285,10 @@
     ['Тушь', '#0f1a2e', 'Основной текст, линии логотипа.'],
   ]);
   sw('support', [
-    ['Терракота', '#c4643f', 'Кисть и краска в логотипе. Наследник красной улыбки старого знака.'],
-    ['Шалфей', '#8fae8b', 'Краска в логотипе.', true],
-    ['Охра', '#d6a548', 'Краска на кисти и потёк в логотипе.', true],
-    ['Коричневый', '#4a3a33', 'Внутренность стакана в логотипе.'],
+    ['Терракота', '#c4643f', 'Ручка кисти в логотипе. Наследник красной улыбки старого знака.'],
+    ['Охра', '#d6a548', 'Краска на кисти.', true],
+    ['Серебро', '#dfe7ef', 'Зеркало и колпачок кисти.', true],
+    ['Графит', '#3a4252', 'Внутренность стакана.'],
   ]);
   sw('neutral', [
     ['Фон сайта', '#eef1f5', 'Фон страниц, светло-серый.', true],

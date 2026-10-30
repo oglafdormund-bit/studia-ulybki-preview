@@ -1,17 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -4 140 144" role="img" aria-label="Стоматология «Студия улыбки»">
   <title>Стоматология «Студия улыбки»</title>
-  <!-- Упрощённый знак для малых размеров (брендбук): стакан-зуб, кисть, полоса краски по краю. -->
-  <defs>
-    <path id="b" d="M33 62c-4 9-6 21-2 33 2 7 5 11 6 18l2 13c1 7 9 7 10 0l4-18c1-4 13-4 14 0l4 18c1 7 9 7 10 0l2-13c1-7 4-11 6-18 4-12 2-24-2-33a27 6 0 0 1-54 0z"/>
-    <clipPath id="c"><use href="#b"/></clipPath>
-  </defs>
-  <ellipse cx="60" cy="62" rx="27" ry="6" fill="#4a3a33" stroke="#1f2440" stroke-width="5"/>
-  <path d="M50 64 38 24" stroke="#1f2440" stroke-width="5.5" stroke-linecap="round"/>
-  <circle cx="35" cy="14" r="11" fill="#dfe7ef" stroke="#1f2440" stroke-width="5"/>
-  <path d="M60 64 66 14" stroke="#1f2440" stroke-width="12" stroke-linecap="round"/>
+  <!-- Упрощённый знак для малых размеров (брендбук): зуб-стакан, зеркало и кисть, без зонда. -->
+  <ellipse cx="60" cy="62" rx="27" ry="6" fill="#3a4252" stroke="#0f1a2e" stroke-width="5"/>
+  <path d="M50 64 38 24" stroke="#0f1a2e" stroke-width="5.5" stroke-linecap="round"/>
+  <circle cx="35" cy="14" r="11" fill="#dfe7ef" stroke="#0f1a2e" stroke-width="5"/>
+  <path d="M60 64 66 14" stroke="#0f1a2e" stroke-width="12" stroke-linecap="round"/>
   <path d="M60 64 66 14" stroke="#c4643f" stroke-width="7" stroke-linecap="round"/>
-  <path d="M64.6 12c-1-7 1-12 4-16 2 5 2.6 11 1 16z" fill="#d6a548" stroke="#1f2440" stroke-width="3"/>
-  <use href="#b" fill="#fff" stroke="#1f2440" stroke-width="5" stroke-linejoin="round"/>
-  <g clip-path="url(#c)"><path d="M30 62a30 7 0 0 0 60 0v12a30 7 0 0 1-60 0z" fill="#c4643f"/></g>
-  <path d="M33 62a27 6 0 0 0 54 0" fill="none" stroke="#1f2440" stroke-width="5" stroke-linecap="round"/>
+  <path d="M64.6 12c-1-7 1-12 4-16 2 5 2.6 11 1 16z" fill="#d6a548" stroke="#0f1a2e" stroke-width="3"/>
+  <path d="M33 62c-4 9-6 21-2 33 2 7 5 11 6 18l2 13c1 7 9 7 10 0l4-18c1-4 13-4 14 0l4 18c1 7 9 7 10 0l2-13c1-7 4-11 6-18 4-12 2-24-2-33a27 6 0 0 1-54 0z" fill="#fff" stroke="#0f1a2e" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M33 62a27 6 0 0 0 54 0" fill="none" stroke="#0f1a2e" stroke-width="5" stroke-linecap="round"/>
 </svg>
