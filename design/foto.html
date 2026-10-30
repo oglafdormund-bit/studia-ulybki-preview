@@ -47,6 +47,8 @@
     ['udalenie', 'Карточка «Удаление зубов»', '4:3', 'napravlenie-udalenie.jpg', 'Светильник над креслом в луче света — не похоже на поднос гигиены.', [['udalenie-a', 'А — светильник крупно'], ['udalenie-b', 'Б — светильник и кресло']], 'Soul 2.0'],
     ['protezirovanie', 'Карточка «Протезирование»', '4:3', 'napravlenie-protezirovanie.jpg', 'Гипсовая модель на верстаке зуботехника.', [['protezirovanie-b', 'А — модель и инструменты, сине-серая стена'], ['protezirovanie-c', 'Б — модель на дубовом столе'], ['protezirovanie-a', 'В — светлый вариант со шкалой оттенков']], 'Soul 2.0 / Z Image'],
   ];
+  // Версия — чтобы браузер не показывал старые фото из кэша после перегенерации.
+  const VER = '20261030-3';
   const ar = (r) => r.replace(':', ' / ');
   document.getElementById('slots').innerHTML = SLOTS.map(([id, place, ratio, now, note, vars, model], i) => `
     <section class="slot" style="--ar:${ar(ratio)}">
@@ -54,7 +56,7 @@
       <p class="meta">Формат ${ratio}, модель ${model}. ${note}</p>
       <div class="row">
         <figure class="now"><img src="../site/images/${now}" alt="Сейчас на сайте"><figcaption>Сейчас на сайте</figcaption></figure>
-        ${vars.map(([f, cap]) => `<figure><a href="gen/${f}.jpg" target="_blank"><img src="gen/${f}.jpg" alt="${cap}" loading="lazy"></a><figcaption><b>${cap}</b></figcaption></figure>`).join('')}
+        ${vars.map(([f, cap]) => `<figure><a href="gen/${f}.jpg?v=${VER}" target="_blank"><img src="gen/${f}.jpg?v=${VER}" alt="${cap}" loading="lazy"></a><figcaption><b>${cap}</b></figcaption></figure>`).join('')}
       </div>
     </section>`).join('');
 </script>
