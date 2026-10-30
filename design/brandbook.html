@@ -10,8 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1f2440; --muted: #5f5f6e; --bg: #f5f0ea; --paper: #fffdf9;
-    --blue: #1f2b5a; --terra: #c4643f; --terra-d: #a8502f; --sage: #8fae8b; --ochre: #d6a548; --oak: #9f8e65; --wall: #e1e0db;
+    --ink: #0f1a2e; --muted: #5b6577; --bg: #eef1f5; --paper: #fff;
+    --blue: #33568f; --terra: #c4643f; --terra-d: #a8502f; --sage: #8fae8b; --ochre: #d6a548; --oak: #9f8e65; --wall: #e1e0db;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 Manrope, sans-serif; }
@@ -75,7 +75,7 @@
       <span id="coverMark"></span>
       <div>
         <h1>Брендбук «Студии улыбки»</h1>
-        <p>Стоматология в Ачинске. Цвета, шрифты, логотип, тон текстов и правила для фотографий — опора для сайта, вывески, соцсетей и генерации фото. Версия 0.2 от 30.10.2026, рабочая: палитра «Г» выбрана и стоит на сайте.</p>
+        <p>Стоматология в Ачинске. Цвета, шрифты, логотип, тон текстов и правила для фотографий — опора для сайта, вывески, соцсетей и генерации фото. Версия 0.3 от 30.10.2026, рабочая: сайт синий, тёплые цвета — только в логотипе.</p>
         <nav class="toc"><a href="#idea">Идея</a><a href="#logo">Логотип</a><a href="#color">Цвета</a><a href="#type">Шрифты</a><a href="#voice">Тон</a><a href="#photo">Фото</a><a href="#prompts">Промпты</a></nav>
       </div>
     </div>
@@ -125,10 +125,10 @@
 
   <section id="color">
     <h2><small>03</small>Цвета</h2>
-    <p class="lead">Палитра «Г», выбрана 30.10.2026: глубокий синий для кнопок и ссылок, терракота для акцентов, тёплый бумажный фон. Это наследник старого логотипа — синяя надпись и красная улыбка, — только приглушённо и тепло. Шалфей, охра и дуб — краски нового логотипа и цвета интерьера.</p>
-    <h3>Основные</h3>
+    <p class="lead">Сайт — в одном синем акценте на светло-сером фоне (утверждено 28–29.10.2026). Тёплые цвета — терракота, шалфей, охра — живут <b>только в логотипе</b>: это краски в зубе-стакане. На сайте их не используем (пробовали 30.10 — отказались).</p>
+    <h3>Цвета сайта</h3>
     <div class="grid g4" id="primary"></div>
-    <h3>Поддерживающие — краски</h3>
+    <h3>Цвета логотипа — только в знаке</h3>
     <div class="grid g4" id="support"></div>
     <h3>Нейтральные</h3>
     <div class="grid g4" id="neutral"></div>
@@ -136,22 +136,19 @@
     <div class="card">
       <table>
         <tr><th>Пара</th><th>Контраст</th><th>Где можно</th></tr>
-        <tr><td>Белый на глубоком синем</td><td>13,5 : 1</td><td>Кнопки, тёмные полосы, любой текст</td></tr>
-        <tr><td>Белый на тёмной терракоте #a8502f</td><td>5,4 : 1</td><td>Кнопки на тёмном фоне и на фото</td></tr>
-        <tr><td>Белый на терракоте #c4643f</td><td>4,0 : 1</td><td>Только графика и крупный текст от 24 px — не для мелкого текста</td></tr>
-        <tr><td>Тушь на тёплом фоне</td><td>13,4 : 1</td><td>Основной текст</td></tr>
-        <tr><td>Серый текст на тёплом фоне</td><td>5,5 : 1</td><td>Подписи, второстепенный текст</td></tr>
-        <tr><td>Тёмная терракота на тёплом фоне</td><td>4,8 : 1</td><td>Выделенные слова в заголовках</td></tr>
-        <tr><td>Светлая терракота #f0b393 на тёмно-синем</td><td>8,2 : 1</td><td>Выделенные слова на фото и тёмных полосах</td></tr>
-        <tr><td>Тушь на шалфее / охре</td><td>6,2 / 6,7 : 1</td><td>Плашки, иллюстрации с подписями</td></tr>
+        <tr><td>Белый на синем</td><td>7,3 : 1</td><td>Кнопки, любой текст</td></tr>
+        <tr><td>Синий на фоне сайта</td><td>6,5 : 1</td><td>Ссылки, выделенные слова</td></tr>
+        <tr><td>Тушь на фоне сайта</td><td>15,4 : 1</td><td>Основной текст</td></tr>
+        <tr><td>Серый текст на фоне сайта</td><td>5,2 : 1</td><td>Подписи, второстепенный текст</td></tr>
+        <tr><td>Синяя кнопка на тёмной полосе</td><td>2,3 : 1</td><td>Не использовать — сливается; на тёмном кнопка белая с синим текстом</td></tr>
       </table>
     </div>
     <h3>Пропорции</h3>
     <div class="card">
       <div style="display:flex;height:28px;border-radius:8px;overflow:hidden">
-        <span style="flex:60;background:var(--bg)"></span><span style="flex:20;background:var(--paper);box-shadow:inset 0 0 0 1px #e1e5ea"></span><span style="flex:10;background:var(--ink)"></span><span style="flex:6;background:var(--blue)"></span><span style="flex:4;background:var(--terra)"></span>
+        <span style="flex:60;background:var(--bg)"></span><span style="flex:20;background:var(--paper);box-shadow:inset 0 0 0 1px #e1e5ea"></span><span style="flex:10;background:var(--ink)"></span><span style="flex:10;background:var(--blue)"></span>
       </div>
-      <p style="margin:12px 0 0;color:var(--muted)">Тёплый фон и бумага — 80%, тушь — текст, глубокий синий — кнопки, ссылки, шапка и подвал, терракота — выделенные слова, точки над заголовками и кнопки на тёмном. Краски (шалфей, охра) — только в логотипе и иллюстрациях.</p>
+      <p style="margin:12px 0 0;color:var(--muted)">Фон и бумага — 80%, тушь — текст, тёмная полоса — шапка и подвал, синий — кнопки, ссылки и выделенные слова. Тёплые краски — только внутри логотипа.</p>
     </div>
   </section>
 
@@ -246,7 +243,7 @@
   </section>
 </main>
 
-<footer class="wrap">Брендбук рабочий: логотип — до чистовика. Палитра «Г» стоит на сайте с 30.10.2026. Источники: старый логотип клиники, фото из материалов клиники, текущий сайт.</footer>
+<footer class="wrap">Брендбук рабочий: логотип — до чистовика. Цвета сайта — синие, как утверждено 28–29.10.2026. Источники: старый логотип клиники, фото из материалов клиники, текущий сайт.</footer>
 
 <script>
   // Знак «Зуб-стакан, потёки краски» (design/logo6.html, вариант 1).
@@ -263,9 +260,9 @@
     s += `<path d="M33 62a27 6 0 0 0 54 0" fill="none" stroke="${L}" stroke-width="${W}" stroke-linecap="round"/>`;
     return s;
   }
-  const BASE = { line: '#1f2440', body: '#fff', inside: '#4a3a33', handle: '#c4643f', paint: '#d6a548', metal: '#dfe7ef', drips: ['#c4643f', '#8fae8b', '#d6a548'], shine: '#e9e2db' };
+  const BASE = { line: '#0f1a2e', body: '#fff', inside: '#4a3a33', handle: '#c4643f', paint: '#d6a548', metal: '#dfe7ef', drips: ['#c4643f', '#8fae8b', '#d6a548'], shine: '#e9e2db' };
   const mk = (o, w, h) => `<svg viewBox="16 -2 88 142" width="${w}" height="${h}" aria-hidden="true">${jar(o)}</svg>`;
-  const word = (dark) => `<div><div class="word" style="color:${dark ? '#fff' : '#1f2440'}">Студия улыбки</div><div class="kind" style="${dark ? 'color:rgba(255,255,255,.6)' : ''}">Стоматология · Ачинск</div></div>`;
+  const word = (dark) => `<div><div class="word" style="color:${dark ? '#fff' : '#0f1a2e'}">Студия улыбки</div><div class="kind" style="${dark ? 'color:rgba(255,255,255,.6)' : ''}">Стоматология · Ачинск</div></div>`;
   document.getElementById('coverMark').innerHTML = mk(BASE, 120, 140);
   document.getElementById('logoMain').innerHTML = `<div class="lock">${mk(BASE, 70, 82)}${word()}</div>`;
   document.getElementById('logoStack').innerHTML = `<div class="stack">${mk(BASE, 80, 94)}<div class="word" style="font:500 2.3rem/1 Caveat">Студия улыбки</div><div class="kind" style="font:600 .66rem Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Стоматология · Ачинск</div></div>`;
@@ -273,7 +270,7 @@
   const DARK = { ...BASE, line: '#f1ece6', shine: '#5a5560' };
   document.getElementById('logoDark').innerHTML = `<div class="lock">${mk(DARK, 50, 60)}${word(true).replace('2.3rem', '1.6rem')}</div>`;
   document.getElementById('logoDark').querySelector('.word').style.fontSize = '1.7rem';
-  const MONO = { line: '#1f2b5a', body: '#fff', inside: '#1f2b5a', handle: '#1f2b5a', paint: '#1f2b5a', metal: '#fff', drips: ['#1f2b5a', '#1f2b5a', '#1f2b5a'], shine: '#fff' };
+  const MONO = { line: '#33568f', body: '#fff', inside: '#33568f', handle: '#33568f', paint: '#33568f', metal: '#fff', drips: ['#33568f', '#33568f', '#33568f'], shine: '#fff' };
   document.getElementById('logoMono').innerHTML = mk(MONO, 80, 94);
   document.getElementById('logoTiny').innerHTML = `<div style="display:flex;gap:18px;align-items:end">${[48, 32, 24].map((s) => `<div style="text-align:center">${mk({ ...BASE, simple: true }, s * .86, s)}<div class="cap" style="margin-top:4px">${s}</div></div>`).join('')}</div>`;
 
@@ -282,22 +279,22 @@
     return `<div class="sw"><div class="chip" style="background:${hex};color:${light ? '#262330' : '#fff'};${light ? 'box-shadow:inset 0 0 0 1px #e1e5ea' : ''}">Аа</div><div class="meta"><b>${name}</b><code>${hex} · RGB ${r} ${g} ${b}</code><div style="margin-top:6px">${use}</div></div></div>`;
   }).join('');
   sw('primary', [
-    ['Глубокий синий', '#1f2b5a', 'Кнопки, ссылки, тёмные полосы (шапка, подвал). Наследник синей надписи старого логотипа.'],
-    ['Терракота', '#c4643f', 'Кисть в логотипе, точки над заголовками. Наследник красной улыбки.'],
-    ['Тёмная терракота', '#a8502f', 'Выделенные слова в заголовках; главные кнопки на тёмном фоне и на фото.'],
-    ['Тушь', '#1f2440', 'Основной текст, линии логотипа.'],
+    ['Синий', '#33568f', 'Единственный акцент сайта: кнопки, ссылки, выделенные слова в заголовках. Наследник синей надписи старого логотипа.'],
+    ['Тёмный синий', '#284676', 'Кнопки при наведении.'],
+    ['Тёмная полоса', '#121a28', 'Шапка над светлой страницей, подвал, вуаль на фото. На ней главная кнопка — белая с синим текстом.'],
+    ['Тушь', '#0f1a2e', 'Основной текст, линии логотипа.'],
   ]);
   sw('support', [
-    ['Шалфей', '#8fae8b', 'Краска логотипа; скамья на ресепшене. Иллюстрации, плашки.', true],
-    ['Охра', '#d6a548', 'Краска на кисти. Мелкие акценты, иллюстрации.', true],
-    ['Дуб', '#9f8e65', 'Стойка ресепшена. Только в фото и иллюстрациях.'],
-    ['Серо-лиловый', '#8a86a3', 'Форма врачей. Только в фото.'],
+    ['Терракота', '#c4643f', 'Кисть и краска в логотипе. Наследник красной улыбки старого знака.'],
+    ['Шалфей', '#8fae8b', 'Краска в логотипе.', true],
+    ['Охра', '#d6a548', 'Краска на кисти и потёк в логотипе.', true],
+    ['Коричневый', '#4a3a33', 'Внутренность стакана в логотипе.'],
   ]);
   sw('neutral', [
-    ['Тёплый фон', '#f5f0ea', 'Фон страниц.', true],
-    ['Бумага', '#fffdf9', 'Карточки, плашки под логотип.', true],
+    ['Фон сайта', '#eef1f5', 'Фон страниц, светло-серый.', true],
+    ['Бумага', '#ffffff', 'Карточки, плашки под логотип.', true],
     ['Стена', '#e1e0db', 'Тёплый светлый — фон фото, печать.', true],
-    ['Серый текст', '#5f5f6e', 'Подписи и второстепенный текст.'],
+    ['Серый текст', '#5b6577', 'Подписи и второстепенный текст.'],
   ]);
   sw('photoColors', [
     ['Стены ресепшена', '#d8d9d9', '48% кадра на фото ресепшена', true],
