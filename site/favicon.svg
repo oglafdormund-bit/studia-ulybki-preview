@@ -1,12 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -4 140 144" role="img" aria-label="Стоматология «Студия улыбки»">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-7 -1 114 116" role="img" aria-label="Стоматология «Студия улыбки»">
   <title>Стоматология «Студия улыбки»</title>
-  <!-- Упрощённый знак для малых размеров (брендбук): зуб-стакан, зеркало и кисть, без зонда. -->
-  <ellipse cx="60" cy="62" rx="27" ry="6" fill="#3a4252" stroke="#0f1a2e" stroke-width="5"/>
-  <path d="M50 64 38 24" stroke="#0f1a2e" stroke-width="5.5" stroke-linecap="round"/>
-  <circle cx="35" cy="14" r="11" fill="#dfe7ef" stroke="#0f1a2e" stroke-width="5"/>
-  <path d="M60 64 66 14" stroke="#0f1a2e" stroke-width="12" stroke-linecap="round"/>
-  <path d="M60 64 66 14" stroke="#c4643f" stroke-width="7" stroke-linecap="round"/>
-  <path d="M64.6 12c-1-7 1-12 4-16 2 5 2.6 11 1 16z" fill="#d6a548" stroke="#0f1a2e" stroke-width="3"/>
-  <path d="M33 62c-4 9-6 21-2 33 2 7 5 11 6 18l2 13c1 7 9 7 10 0l4-18c1-4 13-4 14 0l4 18c1 7 9 7 10 0l2-13c1-7 4-11 6-18 4-12 2-24-2-33a27 6 0 0 1-54 0z" fill="#fff" stroke="#0f1a2e" stroke-width="5" stroke-linejoin="round"/>
-  <path d="M33 62a27 6 0 0 0 54 0" fill="none" stroke="#0f1a2e" stroke-width="5" stroke-linecap="round"/>
+  <!-- Знак «Почти как было» (design/logo4.html № 1), контур потолще для малых размеров. -->
+  <path d="M70 50 82 14c1-4 5-5 6-2" fill="none" stroke="#2b2b33" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M62 50 56 13" stroke="#2b2b33" stroke-width="2.6" stroke-linecap="round"/>
+  <ellipse cx="55" cy="7.5" rx="5.5" ry="6" fill="#fff" stroke="#2b2b33" stroke-width="2.2"/>
+  <path d="M66 50 77 12" stroke="#d8382c" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M77 12 78.6 6.6" stroke="#2b2b33" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M78.6 6.6C79 3 81 1 82.5 0c.3 3-.6 6-2.2 8z" fill="#d8382c"/>
+  <path d="M26 22C12 22 6 36 6 52c0 22 16 42 40 42 18 0 30-14 30-32 0-10 4-16 4-26 0-12-8-18-16-16-8 2-10 10-18 10S36 22 26 22zM57.5 37a6.5 4.6 -18 1 0 13 0a6.5 4.6 -18 1 0 -13 0z" fill="#fff" fill-rule="evenodd" stroke="#2b2b33" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M34 16C24 16 19 24 19 34c0 11 5 18 7 28l4 22c1 5 8 5 9 0l5-20c1-4 11-4 12 0l5 20c1 5 8 5 9 0l4-22c2-10 7-17 7-28 0-10-5-18-15-18-7 0-10 4-16 4s-9-4-16-4z" transform="translate(8 26) scale(0.24)" fill="#e8b830"/>
+  <path d="M34 16C24 16 19 24 19 34c0 11 5 18 7 28l4 22c1 5 8 5 9 0l5-20c1-4 11-4 12 0l5 20c1 5 8 5 9 0l4-22c2-10 7-17 7-28 0-10-5-18-15-18-7 0-10 4-16 4s-9-4-16-4z" transform="translate(11 45) scale(0.22)" fill="#b8357a"/>
+  <path d="M34 16C24 16 19 24 19 34c0 11 5 18 7 28l4 22c1 5 8 5 9 0l5-20c1-4 11-4 12 0l5 20c1 5 8 5 9 0l4-22c2-10 7-17 7-28 0-10-5-18-15-18-7 0-10 4-16 4s-9-4-16-4z" transform="translate(20 61) scale(0.2)" fill="#9467c4"/>
+  <path d="M34 16C24 16 19 24 19 34c0 11 5 18 7 28l4 22c1 5 8 5 9 0l5-20c1-4 11-4 12 0l5 20c1 5 8 5 9 0l4-22c2-10 7-17 7-28 0-10-5-18-15-18-7 0-10 4-16 4s-9-4-16-4z" transform="translate(34 72) scale(0.18)" fill="#2f2b78"/>
+  <path d="M14 96C34 109 62 109 86 94 62 103 36 103 14 96z" fill="#d8382c"/>
+  <path d="M24 107C40 115 62 115 78 105 62 111 42 111 24 107z" fill="#d8382c"/>
 </svg>
