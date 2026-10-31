@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Сайт на разных экранах</title>
+<style>
+  /* Просмотр сайта на телефоне, планшете и ноутбуке. Сайт открывается во фреймах нужной ширины
+     и уменьшается, чтобы поместиться. Адрес сайта — ../site/ (рядом на превью) или ?site=… */
+  :root {
+    --bg: #e9edf3;
+    --panel: #ffffff;
+    --text: #1b2433;
+    --muted: #5b6678;
+    --accent: #33568f;
+    --line: #d5dbe5;
+    --frame: #111827;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10151e;
+      --panel: #1a212d;
+      --text: #e8edf5;
+      --muted: #9aa6b8;
+      --accent: #8fb0e6;
+      --line: #2b3444;
+      --frame: #000;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  .bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    padding: 12px 16px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar h1 { margin: 0 8px 0 0; font-size: 16px; }
+  .group { display: flex; flex-wrap: wrap; gap: 6px; }
+  button, select {
+    font: inherit;
+    color: inherit;
+    min-height: 38px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+    cursor: pointer;
+  }
+  button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .hint { color: var(--muted); font-size: 13px; }
+  .stage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px 48px;
+  }
+  .device { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .device-name { font-size: 13px; color: var(--muted); }
+  .device-name b { color: var(--text); font-weight: 600; }
+  .shell {
+    position: relative;
+    overflow: hidden;
+    border: 10px solid var(--frame);
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 20px 50px rgb(0 0 0 / 0.18);
+  }
+  .shell.laptop { border-radius: 14px 14px 6px 6px; border-width: 12px 12px 18px; }
+  .shell iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    transform-origin: 0 0;
+    background: #fff;
+  }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <h1>Сайт на разных экранах</h1>
+    <div class="group" id="devices" role="group" aria-label="Устройства"></div>
+    <select id="page" aria-label="Страница"></select>
+    <button type="button" id="rotate" title="Повернуть телефон и планшет">↻ Повернуть</button>
+    <button type="button" id="reload">Обновить</button>
+    <span class="hint">По ссылкам внутри фрейма можно ходить. Масштаб подгоняется под окно.</span>
+  </div>
+  <div class="stage" id="stage"></div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const SITE = (params.get('site') || '../site/').replace(/\/?$/, '/');
+
+  const DEVICES = [
+    { id: 'phone-s', name: 'Телефон маленький', w: 360, h: 740 },
+    { id: 'phone', name: 'Телефон', w: 390, h: 844 },
+    { id: 'tablet', name: 'Планшет', w: 768, h: 1024 },
+    { id: 'laptop', name: 'Ноутбук', w: 1440, h: 900, laptop: true },
+    { id: 'wide', name: 'Монитор Full HD', w: 1920, h: 1080, laptop: true },
+  ];
+  const PAGES = [
+    ['', 'Главная'], ['uslugi/', 'Услуги'], ['uslugi/lechenie/', 'Услуга: лечение зубов'], ['ceny/', 'Цены'],
+    ['vrachi/', 'Врачи'], ['pacientam/', 'Пациентам'], ['pacientam/zapis/', 'Порядок записи'],
+    ['pacientam/prava/', 'Права, обращения и жалобы'], ['pacientam/pravila/', 'Правила и договоры'],
+    ['pacientam/otzyvy/', 'Отзывы'], ['pacientam/anketa/', 'Анкета'], ['o-klinike/', 'О клинике'],
+    ['o-klinike/rekvizity/', 'Реквизиты и лицензия'], ['o-klinike/personalnye-dannye/', 'Персональные данные'],
+    ['kontakty/', 'Контакты'], ['poisk/', 'Поиск и карта сайта'],
+  ];
+
+  // Выбор помнится между открытиями страницы (только у этого зрителя).
+  const store = {
+    get(k, d) { try { return JSON.parse(localStorage.getItem('ekrany-' + k)) ?? d; } catch { return d; } },
+    set(k, v) { try { localStorage.setItem('ekrany-' + k, JSON.stringify(v)); } catch {} },
+  };
+  let selected = new Set(store.get('devices', ['phone', 'tablet', 'laptop']));
+  let rotated = store.get('rotated', false);
+
+  const devicesEl = document.getElementById('devices');
+  const pageEl = document.getElementById('page');
+  const stage = document.getElementById('stage');
+
+  for (const d of DEVICES) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = d.name;
+    b.dataset.id = d.id;
+    b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', () => {
+      selected.has(d.id) ? selected.delete(d.id) : selected.add(d.id);
+      if (!selected.size) selected.add(d.id);
+      store.set('devices', [...selected]);
+      render();
+    });
+    devicesEl.append(b);
+  }
+  for (const [path, name] of PAGES) pageEl.add(new Option(name, path));
+  pageEl.value = store.get('page', '');
+  pageEl.addEventListener('change', () => { store.set('page', pageEl.value); render(); });
+  document.getElementById('rotate').addEventListener('click', () => { rotated = !rotated; store.set('rotated', rotated); render(); });
+  document.getElementById('reload').addEventListener('click', render);
+
+  function render() {
+    devicesEl.querySelectorAll('button').forEach((b) => {
+      const on = selected.has(b.dataset.id);
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+    const list = DEVICES.filter((d) => selected.has(d.id)).map((d) =>
+      rotated && !d.laptop ? { ...d, w: d.h, h: d.w, name: d.name + ' (гориз.)' } : d,
+    );
+    // Масштаб — общий для всех: все устройства в одном ряду по ширине окна и не выше окна.
+    const avail = stage.clientWidth - 32 - 28 * (list.length - 1) - list.length * 24;
+    const totalW = list.reduce((s, d) => s + d.w, 0);
+    const maxH = Math.max(...list.map((d) => d.h));
+    const scale = Math.min(1, avail / totalW, (innerHeight - 150) / maxH);
+    stage.replaceChildren(
+      ...list.map((d) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'device';
+        const shell = document.createElement('div');
+        shell.className = 'shell' + (d.laptop ? ' laptop' : '');
+        shell.style.width = d.w * scale + (d.laptop ? 24 : 20) + 'px';
+        shell.style.height = d.h * scale + (d.laptop ? 30 : 20) + 'px';
+        const frame = document.createElement('iframe');
+        frame.title = d.name;
+        frame.src = SITE + pageEl.value;
+        frame.style.width = d.w + 'px';
+        frame.style.height = d.h + 'px';
+        frame.style.transform = `scale(${scale})`;
+        shell.append(frame);
+        const name = document.createElement('div');
+        name.className = 'device-name';
+        name.innerHTML = `<b>${d.name}</b> · ${d.w}×${d.h} · масштаб ${Math.round(scale * 100)}%`;
+        wrap.append(shell, name);
+        return wrap;
+      }),
+    );
+  }
+  let t;
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(render, 200); });
+  render();
+</script>
+</body>
+</html>
